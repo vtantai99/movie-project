@@ -1,0 +1,120 @@
+@import "../../Assets/Styles/SCSS/Helper/variable";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.owl-carousel {
+	margin-top: 50px;
+	.owl-nav {
+		margin: 0 !important;
+		height: 0 !important;
+		@include MediaQuery($md) {
+			display: none;
+		}
+		button.owl-prev {
+			&:hover {
+				span {
+					color: $textPrimary;
+				}
+			}
+			span {
+				position: absolute;
+				top: 25%;
+				@include MediaQuery($lg) {
+					top: 32%;
+				}
+				font-size: 100px;
+				width: 70px;
+				color: $textSecondary;
+				left: 10px;
+				transition: all 0.4s;
+			}
+		}
+		button.owl-next {
+			&:hover {
+				span {
+					color: $textPrimary;
+				}
+			}
+			span {
+				position: absolute;
+				top: 25%;
+				@include MediaQuery($lg) {
+					top: 32%;
+				}
+				font-size: 100px;
+				width: 70px;
+				color: $textSecondary;
+				right: 10px;
+				transition: all 0.4s;
+			}
+		}
+	}
+	.owl-dots {
+		position: absolute;
+		bottom: 10%;
+		left: 50%;
+		transform: translateX(-50%);
+		@include MediaQuery($xs) {
+			bottom: 2%;
+		}
+		button {
+			outline: none;
+			margin: 5px;
+			&.active {
+				span {
+					background-color: #fb4226 !important;
+				}
+			}
+			span {
+				@include MediaQuery($xs) {
+					width: 10px !important;
+					height: 10px !important;
+					margin: 0 3px !important;
+				}
+				width: 12px !important;
+				height: 12px !important;
+				margin: 3px 5px !important;
+				background-color: #d8d8d8 !important;
+			}
+		}
+	}
+	.owl-stage-outer {
+		.owl-stage {
+			.owl-item {
+				.carousel__item {
+					cursor: pointer;
+					&:hover {
+						.carousel__item__play {
+							opacity: 1;
+						}
+					}
+					.carousel__item__play {
+						z-index: 2;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						opacity: 0;
+						transition: all 0.3s;
+						@include MediaQuery($xs) {
+							width: 50px;
+						}
+						&:hover {
+							opacity: 0.6;
+						}
+					}
+					.carousel__item__overlay {
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background: linear-gradient(to top, #000, transparent 20%);
+					}
+					img {
+						display: block;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
