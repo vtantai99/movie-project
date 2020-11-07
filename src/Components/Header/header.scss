@@ -22,13 +22,13 @@
 		&__list {
 			position: absolute;
 			top: 50%;
-			left: 50%;
+			left: 40%;
 			transform: translate(-50%, -50%);
 			@include MediaQuery($sm) {
 				display: none;
 			}
 			@include MediaQuery($md) {
-				left: 40%;
+				left: 50%;
 			}
 			ul {
 				list-style: none;

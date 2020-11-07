@@ -2,11 +2,13 @@
 @import "../../Assets/Styles/SCSS/Helper/mixin.scss";
 .owl-carousel {
 	margin-top: 50px;
+	z-index: 0;
 	.owl-nav {
 		margin: 0 !important;
 		height: 0 !important;
+		display: none;
 		@include MediaQuery($md) {
-			display: none;
+			display: block;
 		}
 		button.owl-prev {
 			&:hover {
@@ -49,9 +51,12 @@
 	}
 	.owl-dots {
 		position: absolute;
-		bottom: 10%;
+		bottom: 7%;
 		left: 50%;
 		transform: translateX(-50%);
+		@include MediaQuery($md) {
+			bottom: 10%;
+		}
 		@include MediaQuery($xs) {
 			bottom: 2%;
 		}
@@ -64,15 +69,19 @@
 				}
 			}
 			span {
+				width: 10px !important;
+				height: 10px !important;
+				margin: 3px 5px !important;
+				background-color: #d8d8d8 !important;
 				@include MediaQuery($xs) {
 					width: 10px !important;
 					height: 10px !important;
 					margin: 0 3px !important;
 				}
-				width: 12px !important;
-				height: 12px !important;
-				margin: 3px 5px !important;
-				background-color: #d8d8d8 !important;
+				@include MediaQuery($md) {
+					width: 12px !important;
+					height: 12px !important;
+				}
 			}
 		}
 	}
@@ -96,6 +105,9 @@
 						transition: all 0.3s;
 						@include MediaQuery($xs) {
 							width: 50px;
+						}
+						@include MediaQuery($sm) {
+							width: 70px;
 						}
 						&:hover {
 							opacity: 0.6;
