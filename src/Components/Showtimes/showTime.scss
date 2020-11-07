@@ -1,0 +1,29 @@
+@import "../../Assets/Styles/SCSS/Helper/variable";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.showTime {
+	.nav-tabs {
+		border: none;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 40px;
+		.nav-item {
+			.nav-link {
+				color: $textBlack;
+				font-size: $fzH2;
+				font-weight: $fwMedium;
+				border: none;
+				transition: all 0.2s;
+				cursor: pointer;
+				height: 24px;
+				line-height: 24px;
+				&.active {
+					font-size: $fzH1;
+					color: $textPrimary;
+				}
+				&:hover {
+					font-size: $fzH1;
+				}
+			}
+		}
+	}
+}
