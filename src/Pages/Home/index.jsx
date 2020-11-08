@@ -1,14 +1,15 @@
 import React, { Fragment } from "react";
-import SearchMovie from "../../SearchMovie";
-import OwlCarouselComponent from "../../Carousel";
-import Header from "../../Header";
-import Showtimes from "../../Showtimes";
+import SearchMovie from "../../Components/SearchMovie";
+import OwlCarouselComponent from "../../Components/Carousel";
+import Header from "../../Components/Header";
+import Showtimes from "../../Components/Showtimes";
+import "./home.scss";
 const Home = () => {
   return (
     <Fragment>
       <Header />
       <OwlCarouselComponent />
-      <div class="container">
+      <div className="container">
         <SearchMovie />
         <Showtimes />
       </div>

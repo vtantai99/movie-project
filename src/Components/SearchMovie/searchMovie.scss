@@ -12,9 +12,9 @@
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	transform: translateY(-80%);
+	transform: translateY(-50%);
 	@include MediaQuery($md) {
-		transform: translateY(-80%);
+		transform: translateY(-50%);
 	}
 	z-index: 1;
 	display: flex;
@@ -60,7 +60,7 @@
 			height: 100%;
 			border: 0;
 			outline: 0;
-			padding: 5px;
+			padding: 10px;
 			@include MediaQuery($md) {
 				padding: 20px;
 				font-size: 16px;
@@ -84,7 +84,7 @@
 			width: unset;
 			height: unset;
 			padding: 5px;
-			font-size: $fzUser;
+			font-size: $fzP;
 			color: #fff;
 			border: 1px solid $bgBtn2;
 			border-radius: 4px;

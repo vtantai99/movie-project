@@ -13,7 +13,7 @@ const OwlCarouselComponent = () => {
         className="owl-theme"
         nav
         dots
-        smartSpeed={800}
+        smartSpeed={600}
         autoplayHoverPause
       >
         <div className="carousel__item">
@@ -25,7 +25,7 @@ const OwlCarouselComponent = () => {
               />
             </a>
           </div>
-          <a href="#" className="carousel__item__overlay" />
+          <div className="carousel__item__overlay"></div>
           <img
             src="https://kdq-react-movie-app.surge.sh/images/hero4.png"
             alt
@@ -40,7 +40,7 @@ const OwlCarouselComponent = () => {
               />
             </a>
           </div>
-          <a href="#" className="carousel__item__overlay" />
+          <div className="carousel__item__overlay"></div>
           <img
             src="https://kdq-react-movie-app.surge.sh/images/hero1.jpg"
             alt
@@ -55,7 +55,7 @@ const OwlCarouselComponent = () => {
               />
             </a>
           </div>
-          <a href="#" className="carousel__item__overlay" />
+          <div className="carousel__item__overlay"></div>
           <img
             src="https://s3img.vcdn.vn/123phim/2020/11/ky-nghi-nho-doi-16042987493885.png"
             alt
@@ -70,7 +70,7 @@ const OwlCarouselComponent = () => {
               />
             </a>
           </div>
-          <a href="#" className="carousel__item__overlay" />
+          <div className="carousel__item__overlay"></div>
           <img
             src="https://kdq-react-movie-app.surge.sh/images/hero2.png"
             alt

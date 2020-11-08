@@ -3,7 +3,7 @@ import React from "react";
 import "./searchMovie.scss";
 const Booking = () => {
   return (
-    <form className="search__movie container">
+    <form className="search__movie">
       <div className="search__movie__group movieSelect">
         <select name="movieSelect" id="">
           <option>Chọn phim</option>

@@ -1,7 +1,6 @@
 @import "../../Assets/Styles/SCSS/Helper/variable";
 @import "../../Assets/Styles/SCSS/Helper/mixin.scss";
-
-.carousel {
+.showTime {
 	.owl-carousel {
 		margin-top: 50px;
 		z-index: 0;
@@ -16,8 +15,8 @@
 				&::before {
 					content: "";
 					position: absolute;
-					top: 45%;
-					left: 10px;
+					top: 40%;
+					left: -10%;
 					background: url("https://tix.vn/app/assets/img/icons/back-session.png") 50% / contain no-repeat;
 					width: 50px;
 					height: 50px;
@@ -30,8 +29,8 @@
 				&::before {
 					content: "";
 					position: absolute;
-					top: 45%;
-					right: 10px;
+					top: 40%;
+					right: -10%;
 					background: url("https://tix.vn/app/assets/img/icons/next-session.png") 50% / contain no-repeat;
 					width: 50px;
 					height: 50px;
@@ -73,55 +72,6 @@
 					@include MediaQuery($md) {
 						width: 12px !important;
 						height: 12px !important;
-					}
-				}
-			}
-		}
-		.owl-stage-outer {
-			.owl-stage {
-				.owl-item {
-					.carousel__item {
-						// cursor: pointer;
-						&:hover {
-							.carousel__item__play {
-								opacity: 1;
-								transform: scale(1);
-							}
-						}
-						.carousel__item__play {
-							z-index: 2;
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							opacity: 0;
-							transition: all 0.3s;
-							width: 70px;
-							transform: scale(0.7);
-							@include MediaQuery($xs) {
-								width: 50px;
-							}
-							@include MediaQuery($md) {
-								width: 90px;
-							}
-							&:hover {
-								opacity: 0.6;
-							}
-						}
-						.carousel__item__overlay {
-							position: absolute;
-							top: 0;
-							left: 0;
-							right: 0;
-							bottom: 0;
-							background: linear-gradient(to top, #000, transparent 20%);
-							cursor: pointer;
-							z-index: 0;
-						}
-						img {
-							display: block;
-							width: 100%;
-						}
 					}
 				}
 			}
