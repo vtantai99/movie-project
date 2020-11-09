@@ -1,20 +1,37 @@
 import {
+  Box,
   Button,
   CircularProgress,
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import { PlayArrow } from "@material-ui/icons";
 import React from "react";
 import "./index.scss";
+import { useDispatch } from "react-redux";
+import { getMovieTrailer } from "../../redux/action/movieAction/actions";
 
 const useStyles = makeStyles((theme) => ({
   progress: {
-    height: "200px",
-    backgroundColor: "red",
+    zIndex: 9999,
+  },
+  title: {
+    margin: "10px 0",
+  },
+  btn: {
+    backgroundColor: "#fb4226",
+    color: "#fff",
+  },
+  playControl: {
+    padding: "10px 12px",
+    border: "2px solid #fff",
+    borderRadius: "100%",
+    cursor: "pointer",
   },
 }));
 
 const DetailInfo = ({ movieDetail }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const {
     hinhAnh,
@@ -24,13 +41,16 @@ const DetailInfo = ({ movieDetail }) => {
     tenPhim,
     maPhim,
     danhGia,
+    trailer,
   } = movieDetail;
-  console.log(hinhAnh);
   return (
     <div className="detail_info">
       <div
         style={{
           background: `url(${hinhAnh})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
         }}
         className="detail_info_fog"
       >
@@ -38,11 +58,23 @@ const DetailInfo = ({ movieDetail }) => {
       </div>
       <div className="detail_info_content">
         <div className="detail_info_content_text">
-          <img src={hinhAnh} alt="" />
+          <div className="img_container">
+            <img src={hinhAnh} alt="" />
+            <div className="play_trailer_btn">
+              <Box className={classes.playControl}>
+                <PlayArrow
+                  onClick={() => dispatch(getMovieTrailer(trailer))}
+                  className={classes.arrow}
+                ></PlayArrow>
+              </Box>
+            </div>
+          </div>
           <div className="detail_info_content_text_info">
             <small>{ngayKhoiChieu}</small>
-            <Typography variant="h3">{tenPhim}</Typography>
-            <Button color="secondary" variant="contained">
+            <Typography className={classes.title} variant="h5">
+              {tenPhim}
+            </Typography>
+            <Button className={classes.btn} size="large" variant="contained">
               Mua ve
             </Button>
           </div>
@@ -50,10 +82,12 @@ const DetailInfo = ({ movieDetail }) => {
         <div className="detail_info_content_rating">
           <CircularProgress
             variant="static"
-            value="50"
+            value={(danhGia * 100) / 10}
             className={classes.progress}
+            size={150}
           ></CircularProgress>
-          {danhGia}
+          <div className="rating_border"></div>
+          <Typography className="rating">{danhGia}</Typography>
         </div>
       </div>
     </div>

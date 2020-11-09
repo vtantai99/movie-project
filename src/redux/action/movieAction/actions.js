@@ -24,4 +24,18 @@ const fetchMovieDetailSuccess = (movieDetail) => disaptch => {
     });
 }
 
-export {fetchMovieDetailRequest};
+const getMovieTrailer = (trailer) => {
+    return {
+        type: actions.GET_MOVIE_TRAILER,
+        payload: trailer,
+    }
+}
+
+const dropMovieTrailer = () => {
+    return {
+        type: actions.GET_MOVIE_TRAILER,
+        payload: '',
+    }
+}
+
+export {fetchMovieDetailRequest, getMovieTrailer, dropMovieTrailer};

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./header.scss";
 
 const Header = () => {
@@ -6,9 +7,9 @@ const Header = () => {
     <header className="header">
       <div className="header__navbar">
         <div className="header__navbar__logo">
-          <a href="#">
+          <NavLink to="/">
             <img src="https://tix.vn/app/assets/img/icons/web-logo.png" alt />
-          </a>
+          </NavLink>
         </div>
         <div className="header__navbar__list">
           <ul className="m-0">
@@ -28,15 +29,15 @@ const Header = () => {
         </div>
         <div className="header__navbar__user">
           <div className="user__login">
-            <a href="#">
+            <NavLink to="/login">
               <i className="fa fa-user-circle" />
               <span>Đăng nhập</span>
-            </a>
+            </NavLink>
           </div>
           <div className="user__signUp">
-            <a href="#">
+            <NavLink to="/signUp">
               <span>Đăng kí</span>
-            </a>
+            </NavLink>
           </div>
         </div>
         <label htmlFor="nav__input" className="header__navbar__icon-bar">
