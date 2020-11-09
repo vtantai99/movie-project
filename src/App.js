@@ -5,6 +5,8 @@ import {NavLink, BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Detail from "./Pages/Detail";
 import { Provider } from "react-redux";
 import store from './redux/store';
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 function App() {
   return (
     <Provider store={store}>
@@ -15,6 +17,12 @@ function App() {
         </Route>
         <Route exact path="/detail/:movieId">
           <Detail/>
+        </Route>
+        <Route exact path="/login">
+          <Login/>
+        </Route>
+        <Route exact path="/signUp">
+          <SignUp/>
         </Route>
       </Switch>
     </Router>
