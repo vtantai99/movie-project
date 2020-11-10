@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 import store from './redux/store';
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Loading from "./Components/Loading";
 function App() {
   return (
     <Provider store={store}>
+      <Loading></Loading>
       <Router>
       <Switch>
         <Route exact path="/">
