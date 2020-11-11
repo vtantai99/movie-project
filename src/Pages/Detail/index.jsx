@@ -5,7 +5,7 @@ import DetailInfo from "../../Components/DetailInfo";
 import DetailMain from "../../Components/DetailMain";
 import Header from "../../Components/Header";
 import WatchVideo from "../../Components/WatchVideo";
-import { fetchMovieDetailRequest } from "../../redux/action/movieAction/actions";
+import { fetchMovieDetailRequest } from "../../redux/action/movieDetailAction/actions";
 const Detail = () => {
   const params = useParams();
   useEffect(() => {
@@ -13,8 +13,8 @@ const Detail = () => {
     dispatch(fetchMovieDetailRequest(movieId));
   }, []);
   const dispatch = useDispatch();
-  const movieReducer = useSelector((state) => state.movieReducer);
-  const { movieDetail } = movieReducer;
+  const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
+  const { movieDetail } = movieDetailReducer;
   return (
     <React.Fragment>
       <Header />

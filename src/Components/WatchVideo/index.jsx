@@ -1,11 +1,11 @@
 import React from "react";
 import "./index.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { dropMovieTrailer } from "../../redux/action/movieAction/actions";
+import { dropMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 const WatchVideo = () => {
   const dispatch = useDispatch();
-  const movieReducer = useSelector((state) => state.movieReducer);
-  const { movieTrailer } = movieReducer;
+  const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
+  const { movieTrailer } = movieDetailReducer;
   return movieTrailer ? (
     <div onClick={() => dispatch(dropMovieTrailer())} className="watchVideo">
       <iframe width="650px" height="450px" src={movieTrailer}></iframe>

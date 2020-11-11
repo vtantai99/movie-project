@@ -1,14 +1,14 @@
 import React from "react";
 import "./index.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { switchMovieDetailNav } from "../../redux/action/movieAction/actions";
+import { switchMovieDetailNav } from "../../redux/action/movieDetailAction/actions";
 import MovieDetailInfo from "../MovieDetailInfo";
 import MovieDetailShowTime from "../MovieDetailShowTime";
 import MovieDetailReview from "../MovieDetailReview";
 const DetailMain = () => {
   const dispatch = useDispatch();
-  const movieReducer = useSelector((state) => state.movieReducer);
-  const { movieDetailNav, movieDetail } = movieReducer;
+  const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
+  const { movieDetailNav, movieDetail } = movieDetailReducer;
 
   const renderMovieDetailMain = () => {
     switch (movieDetailNav) {

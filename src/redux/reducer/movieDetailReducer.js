@@ -1,4 +1,4 @@
-import * as actions from '../action/movieAction/actionTypes';
+import * as actions from '../action/movieDetailAction/actionTypes';
 
 const initalState = {
     movieDetail: '',

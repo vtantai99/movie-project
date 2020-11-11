@@ -9,7 +9,7 @@ import { PlayArrow } from "@material-ui/icons";
 import React from "react";
 import "./index.scss";
 import { useDispatch } from "react-redux";
-import { getMovieTrailer } from "../../redux/action/movieAction/actions";
+import { getMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 
 const useStyles = makeStyles((theme) => ({
   progress: {

@@ -13,9 +13,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import "./index.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FormGroup, FormHelperText } from "@material-ui/core";
+import { loginRequest } from "../../redux/action/userLoginAction/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,20 +40,24 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     background: "#fff",
-    paddingBottom: "25px",
+    paddingBottom: "55px",
     borderRadius: "5px",
   },
 }));
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  const userLoginReducer = useSelector((state) => state.userLoginReducer);
+  const { error } = userLoginReducer;
+  const history = useHistory();
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    console.log(errors);
+    dispatch(loginRequest(data, history));
   };
 
-  //console.log(errors.email.type);
+  //console.log(errors.taiKhoan.type);
 
   return (
     <div className="login">
@@ -61,7 +68,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -74,22 +81,22 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="taiKhoan"
                 label="Tài khoản"
-                name="email"
-                autoComplete="email"
+                name="taiKhoan"
+                autoComplete="taiKhoan"
                 autoFocus
                 inputRef={register({ required: true, minLength: 6 })}
-                error={errors.email ? true : false}
+                error={errors.taiKhoan ? true : false}
               />
-              <FormHelperText error={errors.email ? true : false}>
-                {errors.email && errors.email.type === "required"
+              <FormHelperText error={errors.taiKhoan ? true : false}>
+                {errors.taiKhoan && errors.taiKhoan.type === "required"
                   ? "Tên không được bỏ trống"
                   : ""}
               </FormHelperText>
 
-              <FormHelperText error={errors.email ? true : false}>
-                {errors.email && errors.email.type === "minLength"
+              <FormHelperText error={errors.taiKhoan ? true : false}>
+                {errors.taiKhoan && errors.taiKhoan.type === "minLength"
                   ? "Tài khoản phải dài hơn 6 kí tự"
                   : ""}
               </FormHelperText>
@@ -101,16 +108,16 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
+                name="matKhau"
                 label="Mật khẩu"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                type="matKhau"
+                id="matKhau"
+                autoComplete="current-matKhau"
                 inputRef={register({ required: true })}
-                error={errors.password ? true : false}
+                error={errors.matKhau ? true : false}
               />
-              <FormHelperText error={errors.email ? true : false}>
-                {errors.password && errors.password.type === "required"
+              <FormHelperText error={errors.taiKhoan ? true : false}>
+                {errors.matKhau && errors.matKhau.type === "required"
                   ? "Mật khẩu không được bỏ trống"
                   : ""}
               </FormHelperText>
@@ -120,6 +127,13 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            {error ? (
+              <Alert variant="filled" severity="error">
+                {error}
+              </Alert>
+            ) : (
+              ""
+            )}
             <Button
               type="submit"
               fullWidth
@@ -132,7 +146,7 @@ export default function SignIn() {
             <Grid container>
               <Grid item xs>
                 <NavLink to="/" href="#" variant="body2">
-                  Forgot password?
+                  Forgot matKhau?
                 </NavLink>
               </Grid>
               <Grid item>
