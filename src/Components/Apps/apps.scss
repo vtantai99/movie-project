@@ -1,0 +1,78 @@
+@import "../../Assets/Styles/SCSS/Helper/variable";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+
+.apps {
+	background: url(./Images/background.jpg);
+	width: 100%;
+	padding: 100px 0 80px;
+	&__info {
+		&--title {
+			color: $textWhite;
+			font-weight: $fwBold;
+			font-size: $fzApps;
+			margin-bottom: 0;
+		}
+		&--subtitle {
+			color: $textWhite;
+			font-size: $fzH4;
+			margin-bottom: 0;
+		}
+		&--download {
+			background: $bgLinear;
+			color: $textWhite;
+
+			font-weight: $fwBold;
+			font-size: $fzH4;
+			padding: 10px 20px;
+			border-radius: 5px;
+			outline: none;
+			border: 0;
+			transition: all 0.4s;
+			&:hover {
+				transform: translateY(-10%);
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+		&--textDown {
+			color: $textWhite;
+			a {
+				color: $textWhite;
+				text-decoration: underline;
+				font-size: $fzH3;
+			}
+		}
+	}
+	&__mobile {
+		&__img {
+			width: 100%;
+			margin: auto;
+			padding: 0% 24.8%;
+			@include MediaQuery($xs) {
+				padding: 0% 24%;
+			}
+			z-index: 9999;
+		}
+		&__carousel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			padding: 4.2% 29%;
+			border-radius: 5px;
+			z-index: 0;
+			.owl-theme {
+				border-radius: 5px;
+				.apps__mobile__carousel--item {
+					border-radius: 5px;
+					img {
+						border-radius: 10px;
+						z-index: -9999;
+					}
+				}
+			}
+		}
+	}
+}

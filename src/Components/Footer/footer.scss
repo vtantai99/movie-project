@@ -1,0 +1,169 @@
+@import "../../Assets/Styles/SCSS/Helper/variable";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.footer {
+	background: $bgFooter;
+	padding: 20px 0px;
+	&__tix {
+		color: $textWhite;
+		font-size: $fzUser;
+		&__title {
+			display: none;
+			@include MediaQuery($md) {
+				display: block;
+			}
+		}
+		&__item {
+			width: 50%;
+			float: left;
+			text-align: center;
+			&::after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			a {
+				margin: 0 5px;
+				text-decoration: none;
+				transition: all 0.3s;
+
+				color: $textFooter;
+				font-weight: $fwBold;
+				font-size: $fzP;
+				line-height: 25px;
+
+				@include MediaQuery($xs) {
+					display: block;
+					font-size: 11px;
+				}
+				@include MediaQuery($md) {
+					text-align: left;
+					display: block;
+					margin: 0;
+				}
+				&:hover {
+					color: $textWhite;
+				}
+			}
+		}
+	}
+	&__partner {
+		width: 100%;
+		display: none;
+		@include MediaQuery($md) {
+			display: block;
+		}
+		&__title {
+			color: $textWhite;
+			font-size: $fzUser;
+		}
+		&__item {
+			width: 100%;
+			display: flex;
+			margin-bottom: 20px;
+			a {
+				width: 20%;
+				img {
+					width: 30px;
+					height: 30px;
+					background-color: $bgPrimary;
+					border-radius: 50%;
+				}
+			}
+		}
+	}
+	&__social {
+		width: 100%;
+		display: flex;
+		margin-top: 10px;
+		@include MediaQuery($md) {
+			margin-top: 0px;
+		}
+		&__item {
+			width: 50%;
+			&--title {
+				color: $textWhite;
+				font-size: $fzUser;
+				text-align: center;
+				display: none;
+				@include MediaQuery($md) {
+					display: block;
+				}
+			}
+			&--img {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				a {
+					width: 15%;
+					@include MediaQuery($xs) {
+						width: 30%;
+					}
+					@include MediaQuery($md) {
+						width: 30%;
+					}
+					text-align: center;
+					img {
+						width: 30px;
+					}
+				}
+			}
+		}
+	}
+	&__hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		background-color: $bgBtn1;
+		height: 1px;
+	}
+	&__logo {
+		@include MediaQuery($sm) {
+			margin-bottom: 20px;
+		}
+		img {
+			display: block;
+			width: 100%;
+			border-radius: 8px;
+			@include MediaQuery($sm) {
+				width: 100px;
+				margin: 0 auto;
+			}
+		}
+	}
+	&__des {
+		text-align: center;
+		@include MediaQuery($md) {
+			text-align: left;
+		}
+		span {
+			color: $textFooter;
+			display: block;
+			font-size: $fzP;
+			line-height: 20px;
+			@include MediaQuery($xs) {
+				font-size: 11px;
+			}
+			&:first-child {
+				color: $textWhite;
+				font-size: $fzUser;
+				font-weight: $fwRegular;
+				line-height: 40px;
+				@include MediaQuery($xs) {
+					font-size: $fzP;
+				}
+			}
+		}
+	}
+	&__noti {
+		@include MediaQuery($sm) {
+			margin-top: 20px;
+		}
+		img {
+			display: block;
+			width: 100%;
+			@include MediaQuery($sm) {
+				width: 150px;
+				margin: 0 auto;
+			}
+		}
+	}
+}

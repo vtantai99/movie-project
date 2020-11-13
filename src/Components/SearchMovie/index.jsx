@@ -1,7 +1,7 @@
 import { Button, MenuItem, Select } from "@material-ui/core";
 import React from "react";
 import "./searchMovie.scss";
-const Booking = () => {
+const SearchMovie = () => {
   return (
     <form className="search__movie">
       <div className="search__movie__group movieSelect">
@@ -25,11 +25,11 @@ const Booking = () => {
         </select>
       </div>
       <div className="search__movie__group btnSelect">
-        <Button type="button" class="btnBuyTicket">
+        <Button type="button" className="btnBuyTicket">
           MUA VÉ NGAY
         </Button>
       </div>
     </form>
   );
 };
-export default Booking;
+export default SearchMovie;

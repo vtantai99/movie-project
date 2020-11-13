@@ -88,15 +88,16 @@
 			color: #fff;
 			border: 1px solid $bgBtn2;
 			border-radius: 4px;
-			background: linear-gradient(270deg, $bgBtn2, #ce3017);
+			background: $bgLinear;
 			cursor: pointer;
 			outline: none;
+			transition: all 0.4s;
 			@include MediaQuery($md) {
-				font-size: $fzH4;
+				font-size: $fzUser;
 				padding: 10px;
 			}
 			&:hover {
-				background: $bgBtn2;
+				transform: translateY(-10%);
 			}
 		}
 	}

@@ -1,9 +1,9 @@
 @import "../../Assets/Styles/SCSS/Helper/variable";
 @import "../../Assets/Styles/SCSS/Helper/mixin.scss";
-
+@import "../../Assets/Styles/SCSS/Helper/reset.scss";
 .header {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-	z-index: 9997;
+	z-index: 1000;
 	position: fixed;
 	top: 0;
 	width: 100%;

@@ -85,30 +85,33 @@
 						&:hover {
 							.carousel__item__play {
 								opacity: 1;
-								transform: scale(1);
+								transform: translate(-50%, -50%) scale(1);
 							}
 						}
-						.carousel__item__play {
-							z-index: 2;
+						&__play {
 							position: absolute;
 							top: 50%;
 							left: 50%;
-							transform: translate(-50%, -50%);
+							transform: translate(-50%, -50%) scale(0.7);
 							opacity: 0;
-							transition: all 0.3s;
-							width: 70px;
-							transform: scale(0.7);
-							@include MediaQuery($xs) {
-								width: 50px;
-							}
-							@include MediaQuery($md) {
-								width: 90px;
-							}
+							z-index: 1;
 							&:hover {
-								opacity: 0.6;
+								a {
+									img {
+										opacity: 0.6;
+									}
+								}
+							}
+							a {
+								width: unset;
+								img {
+									display: block;
+									max-width: 100%;
+									transition: all 0.3s;
+								}
 							}
 						}
-						.carousel__item__overlay {
+						&__overlay {
 							position: absolute;
 							top: 0;
 							left: 0;
@@ -116,7 +119,6 @@
 							bottom: 0;
 							background: linear-gradient(to top, #000, transparent 20%);
 							cursor: pointer;
-							z-index: 0;
 						}
 						img {
 							display: block;

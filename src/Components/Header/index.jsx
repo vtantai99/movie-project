@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./header.scss";
 
 const Header = () => {
@@ -7,22 +8,22 @@ const Header = () => {
       <div className="header__navbar">
         <div className="header__navbar__logo">
           <a href="#">
-            <img src="https://tix.vn/app/assets/img/icons/web-logo.png" alt />
+            <img src="https://tix.vn/app/assets/img/icons/web-logo.png" />
           </a>
         </div>
         <div className="header__navbar__list">
           <ul className="m-0">
             <li>
-              <a href="#">Lịch chiếu</a>
+              <a href="/#showTimes">Lịch chiếu</a>
             </li>
             <li>
               <a href="#">Cụm rạp</a>
             </li>
             <li>
-              <a href="#">Tin tức</a>
+              <a href="/#news">Tin tức</a>
             </li>
             <li>
-              <a href="#">Ứng dụng</a>
+              <a href="/#apps">Ứng dụng</a>
             </li>
           </ul>
         </div>
@@ -40,16 +41,10 @@ const Header = () => {
           </div>
         </div>
         <label htmlFor="nav__input" className="header__navbar__icon-bar">
-          <i class="fa fa-align-right"></i>
+          <i className="fa fa-align-right"></i>
         </label>
 
-        <input
-          type="checkbox"
-          hidden
-          name
-          className="nav__input"
-          id="nav__input"
-        />
+        <input type="checkbox" hidden className="nav__input" id="nav__input" />
 
         <label htmlFor="nav__input" className="header__navbar__overlay" />
         <div className="header__navbar__drop">
@@ -58,13 +53,15 @@ const Header = () => {
           </label>
           <ul className="m-0">
             <li className="drop__login">
-              <a href="#">
-                <i className="fa fa-user-alt" />
-                Đăng nhập
-              </a>
+              <label htmlFor="nav__input">
+                <a href="#">
+                  <i className="fa fa-user-alt" />
+                  Đăng nhập
+                </a>
+              </label>
             </li>
             <li>
-              <a href="#">
+              <a href="showTimes">
                 <i className="fa fa-calendar-alt" />
                 Lịch chiếu
               </a>

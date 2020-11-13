@@ -1,13 +1,13 @@
 import React from "react";
-import "./showTime.scss";
+import "./movies.scss";
 import "./owlCarouselShowTimes.scss";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import { Button } from "@material-ui/core";
-const Showtimes = () => {
+const Movies = () => {
   return (
-    <div className="showTime">
+    <section className="showTime" id="showTimes">
       <ul className="nav nav-tabs navCenter">
         <li className="nav-item">
           <a
@@ -55,16 +55,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -90,52 +84,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
-                        </a>
-                      </div>
-                      <div className="item__film__img--overlay"></div>
-                    </div>
-                    <div className="item__film__info">
-                      <span className="item__film__info--icon">C18</span>
-                      <span className="item__film__info--name">
-                        Deliver Us From Evil
-                      </span>
-                      <Button className="item__film__info--btn">MUA VÉ</Button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-3 col-6">
-                  <div className="item__film">
-                    <div className="item__film__img">
-                      <span className="item__film__img--vote">
-                        <p className="vote--number">10</p>
-                        <p className="vote--star">
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                        </p>
-                      </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
-                      <div className="item__film__img--play">
-                        <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -162,16 +114,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -198,16 +144,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -234,16 +174,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -270,16 +204,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -306,16 +234,40 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
+                        </a>
+                      </div>
+                      <div className="item__film__img--overlay"></div>
+                    </div>
+                    <div className="item__film__info">
+                      <span className="item__film__info--icon">C18</span>
+                      <span className="item__film__info--name">
+                        Deliver Us From Evil
+                      </span>
+                      <Button className="item__film__info--btn">MUA VÉ</Button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-3 col-6">
+                  <div className="item__film">
+                    <div className="item__film__img">
+                      <span className="item__film__img--vote">
+                        <p className="vote--number">10</p>
+                        <p className="vote--star">
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+                        </p>
+                      </span>
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
+                      <div className="item__film__img--play">
+                        <a href="#">
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -345,16 +297,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -380,52 +326,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
-                        </a>
-                      </div>
-                      <div className="item__film__img--overlay"></div>
-                    </div>
-                    <div className="item__film__info">
-                      <span className="item__film__info--icon">C18</span>
-                      <span className="item__film__info--name">
-                        Deliver Us From Evil
-                      </span>
-                      <Button className="item__film__info--btn">MUA VÉ</Button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-3 col-6">
-                  <div className="item__film">
-                    <div className="item__film__img">
-                      <span className="item__film__img--vote">
-                        <p className="vote--number">10</p>
-                        <p className="vote--star">
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                        </p>
-                      </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
-                      <div className="item__film__img--play">
-                        <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -452,16 +356,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -488,16 +386,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -524,16 +416,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -560,16 +446,10 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -596,16 +476,40 @@ const Showtimes = () => {
                           <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
                         </p>
                       </span>
-                      <img
-                        src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png"
-                        alt="movie__img"
-                      />
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
                       <div className="item__film__img--play">
                         <a href="#">
-                          <img
-                            src="https://tix.vn/app/assets/img/icons/play-video.png"
-                            alt
-                          />
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
+                        </a>
+                      </div>
+                      <div className="item__film__img--overlay"></div>
+                    </div>
+                    <div className="item__film__info">
+                      <span className="item__film__info--icon">C18</span>
+                      <span className="item__film__info--name">
+                        Deliver Us From Evil
+                      </span>
+                      <Button className="item__film__info--btn">MUA VÉ</Button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-3 col-6">
+                  <div className="item__film">
+                    <div className="item__film__img">
+                      <span className="item__film__img--vote">
+                        <p className="vote--number">10</p>
+                        <p className="vote--star">
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+                        </p>
+                      </span>
+                      <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/phu-thuy-phu-thuy-the-witches-p-16030770963055_215x318.png" />
+                      <div className="item__film__img--play">
+                        <a href="#">
+                          <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
                         </a>
                       </div>
                       <div className="item__film__img--overlay"></div>
@@ -641,7 +545,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -657,7 +560,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -673,7 +575,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -689,7 +590,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -705,7 +605,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -721,7 +620,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -737,7 +635,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -753,7 +650,6 @@ const Showtimes = () => {
                     <img
                       className="item__film__img"
                       src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png"
-                      alt="movie__img"
                     />
                     <div className="item__film__info">
                       <span className="item__film__info--icon">C18</span>
@@ -777,8 +673,8 @@ const Showtimes = () => {
           </OwlCarousel>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Showtimes;
+export default Movies;
