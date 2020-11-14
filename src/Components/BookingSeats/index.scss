@@ -1,0 +1,76 @@
+@import "../../Assets/Styles/SCSS/Helper/variable.scss";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.seats {
+  .seatRow {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+    @include MediaQuery($xs) {
+      width: 100%;
+      .seatRowContainer {
+        display: none;
+        grid-gap: 5px;
+        width: 100%;
+      }
+    }
+    @include MediaQuery($sm) {
+      width: 100%;
+    }
+
+    @include MediaQuery($md) {
+      width: 100%;
+    }
+    @include MediaQuery($lg) {
+      width: 80%;
+    }
+    .tenDay {
+      font-size: 20px;
+      font-weight: bold;
+      width: 5%;
+    }
+    .seatRowContainer {
+      display: grid;
+      grid-template-columns: repeat(17, 1fr);
+      grid-gap: 5px;
+      width: 95%;
+      margin: 0 auto;
+      @include MediaQuery($xs) {
+        grid-gap: 5px;
+      }
+      @include MediaQuery($sm) {
+        grid-gap: 5px;
+      }
+      @include MediaQuery($md) {
+      }
+      @include MediaQuery($lg) {
+      }
+    }
+    .seat {
+      width: 25px;
+      height: 25px;
+      border-radius: 2px;
+      cursor: pointer;
+      @include MediaQuery($xs) {
+        transform: scale(0.7);
+      }
+      @include MediaQuery($sm) {
+        transform: scale(0.8);
+      }
+      &.Thuong {
+        background-color: $bgSeat_normal;
+      }
+      &.Vip {
+        background-color: $bgSeat_vip;
+      }
+      &.DangChon {
+        background-color: $bgSeat_selected;
+      }
+      &.DaDat {
+        background-color: #ccc;
+      }
+    }
+  }
+}

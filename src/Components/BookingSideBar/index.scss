@@ -1,0 +1,10 @@
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.bookingSideBar {
+  background-color: #fff;
+  height: 100vh;
+  z-index: 5000;
+  position: relative;
+  @include MediaQuery($sm) {
+    display: none;
+  }
+}

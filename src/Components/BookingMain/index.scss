@@ -1,0 +1,30 @@
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+.bookingMain {
+  width: 100%;
+  min-height: 400px;
+  background-color: #fff;
+  margin-left: 50px;
+  margin-top: 70px;
+  padding: 20px;
+  text-align: center;
+  @include MediaQuery($xs) {
+    margin-left: 0;
+  }
+  @include MediaQuery($sm) {
+    margin-left: 0;
+  }
+  @include MediaQuery($md) {
+    margin-left: 0;
+  }
+
+  @include MediaQuery($lg) {
+    margin-left: 50px;
+  }
+
+  .screen {
+    width: 80%;
+    background-color: black;
+    height: 10px;
+    margin: 0 auto;
+  }
+}

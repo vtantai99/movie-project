@@ -8,6 +8,7 @@ import store from './redux/store';
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Loading from "./Components/Loading";
+import Booking from "./Pages/Booking";
 function App() {
   return (
     <Provider store={store}>
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path="/signUp">
           <SignUp/>
+        </Route>
+        <Route exact path="/booking/:bookingId">
+          <Booking/>
         </Route>
       </Switch>
     </Router>
