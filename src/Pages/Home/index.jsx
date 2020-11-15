@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "./home.scss";
+
 import SearchMovie from "../../Components/SearchMovie";
 import OwlCarouselComponent from "../../Components/Carousel";
 import Header from "../../Components/Header";
@@ -19,7 +19,6 @@ const Home = () => {
         <SearchMovie />
         <Movies />
         <Greymain />
-        {/* <TheaterList /> */}
         <News />
       </div>
       <Apps />

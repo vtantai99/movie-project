@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import "./news.scss";
 import { Button } from "@material-ui/core";
 
 import image1 from "./Images/1.png";
@@ -62,7 +61,7 @@ const News = () => {
     <section className="news" id="news">
       <ul className="nav nav-tabs navCenter">
         <li className="nav-item">
-          <a className="nav-link active" data-toggle="tab" href="#news">
+          <a className="nav-link active" data-toggle="tab" href="#newss">
             Điện ảnh 24h
           </a>
         </li>
@@ -78,7 +77,7 @@ const News = () => {
         </li>
       </ul>
       <div className="tab-content">
-        <div className="tab-pane active" id="news">
+        <div className="tab-pane active" id="newss">
           <div className="news__item">
             <div className="news__item__img">
               <a

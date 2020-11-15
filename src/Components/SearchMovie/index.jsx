@@ -1,6 +1,6 @@
 import { Button, MenuItem, Select } from "@material-ui/core";
 import React from "react";
-import "./searchMovie.scss";
+
 const SearchMovie = () => {
   return (
     <form className="search__movie">

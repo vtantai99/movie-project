@@ -1,8 +1,5 @@
-@import "../../Assets/Styles/SCSS/Helper/variable";
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
-
 .apps {
-	background: url(./Images/background.jpg);
+	background: url(../../../Images/Apps/background.jpg);
 	width: 100%;
 	padding: 100px 0 80px;
 	&__info {

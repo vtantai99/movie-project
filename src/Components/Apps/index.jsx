@@ -4,7 +4,6 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import React from "react";
 import mobile from "./Images/mobile.png";
-import "./apps.scss";
 
 import images1 from "./Images/1.jpg";
 import images2 from "./Images/2.jpg";

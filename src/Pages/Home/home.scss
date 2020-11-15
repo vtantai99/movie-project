@@ -1,8 +1,0 @@
-@import "../../Assets/Styles/SCSS/Helper/variable";
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
-.container {
-	padding: 0 20px;
-	@include MediaQuery($md) {
-		padding: 0 100px;
-	}
-}

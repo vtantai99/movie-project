@@ -1,0 +1,79 @@
+.footer {
+	background: $bgFooter;
+	padding: 20px 0px;
+
+	&__logo {
+		img {
+			display: block;
+			width: 100%;
+			border-radius: 8px;
+			@include MediaQuery($sm) {
+				width: 100px;
+				margin: 0 auto;
+			}
+		}
+	}
+	&__des {
+		text-align: center;
+		@include MediaQuery($md) {
+			text-align: left;
+		}
+		@include MediaQuery($xs) {
+			margin: 30px 0;
+		}
+		@include MediaQuery($sm) {
+			margin: 30px 0;
+		}
+		&--title {
+			color: $textWhite;
+			font-size: $fzHeader;
+		}
+		span {
+			color: $textFooter;
+			display: block;
+			font-size: $fzUser;
+			line-height: 20px;
+			@include MediaQuery($xs) {
+				font-size: 11px;
+			}
+		}
+	}
+	&__contact {
+		width: 50%;
+		&__title {
+			color: $textWhite;
+			font-size: $fzHeader;
+			text-align: center;
+			@include MediaQuery($xs) {
+				display: none;
+			}
+			@include MediaQuery($sm) {
+				display: none;
+			}
+		}
+		&__icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			a {
+				width: 35%;
+				text-decoration: none;
+				color: white;
+				@include MediaQuery($xs) {
+					width: 25%;
+				}
+				@include MediaQuery($md) {
+					width: 25%;
+				}
+				@include MediaQuery($sm) {
+					width: 15%;
+				}
+				text-align: center;
+				i {
+					display: block;
+					font-size: 40px;
+				}
+			}
+		}
+	}
+}

@@ -1,6 +1,3 @@
-@import "../../Assets/Styles/SCSS/Helper/variable";
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
-@import "../../Assets/Styles/SCSS/Helper/reset.scss";
 .header {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 	z-index: 1000;
@@ -114,17 +111,6 @@
 			i {
 				font-size: 30px;
 				color: $textBar;
-			}
-		}
-		.nav__input {
-			&:checked ~ {
-				.header__navbar__overlay {
-					display: block;
-				}
-				.header__navbar__drop {
-					transform: translateX(0);
-					opacity: 1;
-				}
 			}
 		}
 		&__overlay {
