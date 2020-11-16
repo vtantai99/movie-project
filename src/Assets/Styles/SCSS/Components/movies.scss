@@ -67,6 +67,9 @@
 					}
 					&:hover {
 						.item__film__img {
+							width: 100%;
+							height: 300px;
+							border-radius: 5px;
 							&--play {
 								opacity: 1;
 								img {

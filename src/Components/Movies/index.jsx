@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import { Button } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieListRequest } from "../../redux/action/movieListAction/action";
 const Movies = () => {
   const options = {
     responsive: {
@@ -18,6 +20,51 @@ const Movies = () => {
         items: 4,
       },
     },
+  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMovieListRequest());
+  }, []);
+  const movieList = useSelector((state) => state.movieListReducer.movieList);
+  //   console.log(movieList);
+  const renderMovieList = () => {
+    console.log(movieList);
+    return movieList.map((movie, index) => (
+      <div className="showing__item" key={index}>
+        <div className="item__film">
+          <div
+            className="item__film__img"
+            style={{
+              background: `url(${movie.hinhAnh}) center center / cover no-repeat`,
+              width: "100%",
+              height: "300px",
+              borderRadius: "5px",
+            }}
+          >
+            <span className="item__film__img--vote">
+              <p className="vote--number">{movie.danhGia}</p>
+              <p className="vote--star">
+                <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                <img src="https://tix.vn/app/assets/img/icons/star1.png" />
+                <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+              </p>
+            </span>
+            <div className="item__film__img--play">
+              <a href="#">
+                <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
+              </a>
+            </div>
+            <div className="item__film__img--overlay"></div>
+          </div>
+          <div className="item__film__info">
+            <span className="item__film__info--icon">C18</span>
+            <span className="item__film__info--name">{movie.tenPhim}</span>
+            <Button className="item__film__info--btn">MUA VÉ</Button>
+          </div>
+        </div>
+      </div>
+    ));
   };
   return (
     <section className="showTime" id="showTimes">
@@ -55,239 +102,9 @@ const Movies = () => {
             autoplayHoverPause
             {...options}
           >
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/sai-gon-trong-con-mua-saigon-in-the-rain-c16-16018703546576_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/ky-nghi-nho-doi-golden-holiday-c16-16028181456988_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/sai-gon-trong-con-mua-saigon-in-the-rain-c16-16018703546576_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
-            <div className="showing__item">
-              <div className="item__film">
-                <div className="item__film__img">
-                  <span className="item__film__img--vote">
-                    <p className="vote--number">10</p>
-                    <p className="vote--star">
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-                      <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
-                    </p>
-                  </span>
-                  <img src="https://s3img.vcdn.vn/mobile/123phim/2020/08/ac-quy-doi-dau-deliver-us-from-evil-c16-15984134403610_215x318.png" />
-                  <div className="item__film__img--play">
-                    <a href="#">
-                      <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-                    </a>
-                  </div>
-                  <div className="item__film__img--overlay"></div>
-                </div>
-                <div className="item__film__info">
-                  <span className="item__film__info--icon">C18</span>
-                  <span className="item__film__info--name">
-                    Deliver Us From Evil
-                  </span>
-                  <Button className="item__film__info--btn">MUA VÉ</Button>
-                </div>
-              </div>
-            </div>
+            {renderMovieList()}
           </OwlCarousel>
+          {/* {renderMovieList()} */}
         </div>
         <div className="tab-pane fade comingSoon" id="comingSoon">
           <OwlCarousel
