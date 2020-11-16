@@ -1,0 +1,36 @@
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  background-color: #fff;
+  img {
+    width: 200px;
+    animation: shake 1000ms linear infinite forwards;
+  }
+}
+
+@keyframes shake {
+  10% {
+    opacity: 1;
+  }
+  30% {
+    transform: rotate(20deg);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  90% {
+    transform: rotate(-20deg);
+    opacity: 0.2;
+  }
+}

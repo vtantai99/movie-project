@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 const Header = () => {
   const [nav, setNav] = useState(false);
   //   const [nav, setNav] = useState(false);
@@ -14,9 +14,9 @@ const Header = () => {
     <header className="header">
       <div className="header__navbar">
         <div className="header__navbar__logo">
-          <a href="#">
-            <img src="https://tix.vn/app/assets/img/icons/web-logo.png" />
-          </a>
+          <NavLink to="/">
+            <img src="https://tix.vn/app/assets/img/icons/web-logo.png" alt />
+          </NavLink>
         </div>
         <div className="header__navbar__list">
           <ul className="m-0">
@@ -36,15 +36,15 @@ const Header = () => {
         </div>
         <div className="header__navbar__user">
           <div className="user__login">
-            <a href="#">
+            <NavLink to="/login">
               <i className="fa fa-user-circle" />
               <span>Đăng nhập</span>
-            </a>
+            </NavLink>
           </div>
           <div className="user__signUp">
-            <a href="#">
+            <NavLink to="/signUp">
               <span>Đăng kí</span>
-            </a>
+            </NavLink>
           </div>
         </div>
         <label
