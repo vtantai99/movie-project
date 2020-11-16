@@ -94,7 +94,6 @@ export default function SignIn() {
                   ? "Tên không được bỏ trống"
                   : ""}
               </FormHelperText>
-
               <FormHelperText error={errors.taiKhoan ? true : false}>
                 {errors.taiKhoan && errors.taiKhoan.type === "minLength"
                   ? "Tài khoản phải dài hơn 6 kí tự"
