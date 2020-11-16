@@ -159,9 +159,14 @@
 							@include MediaQuery($md) {
 								width: 70px;
 							}
-							img {
-								transition: all 0.3s;
-								transform: scale(0.7);
+							button {
+								background-color: transparent;
+								border: 0;
+								outline: none;
+								img {
+									transition: all 0.3s;
+									transform: scale(0.7);
+								}
 							}
 							&:hover {
 								img {

@@ -8,11 +8,13 @@ import News from "../../Components/News";
 import Movies from "../../Components/Movies";
 import Apps from "../../Components/Apps";
 import Footer from "../../Components/Footer";
+import WatchVideo from "../../Components/WatchVideo";
 
 const Home = () => {
   return (
     <Fragment>
       <Header />
+      <WatchVideo />
       <OwlCarouselComponent />
       <div className="container">
         <SearchMovie />

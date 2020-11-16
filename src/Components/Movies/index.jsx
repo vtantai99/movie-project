@@ -5,6 +5,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import { getMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 const Movies = () => {
   const options = {
     responsive: {
@@ -51,9 +52,9 @@ const Movies = () => {
               </p>
             </span>
             <div className="item__film__img--play">
-              <a href="#">
+              <button onClick={() => dispatch(getMovieTrailer(movie.trailer))}>
                 <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
-              </a>
+              </button>
             </div>
             <div className="item__film__img--overlay"></div>
           </div>
@@ -93,7 +94,7 @@ const Movies = () => {
         <div className="tab-pane active showing" id="showing">
           <OwlCarousel
             items={4}
-            autoplay
+            // autoplay
             loop
             className="owl-theme"
             nav
