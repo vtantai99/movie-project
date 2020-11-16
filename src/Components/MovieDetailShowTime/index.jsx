@@ -11,7 +11,6 @@ const MovieDetailShowTime = () => {
   const { movieDetail } = movieDetailReducer;
   const { lichChieu } = movieDetail;
   console.log(lichChieu);
-
   return (
     <div className="movieDetailShowTime">
       <Grid container>
