@@ -26,7 +26,6 @@ const selectSeat = (seat) => {
 }
 
 const countingDown = (time) =>{ 
-    console.log(time);
     return  {
         type: actions.COUNTING_DOWN,
         payload: time,
@@ -40,4 +39,11 @@ const stopCounting = () => {
     }
 }
 
-export {getBooking, selectSeat, countingDown, stopCounting};
+const resetTime = () => {
+    return {
+        type: actions.RESET_TIME,
+        payload: 90,
+    }
+}
+
+export {getBooking, selectSeat, countingDown, stopCounting, resetTime};

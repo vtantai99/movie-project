@@ -10,6 +10,7 @@
     width: 65%;
     @include MediaQuery($xs) {
       width: 100%;
+      margin: 2px auto;
       .seatRowContainer {
         display: none;
         grid-gap: 5px;
@@ -38,10 +39,10 @@
       width: 95%;
       margin: 0 auto;
       @include MediaQuery($xs) {
-        grid-gap: 5px;
+        grid-gap: 0px;
       }
       @include MediaQuery($sm) {
-        grid-gap: 5px;
+        grid-gap: 0px;
       }
       @include MediaQuery($md) {
       }
@@ -57,11 +58,10 @@
       align-items: center;
       font-size: 12px;
       cursor: pointer;
-      @include MediaQuery($xs) {
-        transform: scale(0.7);
-      }
+
       @include MediaQuery($sm) {
-        transform: scale(0.8);
+        width: 15px;
+        height: 15px;
       }
       &.Thuong {
         background-color: $bgSeat_normal;
