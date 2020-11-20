@@ -11,15 +11,17 @@ const BookingMain = () => {
   const { thongTinPhim } = bookingList;
   const { diaChi, hinhAnh, tenRap } = thongTinPhim ? thongTinPhim : "";
 
+  console.log(bookingList);
+
   useEffect(() => {
     countDownTime > 0 &&
       setTimeout(() => {
-        console.log(format(new Date(), "HH:MM"));
         dispatch(countingDown(countDownTime - 1));
       }, 1000);
+    return 1;
   }, [countDownTime]);
 
-  return (
+  return bookingList ? (
     <div className="bookingMain">
       <div className="meta-data">
         <div className="address">
@@ -30,13 +32,15 @@ const BookingMain = () => {
           </div>
         </div>
         <div className="countDown">
-          <p>Thoi gian giu ghe aaa</p>
+          <p>Thoi gian giu ghe</p>
           <span className="countDownTime">{countDownTime}</span>
         </div>
       </div>
       <div className="screen"></div>
       <BookingSeats />
     </div>
+  ) : (
+    ""
   );
 };
 

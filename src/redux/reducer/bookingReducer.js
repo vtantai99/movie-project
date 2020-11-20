@@ -24,8 +24,7 @@ export default function bookingReducer(state = initialState, action) {
             const newBookingList = {...bookingList, danhSachGhe};
             return {...state, bookingList: newBookingList};
         }
-        case actions.COUNTING_DOWN: case actions.STOP_COUNTING_DOWN: {
-            console.log(action.payload);
+        case actions.COUNTING_DOWN: case actions.STOP_COUNTING_DOWN: case actions.RESET_TIME: {
             return {...state, countDownTime: action.payload};
         }
         default: return state;

@@ -16,7 +16,7 @@ const fetchMovieDetailRequest = movieCode => async disaptch => {
             await disaptch(stopLoading());
         }
     }catch(err) {
-        console.log(err);
+        alert("No movie found")
     }
 }
 
@@ -25,6 +25,10 @@ const fetchMovieDetailSuccess = (movieDetail) => disaptch => {
         type: actions.FETCH_MOVIE_DETAIL,
         payload: movieDetail,
     });
+}
+
+const fetchMovieDetailFailure = (err) => {
+    
 }
 
 const getMovieTrailer = (trailer) => {
