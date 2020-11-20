@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 
 import image1 from "./Images/1.png";
@@ -52,11 +52,14 @@ import pro14 from "./Images/pro14.jpg";
 import pro15 from "./Images/pro15.jpg";
 import pro16 from "./Images/pro16.jpg";
 
+import { useDispatch, useSelector } from "react-redux";
+
 const News = () => {
   const [active, setActive] = useState(false);
   const handleChangeActive = () => {
     setActive(!active);
   };
+
   return (
     <section className="news" id="news">
       <ul className="nav nav-tabs navCenter">

@@ -19,6 +19,7 @@ import { FormGroup, FormHelperText } from "@material-ui/core";
 import { loginRequest } from "../../redux/action/userLoginAction/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
+import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -54,10 +55,15 @@ export default function SignIn() {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
+    // swal({
+    //   title: "Oops...",
+    //   icon: "success",
+    //   text: "Login Successful",
+    //   timer: 1500,
+    //   buttons: false,
+    // });
     dispatch(loginRequest(data, history));
   };
-
-  //console.log(errors.taiKhoan.type);
 
   return (
     <div className="login">
@@ -109,7 +115,7 @@ export default function SignIn() {
                 fullWidth
                 name="matKhau"
                 label="Mật khẩu"
-                type="matKhau"
+                type="password"
                 id="matKhau"
                 autoComplete="current-matKhau"
                 inputRef={register({ required: true })}

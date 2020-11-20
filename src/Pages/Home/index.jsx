@@ -5,10 +5,10 @@ import OwlCarouselComponent from "../../Components/Carousel";
 import Header from "../../Components/Header";
 import Greymain from "../../Components/Greymain";
 import News from "../../Components/News";
-import Movies from "../../Components/Movies";
 import Apps from "../../Components/Apps";
 import Footer from "../../Components/Footer";
 import WatchVideo from "../../Components/WatchVideo";
+import MovieList from "../../Components/MovieList";
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
       <OwlCarouselComponent />
       <div className="container">
         <SearchMovie />
-        <Movies />
+        <MovieList />
         <Greymain />
         <News />
       </div>

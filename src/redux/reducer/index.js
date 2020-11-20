@@ -5,6 +5,7 @@ import userLoginReducer from "./userLoginReducer";
 import heThongRapReducer from "./heThongRapReducer";
 import bookingReducer from "./bookingReducer";
 import { movieListReducer } from "./movieListReducer";
+
 export default combineReducers({
   movieDetailReducer,
   commonReducer,

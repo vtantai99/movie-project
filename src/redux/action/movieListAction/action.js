@@ -1,17 +1,28 @@
-import { GET_MOVIE_LIST, GET_MOVIE_LIST_SUCCESS } from "./actionTypes";
 import { startLoading, stopLoading } from "../commonAction/actions";
+import { GET_COMING_LIST, GET_SHOWING_LIST } from "./actionTypes";
 import axios from "axios";
-import { ImportExportRounded } from "@material-ui/icons";
 
-export const getMovieListRequest = () => {
+export const getMovieListRequest = (showing, coming) => {
   return (dispatch) => {
     dispatch(startLoading());
     axios
       .get(
-        "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP08"
+        `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${showing}`
       )
       .then((res) => {
-        dispatch(getMovieListSuccess(res.data));
+        dispatch(getMovieShowing(res.data));
+        setTimeout(() => {
+          dispatch(stopLoading());
+        }, 1500);
+      })
+
+      .catch((err) => console.log(err));
+    axios
+      .get(
+        `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${coming}`
+      )
+      .then((res) => {
+        dispatch(getMovieComing(res.data));
         setTimeout(() => {
           dispatch(stopLoading());
         }, 1500);
@@ -20,9 +31,15 @@ export const getMovieListRequest = () => {
       .catch((err) => console.log(err));
   };
 };
-const getMovieListSuccess = (movieList) => {
+const getMovieShowing = (showingList) => {
   return {
-    type: GET_MOVIE_LIST_SUCCESS,
-    payload: movieList,
+    type: GET_SHOWING_LIST,
+    payload: showingList,
+  };
+};
+const getMovieComing = (comingList) => {
+  return {
+    type: GET_COMING_LIST,
+    payload: comingList,
   };
 };
