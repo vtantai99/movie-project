@@ -8,7 +8,20 @@ const WatchVideo = () => {
   const { movieTrailer } = movieDetailReducer;
   return movieTrailer ? (
     <div onClick={() => dispatch(dropMovieTrailer())} className="watchVideo">
-      <iframe width="650px" height="450px" src={movieTrailer}></iframe>
+      <div className="watchVideo__item">
+        <span>
+          <i class="fa fa-times"></i>
+        </span>
+        <iframe
+          src={`${movieTrailer}?rel=0;&autoplay=1`}
+          allowFullScreen
+          allowfullscreen="true"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+          allow="autoplay"
+          style={{ transform: "translateY(0%)" }}
+        ></iframe>
+      </div>
     </div>
   ) : (
     ""

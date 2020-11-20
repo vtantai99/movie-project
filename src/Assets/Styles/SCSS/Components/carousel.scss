@@ -93,14 +93,17 @@
 							opacity: 0;
 							z-index: 1;
 							&:hover {
-								a {
+								button {
 									img {
 										opacity: 0.6;
 									}
 								}
 							}
-							a {
+							button {
 								width: unset;
+								border: 0;
+								background: 0;
+								outline: none;
 								img {
 									display: block;
 									max-width: 100%;
@@ -121,7 +124,6 @@
 							right: 0;
 							bottom: 0;
 							background: linear-gradient(to top, #000, transparent 20%);
-							cursor: pointer;
 						}
 						img {
 							display: block;

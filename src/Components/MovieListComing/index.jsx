@@ -2,9 +2,11 @@ import React from "react";
 import { getMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 import format from "date-format";
 import { useDispatch } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 const MovieListComing = (props) => {
-  console.log(props);
+  //   console.log(props);
   const dispatch = useDispatch();
+  const history = useHistory();
   return (
     <div className="showing__item">
       <div className="item__film">
@@ -26,11 +28,20 @@ const MovieListComing = (props) => {
               <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
             </button>
           </div>
-          <div className="item__film__img--overlay"></div>
+
+          <NavLink
+            className="item__film__img--overlay"
+            to={`/detail/${props.movie.maPhim}`}
+          ></NavLink>
         </div>
         <div className="item__film__info">
           <span className="item__film__info--icon">C18</span>
-          <span className="item__film__info--name">{props.movie.tenPhim}</span>
+          <span
+            className="item__film__info--name"
+            onClick={() => history.push(`/detail/${props.movie.maPhim}`)}
+          >
+            {props.movie.tenPhim}
+          </span>
         </div>
       </div>
     </div>
