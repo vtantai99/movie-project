@@ -6,7 +6,7 @@ const BookingSeats = () => {
   const dispatch = useDispatch();
   const bookingReducer = useSelector((state) => state.bookingReducer);
 
-  const { bookingList } = bookingReducer;
+  const { bookingList, countDownTime } = bookingReducer;
   const { danhSachGhe } = bookingList;
   // if (danhSachGhe) {
   //   console.log(danhSachGhe.length);
@@ -29,7 +29,8 @@ const BookingSeats = () => {
       for (var j = start; j < end; j++) {
         const currentSeats = arr[i].seats;
         if (typeof currentSeats !== "undefined") {
-          currentSeats.push(danhSachGhe[j]);
+          const ghe = { ...danhSachGhe[j], tenDay: ghes[i] };
+          currentSeats.push(ghe);
         }
       }
       start += 16;
@@ -42,9 +43,11 @@ const BookingSeats = () => {
           {seatRow.seats.map((seat, i) => (
             <div
               key={i}
-              onClick={() => onSelectSeat(seat)}
+              onClick={() => countDownTime > 0 && onSelectSeat(seat)}
               className={getClass(seat)}
-            ></div>
+            >
+              {seat.dangChon ? seatRow.day + `${i + 1}` : ""}
+            </div>
           ))}
         </div>
       </div>
