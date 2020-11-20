@@ -1,10 +1,65 @@
 @import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/variable.scss";
 .bookingSideBar {
   background-color: #fff;
   height: 100vh;
   z-index: 5000;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   @include MediaQuery($sm) {
     display: none;
+  }
+  ul {
+    text-align: center;
+    padding: 0 10px;
+    li {
+      list-style: none;
+      border-bottom: 1px dotted #ccc;
+      text-align: left;
+      padding: 25px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      &.dangChonSeats {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        span {
+          margin-right: 5px;
+          color: $textPrimary;
+        }
+      }
+      span,
+      strong {
+        font-size: 14px;
+      }
+      &.price {
+        color: $textGreen;
+        font-size: 25px;
+        text-align: center;
+        font-weight: 700;
+      }
+    }
+  }
+  button {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    cursor: not-allowed;
+    background-color: $textGreen;
+    color: #fff;
+    font-size: 25px;
+    opacity: 0.6;
+    &:active {
+      outline: none;
+    }
+    &.active {
+      opacity: 1;
+      cursor: pointer;
+    }
+    outline: none;
   }
 }

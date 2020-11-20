@@ -8,7 +8,7 @@ const getBooking = (id) => async dispatch => {
             method:"GET",
         })
         if(res.status == 200 || res.status == 201) {
-            await dispatch({
+            dispatch({
                 type: actions.GET_BOOKING,
                 payload: res.data,
             })
@@ -25,4 +25,19 @@ const selectSeat = (seat) => {
     }
 }
 
-export {getBooking, selectSeat};
+const countingDown = (time) =>{ 
+    console.log(time);
+    return  {
+        type: actions.COUNTING_DOWN,
+        payload: time,
+    } 
+}
+
+const stopCounting = () => {
+    return {
+        type: actions.STOP_COUNTING_DOWN,
+        payload: 90,
+    }
+}
+
+export {getBooking, selectSeat, countingDown, stopCounting};

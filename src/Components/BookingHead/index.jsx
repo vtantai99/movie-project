@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import "./index.scss";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,11 +42,13 @@ export default function BookingHead() {
 
   return (
     <AppBar className={`${classes.head} head`} position="fixed">
-      <img
-        className={classes.img}
-        src="https://kdq-react-movie-app.surge.sh/images/logo.png"
-        alt=""
-      />
+      <NavLink to="/">
+        <img
+          className={classes.img}
+          src="https://kdq-react-movie-app.surge.sh/images/logo.png"
+          alt=""
+        />
+      </NavLink>
       <p>Logo</p>
     </AppBar>
   );
