@@ -19,7 +19,6 @@ const WatchVideo = () => {
           webkitallowfullscreen="true"
           mozallowfullscreen="true"
           allow="autoplay"
-          style={{ transform: "translateY(0%)" }}
         ></iframe>
       </div>
     </div>

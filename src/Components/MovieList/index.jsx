@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMovieListRequest } from "../../redux/action/movieListAction/action";
 import MovieListShowing from "../MovieListShowing";
 import MovieListComing from "../MovieListComing";
+import {
+  GET_COMING_LIST,
+  GET_SHOWING_LIST,
+} from "../../redux/action/movieListAction/actionTypes";
 const MovieList = () => {
   const options = {
     responsive: {
@@ -27,8 +31,12 @@ const MovieList = () => {
   const dispatch = useDispatch();
   // Call API va dispatch list phim (Dang chieu va sap chieu)
   useEffect(() => {
-    dispatch(getMovieListRequest("GP07", "GP02"));
+    dispatch(getMovieListRequest("GP07", GET_SHOWING_LIST));
   }, []);
+  useEffect(() => {
+    dispatch(getMovieListRequest("GP08", GET_COMING_LIST));
+  }, []);
+
   //   Lay danh sach phim dang chieu va render ra man hinh
   const showingList = useSelector(
     (state) => state.movieListReducer.showingList
