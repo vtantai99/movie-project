@@ -9,8 +9,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @include MediaQuery($md) {
+  }
   @include MediaQuery($sm) {
-    display: none;
+    display: none !important;
   }
   ul {
     text-align: center;

@@ -12,6 +12,7 @@
   }
   @include MediaQuery($sm) {
     margin-left: 0;
+    width: 100%;
   }
   @include MediaQuery($md) {
     margin-left: 0;

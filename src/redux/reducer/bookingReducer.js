@@ -3,6 +3,7 @@ import * as actions from '../../redux/action/bookingAction/actionTypes';
 const initialState = {
     bookingList: {},
     countDownTime: 90,
+    step:1,
 }
 
 
@@ -27,6 +28,8 @@ export default function bookingReducer(state = initialState, action) {
         case actions.COUNTING_DOWN: case actions.STOP_COUNTING_DOWN: case actions.RESET_TIME: {
             return {...state, countDownTime: action.payload};
         }
+        case actions.PREV_STEP:return {...state, step:1};
+        case actions.NEXT_STEP:return{...state, step:2};
         default: return state;
     }
 }
