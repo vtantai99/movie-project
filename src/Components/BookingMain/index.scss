@@ -13,6 +13,10 @@
   @include MediaQuery($sm) {
     margin-left: 0;
     width: 100%;
+    display: none;
+    &.bookingMainActive {
+      display: block;
+    }
   }
   @include MediaQuery($md) {
     margin-left: 0;

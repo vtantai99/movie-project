@@ -17,6 +17,8 @@ const MovieShowTimes = ({ lichChieu }) => {
     history.push(`/booking/${ma}`);
   };
 
+  console.log(lichChieuArr);
+
   return (
     <div className="movieShowTime">
       <div className="times">

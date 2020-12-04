@@ -5,7 +5,13 @@
   .step {
     color: $textPrimary;
   }
+  .backArrow {
+    display: none;
+  }
   @include MediaQuery($xs) {
     padding-right: 0 !important;
+    .backArrow {
+      display: block;
+    }
   }
 }

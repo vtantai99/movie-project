@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import BackArrow from "../../Assets/Images/back-session.png";
 // import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
 // import Button from "@material-ui/core/Button";
@@ -9,7 +10,8 @@ import AppBar from "@material-ui/core/AppBar";
 
 import "./index.scss";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { prevStep } from "../../redux/action/bookingAction/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,16 +44,30 @@ export default function BookingHead() {
   const classes = useStyles();
   const bookingReducer = useSelector((state) => state.bookingReducer);
   const { step } = bookingReducer;
+  const dispatch = useDispatch();
 
   return (
     <AppBar className={`${classes.head} head`} position="fixed">
-      <NavLink to="/">
+      {step >= 2 ? (
         <img
-          className={classes.img}
-          src="https://kdq-react-movie-app.surge.sh/images/logo.png"
-          alt=""
+          onClick={() => dispatch(prevStep())}
+          className={`${classes.img} backArrow`}
+          src={BackArrow}
         />
-      </NavLink>
+      ) : (
+        ""
+      )}
+      {step < 2 ? (
+        <NavLink to="/">
+          <img
+            className={classes.img}
+            src="https://kdq-react-movie-app.surge.sh/images/logo.png"
+            alt=""
+          />
+        </NavLink>
+      ) : (
+        ""
+      )}
       <div className="step">
         {step === 1 ? (
           <div className="step-item">Chon ghe </div>

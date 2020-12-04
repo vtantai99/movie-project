@@ -7,11 +7,9 @@ import format from "date-format";
 const BookingMain = () => {
   const dispatch = useDispatch();
   const bookingReducer = useSelector((state) => state.bookingReducer);
-  const { bookingList, countDownTime } = bookingReducer;
+  const { bookingList, countDownTime, step } = bookingReducer;
   const { thongTinPhim } = bookingList;
   const { diaChi, hinhAnh, tenRap } = thongTinPhim ? thongTinPhim : "";
-
-  console.log(bookingList);
 
   useEffect(() => {
     countDownTime > 0 &&
@@ -22,7 +20,7 @@ const BookingMain = () => {
   }, [countDownTime]);
 
   return bookingList ? (
-    <div className="bookingMain">
+    <div className={`bookingMain ${step <= 1 ? "bookingMainActive" : ""}`}>
       <div className="meta-data">
         <div className="address">
           <img src={hinhAnh} alt="" />

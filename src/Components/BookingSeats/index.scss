@@ -60,8 +60,8 @@
       cursor: pointer;
 
       @include MediaQuery($sm) {
-        width: 15px;
-        height: 15px;
+        width: 17px;
+        height: 17px;
       }
       &.Thuong {
         background-color: $bgSeat_normal;
