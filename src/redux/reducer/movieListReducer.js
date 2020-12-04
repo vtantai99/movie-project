@@ -7,7 +7,6 @@ import {
 const initialState = {
   showingList: [],
   comingList: [],
-  searchList: [],
 };
 export const movieListReducer = (state = initialState, action) => {
   let { type, payload } = action;
@@ -17,9 +16,6 @@ export const movieListReducer = (state = initialState, action) => {
     }
     case GET_COMING_LIST: {
       return { ...state, comingList: payload };
-    }
-    case GET_SEARCH_LIST: {
-      return { ...state, searchList: payload };
     }
     default:
       return state;

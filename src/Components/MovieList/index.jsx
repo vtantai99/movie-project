@@ -31,7 +31,7 @@ const MovieList = () => {
   const dispatch = useDispatch();
   // Call API va dispatch list phim (Dang chieu va sap chieu)
   useEffect(() => {
-    dispatch(getMovieListRequest("GP07", GET_SHOWING_LIST));
+    dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
   }, []);
   useEffect(() => {
     dispatch(getMovieListRequest("GP08", GET_COMING_LIST));

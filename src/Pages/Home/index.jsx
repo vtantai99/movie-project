@@ -9,6 +9,7 @@ import Apps from "../../Components/Apps";
 import Footer from "../../Components/Footer";
 import WatchVideo from "../../Components/WatchVideo";
 import MovieList from "../../Components/MovieList";
+import TheaterList from "../../Components/TheaterList";
 
 const Home = () => {
   return (
@@ -19,6 +20,8 @@ const Home = () => {
       <div className="container">
         <SearchMovie />
         <MovieList />
+        <Greymain />
+        <TheaterList />
         <Greymain />
         <News />
       </div>

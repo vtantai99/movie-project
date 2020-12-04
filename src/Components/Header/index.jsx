@@ -67,7 +67,7 @@ const Header = () => {
               <a href="/#showTimes">Lịch chiếu</a>
             </li>
             <li>
-              <a href="#">Cụm rạp</a>
+              <a href="/#theaters">Cụm rạp</a>
             </li>
             <li>
               <a href="/#news">Tin tức</a>
@@ -83,6 +83,9 @@ const Header = () => {
               <div className="user__logged">
                 <span className="user__logged__name">{userLogged.hoTen}</span>
                 <div className="user__logged__profile">
+                  <div className="user__logged__profile--out">
+                    <i class="fa fa-sign-out-alt"></i>
+                  </div>
                   <a href="#/" className="user__logged__profile--link">
                     <Avatar
                       alt="Avatar"

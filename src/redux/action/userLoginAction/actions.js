@@ -7,7 +7,7 @@ export const loginRequest = (user, history) => async (dispatch) => {
       "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
       user
     );
-    if (res.status == 200 || res.status == 201) {
+    if (res.status === 200 || res.status === 201) {
       const logInUser = res.data;
       await localStorage.setItem("user", JSON.stringify(logInUser));
       await dispatch({

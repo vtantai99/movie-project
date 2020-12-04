@@ -16,8 +16,11 @@
 					top: 45%;
 					left: 10px;
 					background: url("https://tix.vn/app/assets/img/icons/back-session.png") 50% / contain no-repeat;
-					width: 50px;
-					height: 50px;
+					width: 40px;
+					height: 65px;
+					border-radius: 5px;
+					border: 2px solid #979797;
+					background-color: #ecf0f1;
 				}
 				span {
 					display: none;
@@ -30,8 +33,11 @@
 					top: 45%;
 					right: 10px;
 					background: url("https://tix.vn/app/assets/img/icons/next-session.png") 50% / contain no-repeat;
-					width: 50px;
-					height: 50px;
+					width: 40px;
+					height: 65px;
+					border-radius: 5px;
+					border: 2px solid #979797;
+					background-color: #ecf0f1;
 				}
 				span {
 					display: none;
@@ -51,25 +57,41 @@
 			}
 			button {
 				outline: none;
-				margin: 5px;
+				// margin: -4px;
 				&.active {
 					span {
 						background-color: #fb4226 !important;
+						height: 5px;
+						width: 28px;
+						margin: 2px 1px !important;
+						@include MediaQuery($sm) {
+							margin: 1px 1px !important;
+						}
+						@include MediaQuery($md) {
+							height: 6px;
+							margin: 1px 1px !important;
+							width: 35px;
+						}
+						@include MediaQuery($xs) {
+							margin: 1.5px 1px !important;
+							width: 25px;
+						}
 					}
 				}
 				span {
-					width: 10px !important;
-					height: 10px !important;
-					margin: 3px 5px !important;
+					width: 25px;
+					height: 2px;
+					margin: 3px 0.5px !important;
 					background-color: #d8d8d8 !important;
+					border-radius: 3px;
+					transition: all 0.5s;
 					@include MediaQuery($xs) {
-						width: 10px !important;
-						height: 10px !important;
-						margin: 0 3px !important;
+						width: 20px;
+						height: 2px;
 					}
 					@include MediaQuery($md) {
-						width: 12px !important;
-						height: 12px !important;
+						width: 30px;
+						height: 2px;
 					}
 				}
 			}

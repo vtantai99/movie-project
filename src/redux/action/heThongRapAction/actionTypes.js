@@ -1,1 +1,3 @@
 export const SWITCH_RAP = "switchRap";
+export const FETCH_THEATER_LIST_API = "FETCH_THEATER_LIST_API";
+export const FETCH_THEATER_DETAIL = "FETCH_THEATER_DETAIL";

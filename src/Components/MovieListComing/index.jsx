@@ -28,7 +28,6 @@ const MovieListComing = (props) => {
               <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
             </button>
           </div>
-
           <NavLink
             className="item__film__img--overlay"
             to={`/detail/${props.movie.maPhim}`}

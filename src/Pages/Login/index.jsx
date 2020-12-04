@@ -19,7 +19,6 @@ import { FormGroup, FormHelperText } from "@material-ui/core";
 import { loginRequest } from "../../redux/action/userLoginAction/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
-import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
