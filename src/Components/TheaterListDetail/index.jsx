@@ -14,8 +14,7 @@ const TheaterListDetail = () => {
   const renderTheaterDetail = () => {
     return theaterDetail.map((item, index) => (
       <div
-        className={`tab-pane fade ${index === 0 ? "show active" : ""}`}
-        // className="tab-pane fade active show"
+        className={`tab-pane fade${index === 0 ? "show active" : ""}`}
         id={item.maHeThongRap}
         key={index}
       >

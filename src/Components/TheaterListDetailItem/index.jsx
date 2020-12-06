@@ -1,5 +1,7 @@
 import { Opacity } from "@material-ui/icons";
 import React, { Fragment, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCodeTheater } from "../../redux/action/heThongRapAction/actions";
 import BHD from "./Images/bhd.jpg";
 import CGV from "./Images/cgv.jpg";
 import CineStar from "./Images/cinestar.jpg";
@@ -8,7 +10,11 @@ import LotteCinima from "./Images/lotte.jpg";
 import MegaGS from "./Images/megags.png";
 
 const TheaterListDetailItem = (props) => {
-  const [opacity, setOpacity] = useState(0.5);
+  const dispatch = useDispatch();
+
+  const codeTheater = useSelector(
+    (state) => state.heThongRapReducer.codeTheater
+  );
   const cutStr = (string) => {
     return string.substring(string.indexOf("-"));
   };
@@ -64,12 +70,13 @@ const TheaterListDetailItem = (props) => {
   const renderTheaterDetailItem = () => {
     return props.detail.lstCumRap.map((item, index) => (
       <div
-        className={`theater__name__item ${index === 0 ? "active" : ""}`}
+        className={`theater__name__item ${
+          item.maCumRap === codeTheater ? "active" : ""
+        }`}
         data-toggle="tab"
         role="tab"
-        data-target={`#${item.maCumRap}`}
-        aria-selected={index === 0 ? true : false}
         key={index}
+        onClick={() => dispatch(getCodeTheater(item.maCumRap))}
       >
         <img
           className="theater__name__item--img"

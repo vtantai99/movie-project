@@ -106,18 +106,16 @@
 		&::-webkit-scrollbar {
 			width: 5px;
 			background-color: #e9e9e9;
-			visibility: hidden;
 			transition: all 0.5s;
-			@include MediaQuery($sm) {
-				visibility: visible;
+			@include MediaQuery($md) {
+				visibility: hidden;
 			}
 		}
 		&::-webkit-scrollbar-thumb {
 			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
 			border-radius: 4px;
-			visibility: hidden;
-			@include MediaQuery($sm) {
-				visibility: visible;
+			@include MediaQuery($md) {
+				visibility: hidden;
 			}
 		}
 		&::-webkit-scrollbar-track {
@@ -230,18 +228,16 @@
 		&::-webkit-scrollbar {
 			width: 5px;
 			background-color: #e9e9e9;
-			visibility: hidden;
 			transition: all 0.5s;
-			@include MediaQuery($sm) {
-				visibility: visible;
+			@include MediaQuery($md) {
+				visibility: hidden;
 			}
 		}
 		&::-webkit-scrollbar-thumb {
 			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
 			border-radius: 4px;
-			visibility: hidden;
-			@include MediaQuery($sm) {
-				visibility: visible;
+			@include MediaQuery($md) {
+				visibility: hidden;
 			}
 		}
 		&::-webkit-scrollbar-track {
@@ -265,9 +261,35 @@
 				width: calc(100% - 40px);
 				transition: all 0.3s;
 			}
+			.collapsed {
+				&::after {
+					content: "\f107";
+					position: absolute;
+					right: 10px;
+					font-family: "Font Awesome 5 Free";
+					font-weight: 900;
+					font-size: 20px;
+					color: #bfbdb9;
+					:not(.collapsed) {
+						content: "\f106";
+					}
+				}
+			}
 			&__main {
 				display: flex;
 				align-items: center;
+				cursor: pointer;
+				position: relative;
+				margin-bottom: 10px;
+				&::after {
+					content: "\f106";
+					position: absolute;
+					right: 10px;
+					font-family: "Font Awesome 5 Free";
+					font-weight: 900;
+					font-size: 20px;
+					color: #bfbdb9;
+				}
 				&--img {
 					width: 50px;
 					height: 50px;
@@ -296,6 +318,47 @@
 							display: block;
 							color: #949494;
 							font-size: 12px;
+						}
+					}
+				}
+			}
+			&__time {
+				&--digital {
+					font-size: 15px;
+					font-weight: $fwBold;
+					margin-bottom: 0;
+					color: #00ac4d;
+					@include MediaQuery($md) {
+						font-size: 17px;
+					}
+				}
+				&--detail {
+					width: 100%;
+					margin-top: 10px;
+					display: flex;
+					flex-wrap: wrap;
+
+					.time__btn {
+						padding: 5px 10px;
+						margin: 0 10px 10px 0px;
+						outline: none;
+						text-decoration: none;
+						text-align: center;
+						background-color: rgba(246, 246, 246, 0.5);
+						border-radius: 5px;
+						color: #9b9b9b;
+						border: 1px solid #e4e4e4;
+						color: #00ac4d;
+						font-size: 18px;
+						font-weight: $fwMedium;
+						cursor: pointer;
+						transition: all 0.3s;
+						&--end {
+							color: #949494;
+							font-size: 14px;
+						}
+						&:hover {
+							color: $textPrimary;
 						}
 					}
 				}

@@ -31,9 +31,7 @@ const searchMovieReducer = (state = initialState, action) => {
       const listDateEmpty = [];
       let lisDateFake = theaterList.map((item) => item.cumRapChieu);
       for (let i = 0; i < lisDateFake.length; i++) {
-        // console.log(lisDateFake[i]);
         for (let j = 0; j < lisDateFake[i].length; j++) {
-          //   console.log(lisDateFake[i][j]);
           listDateEmpty.push(lisDateFake[i][j]);
         }
       }

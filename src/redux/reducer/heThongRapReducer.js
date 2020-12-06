@@ -4,6 +4,7 @@ const intialState = {
   rap: "BHDStar",
   theaterList: [],
   theaterDetail: [],
+  codeTheater: "bhd-star-cineplex-pham-hung",
 };
 
 export default function heThongRapReducer(state = intialState, action) {
@@ -16,6 +17,8 @@ export default function heThongRapReducer(state = intialState, action) {
 
     case actions.FETCH_THEATER_DETAIL:
       return { ...state, theaterDetail: payload };
+    case actions.GET_CODE_THEATER:
+      return { ...state, codeTheater: payload };
     default:
       return state;
   }

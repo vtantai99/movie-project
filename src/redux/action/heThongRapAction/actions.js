@@ -26,6 +26,9 @@ export const fetchTheaterDetail = () => {
       .catch((err) => console.log(err));
   };
 };
+export const getCodeTheater = (codeTheater) => {
+  return { type: actions.GET_CODE_THEATER, payload: codeTheater };
+};
 const fetchTheaterListSuccess = (theaterList) => {
   return { type: actions.FETCH_THEATER_LIST_API, payload: theaterList };
 };

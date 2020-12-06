@@ -86,7 +86,6 @@ const SearchMovie = () => {
       return format("dd/MM/yyyy", new Date(item.ngayChieuGioChieu));
     });
     terminate(checkListTime);
-    // console.log(checkListTime);
     return checkListTime?.map((item, index) => (
       <option key={index} value={item}>
         {item}

@@ -5,10 +5,10 @@
 		justify-content: center;
 		margin-bottom: 40px;
 		@include MediaQuery($sm) {
-			margin-top: 20px;
+			margin-top: 10px;
 		}
 		@include MediaQuery($xs) {
-			margin-bottom: 30px;
+			margin-bottom: -20px;
 		}
 		.nav-item {
 			.showing {

@@ -1,12 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import TheaterMovieDetailTime from "../TheaterMovieDetailTime";
 
 const TheaterMovieDetail = (props) => {
-  //   console.log(props.movieDetail);
-
   const renderMovieDetail = () => {
-    return props.movieDetail.danhSachPhim.map((item) => (
-      <div className="movie__item">
-        <div className="movie__item__main">
+    return props.movieDetail.danhSachPhim.map((item, index) => (
+      <div className="movie__item" key={index}>
+        <div
+          className="movie__item__main"
+          data-toggle="collapse"
+          data-target={`#boy-${item.maPhim}`}
+          aria-expanded="false"
+          role="button"
+        >
           <img
             className="movie__item__main--img"
             src={item.hinhAnh}
@@ -18,6 +23,15 @@ const TheaterMovieDetail = (props) => {
               {item.tenPhim}
             </span>
             <span className="info__name__des">120 phút - TIX 9.0 - IMDb 0</span>
+          </div>
+        </div>
+        <div
+          className="movie__item__time collapse show"
+          id={`boy-${item.maPhim}`}
+        >
+          <p className="movie__item__time--digital">2D Digital</p>
+          <div className="movie__item__time--detail">
+            <TheaterMovieDetailTime movieTime={item} />
           </div>
         </div>
       </div>
