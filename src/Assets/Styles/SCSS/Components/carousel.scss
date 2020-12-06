@@ -57,24 +57,23 @@
 			}
 			button {
 				outline: none;
-				// margin: -4px;
 				&.active {
 					span {
 						background-color: #fb4226 !important;
 						height: 5px;
 						width: 28px;
-						margin: 2px 1px !important;
 						@include MediaQuery($sm) {
 							margin: 1px 1px !important;
 						}
 						@include MediaQuery($md) {
 							height: 6px;
-							margin: 1px 1px !important;
+							// margin: 1px 1px !important;
 							width: 35px;
 						}
 						@include MediaQuery($xs) {
-							margin: 1.5px 1px !important;
-							width: 25px;
+							// margin: 1.5px 1px !important;
+							// width: 25px;
+							margin: 3px 0.5px !important;
 						}
 					}
 				}
@@ -87,7 +86,6 @@
 					transition: all 0.5s;
 					@include MediaQuery($xs) {
 						width: 20px;
-						height: 2px;
 					}
 					@include MediaQuery($md) {
 						width: 30px;
