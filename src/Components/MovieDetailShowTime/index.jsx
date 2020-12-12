@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import MovieShowTimeDates from "../MovieShowTimeDates";
 import MovieShowTimes from "../MovieShowTimes";
 import MovieTheater from "../MovieTheater";
@@ -10,7 +10,6 @@ const MovieDetailShowTime = () => {
   const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
   const { movieDetail } = movieDetailReducer;
   const { lichChieu } = movieDetail;
-  console.log(lichChieu);
   return (
     <div className="movieDetailShowTime">
       <Grid container>

@@ -1,0 +1,28 @@
+.movieTheater {
+  ul {
+    padding: 0 10px;
+    li {
+      list-style: none;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+      width: 100% !important;
+      padding-bottom: 15px;
+      border-bottom: 2px solid lighten($color: #ccc, $amount: 15%);
+      img {
+        margin-right: 10px;
+      }
+      p {
+      }
+      &.rap_active {
+        border-bottom: 2px solid #fb4226;
+        img {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+}

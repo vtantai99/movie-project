@@ -3,19 +3,34 @@ import format from "date-format";
 import "./index.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, makeStyles } from "@material-ui/core";
 import { ArrowDropDown, ArrowDropUp } from "@material-ui/icons";
 import { Alert } from "@material-ui/lab";
 
+const useStyles = makeStyles((theme) => ({
+  arrow: {
+    cursor: "pointer",
+  },
+}));
+
 const MovieShowTimes = ({ lichChieu }) => {
+  const currentDate = new Date().getDate();
   const [show, setShow] = useState(false);
   const heThongRapReducer = useSelector((state) => state.heThongRapReducer);
+  const classes = useStyles();
   const arr = lichChieu.map((el) => el.thongTinRap);
   const { rap } = heThongRapReducer;
   const history = useHistory();
-  const lichChieuArr = lichChieu.filter(
+  let lichChieuArr = lichChieu.filter(
     (el) => el.thongTinRap.maHeThongRap == rap
   );
+  const timeLichChieu = lichChieuArr.map((el) =>
+    new Date(el.ngayChieuGioChieu).getDate()
+  );
+  lichChieuArr = lichChieuArr?.filter(
+    (el) => new Date(el.ngayChieuGioChieu).getDate() >= currentDate
+  );
+  console.log(timeLichChieu);
   const handleClick = (ma) => {
     console.log(ma);
     history.push(`/booking/${ma}`);
@@ -23,7 +38,6 @@ const MovieShowTimes = ({ lichChieu }) => {
 
   const renderCumRap = () => {
     const cumRapArr = lichChieuArr.map((el) => el.thongTinRap.tenCumRap);
-    console.log(cumRapArr);
     return cumRapArr.length > 0 ? (
       <Box
         display="flex"
@@ -33,7 +47,7 @@ const MovieShowTimes = ({ lichChieu }) => {
         my={3}
       >
         <p>{cumRapArr[0]}</p>
-        <span onClick={() => setShow(!show)}>
+        <span className={classes.arrow} onClick={() => setShow(!show)}>
           {show ? <ArrowDropUp /> : <ArrowDropDown />}
         </span>
       </Box>

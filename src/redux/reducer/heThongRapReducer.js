@@ -5,6 +5,7 @@ const intialState = {
   theaterList: [],
   theaterDetail: [],
   codeTheater: "bhd-star-cineplex-pham-hung",
+  date: `${new Date().getDate()}/${new Date().getMonth() + 1}`,
 };
 
 export default function heThongRapReducer(state = intialState, action) {
