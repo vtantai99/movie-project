@@ -11,8 +11,10 @@ const TheaterList = () => {
         style={{ border: "1px solid #ebebec", borderRadius: "4px" }}
       >
         <TheaterLogo />
-        <TheaterListDetail />
-        <TheaterMovie />
+        <div className="theater__detail">
+          <TheaterListDetail />
+          <TheaterMovie />
+        </div>
       </div>
     </section>
   );

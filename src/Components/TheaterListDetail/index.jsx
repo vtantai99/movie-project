@@ -28,7 +28,7 @@ const TheaterListDetail = () => {
     ));
   };
   return (
-    <div className="tab-content theater__name" role="tabpanel">
+    <div className="tab-content theater__detail__name" role="tabpanel">
       {renderTheaterDetail()}
     </div>
   );

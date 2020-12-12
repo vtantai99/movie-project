@@ -70,7 +70,7 @@ const TheaterListDetailItem = (props) => {
   const renderTheaterDetailItem = () => {
     return props.detail.lstCumRap.map((item, index) => (
       <div
-        className={`theater__name__item ${
+        className={`theater__detail__name__item ${
           item.maCumRap === codeTheater ? "active" : ""
         }`}
         data-toggle="tab"
@@ -79,12 +79,12 @@ const TheaterListDetailItem = (props) => {
         onClick={() => dispatch(getCodeTheater(item.maCumRap))}
       >
         <img
-          className="theater__name__item--img"
+          className="theater__detail__name__item--img"
           src={renderImage(props.nameTheater)}
           alt={props.nameTheater}
         />
 
-        <div className="theater__name__item--info">
+        <div className="theater__detail__name__item--info">
           <span className="info__theater">
             <span style={renderStyleColor(props.nameTheater)}>
               {props.nameTheater}&nbsp;

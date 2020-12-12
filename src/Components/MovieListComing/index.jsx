@@ -3,6 +3,7 @@ import { getMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 import format from "date-format";
 import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
+import Coming from "./Images/coming.png";
 const MovieListComing = (props) => {
   //   console.log(props);
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const MovieListComing = (props) => {
             background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
           }}
         >
+          <img src={Coming} className="item__film__img--title" />
           <span className="item__film__img--vote">
             <p className="vote--number">
               {format("dd/MM", new Date(props.movie.ngayKhoiChieu))}

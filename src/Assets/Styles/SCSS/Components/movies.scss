@@ -52,6 +52,7 @@
 	}
 	.tab-content {
 		.tab-pane {
+			// padding-top: 20px;
 			.showing__item {
 				.item__film {
 					margin-bottom: 15px;
@@ -91,6 +92,7 @@
 							}
 						}
 					}
+
 					&__img {
 						position: relative;
 						width: 100%;
@@ -107,6 +109,32 @@
 						}
 						@include MediaQuery($xs) {
 							height: 200px;
+						}
+						&--title {
+							width: 200px;
+							position: absolute;
+							left: -10%;
+							top: -3%;
+							@include MediaQuery($md) {
+								width: 150px;
+								left: -12%;
+								top: -4%;
+							}
+							@include MediaQuery($sm) {
+								width: 150px;
+								left: -12%;
+								top: -4%;
+							}
+							@include MediaQuery($xs) {
+								width: 100px;
+								left: -12%;
+								top: -4%;
+							}
+							@include MediaQuery($ip5) {
+								width: 80px;
+								left: -12%;
+								top: -2%;
+							}
 						}
 						&--vote {
 							display: block;
@@ -148,7 +176,7 @@
 									width: 8px;
 									display: inline-block;
 									@include MediaQuery($md) {
-										width: 10px;
+										width: 9px;
 									}
 									@include MediaQuery($xs) {
 										width: 6px;
@@ -208,9 +236,9 @@
 							display: inline-block;
 							font-size: 14px;
 							font-weight: $fwBold;
-							background-color: $bgBtn2;
+							background-color: #00ac4d;
 							border-radius: 4px;
-							padding: 0 5px;
+							padding: 1px 15px;
 							margin-right: 6px;
 							color: #fff;
 							@include MediaQuery($sm) {

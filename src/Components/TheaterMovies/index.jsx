@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import TheaterMovieDetail from "../TheaterMovieDetail";
 
 const TheaterMovie = () => {
@@ -21,7 +21,7 @@ const TheaterMovie = () => {
     );
   };
   return (
-    <div className="theater__movies tab-content" role="tabpanel">
+    <div className="theater__detail__movies tab-content" role="tabpanel">
       {renderMovieList()}
     </div>
   );

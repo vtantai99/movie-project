@@ -5,7 +5,7 @@
 		.owl-nav {
 			margin: 0 !important;
 			height: 0 !important;
-			display: none;
+			// display: none;
 			@include MediaQuery($md) {
 				display: block;
 			}
@@ -21,6 +21,19 @@
 					border-radius: 5px;
 					border: 2px solid #979797;
 					background-color: #ecf0f1;
+					@include MediaQuery($sm) {
+						top: 40%;
+						background-color: transparent;
+						border: 0;
+					}
+					@include MediaQuery($xs) {
+						left: 5px;
+						top: 35%;
+						width: 30px;
+						height: 45px;
+						background-color: transparent;
+						border: 0;
+					}
 				}
 				span {
 					display: none;
@@ -38,6 +51,14 @@
 					border-radius: 5px;
 					border: 2px solid #979797;
 					background-color: #ecf0f1;
+					@include MediaQuery($sm) {
+						right: 5px;
+						top: 35%;
+						width: 30px;
+						height: 45px;
+						background-color: transparent;
+						border: 0;
+					}
 				}
 				span {
 					display: none;
@@ -52,6 +73,9 @@
 			@include MediaQuery($md) {
 				bottom: 10%;
 			}
+			@include MediaQuery($sm) {
+				bottom: 5px;
+			}
 			@include MediaQuery($xs) {
 				bottom: 2%;
 			}
@@ -59,37 +83,39 @@
 				outline: none;
 				&.active {
 					span {
-						background-color: #fb4226 !important;
-						height: 5px;
-						width: 28px;
-						@include MediaQuery($sm) {
-							margin: 1px 1px !important;
-						}
-						@include MediaQuery($md) {
-							height: 6px;
-							// margin: 1px 1px !important;
-							width: 35px;
-						}
-						@include MediaQuery($xs) {
-							// margin: 1.5px 1px !important;
-							// width: 25px;
-							margin: 3px 0.5px !important;
-						}
+						background-color: #fb4226;
+						// transform: scale(1.5);
+						// height: 5px;
+						// width: 28px;
+						// @include MediaQuery($sm) {
+						// 	margin: 1px 1px !important;
+						// }
+						// @include MediaQuery($md) {
+						// 	height: 6px;
+						// 	// margin: 1px 1px !important;
+						// 	width: 35px;
+						// }
+						// @include MediaQuery($xs) {
+						// 	margin: 3px 0.5px !important;
+						// }
 					}
 				}
 				span {
-					width: 25px;
-					height: 2px;
-					margin: 3px 0.5px !important;
-					background-color: #d8d8d8 !important;
-					border-radius: 3px;
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					margin: 0 3px;
+					background-color: #d8d8d8;
 					transition: all 0.5s;
-					@include MediaQuery($xs) {
-						width: 20px;
-					}
 					@include MediaQuery($md) {
-						width: 30px;
-						height: 2px;
+					}
+					@include MediaQuery($sm) {
+						width: 10px;
+						height: 10px;
+					}
+					@include MediaQuery($xs) {
+						width: 10px;
+						height: 10px;
 					}
 				}
 			}
