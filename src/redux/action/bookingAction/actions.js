@@ -46,4 +46,18 @@ const resetTime = () => {
     }
 }
 
-export {getBooking, selectSeat, countingDown, stopCounting, resetTime};
+const nextStep = (step) => {
+    return{
+        type:actions.NEXT_STEP,
+        payload: step,
+    }
+}
+
+const prevStep = (step) => {
+    return {
+        type: actions.PREV_STEP,
+        payload: step
+    }
+}
+
+export {getBooking, selectSeat, countingDown, stopCounting, resetTime, nextStep, prevStep};

@@ -9,9 +9,20 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @include MediaQuery($sm) {
-    display: none;
+  @include MediaQuery($md) {
   }
+  @include MediaQuery($sm) {
+    display: none !important;
+    &.bookingSideBarActive {
+      display: block !important;
+      width: 100% !important;
+      margin-top: 70px;
+    }
+    button {
+      display: none;
+    }
+  }
+
   ul {
     text-align: center;
     padding: 0 10px;
@@ -25,7 +36,7 @@
       justify-content: space-between;
       align-items: center;
       &.dangChonSeats {
-        justify-content: flex-start;
+        justify-content: flex-start !important;
         flex-wrap: wrap;
         span {
           margin-right: 5px;

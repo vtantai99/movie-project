@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
 import "./index.scss";
+import DangChonSeats from "../DangChonSeats";
 
 const useStyles = makeStyles((theme) => ({
   sideBar: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BookingSideBar() {
   const classes = useStyles();
   const bookingReducer = useSelector((state) => state.bookingReducer);
-  const { bookingList } = bookingReducer;
+  const { bookingList, step } = bookingReducer;
   const { thongTinPhim } = bookingList;
   const {
     diaChi,
@@ -86,7 +87,6 @@ export default function BookingSideBar() {
   };
 
   const renderDangChonSeats = (danhSachGheDangChon) => {
-    console.log(danhSachGheDangChon);
     return danhSachGheDangChon.map((el, idx) => (
       <span key={idx}>{getTenDay(+el.stt)}</span>
     ));
@@ -121,7 +121,11 @@ export default function BookingSideBar() {
   };
 
   return bookingList ? (
-    <div className={`${classes.sideBar} bookingSideBar`}>
+    <div
+      className={`${classes.sideBar} bookingSideBar ${
+        step >= 2 ? "bookingSideBarActive" : ""
+      }`}
+    >
       <ul>
         <li className="price">{formatNumber(calcPrice())} D</li>
         <li>
@@ -141,7 +145,10 @@ export default function BookingSideBar() {
           <span>Rạp</span>
           <strong>{tenRap}</strong>
         </li>
-        <li className="dangChonSeats">{renderSeats()}</li>
+        {/* <li className="dangChonSeats">{renderSeats()}</li> */}
+        <li className="dangChonSeats">
+          <DangChonSeats />
+        </li>
         <li>
           <span>Chọn combo</span>
           <strong></strong>

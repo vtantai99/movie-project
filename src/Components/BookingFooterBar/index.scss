@@ -1,0 +1,36 @@
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/variable.scss";
+.bookingFooterBar {
+  display: none;
+  width: 100%;
+  padding: 0;
+  @include MediaQuery($sm) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    &_gheDaChon {
+      width: 50%;
+      background-color: #fff;
+      padding: 8px;
+
+      h3 {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .btn-container {
+      width: 50%;
+      background-color: $textGreen;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+}

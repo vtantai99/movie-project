@@ -1,4 +1,17 @@
 @import "../../Assets/Styles/SCSS/Helper/variable.scss";
+@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
 .head {
   color: $textSecondary;
+  .step {
+    color: $textPrimary;
+  }
+  .backArrow {
+    display: none;
+  }
+  @include MediaQuery($xs) {
+    padding-right: 0 !important;
+    .backArrow {
+      display: block;
+    }
+  }
 }

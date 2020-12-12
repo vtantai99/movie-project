@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getBooking } from "../../redux/action/bookingAction/actions";
 import swal from "sweetalert";
 import { resetTime } from "../../redux/action/bookingAction/actions";
+import BookingFooterBar from "../../Components/BookingFooterBar";
 const Booking = () => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -52,19 +53,17 @@ const Booking = () => {
   return (
     <div className="booking">
       {countDownTime <= 0 ? timeIsOver() : ""}
-      {bookingList ? (
-        <Grid container>
-          <Grid item sm="9">
-            <BookingHead />
-            <BookingMain />
-          </Grid>
-          <Grid item sm="3">
-            <BookingSideBar />
-          </Grid>
+
+      <Grid container>
+        <Grid item md="9" sm="12">
+          <BookingHead />
+          <BookingMain />
         </Grid>
-      ) : (
-        "Ngu"
-      )}
+        <Grid item md="3" xs="12">
+          <BookingSideBar />
+        </Grid>
+      </Grid>
+      <BookingFooterBar />
     </div>
   );
 };
