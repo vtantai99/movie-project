@@ -209,7 +209,6 @@ const SearchMovie = () => {
               ? {
                   background: "linear-gradient(270deg, #fb4226, #ce3017)",
                   borderColor: "D33219",
-                  //   animation: "aniBtn 0.7s ease-in-out",
                 }
               : { backgroundColor: "#E58475", borderColor: "#E58475" }
           }
