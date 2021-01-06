@@ -1,24 +1,31 @@
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/size.scss";
+@import "../../Assets/Styles/SCSS/Helper/variable.scss";
+
 .bookingMain {
-  width: 100%;
-  min-height: 400px;
   background-color: #fff;
-  margin-left: 50px;
-  margin-top: 70px;
-  padding: 20px;
-  text-align: center;
+
   @include MediaQuery($xs) {
     margin-left: 0;
+    margin-top: 80px;
+    padding: 25px;
+    margin-right: 0px !important;
+    width: 100% !important;
   }
   @include MediaQuery($sm) {
     margin-left: 0;
-    width: 100%;
-    display: none;
+    width: 100% !important;
+    margin-top: 0;
     &.bookingMainActive {
       display: block;
     }
   }
   @include MediaQuery($md) {
+    width: 100%;
+    min-height: 400px;
+    margin-left: 50px;
+    margin-top: 0px;
+    padding: 60px 40px;
+    text-align: center;
     margin-left: 0;
   }
 
@@ -48,6 +55,7 @@
         text-align: left;
         span {
           display: block;
+          color: $textUser;
         }
       }
       img {

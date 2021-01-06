@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actions from './actionTypes';
+import swal from 'sweetalert';
 
 const getBooking = (id) => async dispatch => {
     try{
@@ -60,4 +61,38 @@ const prevStep = (step) => {
     }
 }
 
-export {getBooking, selectSeat, countingDown, stopCounting, resetTime, nextStep, prevStep};
+const bookingRequest = (maLichChieu, user, danhSachVe, history) => async dispatch => {
+    console.log(maLichChieu, user, danhSachVe);
+    try{
+        
+        const res = await axios({
+            method: "POST",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe",
+            data: {
+              maLichChieu,
+              danhSachVe,
+              taiKhoanNguoiDung: user.taiKhoan,
+            },
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          });
+        if(res.status === 200 || res.status === 201) {
+            swal({
+                title: "Dat ve thanh cong",
+                icon: "success",
+                button: "Ok!",
+              }).then((yes) => {
+                  if(yes) {
+                      history.push('/');
+                  }else{
+                    history.push('/');
+                  }
+              });
+        }
+    }catch(err) {
+        console.log(err);
+    }
+}
+
+export {getBooking, selectSeat, countingDown, stopCounting, resetTime, nextStep, prevStep, bookingRequest};

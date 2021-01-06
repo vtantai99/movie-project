@@ -1,10 +1,10 @@
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/size.scss";
 @import "../../Assets/Styles/SCSS/Helper/variable.scss";
 .bookingFooterBar {
-  display: none;
-  width: 100%;
-  padding: 0;
-  @include MediaQuery($sm) {
+  button {
+    border: none;
+  }
+  @include MediaQuery($xs) {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -26,11 +26,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 8px;
-
-      h3 {
-        margin: 0;
+      padding: 15px 8px;
+      height: 100%;
+      cursor: pointer;
+      font-size: 18px;
+      &.continue {
+        background-color: #ccc;
+        cursor: not-allowed;
+        &.next {
+          cursor: pointer;
+          background-color: $textGreen;
+        }
       }
     }
+    .bookingFooterBar_gheDaChon {
+      display: flex;
+      flex-wrap: wrap;
+      width: 50%;
+      height: 100%;
+      padding: 15px 8px;
+    }
+  }
+  @include MediaQuery($md) {
+    display: none;
+    width: 100%;
+    padding: 0;
   }
 }

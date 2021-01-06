@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,9 +13,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import "./index.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FormHelperText } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../redux/action/userSignUpAction/actions";
 
 function Copyright() {
   return (
@@ -55,10 +57,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const { register, handleSubmit, errors } = useForm();
-
+  const { register, handleSubmit, errors, watch } = useForm();
+  const userLoginReducer = useSelector((state) => state.userLoginReducer);
+  const history = useHistory();
+  const dispatch = useDispatch();
   const onSubmit = (data) => {
     console.log(data);
+    const {
+      firstName,
+      lastName,
+      matKhau,
+      matKhau2,
+      soDt,
+      taiKhoan,
+      email,
+    } = data;
+    const userData = {
+      taiKhoan,
+      matKhau,
+      email,
+      soDt,
+      maNhom: "GP09",
+      maLoaiNguoiDung: "KhachHang",
+      hoTen: lastName + firstName,
+    };
+    dispatch(registerUser(userData, history));
   };
 
   return (
@@ -118,23 +141,23 @@ export default function SignUp() {
               <Grid item xs={12} sm={12}>
                 <TextField
                   autoComplete="fname"
-                  name="userName"
+                  name="taiKhoan"
                   variant="outlined"
                   required
                   fullWidth
-                  id="userName"
+                  id="taiKhoan"
                   label="Tài khoản"
                   autoFocus
                   inputRef={register({ required: true, minLength: 6 })}
-                  error={errors.userName ? true : false}
+                  error={errors.taiKhoan ? true : false}
                 />
-                <FormHelperText error={errors.userName ? true : false}>
-                  {errors.userName && errors.userName.type === "required"
+                <FormHelperText error={errors.taiKhoan ? true : false}>
+                  {errors.taiKhoan && errors.taiKhoan.type === "required"
                     ? "Tài khoản không được trống"
                     : ""}
                 </FormHelperText>
-                <FormHelperText error={errors.userName ? true : false}>
-                  {errors.userName && errors.userName.type === "minLength"
+                <FormHelperText error={errors.taiKhoan ? true : false}>
+                  {errors.taiKhoan && errors.taiKhoan.type === "minLength"
                     ? "Tài khoản phải dài hơn 6 kí tự"
                     : ""}
                 </FormHelperText>
@@ -142,18 +165,19 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="password"
+                  name="matKhau"
                   variant="outlined"
                   required
                   fullWidth
-                  id="password"
+                  id="matKhau"
                   label="Mật khẩu"
+                  type="password"
                   autoFocus
                   inputRef={register({ required: true })}
-                  error={errors.password ? true : false}
+                  error={errors.matKhau ? true : false}
                 />
-                <FormHelperText error={errors.password ? true : false}>
-                  {errors.password && errors.password.type === "required"
+                <FormHelperText error={errors.matKhau ? true : false}>
+                  {errors.matKhau && errors.matKhau.type === "required"
                     ? "Mật khẩu không được để trống"
                     : ""}
                 </FormHelperText>
@@ -163,16 +187,25 @@ export default function SignUp() {
                   variant="outlined"
                   required
                   fullWidth
-                  id="password2"
+                  id="matKhau2"
+                  type="password"
                   label="Xác nhận mật khẩu"
-                  name="password2"
+                  name="matKhau2"
                   autoComplete="lname"
-                  inputRef={register({ required: true })}
-                  error={errors.password2 ? true : false}
+                  inputRef={register({
+                    required: true,
+                    validate: (value) => value === watch("matKhau"),
+                  })}
+                  error={errors.matKhau2 ? true : false}
                 />
-                <FormHelperText error={errors.password2 ? true : false}>
-                  {errors.password2 && errors.password2.type === "required"
-                    ? "Mật khẩu không được để trống"
+                <FormHelperText error={errors.matKhau2 ? true : false}>
+                  {errors.matKhau2 && errors.matKhau2.type === "required"
+                    ? "Xac thuc không được để trống"
+                    : ""}
+                </FormHelperText>
+                <FormHelperText error={errors.matKhau2 ? true : false}>
+                  {errors.matKhau2 && errors.matKhau2.type === "validate"
+                    ? "Xac thuc sai"
                     : ""}
                 </FormHelperText>
               </Grid>
@@ -201,16 +234,31 @@ export default function SignUp() {
                   variant="outlined"
                   required
                   fullWidth
-                  id="phone"
+                  id="soDt"
+                  type="number"
                   label="Số điện thoại"
-                  name="phone"
+                  name="soDt"
                   autoComplete="lname"
-                  inputRef={register({ required: true })}
-                  error={errors.phone ? true : false}
+                  inputRef={register({
+                    required: true,
+                    minLength: 10,
+                    valueAsNumber: true,
+                  })}
+                  error={errors.soDt ? true : false}
                 />
-                <FormHelperText error={errors.phone ? true : false}>
-                  {errors.phone && errors.phone.type === "required"
+                <FormHelperText error={errors.soDt ? true : false}>
+                  {errors.soDt && errors.soDt.type === "required"
                     ? "Số điện thoại không được để trống"
+                    : ""}
+                </FormHelperText>
+                <FormHelperText error={errors.soDt ? true : false}>
+                  {errors.soDt && errors.soDt.type === "valueAsNumber"
+                    ? "So dien thoai khong hop le"
+                    : ""}
+                </FormHelperText>
+                <FormHelperText error={errors.soDt ? true : false}>
+                  {errors.soDt && errors.soDt.type === "minLength"
+                    ? "Số điện thoại phai du 10 so"
                     : ""}
                 </FormHelperText>
               </Grid>
