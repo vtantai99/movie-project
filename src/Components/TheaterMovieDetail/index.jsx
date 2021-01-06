@@ -22,7 +22,7 @@ const TheaterMovieDetail = (props) => {
               <span className="info__name__age">P</span>&nbsp;-&nbsp;
               {item.tenPhim}
             </span>
-            <span className="info__name__des">120 phút - TIX 9.0 - IMDb 0</span>
+            <span className="info__name__des">120 phút - TIX 9.0</span>
           </div>
         </div>
         <div

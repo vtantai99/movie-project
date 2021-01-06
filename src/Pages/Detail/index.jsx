@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import DetailInfo from "../../Components/DetailInfo";
 import DetailMain from "../../Components/DetailMain";
 import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
 import WatchVideo from "../../Components/WatchVideo";
 import { fetchMovieDetailRequest } from "../../redux/action/movieDetailAction/actions";
 const Detail = () => {
@@ -26,6 +27,7 @@ const Detail = () => {
       ) : (
         ""
       )}
+      <Footer />
       <WatchVideo />
     </React.Fragment>
   );
