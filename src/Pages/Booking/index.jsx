@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import BookingHead from "../../Components/BookingHead";
 import BookingMain from "../../Components/BookingMain";
@@ -10,13 +10,24 @@ import { getBooking } from "../../redux/action/bookingAction/actions";
 import swal from "sweetalert";
 import { resetTime } from "../../redux/action/bookingAction/actions";
 import BookingFooterBar from "../../Components/BookingFooterBar";
+
+const useStyles = makeStyles((theme) => ({}));
+
 const Booking = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
-
+  const userLoginReducer = useSelector((state) => state.userLoginReducer);
+  const { user } = userLoginReducer;
   const bookingReducer = useSelector((state) => state.bookingReducer);
   const { countDownTime, bookingList } = bookingReducer;
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/login");
+    }
+  }, []);
 
   useEffect(() => {
     const { bookingId } = params;
@@ -37,7 +48,6 @@ const Booking = () => {
           },
         },
       }).then((value) => {
-        console.log(value);
         switch (value) {
           case "reset":
             history.go(0);
@@ -54,12 +64,12 @@ const Booking = () => {
     <div className="booking">
       {countDownTime <= 0 ? timeIsOver() : ""}
 
-      <Grid container>
-        <Grid item md="9" sm="12">
+      <Grid className={classes.root} container>
+        <Grid className={classes.item} style={{}} item md="9" xs="12">
           <BookingHead />
           <BookingMain />
         </Grid>
-        <Grid item md="3" xs="12">
+        <Grid style={{ backgroundColor: "yellow" }} item md="3" xs="12">
           <BookingSideBar />
         </Grid>
       </Grid>

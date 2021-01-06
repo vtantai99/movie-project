@@ -1,10 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./index.scss";
 import DangChonSeats from "../DangChonSeats";
+import { bookingRequest } from "../../redux/action/bookingAction/actions";
+import { useHistory, useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   sideBar: {
@@ -12,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     width: "100%",
-    maxWidth: 360,
+
     backgroundColor: theme.palette.background.paper,
     position: "relative",
     overflow: "auto",
@@ -33,10 +36,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BookingSideBar() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const bookingReducer = useSelector((state) => state.bookingReducer);
+  const userLoginReducer = useSelector((state) => state.userLoginReducer);
+  const { user } = userLoginReducer;
   const { bookingList, step } = bookingReducer;
   const { thongTinPhim } = bookingList;
+  const params = useParams();
+  const { bookingId } = params;
+  const history = useHistory();
   const {
     diaChi,
     gioChieu,
@@ -49,7 +58,7 @@ export default function BookingSideBar() {
   } = thongTinPhim ? thongTinPhim : "";
 
   const formatNumber = (number) => {
-    if (number) {
+    if (number || number == 0) {
       number = number.toString().split("");
       for (let i = number.length - 3; i >= 1; i -= 3) {
         number.splice(i, 0, ",");
@@ -70,7 +79,10 @@ export default function BookingSideBar() {
         return danhSachGheDangChon
           .map((el) => el.giaVe)
           .reduce((a, b) => (a += b));
+      } else {
+        return 0;
       }
+    } else {
       return 0;
     }
   };
@@ -117,7 +129,21 @@ export default function BookingSideBar() {
   };
 
   const handleThanhToan = () => {
-    console.log("sda");
+    console.log(bookingId);
+    swal({
+      title: "Thông tin đặt vé sẽ được gửi qua email?",
+      text: "Hãy kiểm tra thông tin trước khi xác nhận!",
+      icon: "info",
+      buttons: true,
+    }).then((buy) => {
+      if (buy) {
+        const danhSachGheDangChon = getDanhSachGheDangChon().map((ghe) => ({
+          maGhe: ghe.maGhe,
+          giaVe: ghe.giaVe,
+        }));
+        dispatch(bookingRequest(bookingId, user, danhSachGheDangChon, history));
+      }
+    });
   };
 
   return bookingList ? (
@@ -145,11 +171,10 @@ export default function BookingSideBar() {
           <span>Rạp</span>
           <strong>{tenRap}</strong>
         </li>
-        {/* <li className="dangChonSeats">{renderSeats()}</li> */}
         <li className="dangChonSeats">
           <DangChonSeats />
         </li>
-        <li>
+        <li className="chonCombo">
           <span>Chọn combo</span>
           <strong></strong>
         </li>

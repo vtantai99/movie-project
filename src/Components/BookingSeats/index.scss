@@ -1,5 +1,5 @@
 @import "../../Assets/Styles/SCSS/Helper/variable.scss";
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/size.scss";
 .seats {
   .seatRow {
     margin: 10px auto;
@@ -42,7 +42,8 @@
         grid-gap: 0px;
       }
       @include MediaQuery($sm) {
-        grid-gap: 0px;
+        grid-gap: 5px !important;
+        margin: 3px 0;
       }
       @include MediaQuery($md) {
       }
@@ -50,6 +51,19 @@
       }
     }
     .seat {
+      @include MediaQuery($xs) {
+        width: 19px;
+        height: 19px;
+      }
+      @include MediaQuery($sm) {
+        width: 22px;
+        height: 22px;
+      }
+      @include MediaQuery($md) {
+        width: 25px;
+        height: 25px;
+      }
+
       width: 30px;
       height: 30px;
       border-radius: 2px;
@@ -58,11 +72,6 @@
       align-items: center;
       font-size: 12px;
       cursor: pointer;
-
-      @include MediaQuery($sm) {
-        width: 17px;
-        height: 17px;
-      }
       &.Thuong {
         background-color: $bgSeat_normal;
       }
@@ -72,8 +81,9 @@
       &.DangChon {
         background-color: $bgSeat_selected;
       }
-      &.DaDat {
+      &.DaChon {
         background-color: #ccc;
+        cursor: not-allowed;
       }
     }
   }

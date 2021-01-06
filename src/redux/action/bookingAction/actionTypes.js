@@ -5,4 +5,5 @@ export const STOP_COUNTING_DOWN = "stopCountingDown";
 export const RESET_TIME = "resetTime";
 export const NEXT_STEP = "nextStep";
 export const PREV_STEP = "prevStep";
+export const BOOKING = "booking";
 

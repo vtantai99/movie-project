@@ -17,7 +17,19 @@ export const loginRequest = (user, history) => async (dispatch) => {
           user: logInUser,
         },
       });
-      await history.goBack();
+      await dispatch(hideError());
+      console.log(history.location);
+
+      console.log(history);
+      // if(history.location.pathname==="/signUp") {
+      //   console.log("Yes");
+      //   await history.push('/');
+      // }else{
+      //   await history.goBack()
+
+      // }
+      await history.goBack()
+
     }
   } catch (err) {
     console.log(err);
@@ -38,3 +50,10 @@ export const hideError = () => {
     payload: "",
   };
 };
+
+export const checkUser = (user) => {
+  return{
+    type: actions.CHECK_USER,
+    payload:user,
+  }
+}

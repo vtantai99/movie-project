@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,7 +16,10 @@ import "./index.scss";
 import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FormGroup, FormHelperText } from "@material-ui/core";
-import { loginRequest } from "../../redux/action/userLoginAction/actions";
+import {
+  hideError,
+  loginRequest,
+} from "../../redux/action/userLoginAction/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
 
@@ -52,6 +55,10 @@ export default function SignIn() {
   const history = useHistory();
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(() => {
+    dispatch(hideError());
+  }, []);
 
   const onSubmit = (data) => {
     // swal({

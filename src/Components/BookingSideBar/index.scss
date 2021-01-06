@@ -1,31 +1,35 @@
-@import "../../Assets/Styles/SCSS/Helper/mixin.scss";
+@import "../../Assets/Styles/SCSS/Helper/size.scss";
 @import "../../Assets/Styles/SCSS/Helper/variable.scss";
 .bookingSideBar {
+  &.bookingSideBarActive {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 70px;
+  }
+
+  @include MediaQuery($xs) {
+    display: none !important;
+  }
+  @include MediaQuery($md) {
+    display: flex !important;
+  }
+
   background-color: #fff;
   height: 100vh;
   z-index: 5000;
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @include MediaQuery($md) {
-  }
-  @include MediaQuery($sm) {
-    display: none !important;
-    &.bookingSideBarActive {
-      display: block !important;
-      width: 100% !important;
-      margin-top: 70px;
-    }
-    button {
-      display: none;
-    }
-  }
+  width: 25% !important;
 
   ul {
     text-align: center;
     padding: 0 10px;
+    width: 100%;
     li {
       list-style: none;
       border-bottom: 1px dotted #ccc;
@@ -35,13 +39,19 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
       &.dangChonSeats {
+        color: $textPrimary !important;
         justify-content: flex-start !important;
-        flex-wrap: wrap;
+        flex-wrap: wrap !important;
+        max-width: 250px;
         span {
           margin-right: 5px;
           color: $textPrimary;
         }
+      }
+      &.chonCombo {
+        color: $textPrimary;
       }
       span,
       strong {
@@ -51,9 +61,13 @@
         color: $textGreen;
         font-size: 25px;
         text-align: center;
+        justify-content: center;
         font-weight: 700;
       }
     }
+  }
+  button {
+    background-color: red;
   }
   button {
     width: 100%;

@@ -3,7 +3,6 @@ import "./index.scss";
 import { useSelector, useDispatch } from "react-redux";
 import BookingSeats from "../BookingSeats";
 import { countingDown } from "../../redux/action/bookingAction/actions";
-import format from "date-format";
 const BookingMain = () => {
   const dispatch = useDispatch();
   const bookingReducer = useSelector((state) => state.bookingReducer);
@@ -12,14 +11,16 @@ const BookingMain = () => {
   const { diaChi, hinhAnh, tenRap } = thongTinPhim ? thongTinPhim : "";
 
   useEffect(() => {
-    countDownTime > 0 &&
-      setTimeout(() => {
+    let a;
+    if (countDownTime > 0) {
+      a = setTimeout(() => {
         dispatch(countingDown(countDownTime - 1));
       }, 1000);
-    return 1;
+    }
+    return () => clearTimeout(a);
   }, [countDownTime]);
 
-  return bookingList ? (
+  return bookingList.danhSachGhe ? (
     <div className={`bookingMain ${step <= 1 ? "bookingMainActive" : ""}`}>
       <div className="meta-data">
         <div className="address">

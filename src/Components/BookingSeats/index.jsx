@@ -63,6 +63,7 @@ const BookingSeats = () => {
   const getClass = (seat) => {
     let string = "seat ";
     if (seat.daDat) {
+      console.log("asda");
       string += "DaChon";
     } else if (seat.dangChon) {
       string += "DangChon";
