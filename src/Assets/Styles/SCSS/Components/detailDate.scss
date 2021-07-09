@@ -1,0 +1,58 @@
+.list__dates {
+  width: 100%;
+  padding-left: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  //   @include MediaQuery($sm) {
+  //     display: none;
+  //   }
+  &::-webkit-scrollbar {
+    height: 5px;
+    background-color: #e9e9e9;
+    transition: all 0.5s;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+  }
+
+  &__item {
+    min-width: 90px;
+    padding: 20px 5px;
+    cursor: pointer;
+    opacity: 0.3;
+    align-items: center;
+    transition: all 0.3s;
+    @include MobileAndTablet {
+      opacity: 1;
+    }
+    &:hover {
+      opacity: 1;
+      transform: scale(1.2);
+      color: #fb4226;
+    }
+    p {
+      margin-bottom: 0;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .date {
+      font-size: 18px;
+    }
+  }
+  .run__animation {
+    opacity: 1;
+  }
+  .active {
+    opacity: 1;
+    transform: scale(1.2);
+    color: $textPrimary;
+  }
+}

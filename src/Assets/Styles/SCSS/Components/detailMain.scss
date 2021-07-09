@@ -1,0 +1,48 @@
+.detailMain {
+  background-color: $bgDetail;
+  padding: 40px 0;
+  .nav-tabs {
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    @include MediaQuery($sm) {
+      margin-top: 20px;
+    }
+    @include MediaQuery($xs) {
+      margin-bottom: 20px;
+      margin-top: 0px;
+    }
+    .nav-item {
+      .nav-link {
+        color: $textWhite;
+        font-size: $fzH2;
+        font-weight: $fwMedium;
+        border: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        height: 24px;
+        line-height: 24px;
+        background-color: transparent;
+        @include MediaQuery($xs) {
+          font-size: $fzH4;
+          padding: 0.5rem 0.5rem;
+          margin-bottom: 10px;
+        }
+        &.active {
+          font-size: $fzH1;
+          color: $textPrimary;
+          @include MediaQuery($xs) {
+            font-size: $fzH2;
+          }
+        }
+        &:hover {
+          font-size: $fzH1;
+          @include MediaQuery($xs) {
+            font-size: $fzH3;
+          }
+        }
+      }
+    }
+  }
+}

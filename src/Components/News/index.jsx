@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-
 import image1 from "./Images/1.png";
 import image2 from "./Images/2.jpg";
 import image3 from "./Images/3.png";
@@ -52,19 +51,20 @@ import pro14 from "./Images/pro14.jpg";
 import pro15 from "./Images/pro15.jpg";
 import pro16 from "./Images/pro16.jpg";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const News = () => {
   const [active, setActive] = useState(false);
+  const { darkMode } = useSelector((state) => state.commonReducer);
   const handleChangeActive = () => {
     setActive(!active);
   };
 
   return (
-    <section className="news" id="news">
+    <section className={darkMode ? "news Dark" : "news"} id="news">
       <ul className="nav nav-tabs navCenter">
         <li className="nav-item">
-          <a className="nav-link active" data-toggle="tab" href="#newss">
+          <a className="nav-link active" data-toggle="tab" href="#24h">
             Điện ảnh 24h
           </a>
         </li>
@@ -80,7 +80,7 @@ const News = () => {
         </li>
       </ul>
       <div className="tab-content">
-        <div className="tab-pane active" id="newss">
+        <div className="tab-pane active" id="24h">
           <div className="news__item">
             <div className="news__item__img">
               <a

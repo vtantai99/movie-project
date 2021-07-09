@@ -1,0 +1,272 @@
+.detail__info {
+  margin-top: 70px;
+  height: 540px;
+  min-width: 500px;
+  position: relative;
+  color: $textWhite;
+  margin-bottom: 0;
+  @include Mobile {
+    display: none;
+  }
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      filter: blur(9px);
+      transform: scaleY(0.91);
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+  &__fog {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #0a2029, transparent);
+  }
+  &__content {
+    z-index: 100;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .content__text {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      &__info {
+        margin-left: 10px;
+        @include MediaQuery($md) {
+          margin-left: 20px;
+        }
+        small {
+          display: block;
+          font-size: $fzUser;
+        }
+        .name__movie {
+          display: flex;
+          align-items: center;
+          font-weight: $fwBold;
+          font-size: $fzH2;
+          i {
+            color: $textGreen;
+          }
+        }
+        .btn__movie {
+          display: inline-block;
+          text-decoration: none;
+          cursor: pointer;
+          border-radius: 5px;
+          color: white;
+          font-weight: $fwBold;
+          margin-top: 10px;
+          padding: 5px 20px;
+          border-color: rgb(229, 132, 117);
+          background: linear-gradient(
+            270deg,
+            rgb(251, 66, 38),
+            rgb(206, 48, 23)
+          );
+          transition: all 0.3s;
+          &:hover {
+            transform: translateY(-10%);
+          }
+        }
+      }
+      &__img {
+        width: 200px;
+        height: 300px;
+        position: relative;
+        img {
+          border-radius: 10px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        &:hover {
+          .trailer {
+            opacity: 1;
+            display: flex;
+            &__btn {
+              opacity: 1;
+              transform: translate(-50%, -50%) scale(1);
+            }
+          }
+        }
+        .trailer {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(0deg, #000, transparent);
+          transition: all 0.3s ease-in-out;
+          opacity: 0;
+          &__btn {
+            z-index: 9999;
+            width: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.7);
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              img {
+                opacity: 0.6;
+              }
+            }
+          }
+        }
+      }
+    }
+    .content__rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__item {
+        position: relative;
+        padding: 0;
+        border-radius: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 120px;
+        .vote__movie {
+          color: #7ed321;
+          z-index: 9999;
+        }
+        .rating {
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          font-size: 70px;
+          background-color: rgba(0, 0, 0, 0.4);
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: scale(0.85);
+        }
+        .rating__border {
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          display: flex;
+          border: 9px solid $bgBtn1;
+          z-index: 0;
+        }
+      }
+      &__vote {
+        text-align: center;
+        margin-top: 10px;
+        img {
+          width: 25px;
+          margin: 0px 2px;
+        }
+      }
+    }
+  }
+}
+.detail__info__rps {
+  margin-top: 70px;
+  color: $textWhite;
+  margin-bottom: 0;
+  display: none;
+  @include Mobile {
+    display: block;
+  }
+  &__img {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .info__img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .img__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, #0a2029, transparent);
+    }
+    .img__btn {
+      z-index: 1;
+      width: 60px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .img__vote {
+      position: absolute;
+      top: 3%;
+      right: 2%;
+      display: block;
+      background-color: rgba(12, 27, 54, 0.8);
+      border: 1px solid #1f2e46;
+      border-radius: 4px;
+      position: absolute;
+      .vote__number {
+        text-align: center;
+        margin-bottom: 0;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .vote__star {
+        text-align: center;
+        margin-bottom: 0;
+        height: 15px;
+        line-height: 15px;
+        margin-bottom: 5px;
+
+        img {
+          display: inline-block;
+          width: 7px;
+          height: 7px;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+  &__content {
+    background-color: #0a2029;
+    padding-left: 20px;
+    font-size: 20px;
+    .name__movie {
+      margin-bottom: 0;
+      font-weight: 500;
+      font-size: 28px;
+      i {
+        color: $textGreen;
+      }
+    }
+  }
+}

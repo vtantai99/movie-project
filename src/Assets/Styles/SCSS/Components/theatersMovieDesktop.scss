@@ -1,0 +1,77 @@
+.movie__item {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    transform: translateX(-50%);
+    background-color: $bgBorder;
+    height: 2px;
+    width: calc(100% - 40px);
+    transition: all 0.3s;
+  }
+  .collapsed {
+    &::after {
+      content: "\f107";
+      position: absolute;
+      right: 10px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 20px;
+      color: $textUser;
+    }
+  }
+  &__main {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: "\f106";
+      position: absolute;
+      right: 10px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 20px;
+      color: $textUser;
+    }
+    &--img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    &--info {
+      padding-left: 10px;
+      .info__name {
+        font-weight: $fwMedium;
+        font-size: $fzName;
+        i {
+          color: $textGreen;
+        }
+        &__des {
+          display: block;
+          color: $textUser;
+          font-size: $fzP;
+        }
+      }
+    }
+  }
+  &__time {
+    p {
+      margin: 5px 0;
+      font-size: $fzName;
+      font-weight: $fwMedium;
+      color: $textGreen;
+    }
+  }
+  &__note {
+    font-size: $fzName;
+    @include Tablet {
+      font-size: $fzNameTablet;
+    }
+  }
+}

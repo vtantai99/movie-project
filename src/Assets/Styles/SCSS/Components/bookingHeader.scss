@@ -1,0 +1,71 @@
+.headerBooking {
+  width: 100%;
+  padding: 0 20px;
+  background-color: $bgPrimary;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  &.Dark {
+    background: $bgDarkMode;
+  }
+  @include MobileAndTablet {
+    z-index: 50;
+  }
+  img {
+    display: block;
+    width: 50px;
+  }
+  &__status {
+    padding: 20px 0;
+    color: $textPrimary;
+    position: relative;
+    span {
+      @include Mobile {
+        font-size: 14px;
+      }
+    }
+    .tablet {
+      display: none;
+      @include MobileAndTablet {
+        display: block;
+      }
+    }
+    .desktop {
+      @include MobileAndTablet {
+        display: none;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $textPrimary;
+      box-shadow: 0 3px 10px 0 #fa5238;
+    }
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    &__img {
+      position: relative;
+      width: 45px;
+      height: 45px;
+      background: $bgBorder;
+      border-radius: 50%;
+    }
+    &__name {
+      color: $textPrimary;
+      padding-left: 10px;
+    }
+  }
+}

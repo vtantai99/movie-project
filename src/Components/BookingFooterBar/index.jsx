@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { nextStep } from "../../redux/action/bookingAction/actions";
 import DangChonSeats from "../DangChonSeats";
@@ -8,7 +7,6 @@ const BookingFooterBar = () => {
   const bookingReducer = useSelector((state) => state.bookingReducer);
   const { step, bookingList } = bookingReducer;
   const dispatch = useDispatch();
-
   const renderBookingFooter = () => {
     const { danhSachGhe } = bookingList;
     const dsDangChon = danhSachGhe?.filter((el) => el.dangChon);
@@ -23,17 +21,16 @@ const BookingFooterBar = () => {
               dsDangChon.length > 0 ? "next" : ""
             }`}
           >
-            <span>Tiep tuc</span>
+            <span>TIẾP TỤC</span>
           </button>
         ) : (
           <button className="btn-container">
-            <span>Thanh toan</span>
+            <span>THANH TOÁN</span>
           </button>
         )}
       </div>
     );
   };
-
   return bookingList.danhSachGhe ? renderBookingFooter() : "";
 };
 

@@ -1,0 +1,18 @@
+.theater {
+  transition: all 0.3s ease-in-out;
+  color: $textBlack;
+  &.Dark {
+    background: $bgDarkMode;
+    color: $textWhite;
+  }
+  &__main {
+    width: 90%;
+    display: flex;
+    @include Tablet {
+      width: 85%;
+    }
+    @include MediaQuery($sm) {
+      width: 100%;
+    }
+  }
+}

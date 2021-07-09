@@ -1,84 +1,84 @@
 .showTime {
-	.owl-carousel {
-		margin-top: 50px;
-		z-index: 0;
-		.owl-nav {
-			margin: 0 !important;
-			height: 0 !important;
-			display: none;
-			@include MediaQuery($md) {
-				display: block;
-			}
-			button.owl-prev {
-				&::before {
-					content: "";
-					position: absolute;
-					top: 40%;
-					left: -10%;
-					background: url("https://tix.vn/app/assets/img/icons/back-session.png") 50% / contain no-repeat;
-					width: 40px;
-					height: 65px;
-					border-radius: 5px;
-					border: 2px solid #979797;
-					background-color: #ecf0f1;
-				}
-				span {
-					display: none;
-				}
-			}
-			button.owl-next {
-				&::before {
-					content: "";
-					position: absolute;
-					top: 40%;
-					right: -10%;
-					background: url("https://tix.vn/app/assets/img/icons/next-session.png") 50% / contain no-repeat;
-					width: 40px;
-					height: 65px;
-					border-radius: 5px;
-					border: 2px solid #979797;
-					background-color: #ecf0f1;
-				}
-				span {
-					display: none;
-				}
-			}
-		}
-		.owl-dots {
-			position: absolute;
-			bottom: 10%;
-			left: 50%;
-			transform: translateX(-50%);
-			@include MediaQuery($md) {
-				bottom: 10%;
-			}
-			@include MediaQuery($xs) {
-				bottom: 2%;
-			}
-			button {
-				outline: none;
-				margin: 5px;
-				&.active {
-					span {
-						background-color: #fb4226 !important;
-					}
-				}
-				span {
-					width: 10px !important;
-					height: 10px !important;
-					margin: 3px 5px !important;
-					background-color: #d8d8d8 !important;
-					@include MediaQuery($xs) {
-						width: 10px !important;
-						height: 10px !important;
-						margin: 0 3px !important;
-					}
-					@include MediaQuery($md) {
-						width: 12px !important;
-						height: 12px !important;
-					}
-				}
-			}
-		}
-	}
+  .owl-carousel {
+    margin-top: 50px;
+    z-index: 0;
+    .owl-nav {
+      margin: 0 !important;
+      height: 0 !important;
+      display: none;
+      @include MediaQuery($md) {
+        display: block;
+      }
+      button.owl-prev {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -10%;
+          transform: translateY(-50%);
+          background: url(../../../Images/iconPrev.png) 50% / contain no-repeat;
+          width: 40px;
+          height: 65px;
+          border-radius: 5px;
+          background-color: $bgBorder;
+        }
+        span {
+          display: none;
+        }
+      }
+      button.owl-next {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -10%;
+          transform: translateY(-50%);
+          background: url(../../../Images/iconNext.png) 50% / contain no-repeat;
+          width: 40px;
+          height: 65px;
+          border-radius: 5px;
+          background-color: $bgBorder;
+        }
+        span {
+          display: none;
+        }
+      }
+    }
+    .owl-dots {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      @include MediaQuery($md) {
+        bottom: 10%;
+      }
+      @include MediaQuery($xs) {
+        bottom: 2%;
+      }
+      button {
+        outline: none;
+        margin: 5px;
+        &.active {
+          span {
+            background-color: #fb4226 !important;
+          }
+        }
+        span {
+          width: 10px !important;
+          height: 10px !important;
+          margin: 3px 5px !important;
+          background-color: #d8d8d8 !important;
+          @include MediaQuery($xs) {
+            width: 10px !important;
+            height: 10px !important;
+            margin: 0 3px !important;
+          }
+          @include MediaQuery($md) {
+            width: 12px !important;
+            height: 12px !important;
+          }
+        }
+      }
+    }
+  }
 }

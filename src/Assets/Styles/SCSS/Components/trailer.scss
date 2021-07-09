@@ -1,0 +1,16 @@
+.modal-dialog {
+  .modal-content {
+    background: transparent;
+    border: none;
+    .trailer {
+      border-radius: 10px;
+      height: 450px;
+      @include Tablet {
+        height: 350px;
+      }
+      @include Mobile {
+        height: 250px;
+      }
+    }
+  }
+}

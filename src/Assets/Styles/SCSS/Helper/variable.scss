@@ -8,18 +8,26 @@ $textGrey: #bbb;
 $textBar: #666;
 $textFooter: #949494;
 $textGreen: #108f3e;
+$textIcon: #0a3d62;
+$textInfo: #009090;
 // BACKGROUND
+$bgHeader: rgba(255, 255, 255, 0.9);
 $bgPrimary: #fff;
 $bgCarousel: linear-gradient(to top, #000, transparent 20%);
 $bgLinear: linear-gradient(270deg, #fb4226, #ce3017);
 $bgBtn1: #4a4a4a;
 $bgBtn2: #fb4226;
+$bgDots: #fb4226;
 $bgFooter: #222;
-$bgBorder: #e9e9e9;
+$bgBorder: #ebebec;
 $bgDetail: #0a2029;
 $bgSeat_normal: #3e515d;
 $bgSeat_vip: #f7b500;
 $bgSeat_selected: #28a745;
+$bgDarkMode: #082633;
+$bgDarkModePage: #0a2029;
+$bgInfo: #007575;
+
 // FONT-SIZE
 $fzApps: 34px;
 $fzH1: 24px;
@@ -27,6 +35,8 @@ $fzH2: 20px;
 $fzH3: 18px;
 $fzH4: 16px;
 $fzHeader: 16px;
+$fzName: 16px;
+$fzNameTablet: 14px;
 $fzUser: 14px;
 $fzP: 12px;
 

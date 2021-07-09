@@ -1,5 +1,6 @@
 import * as actions from "./actionTypes";
 import Axios from "axios";
+import { startLoading, stopLoading } from "../commonAction/actions";
 export const switchRap = (rap) => {
   return {
     type: actions.SWITCH_RAP,
@@ -17,21 +18,34 @@ export const fetchTheaterList = () => {
   };
 };
 // Call API tat ca từng rạp chi tiết của mã nhóm GP09
-export const fetchTheaterDetail = () => {
+export const fetchTheaterListDetail = () => {
   return (dispatch) => {
+    dispatch(startLoading());
     Axios.get(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP09"
     )
-      .then((res) => dispatch(fetchAllTheaterDetailSuccess(res.data)))
+      .then(
+        (res) => dispatch(fetchTheaterListDetailSuccess(res.data)),
+        setTimeout(() => dispatch(stopLoading()), 1000)
+      )
       .catch((err) => console.log(err));
+  };
+};
+const fetchTheaterListSuccess = (theaterList) => {
+  return { type: actions.FETCH_THEATER_LOGO, payload: theaterList };
+};
+const fetchTheaterListDetailSuccess = (listTheaterDetail) => {
+  return {
+    type: actions.FETCH_THEATER_LIST_DETAIL,
+    payload: listTheaterDetail,
   };
 };
 export const getCodeTheater = (codeTheater) => {
   return { type: actions.GET_CODE_THEATER, payload: codeTheater };
 };
-const fetchTheaterListSuccess = (theaterList) => {
-  return { type: actions.FETCH_THEATER_LIST_API, payload: theaterList };
-};
-const fetchAllTheaterDetailSuccess = (listTheaterDetail) => {
-  return { type: actions.FETCH_THEATER_DETAIL, payload: listTheaterDetail };
+export const refreshCodeTheater = () => {
+  return {
+    type: actions.REFRESH_CODE_THEATER,
+    payload: "bhd-star-cineplex-pham-hung",
+  };
 };

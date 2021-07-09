@@ -1,17 +1,27 @@
-import * as actions from '../action/movieDetailAction/actionTypes';
+import * as actions from "../action/movieDetailAction/actionTypes";
 
-const initalState = {
-    movieDetail: '',
-    movieTrailer: '',
-    movieDetailNav: 'lichChieu',
-}
-
-export default function movieReducer(state = initalState, action) {
-    switch(action.type) {
-        case actions.FETCH_MOVIE_DETAIL: return {...state, movieDetail: action.payload};
-        case actions.GET_MOVIE_TRAILER:
-            case actions.DROP_MOVIE_TRAILER:return {...state, movieTrailer: action.payload};
-            case actions.SWITCH_MOVIE_DETAIL_NAV: return {...state, movieDetailNav: action.payload};
-        default: return state;
-    }
+const initialState = {
+  movieDetail: "",
+  movieTrailer: null,
+  dateShow: `${new Date().getDate()}`,
+  codeTheater: "BHDStar",
+};
+export default function movieReducer(state = initialState, action) {
+  let { type, payload } = action;
+  switch (type) {
+    case actions.FETCH_MOVIE_DETAIL:
+      return { ...state, movieDetail: payload };
+    case actions.GET_MOVIE_TRAILER:
+      return { ...state, movieTrailer: payload };
+    case actions.DROP_MOVIE_TRAILER:
+      return { ...state, movieTrailer: payload };
+    case actions.GET_DATE_CURRENT:
+      return { ...state, dateShow: payload };
+    case actions.REFRESH_DATE:
+      return { ...state, dateShow: payload };
+    case actions.UPDATE_CODE_THEATER:
+      return { ...state, codeTheater: payload };
+    default:
+      return state;
+  }
 }

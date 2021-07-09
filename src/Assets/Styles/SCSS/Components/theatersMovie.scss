@@ -1,0 +1,29 @@
+.theater__movies {
+  flex-basis: 1;
+  width: 60%;
+  max-height: 545px;
+  overflow-y: auto;
+  @include Mobile {
+    display: none;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      visibility: visible;
+    }
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: #e9e9e9;
+    transition: all 0.5s;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 50%;
+  }
+}

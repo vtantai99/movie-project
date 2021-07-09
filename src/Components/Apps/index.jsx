@@ -2,14 +2,13 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import React from "react";
-import mobile from "./Images/mobile.png";
-
-import images1 from "./Images/1.jpg";
-import images2 from "./Images/2.jpg";
-import images3 from "./Images/3.jpg";
-import images4 from "./Images/4.jpg";
-import images5 from "./Images/5.jpg";
-import images6 from "./Images/6.jpg";
+import mobile from "../../Assets/Images/mobile.png";
+import app1 from "../../Assets/Images/app1.jpg";
+import app2 from "../../Assets/Images/app2.jpg";
+import app3 from "../../Assets/Images/app3.jpg";
+import app4 from "../../Assets/Images/app4.jpg";
+import app5 from "../../Assets/Images/app5.jpg";
+import app6 from "../../Assets/Images/app6.jpg";
 const Apps = () => {
   return (
     <section className="apps" id="apps">
@@ -48,22 +47,22 @@ const Apps = () => {
                   autoplayHoverPause
                 >
                   <div className="apps__mobile__carousel--item">
-                    <img src={images1} alt="" />
+                    <img src={app1} alt="" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={images2} alt="" />
+                    <img src={app2} alt="" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={images3} alt="" />
+                    <img src={app3} alt="" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={images4} alt="" />
+                    <img src={app4} alt="" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={images5} alt="" />
+                    <img src={app5} alt="" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={images6} alt="" />
+                    <img src={app6} alt="" />
                   </div>
                 </OwlCarousel>
               </div>

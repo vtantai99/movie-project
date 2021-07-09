@@ -1,0 +1,78 @@
+.theater__detail__item {
+  position: relative;
+  &.active {
+    .item {
+      opacity: 1;
+    }
+    &::after {
+      background-color: $textPrimary;
+      box-shadow: 0 -3px 10px 0 $textPrimary;
+      @include Mobile {
+        background-color: $bgBorder;
+        box-shadow: none;
+      }
+    }
+  }
+  @include Mobile {
+    opacity: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: $bgBorder;
+    height: 2px;
+    width: calc(100% - 40px);
+    transition: all 0.3s;
+  }
+  &:hover {
+    .item {
+      opacity: 1;
+    }
+  }
+  .item {
+    opacity: 0.6;
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s;
+    @include MobileAndTablet {
+      padding: 15px 20px;
+    }
+    &--img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 10px;
+      overflow: hidden;
+      .info__theater {
+        // color: $textBlack;
+        font-weight: $fwMedium;
+        font-size: $fzName;
+        margin-bottom: 0;
+        @include MobileAndTablet {
+          font-size: $fzNameTablet;
+        }
+      }
+      .info__address {
+        width: 100%;
+        color: $textUser;
+        font-size: $fzP;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,46 +1,76 @@
-import React, { useEffect } from "react";
-import "./index.scss";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import BookingSeats from "../BookingSeats";
-import { countingDown } from "../../redux/action/bookingAction/actions";
+import BookingSeat from "../BookingSeat";
+import BookingCountDown from "../BookingCountDown";
+import BookingSeatChoosing from "../BookingSeatChoosing";
+import { rpsBooking } from "../../redux/action/bookingAction/actions";
+import { Button } from "@material-ui/core";
+import screen from "../../Assets/Images/screen.png";
+
 const BookingMain = () => {
   const dispatch = useDispatch();
-  const bookingReducer = useSelector((state) => state.bookingReducer);
-  const { bookingList, countDownTime, step } = bookingReducer;
+  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { bookingList } = useSelector((state) => state.bookingReducer);
   const { thongTinPhim } = bookingList;
-  const { diaChi, hinhAnh, tenRap } = thongTinPhim ? thongTinPhim : "";
-
-  useEffect(() => {
-    let a;
-    if (countDownTime > 0) {
-      a = setTimeout(() => {
-        dispatch(countingDown(countDownTime - 1));
-      }, 1000);
-    }
-    return () => clearTimeout(a);
-  }, [countDownTime]);
-
+  const { diaChi, hinhAnh, tenRap, tenCumRap } = thongTinPhim
+    ? thongTinPhim
+    : "";
+  const seatsChoosing = bookingList.danhSachGhe?.filter(
+    (item) => item.dangChon
+  );
   return bookingList.danhSachGhe ? (
-    <div className={`bookingMain ${step <= 1 ? "bookingMainActive" : ""}`}>
-      <div className="meta-data">
-        <div className="address">
-          <img src={hinhAnh} alt="" />
-          <div className="address-info">
-            {tenRap}
-            <span>{diaChi}</span>
+    <>
+      <div className={darkMode ? "bookingMain Dark" : "bookingMain"}>
+        <div className="title">
+          <div className="title__address">
+            <div className="title__address__img">
+              <img src={hinhAnh} alt="" />
+            </div>
+            <div className="title__address__info">
+              <span>
+                {tenCumRap} : {tenRap}
+              </span>
+              <p>{diaChi}</p>
+            </div>
+          </div>
+          <div className="title__timer">
+            <p>Thời gian giữ ghế</p>
+            <BookingCountDown />
           </div>
         </div>
-        <div className="countDown">
-          <p>Thoi gian giu ghe</p>
-          <span className="countDownTime">{countDownTime}</span>
+        <div className="screen__img">
+          <img src={screen} alt="screen" />
         </div>
+        <BookingSeat />
       </div>
-      <div className="screen"></div>
-      <BookingSeats />
-    </div>
+      <footer className="booking__footer">
+        <div className="booking__footer__content">
+          <div className="footer__seat">
+            {seatsChoosing?.length > 0 ? (
+              <span>GHẾ&nbsp;</span>
+            ) : (
+              <span>VUI LÒNG CHỌN GHẾ</span>
+            )}
+            <BookingSeatChoosing />
+          </div>
+          <div className="footer__button">
+            <Button
+              onClick={() => dispatch(rpsBooking(true))}
+              disabled={seatsChoosing?.length ? false : true}
+              style={
+                seatsChoosing?.length
+                  ? { backgroundColor: "#28a745" }
+                  : { backgroundColor: "#74e48e" }
+              }
+            >
+              TIẾP TỤC
+            </Button>
+          </div>
+        </div>
+      </footer>
+    </>
   ) : (
     ""
   );
 };
-
 export default BookingMain;

@@ -1,183 +1,138 @@
 .carousel {
-	.owl-carousel {
-		margin-top: 50px;
-		z-index: 0;
-		.owl-nav {
-			margin: 0 !important;
-			height: 0 !important;
-			// display: none;
-			@include MediaQuery($md) {
-				display: block;
-			}
-			button.owl-prev {
-				&::before {
-					content: "";
-					position: absolute;
-					top: 45%;
-					left: 10px;
-					background: url("https://tix.vn/app/assets/img/icons/back-session.png") 50% / contain no-repeat;
-					width: 40px;
-					height: 65px;
-					border-radius: 5px;
-					border: 2px solid #979797;
-					background-color: #ecf0f1;
-					@include MediaQuery($sm) {
-						top: 40%;
-						background-color: transparent;
-						border: 0;
-					}
-					@include MediaQuery($xs) {
-						left: 5px;
-						top: 35%;
-						width: 30px;
-						height: 45px;
-						background-color: transparent;
-						border: 0;
-					}
-				}
-				span {
-					display: none;
-				}
-			}
-			button.owl-next {
-				&::before {
-					content: "";
-					position: absolute;
-					top: 45%;
-					right: 10px;
-					background: url("https://tix.vn/app/assets/img/icons/next-session.png") 50% / contain no-repeat;
-					width: 40px;
-					height: 65px;
-					border-radius: 5px;
-					border: 2px solid #979797;
-					background-color: #ecf0f1;
-					@include MediaQuery($sm) {
-						right: 5px;
-						top: 35%;
-						width: 30px;
-						height: 45px;
-						background-color: transparent;
-						border: 0;
-					}
-				}
-				span {
-					display: none;
-				}
-			}
-		}
-		.owl-dots {
-			position: absolute;
-			bottom: 10%;
-			left: 50%;
-			transform: translateX(-50%);
-			@include MediaQuery($md) {
-				bottom: 10%;
-			}
-			@include MediaQuery($sm) {
-				bottom: 5px;
-			}
-			@include MediaQuery($xs) {
-				bottom: 2%;
-			}
-			button {
-				outline: none;
-				&.active {
-					span {
-						background-color: #fb4226;
-						// transform: scale(1.5);
-						// height: 5px;
-						// width: 28px;
-						// @include MediaQuery($sm) {
-						// 	margin: 1px 1px !important;
-						// }
-						// @include MediaQuery($md) {
-						// 	height: 6px;
-						// 	// margin: 1px 1px !important;
-						// 	width: 35px;
-						// }
-						// @include MediaQuery($xs) {
-						// 	margin: 3px 0.5px !important;
-						// }
-					}
-				}
-				span {
-					width: 12px;
-					height: 12px;
-					border-radius: 50%;
-					margin: 0 3px;
-					background-color: #d8d8d8;
-					transition: all 0.5s;
-					@include MediaQuery($md) {
-					}
-					@include MediaQuery($sm) {
-						width: 10px;
-						height: 10px;
-					}
-					@include MediaQuery($xs) {
-						width: 10px;
-						height: 10px;
-					}
-				}
-			}
-		}
-		.owl-stage-outer {
-			.owl-stage {
-				.owl-item {
-					.carousel__item {
-						// cursor: pointer;
-						&:hover {
-							.carousel__item__play {
-								opacity: 1;
-								transform: translate(-50%, -50%) scale(1);
-							}
-						}
-						&__play {
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%) scale(0.7);
-							opacity: 0;
-							z-index: 1;
-							&:hover {
-								button {
-									img {
-										opacity: 0.6;
-									}
-								}
-							}
-							button {
-								width: unset;
-								border: 0;
-								background: 0;
-								outline: none;
-								img {
-									display: block;
-									max-width: 100%;
-									transition: all 0.3s;
-									@include MediaQuery($sm) {
-										width: 70px;
-									}
-									@include MediaQuery($xs) {
-										width: 50px;
-									}
-								}
-							}
-						}
-						&__overlay {
-							position: absolute;
-							top: 0;
-							left: 0;
-							right: 0;
-							bottom: 0;
-							background: linear-gradient(to top, #000, transparent 20%);
-						}
-						img {
-							display: block;
-							width: 100%;
-						}
-					}
-				}
-			}
-		}
-	}
+  .owl-carousel {
+    margin-top: 70px;
+    z-index: 0;
+    .owl-nav {
+      margin: 0 !important;
+      height: 0 !important;
+      @include MediaQuery($md) {
+        display: block;
+      }
+      button.owl-prev {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 3%;
+          transform: translateY(-50%);
+          background: url(../../../Images/iconPrev.png) 50% / contain no-repeat;
+          width: 40px;
+          height: 65px;
+          border-radius: 5px;
+          background-color: $bgBorder;
+          @include MobileAndTablet {
+            background-color: transparent;
+          }
+        }
+        span {
+          display: none;
+        }
+      }
+      button.owl-next {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 3%;
+          transform: translateY(-50%);
+          background: url(../../../Images/iconNext.png) 50% / contain no-repeat;
+          width: 40px;
+          height: 65px;
+          border-radius: 5px;
+          background-color: $bgBorder;
+          @include MobileAndTablet {
+            background-color: transparent;
+          }
+        }
+        span {
+          display: none;
+        }
+      }
+    }
+    .owl-dots {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      @include MobileAndTablet {
+        bottom: 0;
+      }
+      button {
+        outline: none;
+        &.active {
+          span {
+            background-color: $bgDots;
+          }
+        }
+        span {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          margin: 0 3px;
+          background-color: $bgPrimary;
+          transition: all 0.5s;
+        }
+      }
+    }
+    .owl-stage-outer {
+      .owl-stage {
+        .owl-item {
+          .carousel__item {
+            &:hover {
+              .carousel__item__play {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+              }
+            }
+            &__play {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%) scale(0.7);
+              opacity: 0;
+              z-index: 1;
+              transition: all 0.3s ease-in-out;
+              @include MobileAndTablet {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+              }
+              &:hover {
+                button {
+                  img {
+                    opacity: 0.6;
+                  }
+                }
+              }
+              button {
+                width: unset;
+                border: 0;
+                background: 0;
+                outline: none;
+                img {
+                  display: block;
+                  max-width: 100%;
+                  transition: all 0.3s;
+                  @include Mobile {
+                    width: 50px;
+                  }
+                }
+              }
+            }
+            &__overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(to top, #000, transparent 20%);
+            }
+            img {
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }

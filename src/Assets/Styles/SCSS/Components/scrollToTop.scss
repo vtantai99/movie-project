@@ -1,0 +1,18 @@
+.scroll {
+  background-color: $bgBorder;
+  color: $textPrimary;
+  font-size: $fzH1;
+  position: fixed;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+  transform: rotate(-90deg);
+  padding: 5px 10px;
+  i {
+    padding-left: 5px;
+  }
+  @include Mobile {
+    font-size: $fzH2;
+  }
+}

@@ -1,0 +1,120 @@
+.bookingMain {
+  color: $textBlack;
+  background-color: $bgPrimary;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  &.Dark {
+    color: $textWhite;
+    background: $bgDarkModePage;
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+    @include Mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 2px;
+      width: 100%;
+      background-color: #ebebec;
+    }
+    &__address {
+      display: flex;
+      align-items: center;
+      @include MobileAndTablet {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      &__img {
+        width: 50px;
+        height: 50px;
+        background-color: #e9e9e9;
+        position: relative;
+        border-radius: 5px;
+        margin-right: 10px;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 85%;
+          height: 85%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+      &__info {
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-bottom: 0;
+          color: $textUser;
+          font-size: 14px;
+        }
+      }
+    }
+    &__timer {
+      text-align: center;
+      @include MobileAndTablet {
+        align-self: center;
+      }
+      p {
+        margin: 0;
+        color: $textUser;
+        font-size: 14px;
+      }
+      .countDownTime {
+        color: red;
+        font-size: 30px;
+      }
+    }
+  }
+  .screen__img {
+    margin: 10px 0;
+    img {
+      display: block;
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+}
+.booking__footer {
+  border: 1px solid $bgSeat_selected;
+  display: none;
+  @include MobileAndTablet {
+    display: block;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    .footer__seat {
+      width: 50%;
+      font-size: 16px;
+      text-align: center;
+      color: $textGreen;
+      word-break: break-all;
+    }
+    .footer__button {
+      width: 50%;
+      button {
+        color: $textWhite;
+        width: 100%;
+        font-size: 16px;
+        padding: 20px 0;
+        outline: none;
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
+}

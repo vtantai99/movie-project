@@ -1,0 +1,32 @@
+@import "../Helper/variable.scss";
+@import "../Helper/mixin.scss";
+@import "../Helper/responsive.scss";
+@import "../Helper/reset.scss";
+
+.page__error {
+  width: 100vw;
+  height: 100vh;
+  background: #081421;
+  &__content {
+    color: #d3d7de;
+    font-family: "Courier new";
+    font-size: 18px;
+    line-height: 1.5em;
+    cursor: default;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include Mobile {
+      font-size: 14px;
+    }
+    a {
+      color: inherit;
+      transition: 0.3s;
+      &:hover {
+        color: $textPrimary;
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -15,17 +15,10 @@ export const fetchMovieList = () => {
 };
 export const selectTheater = (codeFilm) => {
   return (dispatch) => {
-    dispatch(startLoading());
     Axios.get(
       `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${codeFilm}`
     )
-      .then(
-        (res) => dispatch(fetchTheaterListSelected(res.data)),
-        // dispatch(stopLoading())
-        setTimeout(() => {
-          dispatch(stopLoading());
-        }, 1000)
-      )
+      .then((res) => dispatch(fetchTheaterListSelected(res.data)))
       .catch((err) => console.log(err));
   };
 };
@@ -34,7 +27,7 @@ export const selectDay = (codeFilm) => {
     Axios.get(
       `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${codeFilm}`
     )
-      .then((res) => dispatch(fetchShowTimesList(res.data.heThongRapChieu)))
+      .then((res) => dispatch(fetDateList(res.data.heThongRapChieu)))
       .catch((err) => console.log(err));
   };
 };
@@ -55,26 +48,16 @@ const fetchTheaterListSelected = (listShowtime) => {
     payload: listShowtime,
   };
 };
-// Danh sach lich chieu khi chon rap
-const fetchShowTimesList = (listShowTimes) => {
+// Danh sach ngay chieu khi chon rap
+const fetDateList = (listShowTimes) => {
   return {
-    type: actions.FETCH_THEATER_SHOWTIME,
+    type: actions.FETCH_DATE,
     payload: listShowTimes,
   };
 };
 export const getHoursList = () => {
   return {
     type: actions.GET_HOURS_LIST,
-  };
-};
-const startLoading = () => {
-  return {
-    type: actions.START_LOADING,
-  };
-};
-const stopLoading = () => {
-  return {
-    type: actions.STOP_LOADING,
   };
 };
 export const addNameTheater = (nameTheater) => {
@@ -95,10 +78,10 @@ export const addNameDate = (nameDate) => {
     payload: nameDate,
   };
 };
-export const addNameHours = (nameHours) => {
+export const addCode = (code) => {
   return {
-    type: actions.ADD_NAME_HOURS,
-    payload: nameHours,
+    type: actions.ADD_CODE,
+    payload: code,
   };
 };
 export const refreshFilm = () => {

@@ -2,16 +2,14 @@ import * as actionTypes from "../action/searchMovieAction/actionTypes";
 import format from "date-format";
 
 const initialState = {
-  isLoading: false,
   listFilm: [],
   listTheaterSelected: [],
   listTime: [],
-  listDates: [],
   listHours: [],
   nameMovie: null,
   nameTheater: null,
   nameDate: null,
-  nameHours: null,
+  code: null,
 };
 const searchMovieReducer = (state = initialState, action) => {
   let { type, payload } = action;
@@ -26,20 +24,21 @@ const searchMovieReducer = (state = initialState, action) => {
         codeFilm: payload.maPhim,
       };
     }
-    case actionTypes.FETCH_THEATER_SHOWTIME: {
+    case actionTypes.FETCH_DATE: {
       const theaterList = payload;
+      console.log(theaterList);
       const listDateEmpty = [];
       let lisDateFake = theaterList.map((item) => item.cumRapChieu);
+      console.log(lisDateFake);
       for (let i = 0; i < lisDateFake.length; i++) {
         for (let j = 0; j < lisDateFake[i].length; j++) {
           listDateEmpty.push(lisDateFake[i][j]);
         }
       }
-      //   console.log(listDateEmpty);
+      console.log(listDateEmpty);
       const date = listDateEmpty.filter(
         (item) => item.tenCumRap === state.nameTheater
-      )[0].lichChieuPhim;
-
+      )[0].lichChieuPhim; // chua hieu doan nay lam
       return { ...state, listTime: date };
     }
     case actionTypes.GET_HOURS_LIST: {
@@ -62,8 +61,8 @@ const searchMovieReducer = (state = initialState, action) => {
     case actionTypes.ADD_NAME_DATE: {
       return { ...state, nameDate: payload };
     }
-    case actionTypes.ADD_NAME_HOURS: {
-      return { ...state, nameHours: payload };
+    case actionTypes.ADD_CODE: {
+      return { ...state, code: +payload };
     }
     case actionTypes.START_LOADING: {
       return { ...state, isLoading: true };
@@ -77,9 +76,10 @@ const searchMovieReducer = (state = initialState, action) => {
         listTheaterSelected: [],
         listTime: [],
         listHours: [],
+        nameMovie: null,
         nameTheater: null,
         nameDate: null,
-        nameHours: null,
+        code: null,
       };
     }
     case actionTypes.REFRESH_THEATER: {
@@ -88,11 +88,11 @@ const searchMovieReducer = (state = initialState, action) => {
         listTime: [],
         listHours: [],
         nameDate: null,
-        nameHours: null,
+        code: null,
       };
     }
     case actionTypes.REFRESH_DATE: {
-      return { ...state, listHours: [], nameHours: null };
+      return { ...state, listHours: [], code: null };
     }
     default:
       return state;

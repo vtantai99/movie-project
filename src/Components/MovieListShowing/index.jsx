@@ -1,59 +1,64 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { getMovieTrailer } from "../../redux/action/movieDetailAction/actions";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import Bomtan from "./Images/bom_tan.png";
-import Khuyenmai from "./Images/khuyenmai.png";
+import star from "../../Assets/Images/star.png";
+import starHalf from "../../Assets/Images/starHalf.png";
+import movieBomTan from "../../Assets/Images/movieBomTan.png";
+import movieKhuyenMai from "../../Assets/Images/movieKhuyenMai.png";
+import playIcon from "../../Assets/Images/playIcon.png";
+
 const MovieListShowing = (props) => {
-  //   console.log(props);
   const dispatch = useDispatch();
   const history = useHistory();
+  // Hàm gắn sao theo band điểm của phim
   const renderIconStar = (vote) => {
     if (vote === 10) {
       return (
         <>
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={starHalf} />
         </>
       );
     }
     if (vote >= 8) {
       return (
         <>
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={starHalf} />
         </>
       );
     }
     if (vote >= 6) {
       return (
         <>
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-          <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+          <img src={star} />
+          <img src={star} />
+          <img src={star} />
+          <img src={starHalf} />
         </>
       );
     }
     return (
       <>
-        <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-        <img src="https://tix.vn/app/assets/img/icons/star1.png" />
-        <img src="https://tix.vn/app/assets/img/icons/star1.2.png" />
+        <img src={star} />
+        <img src={star} />
+        <img src={starHalf} />
       </>
     );
   };
+  //Hàm hiện Bom tấn và khuyến mãi nếu đạt điểm
   const renderImageTitle = (vote) => {
-    if (vote >= 9) return Bomtan;
-    if (vote >= 7) return Khuyenmai;
+    if (vote >= 9) return movieBomTan;
+    if (vote >= 7) return movieKhuyenMai;
     return null;
   };
   return (
@@ -69,15 +74,17 @@ const MovieListShowing = (props) => {
             src={renderImageTitle(props.movie.danhGia)}
             className="item__film__img--title"
           />
-          <span className="item__film__img--vote">
+          <div className="item__film__img--vote">
             <p className="vote--number">{props.movie.danhGia}</p>
-            <p className="vote--star">{renderIconStar(props.movie.danhGia)}</p>
-          </span>
+            <div className="vote--star">
+              {renderIconStar(props.movie.danhGia)}
+            </div>
+          </div>
           <div className="item__film__img--play">
             <button
               onClick={() => dispatch(getMovieTrailer(props.movie.trailer))}
             >
-              <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
+              <img src={playIcon} />
             </button>
           </div>
 
@@ -87,13 +94,13 @@ const MovieListShowing = (props) => {
           ></NavLink>
         </div>
         <div className="item__film__info">
-          <span className="item__film__info--icon">P</span>
+          <i class="fas fa-film"></i>&nbsp;
           <span className="item__film__info--name">{props.movie.tenPhim}</span>
           <Button
             className="item__film__info--btn"
             onClick={() => history.push(`/detail/${props.movie.maPhim}`)}
           >
-            MUA VÉ
+            Chi tiết
           </Button>
         </div>
       </div>

@@ -1,0 +1,78 @@
+.item__collapse {
+  display: none;
+  @include Mobile {
+    display: block;
+  }
+  .movie__item {
+    margin: 0 auto;
+    padding: 0 20px 10px 20px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      height: 1px;
+      background-color: #ebebec;
+    }
+    .collapsed {
+      position: relative;
+      &::after {
+        content: "\f106";
+        position: absolute;
+        right: 0;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 20px;
+        color: $textUser;
+      }
+    }
+    &__main {
+      display: flex;
+      align-items: center;
+      position: relative;
+      &::after {
+        content: "\f107";
+        position: absolute;
+        right: 0;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 20px;
+        color: $textUser;
+      }
+      img {
+        display: block;
+        border-radius: 4px;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+      &--info {
+        padding-left: 10px;
+        .info__name {
+          font-weight: 700;
+          font-size: $fzNameTablet;
+        }
+        .info__name__des {
+          display: block;
+          font-size: $fzP;
+          color: $textUser;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          white-space: pre-wrap;
+        }
+      }
+    }
+    &__hour {
+      p {
+        margin: 5px 0;
+        font-size: $fzNameTablet;
+        font-weight: $fwMedium;
+        color: $textGreen;
+      }
+    }
+  }
+}

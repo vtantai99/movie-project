@@ -1,36 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
+import "../../Assets/Styles/SCSS/Pages/detail.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import DetailInfo from "../../Components/DetailInfo";
 import DetailMain from "../../Components/DetailMain";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
-import WatchVideo from "../../Components/WatchVideo";
-import { fetchMovieDetailRequest } from "../../redux/action/movieDetailAction/actions";
+import Trailer from "../../Components/Trailer";
+import {
+  fetchMovieDetailRequest,
+  refreshDate,
+  updateCodeTheater,
+  updateCodeTheaterMobile,
+} from "../../redux/action/movieDetailAction/actions";
+import { fetchTheaterList } from "../../redux/action/heThongRapAction/actions";
+import ScrollToTop from "../../Components/ScollToTop";
 const Detail = () => {
+  const history = useHistory();
   const params = useParams();
-  useEffect(() => {
-    const movieId = params.movieId;
-    dispatch(fetchMovieDetailRequest(movieId));
-  }, []);
   const dispatch = useDispatch();
-  const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
-  const { movieDetail } = movieDetailReducer;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const movieId = params.movieId;
+    dispatch(fetchMovieDetailRequest(movieId, history));
+    dispatch(fetchTheaterList());
+    dispatch(refreshDate(new Date().getDate())); // Khi mà return page detail thì refresh date, tự chọn ngày hiện tại
+    dispatch(updateCodeTheaterMobile(""));
+    dispatch(updateCodeTheater("BHDStar")); // Giống như refresh ngày, cái này refresh theater
+  }, []);
+  const { movieDetail } = useSelector((state) => state.movieDetailReducer);
   return (
-    <React.Fragment>
+    <Fragment>
       <Header />
       {movieDetail ? (
-        <React.Fragment>
-          <DetailInfo movieDetail={movieDetail} />
+        <section className="detail">
+          <DetailInfo />
           <DetailMain />
-        </React.Fragment>
+        </section>
       ) : (
         ""
       )}
       <Footer />
-      <WatchVideo />
-    </React.Fragment>
+      <ScrollToTop />
+      <Trailer />
+    </Fragment>
   );
 };
-
 export default Detail;

@@ -1,0 +1,71 @@
+@import "../Helper/variable.scss";
+@import "../Helper/responsive.scss";
+
+.info {
+  padding: 50px 0;
+  &__sideBar {
+    display: flex;
+    align-items: center;
+    &__img {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: $bgBorder;
+      border-radius: 50%;
+    }
+    span {
+      margin-left: 10px;
+      color: $textInfo;
+      font-weight: $fwMid;
+    }
+  }
+  .nav {
+    margin-top: 10px;
+    .nav-item {
+      .nav-link {
+        color: $textInfo;
+        font-size: $fzH3;
+        font-weight: $fwMid;
+        position: relative;
+        border-radius: 5px;
+        transition: 0.5s;
+        &.active {
+          background: $bgBorder;
+        }
+      }
+    }
+  }
+  &__content {
+    &__header {
+      color: $textInfo;
+      font-size: $fzH1;
+      margin-bottom: 20px;
+      i {
+        margin-right: 10px;
+      }
+    }
+    &__item {
+      position: relative;
+      border-bottom: 2px solid $bgBorder;
+      padding: 10px 0;
+      &:not(.account)::after {
+        content: "\f105";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 20px;
+        color: $textInfo;
+      }
+      p {
+        font-weight: 200;
+        font-size: $fzH1;
+      }
+      span {
+        color: $textInfo;
+      }
+    }
+  }
+}

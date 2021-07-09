@@ -1,31 +1,25 @@
 import React, { useEffect } from "react";
+import "../../Assets/Styles/SCSS/Pages/login.scss";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import "./index.scss";
 import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FormGroup, FormHelperText } from "@material-ui/core";
-import {
-  hideError,
-  loginRequest,
-} from "../../redux/action/userLoginAction/actions";
+import { hideError, loginRequest } from "../../redux/action/userAction/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    margin: "20px 0",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -39,48 +33,36 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: "10px 0",
+    padding: "10px 0",
   },
   container: {
     background: "#fff",
-    paddingBottom: "55px",
-    borderRadius: "5px",
+    borderRadius: "10px",
   },
 }));
 
 export default function SignIn() {
   const dispatch = useDispatch();
-  const userLoginReducer = useSelector((state) => state.userLoginReducer);
-  const { error } = userLoginReducer;
+  const { error } = useSelector((state) => state.userReducer);
   const history = useHistory();
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
-
   useEffect(() => {
     dispatch(hideError());
   }, []);
-
   const onSubmit = (data) => {
-    // swal({
-    //   title: "Oops...",
-    //   icon: "success",
-    //   text: "Login Successful",
-    //   timer: 1500,
-    //   buttons: false,
-    // });
     dispatch(loginRequest(data, history));
   };
-
   return (
     <div className="login">
+      {/* <Header /> */}
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Avatar className={classes.avatar}></Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            Đăng nhập
           </Typography>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -93,10 +75,8 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
-                id="taiKhoan"
                 label="Tài khoản"
                 name="taiKhoan"
-                autoComplete="taiKhoan"
                 autoFocus
                 inputRef={register({ required: true, minLength: 6 })}
                 error={errors.taiKhoan ? true : false}
@@ -112,7 +92,6 @@ export default function SignIn() {
                   : ""}
               </FormHelperText>
             </FormGroup>
-
             <FormGroup>
               <TextField
                 variant="outlined"
@@ -122,8 +101,6 @@ export default function SignIn() {
                 name="matKhau"
                 label="Mật khẩu"
                 type="password"
-                id="matKhau"
-                autoComplete="current-matKhau"
                 inputRef={register({ required: true })}
                 error={errors.matKhau ? true : false}
               />
@@ -133,10 +110,9 @@ export default function SignIn() {
                   : ""}
               </FormHelperText>
             </FormGroup>
-
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Ghi nhớ đăng nhập"
             />
             {error ? (
               <Alert variant="filled" severity="error">
@@ -155,15 +131,9 @@ export default function SignIn() {
               Đăng nhập
             </Button>
             <Grid container>
-              <Grid item xs>
-                <NavLink to="/" href="#" variant="body2">
-                  Forgot matKhau?
-                </NavLink>
-              </Grid>
               <Grid item>
-                <NavLink to="/signUp" href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </NavLink>
+                Bạn không có tài khoản?
+                <NavLink to="/signUp"> Đăng ký</NavLink>
               </Grid>
             </Grid>
           </form>

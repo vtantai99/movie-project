@@ -1,9 +1,8 @@
-import { Button, colors, MenuItem, Select } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
+import { Button } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import format from "date-format";
-// import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import { useHistory } from "react-router-dom";
 import {
   fetchMovieList,
   selectTheater,
@@ -11,41 +10,22 @@ import {
   addNameTheater,
   addNameMovie,
   addNameDate,
-  addNameHours,
+  addCode,
   refreshFilm,
   getHoursList,
   refreshTheater,
   refreshDate,
 } from "../../redux/action/searchMovieAction/action";
-
-const check = (a) => {
-  for (let i = 0; i < a.length; i++) {
-    for (let j = i + 1; j < a.length - 1; j++) {
-      if (a[i] === a[j]) {
-        return true;
-      }
-    }
-  }
-};
-const terminate = (a) => {
-  //   console.log(a);
-  for (let i = 0; i < a.length - 1; i++) {
-    for (let j = i + 1; j < a.length; j++) {
-      if (a[i] === a[j]) {
-        a.splice(j, 1);
-      }
-    }
-  }
-  if (check(a)) {
-    terminate(a);
-  }
-};
 const SearchMovie = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { darkMode } = useSelector((state) => state.commonReducer);
   useEffect(() => {
     dispatch(fetchMovieList());
+    dispatch(refreshFilm());
+    dispatch(refreshTheater());
+    dispatch(refreshDate());
   }, []);
-
   // Hiển thị phim
   const nameList = useSelector((state) => state.searchMovieReducer.listFilm);
   const renderNameList = () => {
@@ -73,20 +53,17 @@ const SearchMovie = () => {
     );
   };
   /** Hien thi ngay chieu */
-  const codeFilm = useSelector((state) => state.searchMovieReducer.codeFilm); // Lay code phim de goi he thong rap chieu
-  const listTime = useSelector((state) => state.searchMovieReducer.listTime); // Lay danh sach ngayChieuGioChieu
-  const nameTheater = useSelector(
-    (state) => state.searchMovieReducer.nameTheater
-  );
-  const nameMovie = useSelector((state) => state.searchMovieReducer.nameMovie);
-  const nameDate = useSelector((state) => state.searchMovieReducer.nameDate);
-  const nameHours = useSelector((state) => state.searchMovieReducer.nameHours);
+  const { codeFilm, listTime, nameTheater, nameMovie, nameDate, code } =
+    useSelector((state) => state.searchMovieReducer);
   const renderDayList = () => {
     const checkListTime = listTime.map((item) => {
       return format("dd/MM/yyyy", new Date(item.ngayChieuGioChieu));
     });
-    terminate(checkListTime);
-    return checkListTime?.map((item, index) => (
+    // Xoá những ngày chiếu trùng nhau
+    const filterCheckListTime = checkListTime.filter(
+      (item, index) => checkListTime.indexOf(item) === index
+    );
+    return filterCheckListTime?.map((item, index) => (
       <option key={index} value={item}>
         {item}
       </option>
@@ -105,10 +82,7 @@ const SearchMovie = () => {
   const listHours = useSelector((state) => state.searchMovieReducer.listHours);
   const renderHour = () => {
     return listHours?.map((item, index) => (
-      <option
-        key={index}
-        value={format("hh:mm", new Date(item.ngayChieuGioChieu))}
-      >
+      <option key={index} value={item.maLichChieu}>
         {format("hh:mm", new Date(item.ngayChieuGioChieu))}
       </option>
     ));
@@ -123,7 +97,7 @@ const SearchMovie = () => {
     return renderHour();
   };
   const checkStatusButton = () => {
-    if (nameMovie && nameTheater && nameDate && nameHours) return true;
+    if (nameMovie && nameTheater && nameDate && code) return true;
     return false;
   };
   /**Thao tac on Change */
@@ -134,33 +108,35 @@ const SearchMovie = () => {
     const el = event.target.childNodes[index];
     const option = el.getAttribute("id");
     // gọi API hệ thống rạp
-    await dispatch(refreshFilm());
     await dispatch(selectTheater(option));
     await dispatch(addNameMovie(event.target.value));
   };
   //   Khi ấn chọn Rạp => render ngày chiếu
   const handleSelectTheater = async (event) => {
-    await dispatch(refreshTheater());
     await dispatch(addNameTheater(event.target.value));
     await dispatch(selectDay(codeFilm));
-    // await renderDayList();
   };
   //   Khi ấn chọn ngày => render giờ chiếu
   const handleSelectDate = async (event) => {
-    await dispatch(refreshDate());
     await dispatch(addNameDate(event.target.value));
     await dispatch(getHoursList());
-    // await renderDayList();
   };
   const handleSelectHours = (event) => {
-    dispatch(addNameHours(event.target.value));
+    dispatch(addCode(event.target.value));
   };
   // Lấy isLoading và dùng nó để thay đổi Rap => Dang tìm rạp khi call API rap
   const isLoading = useSelector((state) => state.searchMovieReducer.isLoading);
   return (
-    <form className="search__movie">
+    <form
+      className="search__movie"
+      className={darkMode ? "search__movie Dark" : "search__movie"}
+    >
       <div className="search__movie__group movieSelect">
-        <select name="movieSelect" onChange={handleSelectFilm}>
+        <select
+          className={darkMode ? "Dark" : ""}
+          name="movieSelect"
+          onChange={handleSelectFilm}
+        >
           <option value="movieSelect" hidden selected>
             Chọn Phim
           </option>
@@ -169,6 +145,7 @@ const SearchMovie = () => {
       </div>
       <div className="search__movie__group">
         <select
+          className={darkMode ? "Dark" : ""}
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
@@ -184,7 +161,11 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select name="dateSelect" onChange={handleSelectDate}>
+        <select
+          className={darkMode ? "Dark" : ""}
+          name="dateSelect"
+          onChange={handleSelectDate}
+        >
           <option hidden selected>
             Ngày chiếu
           </option>
@@ -192,7 +173,11 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select name="hourSelect" onChange={handleSelectHours}>
+        <select
+          className={darkMode ? "Dark" : ""}
+          name="hourSelect"
+          onChange={handleSelectHours}
+        >
           <option hidden selected>
             Giờ chiếu
           </option>
@@ -204,6 +189,9 @@ const SearchMovie = () => {
           type="button"
           className="btnBuyTicket"
           disabled={checkStatusButton() ? false : true}
+          onClick={
+            checkStatusButton() ? () => history.push(`/booking/${code}`) : ""
+          }
           style={
             checkStatusButton()
               ? {

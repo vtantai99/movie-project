@@ -1,49 +1,41 @@
 import React from "react";
-import "./index.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { switchMovieDetailNav } from "../../redux/action/movieDetailAction/actions";
-import MovieDetailInfo from "../MovieDetailInfo";
-import MovieDetailShowTime from "../MovieDetailShowTime";
-import MovieDetailReview from "../MovieDetailReview";
+import { useSelector } from "react-redux";
+import DetailMainInfo from "../DetailMainInfo";
+import DetailMainShowTime from "../DetailMainShowTime";
+import DetailMainComment from "../DetailMainComment";
 const DetailMain = () => {
-  const dispatch = useDispatch();
   const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
-  const { movieDetailNav, movieDetail } = movieDetailReducer;
-
-  const renderMovieDetailMain = () => {
-    switch (movieDetailNav) {
-      case "lichChieu":
-        return <MovieDetailShowTime />;
-      case "thongTin":
-        return <MovieDetailInfo movieDetail={movieDetail} />;
-      case "danhGia":
-        return <MovieDetailReview />;
-    }
-  };
-
+  const { movieDetail } = movieDetailReducer;
   return (
     <div className="detailMain">
-      <div className="detailMain_nav">
-        <span
-          onClick={() => dispatch(switchMovieDetailNav("lichChieu"))}
-          className={movieDetailNav === "lichChieu" ? "active" : ""}
-        >
-          Lịch chiếu
-        </span>
-        <span
-          onClick={() => dispatch(switchMovieDetailNav("thongTin"))}
-          className={movieDetailNav === "thongTin" ? "active" : ""}
-        >
-          Thông tin
-        </span>
-        <span
-          onClick={() => dispatch(switchMovieDetailNav("danhGia"))}
-          className={movieDetailNav === "danhGia" ? "active" : ""}
-        >
-          Đánh giá
-        </span>
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <a className="nav-link active" data-toggle="tab" href="#showTimes">
+            Lịch chiếu
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link review" data-toggle="tab" href="#info">
+            Thông tin
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link promotion" data-toggle="tab" href="#comment">
+            Đánh giá
+          </a>
+        </li>
+      </ul>
+      <div className="tab-content">
+        <div className="tab-pane active" id="showTimes">
+          <DetailMainShowTime />
+        </div>
+        <div className="tab-pane fade" id="info">
+          <DetailMainInfo movieDetail={movieDetail} />
+        </div>
+        <div className="tab-pane fade" id="comment">
+          <DetailMainComment />
+        </div>
       </div>
-      {renderMovieDetailMain()}
     </div>
   );
 };

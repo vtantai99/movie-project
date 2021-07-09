@@ -1,0 +1,16 @@
+.login {
+  background: url(../../../Images/background.jpg);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    width: 35%;
+    text-align: center;
+    background-color: $textWhite;
+    padding: 65px 35px;
+    border-radius: 5px;
+  }
+}
