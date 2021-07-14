@@ -1,6 +1,6 @@
 .theater {
-  transition: all 0.3s ease-in-out;
-  color: $textBlack;
+  transition: all 0.2s linear;
+  // color: $textBlack;
   &.Dark {
     background: $bgDarkMode;
     color: $textWhite;

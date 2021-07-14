@@ -1,6 +1,5 @@
 .news {
-  color: $textBlack;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.2s linear;
   &.Dark {
     color: $textWhite;
   }

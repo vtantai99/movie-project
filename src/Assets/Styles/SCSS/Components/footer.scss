@@ -1,7 +1,7 @@
 .footer {
   background: $bgFooter;
   padding: 20px 0px;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.2s linear;
   &.Dark {
     background: $bgDarkMode;
   }

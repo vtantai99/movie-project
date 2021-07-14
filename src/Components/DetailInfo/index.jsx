@@ -131,9 +131,6 @@ const DetailInfo = () => {
           <small className="digital__movie">
             120 phút - {danhGia} IMDb - 2D/Digital
           </small>
-          {/* <Button className="btn__movie" variant="contained">
-                Mua vé
-              </Button> */}
         </div>
       </div>
     </Fragment>

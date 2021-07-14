@@ -47,22 +47,22 @@ const Apps = () => {
                   autoplayHoverPause
                 >
                   <div className="apps__mobile__carousel--item">
-                    <img src={app1} alt="" />
+                    <img src={app1} alt="app" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={app2} alt="" />
+                    <img src={app2} alt="app" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={app3} alt="" />
+                    <img src={app3} alt="app" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={app4} alt="" />
+                    <img src={app4} alt="app" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={app5} alt="" />
+                    <img src={app5} alt="app" />
                   </div>
                   <div className="apps__mobile__carousel--item">
-                    <img src={app6} alt="" />
+                    <img src={app6} alt="app" />
                   </div>
                 </OwlCarousel>
               </div>

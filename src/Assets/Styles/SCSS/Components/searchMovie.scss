@@ -5,9 +5,13 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transform: translateY(-50%);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s linear;
   &.Dark {
+    color: $textWhite;
     background: $bgDarkMode;
+    select {
+      background: $bgDarkMode;
+    }
   }
   @include Tablet {
     height: 60px;
@@ -71,11 +75,6 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       display: -webkit-box;
-      transition: all 0.3s ease-in-out;
-      &.Dark {
-        background: $bgDarkMode;
-        color: $textWhite;
-      }
       @include MobileAndTablet {
         font-size: 14px;
         border-bottom: 2px solid #e4e4e4;
@@ -103,13 +102,12 @@
       padding: 10px;
       font-size: $fzP;
       color: $textWhite;
-      // border: 1px solid;
       border-radius: 4px;
       cursor: pointer;
       outline: none;
-      transition: all 0.3s;
+      transition: all 0.2s linear;
       &:hover {
-        transform: translateY(-10%);
+        transform: translateY(-5%);
       }
       @include MobileAndTablet {
         width: 50%;

@@ -76,7 +76,6 @@ const searchMovieReducer = (state = initialState, action) => {
         listTheaterSelected: [],
         listTime: [],
         listHours: [],
-        nameMovie: null,
         nameTheater: null,
         nameDate: null,
         code: null,
@@ -92,7 +91,7 @@ const searchMovieReducer = (state = initialState, action) => {
       };
     }
     case actionTypes.REFRESH_DATE: {
-      return { ...state, listHours: [], code: null };
+      return { ...state, code: null };
     }
     default:
       return state;

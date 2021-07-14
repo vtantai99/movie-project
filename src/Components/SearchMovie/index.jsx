@@ -16,6 +16,7 @@ import {
   refreshTheater,
   refreshDate,
 } from "../../redux/action/searchMovieAction/action";
+
 const SearchMovie = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -96,10 +97,6 @@ const SearchMovie = () => {
       return <option disabled>Vui lòng chọn Ngày chiếu</option>;
     return renderHour();
   };
-  const checkStatusButton = () => {
-    if (nameMovie && nameTheater && nameDate && code) return true;
-    return false;
-  };
   /**Thao tac on Change */
   // Khi ấn chọn Phim => Gửi API để lấy hệ thống rạp
   const handleSelectFilm = async (event) => {
@@ -110,11 +107,13 @@ const SearchMovie = () => {
     // gọi API hệ thống rạp
     await dispatch(selectTheater(option));
     await dispatch(addNameMovie(event.target.value));
+    await dispatch(refreshFilm());
   };
   //   Khi ấn chọn Rạp => render ngày chiếu
   const handleSelectTheater = async (event) => {
     await dispatch(addNameTheater(event.target.value));
     await dispatch(selectDay(codeFilm));
+    await dispatch(refreshTheater());
   };
   //   Khi ấn chọn ngày => render giờ chiếu
   const handleSelectDate = async (event) => {
@@ -132,11 +131,7 @@ const SearchMovie = () => {
       className={darkMode ? "search__movie Dark" : "search__movie"}
     >
       <div className="search__movie__group movieSelect">
-        <select
-          className={darkMode ? "Dark" : ""}
-          name="movieSelect"
-          onChange={handleSelectFilm}
-        >
+        <select name="movieSelect" onChange={handleSelectFilm}>
           <option value="movieSelect" hidden selected>
             Chọn Phim
           </option>
@@ -145,7 +140,6 @@ const SearchMovie = () => {
       </div>
       <div className="search__movie__group">
         <select
-          className={darkMode ? "Dark" : ""}
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
@@ -161,11 +155,7 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select
-          className={darkMode ? "Dark" : ""}
-          name="dateSelect"
-          onChange={handleSelectDate}
-        >
+        <select name="dateSelect" onChange={handleSelectDate}>
           <option hidden selected>
             Ngày chiếu
           </option>
@@ -173,11 +163,7 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select
-          className={darkMode ? "Dark" : ""}
-          name="hourSelect"
-          onChange={handleSelectHours}
-        >
+        <select name="hourSelect" onChange={handleSelectHours}>
           <option hidden selected>
             Giờ chiếu
           </option>
@@ -188,12 +174,10 @@ const SearchMovie = () => {
         <Button
           type="button"
           className="btnBuyTicket"
-          disabled={checkStatusButton() ? false : true}
-          onClick={
-            checkStatusButton() ? () => history.push(`/booking/${code}`) : ""
-          }
+          disabled={code ? false : true}
+          onClick={code ? () => history.push(`/booking/${code}`) : ""}
           style={
-            checkStatusButton()
+            code
               ? {
                   background: "linear-gradient(270deg, #fb4226, #ce3017)",
                   borderColor: "D33219",

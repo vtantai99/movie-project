@@ -6,7 +6,7 @@
     justify-content: flex-start;
     width: 100%;
     align-items: center;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s linear;
     padding: 20px;
     cursor: pointer;
     position: relative;
@@ -25,7 +25,7 @@
       background-color: $bgBorder;
       height: 2px;
       width: calc(100% - 40px);
-      transition: all 0.3s ease-in-out;
+      transition: all 0.2s linear;
     }
     img {
       opacity: 0.5;
@@ -40,7 +40,7 @@
       font-size: 15px;
       font-weight: 600;
       text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.2s linear;
     }
   }
   .active {

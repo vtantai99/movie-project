@@ -91,18 +91,10 @@ const SettingPages = () => {
       >
         <ul>
           {user ? (
-            <li>
+            <li onClick={() => history.push("/info")}>
               <span>
-                <NavLink
-                  style={{
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                  to={`/info/${user.taiKhoan}`}
-                >
-                  <i className="fas fa-info-circle"></i>
-                  Thông tin tài khoản
-                </NavLink>
+                <i className="fas fa-info-circle"></i>
+                Thông tin tài khoản
               </span>
             </li>
           ) : (
@@ -116,7 +108,7 @@ const SettingPages = () => {
             <DarkMode />
           </li>
           {user?.maLoaiNguoiDung === "QuanTri" ? (
-            <li>
+            <li onClick={() => history.push("/admin")}>
               <span>
                 <i class="fas fa-user-cog"></i>
                 Admin

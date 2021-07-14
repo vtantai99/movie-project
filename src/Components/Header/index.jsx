@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import * as actions from "../../redux/action/userAction/actionTypes";
 import swal from "sweetalert";
 import { Avatar, Button } from "@material-ui/core";
@@ -74,9 +74,11 @@ const Header = () => {
         <div className="header__navbar__list">
           <ul>
             <li>
+              {/* <NavLink to="/#showTimes">Lịch chiếu</NavLink> */}
               <a href="/#showTimes">Lịch chiếu</a>
             </li>
             <li>
+              {/* <NavLink to="/#theaters">Cụm rạp</NavLink> */}
               <a href="/#theaters">Cụm rạp</a>
             </li>
             <li>

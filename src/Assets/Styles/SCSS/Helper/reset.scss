@@ -11,3 +11,10 @@ button {
 ul {
   list-style: none;
 }
+
+.card {
+  background-color: $bgPrimary;
+  box-shadow: $boxShadow;
+  border-radius: 10px;
+  padding: 20px;
+}
