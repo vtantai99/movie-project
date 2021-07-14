@@ -15,19 +15,27 @@ import Booking from "./Pages/Booking";
 import PageNotFound from "./Pages/PageNotFound";
 import InfoUser from "./Pages/InfoUser";
 import Admin from "./Pages/Admin";
+import Header from "./Components/Header";
+
 function App() {
   return (
     <Provider store={store}>
       <LoadingDemo />
       <Router>
         <Switch>
-          <Route path="/detail/:movieId" component={Detail}></Route>
+          <Route path="/detail/:movieId">
+            <Header />
+            <Detail />
+          </Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/signUp" component={SignUp}></Route>
           <Route path="/booking/:bookingId" component={Booking}></Route>
           <Route path="/info" component={InfoUser}></Route>
           <Route path="/admin" component={Admin}></Route>
-          <Route path="/" component={Home}></Route>
+          <Route path="/">
+            <Header />
+            <Home />
+          </Route>
           <Route component={PageNotFound}></Route>
         </Switch>
       </Router>

@@ -31,7 +31,7 @@ const Detail = () => {
   const { movieDetail } = useSelector((state) => state.movieDetailReducer);
   return (
     <Fragment>
-      <Header />
+      {/* <Header /> */}
       {movieDetail ? (
         <section className="detail">
           <DetailInfo />

@@ -22,19 +22,20 @@ const AdminSideBar = () => {
   ];
   const renderSideBarList = () => {
     return sideBarList.map((item, index) => (
-      <NavLink to={`/${item.location}`} key={index}>
-        <div
-          className="flex items-center pl-3 pr-5 py-2 rounded-md hover:text-blue-400
-        cursor-pointer transition-all"
-        >
-          <i className={`mr-2 ${item.icon}`}></i>
-          {item.title}
-        </div>
+      <NavLink
+        className="flex items-center pl-3 pr-5 py-2 rounded-md
+      hover:text-blue-400 hover:no-underline cursor-pointer transition-all"
+        to={`/${item.location}`}
+        key={index}
+        activeClassName="bg-blue-500"
+      >
+        <i className={`mr-2 ${item.icon}`}></i>
+        {item.title}
       </NavLink>
     ));
   };
   return (
-    <div className="bg-white shadow fixed top-0 left-0 h-screen px-3 py-4">
+    <div className="w-56 bg-white shadow fixed top-0 left-0 h-screen px-3 py-4">
       {renderSideBarList()}
     </div>
   );

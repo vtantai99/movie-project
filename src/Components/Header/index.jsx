@@ -74,18 +74,20 @@ const Header = () => {
         <div className="header__navbar__list">
           <ul>
             <li>
-              {/* <NavLink to="/#showTimes">Lịch chiếu</NavLink> */}
-              <a href="/#showTimes">Lịch chiếu</a>
+              <NavLink to="/">Lịch chiếu</NavLink>
+              {/* <a href="/#showTimes">Lịch chiếu</a> */}
             </li>
             <li>
-              {/* <NavLink to="/#theaters">Cụm rạp</NavLink> */}
-              <a href="/#theaters">Cụm rạp</a>
+              <NavLink to="/">Cụm rạp</NavLink>
+              {/* <a href="/#theaters">Cụm rạp</a> */}
             </li>
             <li>
-              <a href="/#news">Tin tức</a>
+              <NavLink to="/">Tin tức</NavLink>
+              {/* <a href="/#news">Tin tức</a> */}
             </li>
             <li>
-              <a href="/#apps">Ứng dụng</a>
+              <NavLink to="/">Ứng dụng</NavLink>
+              {/* <a href="/#apps">Ứng dụng</a> */}
             </li>
           </ul>
         </div>

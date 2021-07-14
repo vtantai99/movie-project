@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.2.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -15,6 +14,8 @@
     "date-format": "^3.0.0",
     "formik": "^2.2.9",
     "node-sass": "^4.14.1",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.3.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.6.1",
     "react-countup": "^4.4.0",
@@ -34,10 +35,12 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run build:css && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/Assets/Styles/TailwindCSS/tailwind.css -o src/Assets/Styles/TailwindCSS/app.css",
+    "watch:css": "postcss src/Assets/Styles/TailwindCSS/tailwind.css -o src/Assets/Styles/TailwindCSS/app.css"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +62,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
   }
 }
