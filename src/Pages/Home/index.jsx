@@ -3,7 +3,7 @@ import "../../Assets/Styles/SCSS/Pages/home.scss";
 import SearchMovie from "../../Components/SearchMovie";
 import OwlCarouselComponent from "../../Components/Carousel";
 import Header from "../../Components/Header";
-import GreyMain from "../../Components/GreyMain";
+import Greymain from "../../Components/Greymain";
 import News from "../../Components/News";
 import Apps from "../../Components/Apps";
 import Footer from "../../Components/Footer";
@@ -28,9 +28,9 @@ const Home = () => {
         <div className="container">
           <SearchMovie />
           <MovieList />
-          <GreyMain />
+          <Greymain />
           <Theaters />
-          <GreyMain />
+          <Greymain />
           <News />
         </div>
       </div>
