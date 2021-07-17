@@ -90,15 +90,13 @@ const SettingPages = () => {
         }
       >
         <ul>
-          {user ? (
+          {user && (
             <li onClick={() => history.push("/info")}>
               <span>
                 <i className="fas fa-info-circle"></i>
                 Thông tin tài khoản
               </span>
             </li>
-          ) : (
-            ""
           )}
           <li>
             <span>
@@ -107,15 +105,13 @@ const SettingPages = () => {
             </span>
             <DarkMode />
           </li>
-          {user?.maLoaiNguoiDung === "QuanTri" ? (
+          {user?.maLoaiNguoiDung === "QuanTri" && (
             <li onClick={() => history.push("/admin")}>
               <span>
                 <i class="fas fa-user-cog"></i>
                 Admin
               </span>
             </li>
-          ) : (
-            ""
           )}
           {user ? (
             <li onClick={() => logOutUser()}>

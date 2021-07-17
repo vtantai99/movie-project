@@ -20,6 +20,7 @@
       text-align: center;
     }
     &--title {
+      margin-bottom: 10px;
       color: $textWhite;
       font-size: $fzName;
     }
@@ -34,6 +35,7 @@
   &__contact {
     width: 50%;
     &__title {
+      margin-bottom: 10px;
       color: $textWhite;
       font-size: $fzName;
       text-align: center;

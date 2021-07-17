@@ -3,8 +3,7 @@ import HourHomeMobile from "../HourHomeMobile";
 const TheatersMovieMobile = ({ danhSachPhim }) => {
   const filterDate = danhSachPhim.danhSachPhimTheoRap.map((item) => {
     const lichChieuTheoPhim = item.lstLichChieuTheoPhim.filter(
-      (item) =>
-        new Date(item.ngayChieuGioChieu).getDate() === new Date().getDate()
+      (item) => new Date(item.ngayChieuGioChieu).getDate() === 1
     );
     return {
       lichChieuTheoPhim,

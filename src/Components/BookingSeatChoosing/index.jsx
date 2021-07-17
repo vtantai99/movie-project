@@ -27,6 +27,7 @@ const DangChonSeats = () => {
       return `A${stt}`;
     }
   };
+
   const renderDangChonSeat = () => {
     const seatsChoosing = danhSachGhe?.filter((ghe) => ghe.dangChon);
     return seatsChoosing && seatsChoosing.length
@@ -39,6 +40,7 @@ const DangChonSeats = () => {
         )
       : null;
   };
+
   return renderDangChonSeat();
 };
 export default DangChonSeats;

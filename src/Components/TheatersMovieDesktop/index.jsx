@@ -6,8 +6,7 @@ const TheatersMovieDesktop = (props) => {
   // console.log(props.movieDetail.danhSachPhim);
   const filterDate = props.movieDetail.danhSachPhim.map((item) => {
     const lichChieuTheoNgay = item.lstLichChieuTheoPhim.filter(
-      (item) =>
-        new Date(item.ngayChieuGioChieu).getDate() === new Date().getDate()
+      (item) => new Date(item.ngayChieuGioChieu).getDate() === 1
     );
     return {
       lichChieuTheoNgay,

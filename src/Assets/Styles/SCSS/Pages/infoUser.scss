@@ -7,17 +7,105 @@ body {
 .info {
   padding: 70px 0;
   font-weight: $fwLight;
-  &__item {
-    position: relative;
-    border-bottom: 2px solid $bgBorder;
-    padding: 10px 0;
+  color: $textInfo;
+  &__detail {
+    height: 100%;
+    &__title {
+      color: $textBlack;
+      font-weight: $fwMedium;
+      font-size: 18px;
+    }
+    &__item {
+      position: relative;
+      border-bottom: 2px solid $bgBorder;
+      padding: 10px 15px;
+      strong {
+        color: $textUser;
+      }
+      &.passWord {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all linear 0.3s;
+        button {
+          background: $bgBtn3;
+          color: $textWhite;
+          font-size: 12px;
+        }
+      }
+    }
   }
-  .total__item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    i {
-      font-size: 30px;
+  &__history {
+    &__title {
+      color: $textBlack;
+      font-weight: $fwMedium;
+      font-size: 18px;
+    }
+    &__table {
+      padding: 10px 15px;
+      overflow-y: auto;
+      table {
+        width: 100%;
+        thead {
+          color: $textBlack;
+          background: #ededf3;
+        }
+        tbody {
+          tr {
+            transition: all 0.1s linear;
+            &:hover {
+              color: $textWhite;
+              background: $bgBtn4;
+            }
+          }
+        }
+        th,
+        td {
+          text-transform: capitalize;
+          padding: 15px 10px;
+        }
+      }
+      .pagination {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 30px;
+        button {
+          width: 30px;
+          height: 30px;
+          margin-left: 10px;
+          border-radius: 50%;
+          transition: all 0.2s ease-in-out;
+          &.active {
+            color: $textWhite;
+            background: $bgBtn3;
+          }
+          &:not(.active):hover {
+            transform: translateY(-5%);
+            color: $textWhite;
+            background: $bgBtn4;
+          }
+        }
+      }
+    }
+  }
+  &__total {
+    &__item {
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      i {
+        font-size: 40px;
+        color: $textBlack;
+      }
+      &--content {
+        text-align: center;
+        span {
+          color: $textBlack;
+          font-size: 24px;
+          font-weight: $fwMedium;
+        }
+      }
     }
   }
 }

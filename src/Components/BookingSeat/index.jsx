@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectSeat } from "../../redux/action/bookingAction/actions";
 const BookingSeats = () => {
   const dispatch = useDispatch();
+
   const { danhSachGhe } = useSelector(
     (state) => state.bookingReducer.bookingList
   );
+
   const renderSeats = () => {
     const ghes = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let arr = [];
@@ -29,11 +31,13 @@ const BookingSeats = () => {
       }
       start += 16;
     }
+
     const onSelectSeat = (seat) => {
       if (!seat.daDat) {
         dispatch(selectSeat(seat));
       }
     };
+
     const getClass = (seat) => {
       let string = "seat ";
       if (seat.daDat) {
@@ -49,6 +53,7 @@ const BookingSeats = () => {
       }
       return string;
     };
+
     return arr.map((seatRow, idx) => (
       <div key={idx} className="seats__main__row">
         <span className="tenDay">{seatRow.day}</span>
@@ -66,40 +71,41 @@ const BookingSeats = () => {
       </div>
     ));
   };
-  return danhSachGhe ? (
-    <div className="seats">
-      <div className="seats__way">
-        <span className="exit__item">
-          <i class="fas fa-angle-double-right"></i>
-          <i class="fas fa-door-open"></i>
-        </span>
-        <span className="exit__item">
-          EXIT
-          <i class="fas fa-door-open"></i>
-        </span>
+
+  return (
+    danhSachGhe && (
+      <div className="seats">
+        <div className="seats__way">
+          <span className="exit__item">
+            <i class="fas fa-angle-double-right"></i>
+            <i class="fas fa-door-open"></i>
+          </span>
+          <span className="exit__item">
+            EXIT
+            <i class="fas fa-door-open"></i>
+          </span>
+        </div>
+        <div className="seats__main">{renderSeats()}</div>
+        <div className="seats__note">
+          <div className="seats__note__item">
+            <span style={{ backgroundColor: "#3e515d" }}></span>
+            <p>Ghế thường</p>
+          </div>
+          <div className="seats__note__item">
+            <span style={{ backgroundColor: "#f7b500" }}></span>
+            <p>Ghế VIP</p>
+          </div>
+          <div className="seats__note__item">
+            <span style={{ backgroundColor: "#28a745" }}></span>
+            <p>Ghế đang chọn</p>
+          </div>
+          <div className="seats__note__item">
+            <span className="daDat" style={{ backgroundColor: "#ccc" }}></span>
+            <p>Ghế đã đặt</p>
+          </div>
+        </div>
       </div>
-      <div className="seats__main">{renderSeats()}</div>
-      <div className="seats__note">
-        <div className="seats__note__item">
-          <span style={{ backgroundColor: "#3e515d" }}></span>
-          <p>Ghế thường</p>
-        </div>
-        <div className="seats__note__item">
-          <span style={{ backgroundColor: "#f7b500" }}></span>
-          <p>Ghế VIP</p>
-        </div>
-        <div className="seats__note__item">
-          <span style={{ backgroundColor: "#28a745" }}></span>
-          <p>Ghế đang chọn</p>
-        </div>
-        <div className="seats__note__item">
-          <span className="daDat" style={{ backgroundColor: "#ccc" }}></span>
-          <p>Ghế đã đặt</p>
-        </div>
-      </div>
-    </div>
-  ) : (
-    ""
+    )
   );
 };
 

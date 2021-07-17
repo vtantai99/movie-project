@@ -17,6 +17,10 @@ const userReducer = (state = initialState, action) => {
     case actions.INFO_USER: {
       return { ...state, info: payload };
     }
+    case actions.CHANGE_PASS: {
+      const newInfo = { ...state.info, matKhau: payload.matKhau };
+      return { ...state, info: newInfo };
+    }
     case actions.HIDE_ERROR:
       return { ...state, error: payload };
     case actions.SHOW_ERROR:

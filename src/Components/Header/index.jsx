@@ -180,14 +180,17 @@ const Header = () => {
                 )}
               </li>
               <li>
+                <i class="fas fa-adjust"></i>
                 <DarkMode />
               </li>
-              <li>
-                <a href="/#" onClick={handleHiddenNav}>
-                  <i class="fa fa-history"></i>
-                  Lịch sử mua vé
-                </a>
-              </li>
+              {user && (
+                <li>
+                  <NavLink to="/info" onClick={handleHiddenNav}>
+                    <i className="fas fa-info-circle"></i>
+                    Thông tin tài khoản
+                  </NavLink>
+                </li>
+              )}
               <li>
                 <a href="/#showTimes" onClick={handleHiddenNav}>
                   <i className="fa fa-calendar-alt" />

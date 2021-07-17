@@ -25,6 +25,7 @@ export const signUpRequest = (user, history) => async (dispatch) => {
     dispatch(showError(err.response.data));
   }
 };
+
 export const loginRequest = (user, history) => async (dispatch) => {
   try {
     const res = await axios.post(
@@ -39,7 +40,6 @@ export const loginRequest = (user, history) => async (dispatch) => {
         icon: "success",
         text: "Login Successful",
         timer: 1000,
-        buttons: false,
       });
       await setTimeout(() => history.push("/"), 1000);
     }
@@ -47,7 +47,7 @@ export const loginRequest = (user, history) => async (dispatch) => {
     dispatch(showError(err.response.data));
   }
 };
-export const getInfoUser = (account) => {
+export const getInfoUserRequest = (account) => {
   return (dispatch) => {
     Axios.post(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
@@ -57,6 +57,32 @@ export const getInfoUser = (account) => {
       .catch((err) => console.log(err));
   };
 };
+// export const updateUserRequest =
+//   (infoUser, accessToken) => async (dispatch) => {
+//     console.log(infoUser, accessToken);
+//     try {
+//       const res = await axios({
+//         method: "PUT",
+//         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+//         data: infoUser,
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       });
+//       if (res.status === 200 || res.status === 201) {
+//         await dispatch(updateInfo(res.data));
+//         swal({
+//           title: "Yeah",
+//           icon: "success",
+//           text: "Đổi mật khẩu thành công",
+//           timer: 1000,
+//           buttons: false,
+//         });
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
 export const logIn = (user) => {
   return {
     type: actions.LOG_IN,
@@ -69,6 +95,12 @@ export const infoUser = (info) => {
     payload: info,
   };
 };
+// export const updateInfo = (info) => {
+//   return {
+//     type: actions.CHANGE_PASS,
+//     payload: info,
+//   };
+// };
 export const showError = (err) => {
   return {
     type: actions.SHOW_ERROR,

@@ -1,9 +1,9 @@
 .modal-dialog {
   .modal-content {
-    background: transparent;
+    // background: transparent;
     border: none;
-    .trailer {
-      border-radius: 10px;
+    .trailer__video {
+      border-radius: 4px;
       height: 450px;
       @include Tablet {
         height: 350px;

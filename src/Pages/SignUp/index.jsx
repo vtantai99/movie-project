@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FormHelperText } from "@material-ui/core";
+import { FormHelperText, Checkbox, FormControlLabel } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signUpRequest,
@@ -47,14 +47,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const { register, handleSubmit, errors, watch } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm({
+    mode: "onTouched",
+  });
   const history = useHistory();
   const dispatch = useDispatch();
   const { error } = useSelector((state) => state.userReducer);
   useEffect(() => {
     dispatch(hideError());
   }, []);
+  console.log(errors.lastName);
   const onSubmit = (data) => {
+    console.log(data);
     const { firstName, lastName, matKhau, soDt, taiKhoan, email } = data;
     const userData = {
       taiKhoan,
@@ -80,7 +84,7 @@ export default function SignUp() {
             Đăng ký
           </Typography>
           <form
-            onSubmit={handleSubmit((data) => onSubmit(data))}
+            onSubmit={handleSubmit(onSubmit)}
             className={classes.form}
             noValidate
           >
@@ -88,56 +92,69 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   name="lastName"
+                  autoComplete="off"
                   variant="outlined"
                   required
                   fullWidth
                   label="Họ"
-                  autoFocus
-                  inputRef={register({ required: true })}
-                  error={errors.lastName ? true : false}
+                  inputRef={register({
+                    required: "Xin vui lòng điền thông tin",
+                    minLength: {
+                      value: 2,
+                      message: "Vui lòng điền đúng Họ",
+                    },
+                  })}
+                  error={errors.lastName && true}
                 />
-                <FormHelperText error={errors.lastName ? true : false}>
-                  {errors.lastName && errors.lastName.type === "required"
-                    ? "Họ không được bỏ trống"
-                    : ""}
+                <FormHelperText error={errors.lastName && true}>
+                  {errors.lastName && errors.lastName.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  name="firstName"
+                  autoComplete="off"
                   variant="outlined"
                   required
                   fullWidth
                   label="Tên"
-                  name="firstName"
-                  inputRef={register({ required: true })}
-                  error={errors.firstName ? true : false}
+                  inputRef={register({
+                    required: "Xin vui lòng điền thông tin",
+                    minLength: {
+                      value: 2,
+                      message: "Vui lòng điền đúng Tên",
+                    },
+                  })}
+                  error={errors.firstName && true}
                 />
-                <FormHelperText error={errors.firstName ? true : false}>
-                  {errors.firstName && errors.firstName.type === "required"
-                    ? "Tên không được bỏ trống"
-                    : ""}
+                <FormHelperText error={errors.firstName && true}>
+                  {errors.firstName && errors.firstName.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={12}>
                 <TextField
                   name="taiKhoan"
+                  autoComplete="off"
                   variant="outlined"
                   required
                   fullWidth
                   id="taiKhoan"
                   label="Tài khoản"
-                  inputRef={register({ required: true, minLength: 6 })}
-                  error={errors.taiKhoan ? true : false}
+                  inputRef={register({
+                    required: "Xin vui lòng điền thông tin",
+                    minLength: {
+                      value: 6,
+                      message: "Tài khoản phải trên 6 kí tự",
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: "Tài khoản không được quá 10 kí tự",
+                    },
+                  })}
+                  error={errors.taiKhoan && true}
                 />
-                <FormHelperText error={errors.taiKhoan ? true : false}>
-                  {errors.taiKhoan && errors.taiKhoan.type === "required"
-                    ? "Tài khoản không được bỏ trống"
-                    : ""}
-                </FormHelperText>
-                <FormHelperText error={errors.taiKhoan ? true : false}>
-                  {errors.taiKhoan && errors.taiKhoan.type === "minLength"
-                    ? "Tài khoản phải dài hơn 6 kí tự"
-                    : ""}
+                <FormHelperText error={errors.taiKhoan && true}>
+                  {errors.taiKhoan && errors.taiKhoan.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -148,89 +165,98 @@ export default function SignUp() {
                   fullWidth
                   label="Mật khẩu"
                   type="password"
-                  inputRef={register({ required: true })}
-                  error={errors.matKhau ? true : false}
+                  inputRef={register({
+                    required: "Xin vui lòng điền thông tin",
+                    pattern: {
+                      value:
+                        /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                      message:
+                        "Mật khẩu bắt buộc bao gồm: Chữ viết hoa, chữ viết thường, số hoặc kí tự đặc biệt và phải ít nhất 8 kí tự. VD(Cute123@)",
+                    },
+                  })}
+                  error={errors.matKhau && true}
                 />
-                <FormHelperText error={errors.matKhau ? true : false}>
-                  {errors.matKhau && errors.matKhau.type === "required"
-                    ? "Mật khẩu không được để bỏ trống"
-                    : ""}
+                <FormHelperText error={errors.matKhau && true}>
+                  {errors.matKhau && errors.matKhau.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  name="matKhau2"
                   variant="outlined"
                   required
                   fullWidth
                   type="password"
                   label="Xác nhận mật khẩu"
-                  name="matKhau2"
                   inputRef={register({
-                    required: true,
-                    validate: (value) => value === watch("matKhau"),
+                    required: "Xin vui lòng điền thông tin",
+                    validate: (value) =>
+                      value === watch("matKhau") || "Xác nhận mật khẩu sai",
                   })}
-                  error={errors.matKhau2 ? true : false}
+                  error={errors.matKhau2 && true}
                 />
-                <FormHelperText error={errors.matKhau2 ? true : false}>
-                  {errors.matKhau2 && errors.matKhau2.type === "required"
-                    ? "Xác nhận mật khẩu không được để bỏ trống"
-                    : ""}
-                </FormHelperText>
-                <FormHelperText error={errors.matKhau2 ? true : false}>
-                  {errors.matKhau2 && errors.matKhau2.type === "validate"
-                    ? "Xác nhận mật khẩu sai"
-                    : ""}
+                <FormHelperText error={errors.matKhau2 && true}>
+                  {errors.matKhau2 && errors.matKhau2.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   name="email"
+                  autoComplete="off"
                   type="email"
                   variant="outlined"
                   required
                   fullWidth
                   label="Email"
-                  inputRef={register({ required: true })}
-                  error={errors.email ? true : false}
+                  inputRef={register({
+                    required: "Xin vui lòng điền thông tin",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: "Email, VD(user123@gmail.com)",
+                    },
+                  })}
+                  error={errors.email && true}
                 />
-                <FormHelperText error={errors.email ? true : false}>
-                  {errors.email && errors.email.type === "required"
-                    ? "Email không được để bỏ trống"
-                    : ""}
+                <FormHelperText error={errors.email && true}>
+                  {errors.email && errors.email.message}
                 </FormHelperText>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  name="soDt"
                   variant="outlined"
+                  autoComplete="off"
                   required
                   fullWidth
                   label="Số điện thoại"
-                  name="soDt"
                   inputRef={register({
-                    required: true,
-                    minLength: 10,
-                    valueAsNumber: true,
+                    required: "Xin vui lòng điền thông tin",
+                    pattern: {
+                      value: /^\d{10}$/,
+                      message:
+                        "Số điện thoại không hợp lệ, hãy chắc chắn bạn nhập đủ 10 số. VD(0987654321)",
+                    },
                   })}
-                  error={errors.soDt ? true : false}
-                />
-                <FormHelperText error={errors.soDt ? true : false}>
-                  {errors.soDt && errors.soDt.type === "required"
-                    ? "Số điện thoại không được để bỏ trống"
-                    : ""}
-                </FormHelperText>
-                <FormHelperText error={errors.soDt ? true : false}>
-                  {errors.soDt && errors.soDt.type === "valueAsNumber"
-                    ? "Số điện thoại không hợp lệ"
-                    : ""}
-                </FormHelperText>
-                <FormHelperText error={errors.soDt ? true : false}>
-                  {errors.soDt && errors.soDt.type === "minLength"
-                    ? "Số điện thoại phải đủ 10 số"
-                    : ""}
+                  error={errors.soDt && true}
+                />{" "}
+                <FormHelperText error={errors.soDt && true}>
+                  {errors.soDt && errors.soDt.message}
                 </FormHelperText>
               </Grid>
             </Grid>
-            {error ? (
+            <FormControlLabel
+              name="check"
+              control={<Checkbox value="remember" color="primary" />}
+              label="Hứa là sẽ mua vé nhiều"
+              inputRef={register({
+                required: "Xin vui lòng hứa",
+              })}
+            />
+            <FormHelperText error={errors.check && true}>
+              {errors.check && errors.check.message}
+            </FormHelperText>
+            {error && (
               <Alert
                 variant="filled"
                 severity="error"
@@ -238,8 +264,6 @@ export default function SignUp() {
               >
                 {error}
               </Alert>
-            ) : (
-              ""
             )}
             <Button
               type="submit"

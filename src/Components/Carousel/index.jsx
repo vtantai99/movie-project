@@ -12,11 +12,18 @@ import playIcon from "../../Assets/Images/playIcon.png";
 const OwlCarouselComponent = () => {
   const dispatch = useDispatch();
 
+  const listCarousel = [
+    { image: carousel1, trailer: "https://www.youtube.com/embed/vTHVebsV49A" },
+    { image: carousel2, trailer: "https://www.youtube.com/embed/2AQJW9TFnww" },
+    { image: carousel3, trailer: "https://www.youtube.com/embed/lAjEKy85E1M" },
+    { image: carousel4, trailer: "https://www.youtube.com/embed/lnrL-wjyNhQ" },
+  ];
+
   return (
     <section className="carousel">
       <OwlCarousel
         items={1}
-        autoplay
+        // autoplay
         loop
         className="owl-theme"
         nav
@@ -24,66 +31,17 @@ const OwlCarouselComponent = () => {
         smartSpeed={600}
         autoplayHoverPause
       >
-        <div className="carousel__item">
-          <div className="carousel__item__play">
-            <button
-              onClick={() =>
-                dispatch(
-                  getMovieTrailer("https://www.youtube.com/embed/IjR6KWVZ1hU")
-                )
-              }
-            >
-              <img src={playIcon} alt="playIcon" />
-            </button>
+        {listCarousel.map((item, index) => (
+          <div className="carousel__item" key={index}>
+            <img src={item.image} alt="film" />
+            <div className="carousel__item__play">
+              <button onClick={() => dispatch(getMovieTrailer(item.trailer))}>
+                <img src={playIcon} alt="playIcon" />
+              </button>
+            </div>
+            <div className="carousel__item__overlay"></div>
           </div>
-          <div className="carousel__item__overlay"></div>
-          <img src={carousel1} alt="film" />
-        </div>
-        <div className="carousel__item">
-          <div className="carousel__item__play">
-            <button
-              onClick={() =>
-                dispatch(
-                  getMovieTrailer("https://www.youtube.com/embed/2AQJW9TFnww")
-                )
-              }
-            >
-              <img src={playIcon} alt="playIcon" />
-            </button>
-          </div>
-          <div className="carousel__item__overlay"></div>
-          <img src={carousel2} alt="film" />
-        </div>
-        <div className="carousel__item">
-          <div className="carousel__item__play">
-            <button
-              onClick={() =>
-                dispatch(
-                  getMovieTrailer("https://www.youtube.com/embed/lAjEKy85E1M")
-                )
-              }
-            >
-              <img src={playIcon} alt="playIcon" />
-            </button>
-          </div>
-          <div className="carousel__item__overlay"></div>
-          <img src={carousel3} alt="film" />
-        </div>
-        <div className="carousel__item">
-          <div className="carousel__item__play">
-            <button
-              onClick={() =>
-                dispatch(
-                  getMovieTrailer("https://www.youtube.com/embed/lnrL-wjyNhQ")
-                )
-              }
-            >
-              <img src={playIcon} alt="playIcon" />
-            </button>
-          </div>
-          <div className="carousel__item__overlay"></div>
-          <img src={carousel4} alt="film" />
-        </div>
+        ))}
       </OwlCarousel>
     </section>
   );

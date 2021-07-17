@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const Trailer = () => {
   const dispatch = useDispatch();
   const { movieTrailer } = useSelector((state) => state.movieDetailReducer);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
     dispatch(dropMovieTrailer());
@@ -24,7 +24,7 @@ const Trailer = () => {
       centered
     >
       <iframe
-        className="trailer"
+        className="trailer__video"
         src={`${movieTrailer}?autoplay=1&enablejsapi=1`}
         frameBorder="0"
         allow="autoplay; encrypted-media"

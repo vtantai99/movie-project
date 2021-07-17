@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
   return (
     <Fragment>
-      {/* <Header /> */}
+      <Header />
       <Trailer />
       <OwlCarouselComponent />
       <div className={darkMode ? "home__main Dark" : "home__main"}>

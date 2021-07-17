@@ -47,13 +47,18 @@ export default function SignIn() {
   const { error } = useSelector((state) => state.userReducer);
   const history = useHistory();
   const classes = useStyles();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    mode: "onTouched",
+  });
+
   useEffect(() => {
     dispatch(hideError());
   }, []);
+
   const onSubmit = (data) => {
     dispatch(loginRequest(data, history));
   };
+
   return (
     <div className="login">
       {/* <Header /> */}
@@ -78,18 +83,13 @@ export default function SignIn() {
                 label="Tài khoản"
                 name="taiKhoan"
                 autoFocus
-                inputRef={register({ required: true, minLength: 6 })}
-                error={errors.taiKhoan ? true : false}
+                inputRef={register({
+                  required: "Xin vui lòng điền thông tin",
+                })}
+                error={errors.taiKhoan && true}
               />
-              <FormHelperText error={errors.taiKhoan ? true : false}>
-                {errors.taiKhoan && errors.taiKhoan.type === "required"
-                  ? "Tên không được bỏ trống"
-                  : ""}
-              </FormHelperText>
-              <FormHelperText error={errors.taiKhoan ? true : false}>
-                {errors.taiKhoan && errors.taiKhoan.type === "minLength"
-                  ? "Tài khoản phải dài hơn 6 kí tự"
-                  : ""}
+              <FormHelperText error={errors.taiKhoan && true}>
+                {errors.taiKhoan && errors.taiKhoan.message}
               </FormHelperText>
             </FormGroup>
             <FormGroup>
@@ -101,25 +101,21 @@ export default function SignIn() {
                 name="matKhau"
                 label="Mật khẩu"
                 type="password"
-                inputRef={register({ required: true })}
-                error={errors.matKhau ? true : false}
+                inputRef={register({ required: "Xin vui lòng điền thông tin" })}
+                error={errors.matKhau && true}
               />
-              <FormHelperText error={errors.taiKhoan ? true : false}>
-                {errors.matKhau && errors.matKhau.type === "required"
-                  ? "Mật khẩu không được bỏ trống"
-                  : ""}
+              <FormHelperText error={errors.taiKhoan && true}>
+                {errors.matKhau && errors.matKhau.message}
               </FormHelperText>
             </FormGroup>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Ghi nhớ đăng nhập"
             />
-            {error ? (
+            {error && (
               <Alert variant="filled" severity="error">
                 {error}
               </Alert>
-            ) : (
-              ""
             )}
             <Button
               type="submit"
