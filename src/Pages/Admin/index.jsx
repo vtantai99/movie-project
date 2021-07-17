@@ -9,13 +9,22 @@ import AdminSideBar from "../../Components/AdminSideBar";
 import AdminDashBoard from "../../Components/AdminDashBoard";
 import AdminMovie from "../../Components/AdminMovie";
 import AddMovie from "../AddMovie";
+import AdminHeader from "../../Components/AdminHeader";
+import { useSelector } from "react-redux";
 
 const Admin = () => {
+  const themeReducer = useSelector((state) => state.themeReducer);
+  const { isLight } = themeReducer;
   const [sideBarActive, setSideBarActive] = useState(false);
   return (
-    <div className="h-screen w-screen bg-gray-100 text-gray-500">
+    <div
+      className={`min-h-screen pb-10 w-screen ${
+        isLight ? "bg-gray-100 text-gray-500" : "bg-gray-900 text-gray-100"
+      }  pt-2 pr-10`}
+    >
       <div className={`${sideBarActive ? "pl-60" : "pl-32"}`}>
         <Router>
+          <AdminHeader />
           <AdminSideBar
             sideBarActive={sideBarActive}
             setSideBarActive={setSideBarActive}
