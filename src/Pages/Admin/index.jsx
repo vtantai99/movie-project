@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,17 +8,29 @@ import {
 import AdminSideBar from "../../Components/AdminSideBar";
 import AdminDashBoard from "../../Components/AdminDashBoard";
 import AdminMovie from "../../Components/AdminMovie";
+import AddMovie from "../AddMovie";
 
 const Admin = () => {
+  const [sideBarActive, setSideBarActive] = useState(false);
   return (
-    <div className="h-screen w-screen bg-gray-100 text-gray-600">
-      <div className="pl-56">
+    <div className="h-screen w-screen bg-gray-100 text-gray-500">
+      <div className={`${sideBarActive ? "pl-60" : "pl-32"}`}>
         <Router>
-          <AdminSideBar />
+          <AdminSideBar
+            sideBarActive={sideBarActive}
+            setSideBarActive={setSideBarActive}
+          />
           <Switch>
-            <Route path="/admin/dashboard" component={AdminDashBoard}></Route>
-            <Route path="/admin/movie" component={AdminMovie}></Route>
-            <Route path="/admin">
+            <Route exact path="/admin/dashboard">
+              <AdminDashBoard />
+            </Route>
+            <Route exact path="/admin/addMovie">
+              <AddMovie />
+            </Route>
+            <Route exact path="/admin/movie">
+              <AdminMovie />
+            </Route>
+            <Route exact path="/admin/">
               <Redirect to="/admin/dashboard"></Redirect>
             </Route>
           </Switch>
