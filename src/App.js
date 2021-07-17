@@ -16,8 +16,12 @@ import PageNotFound from "./Pages/PageNotFound";
 import InfoUser from "./Pages/InfoUser";
 import Admin from "./Pages/Admin";
 import Header from "./Components/Header";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    console.log(window.location.href);
+  }, [window.location.href])
   return (
     <Provider store={store}>
       <LoadingDemo />
@@ -31,7 +35,7 @@ function App() {
           <Route path="/signUp" component={SignUp}></Route>
           <Route path="/booking/:bookingId" component={Booking}></Route>
           <Route path="/info" component={InfoUser}></Route>
-          <Route path="/admin" component={Admin}></Route>
+          <Route  path="/admin" component={Admin}></Route>
           <Route path="/">
             <Header />
             <Home />

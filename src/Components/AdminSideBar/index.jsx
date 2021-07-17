@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink, useHistory } from "react-router-dom";
 
 const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
   const history = useHistory();
 
   const [movieDropDown, setMovieDropDown] = useState(false);
+
+  const themeReducer = useSelector((state) => state.themeReducer);
+  const { isLight } = themeReducer;
 
   const sideBarList = [
     {
@@ -120,9 +124,9 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
   return (
     // MENU HAMBERGER
     <div
-      className={`${
-        sideBarActive ? "w-56" : "w-24"
-      } bg-white shadow fixed top-0 transition-all transform left-0 h-screen px-3 py-4`}
+      className={`${sideBarActive ? "w-56" : "w-24"} ${
+        isLight ? "bg-white" : "bg-gray-800"
+      }  shadow fixed top-0 transition-all transform left-0 h-screen px-3 py-4`}
     >
       <div className="pb-3 pl-3">
         <span
@@ -256,7 +260,7 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
             className={`flex flex-row  items-center justify-${
               sideBarActive ? "start" : "center"
             } hover:no-underline hover:bg-blue-500 hover:text-white items-center p-2 rounded-md cursor-pointer transition-all`}
-            to={`admin//movieList`}
+            to={`admin/movieList`}
             activeClassName="bg-blue-500 text-white"
           >
             <svg
