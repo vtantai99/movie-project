@@ -23,27 +23,23 @@ const Admin = () => {
       }  pt-2 pr-10`}
     >
       <div className={`${sideBarActive ? "pl-60" : "pl-32"}`}>
-        <Router>
-          <AdminHeader />
-          <AdminSideBar
-            sideBarActive={sideBarActive}
-            setSideBarActive={setSideBarActive}
-          />
-          <Switch>
-            <Route exact path="/admin/dashboard">
-              <AdminDashBoard />
-            </Route>
-            <Route exact path="/admin/addMovie">
-              <AddMovie />
-            </Route>
-            <Route exact path="/admin/movie">
-              <AdminMovie />
-            </Route>
-            <Route exact path="/admin/">
-              <Redirect to="/admin/dashboard"></Redirect>
-            </Route>
-          </Switch>
-        </Router>
+        <AdminHeader />
+        <AdminSideBar
+          sideBarActive={sideBarActive}
+          setSideBarActive={setSideBarActive}
+        />
+        <Route exact path="/admin/dashboard">
+          <AdminDashBoard />
+        </Route>
+        <Route exact path="/admin/addMovie">
+          <AddMovie />
+        </Route>
+        <Route exact path="/admin/movie">
+          <AdminMovie />
+        </Route>
+        <Route exact path="/admin/">
+          <Redirect to="/admin/dashboard"></Redirect>
+        </Route>
       </div>
     </div>
   );

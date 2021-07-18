@@ -35,13 +35,7 @@ export const loginRequest = (user, history) => async (dispatch) => {
     if (res.status === 200 || res.status === 201) {
       await localStorage.setItem("user", JSON.stringify(res.data));
       await dispatch(logIn(res.data));
-      swal({
-        title: "Yeah!",
-        icon: "success",
-        text: "Login Successful",
-        timer: 1000,
-      });
-      await setTimeout(() => history.push("/"), 1000);
+      await history.push("/");
     }
   } catch (err) {
     dispatch(showError(err.response.data));

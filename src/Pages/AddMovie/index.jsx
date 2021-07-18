@@ -179,7 +179,6 @@ const AddMovie = () => {
             </div>
           )}
         </div>
-
         <button
           type="submit"
           className="bg-pink-600 focus:outline-none hover:bg-pink-500 text-white rounded-sm px-4 py-2"

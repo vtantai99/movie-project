@@ -82,7 +82,6 @@ export default function SignIn() {
                 fullWidth
                 label="Tài khoản"
                 name="taiKhoan"
-                autoFocus
                 inputRef={register({
                   required: "Xin vui lòng điền thông tin",
                 })}
