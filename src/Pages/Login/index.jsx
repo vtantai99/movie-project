@@ -103,7 +103,7 @@ export default function SignIn() {
                 inputRef={register({ required: "Xin vui lòng điền thông tin" })}
                 error={errors.matKhau && true}
               />
-              <FormHelperText error={errors.taiKhoan && true}>
+              <FormHelperText error={errors.matKhau && true}>
                 {errors.matKhau && errors.matKhau.message}
               </FormHelperText>
             </FormGroup>

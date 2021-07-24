@@ -53,6 +53,9 @@
         }
       }
       &__info {
+        span {
+          font-weight: $fwMedium;
+        }
         p {
           overflow: hidden;
           text-overflow: ellipsis;

@@ -12,7 +12,7 @@ const InfoTotal = () => {
   );
 
   const totalFilm = [
-    ...new Set(info.thongTinDatVe?.map((item) => item.tenPhim)),
+    ...new Set(info.thongTinDatVe?.map((item) => item.tenPhim)), // new Set(xoa phan tu trung nhau trong mang)
   ].length;
 
   const totalSeat = info.thongTinDatVe?.reduce(
@@ -25,7 +25,7 @@ const InfoTotal = () => {
       title: "TỔNG TIỀN ĐÃ CHI",
       icon: "fas fa-dollar-sign",
       quantity: totalPrice,
-      name: "VND",
+      name: "",
     },
     {
       title: "TỔNG PHIM ĐÃ ĐẶT",

@@ -164,6 +164,7 @@ const InfoUser = () => {
               Lưu thay đổi
             </Button>
             <Button
+              className="bg-blue-500"
               onClick={() => setFormShow(false)}
               type="submit"
               style={{
@@ -180,7 +181,9 @@ const InfoUser = () => {
               <p>Mật khẩu</p>
               <strong>{convertToPassWord(info?.matKhau)}</strong>
             </div>
-            <Button onClick={() => setFormShow(true)}>Đổi mật khẩu</Button>
+            <Button className="bg-blue-500" onClick={() => setFormShow(true)}>
+              Đổi mật khẩu
+            </Button>
           </div>
         )}
       </div>

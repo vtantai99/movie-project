@@ -1,18 +1,21 @@
 import React from "react";
-import HourHomeMobile from "../HourHomeMobile";
+import HourButton from "../HourButton";
+
 const TheatersMovieMobile = ({ danhSachPhim }) => {
   const filterDate = danhSachPhim.danhSachPhimTheoRap.map((item) => {
-    const lichChieuTheoPhim = item.lstLichChieuTheoPhim.filter(
+    const lichChieuTheoNgay = item.lstLichChieuTheoPhim.filter(
       (item) => new Date(item.ngayChieuGioChieu).getDate() === 1
     );
     return {
-      lichChieuTheoPhim,
+      lichChieuTheoNgay,
       maPhim: item.maPhim,
       tenPhim: item.tenPhim,
       hinhAnh: item.hinhAnh,
     };
   });
-  const newList = filterDate.filter((item) => item.lichChieuTheoPhim.length);
+
+  const newList = filterDate.filter((item) => item.lichChieuTheoNgay.length);
+
   const renderMoviesMobile = () => {
     if (newList.length) {
       return newList.map((item, index) => (
@@ -39,7 +42,7 @@ const TheatersMovieMobile = ({ danhSachPhim }) => {
             <div className="col-12">
               <p>2D Digital</p>
             </div>
-            <HourHomeMobile lichChieuTheoPhim={item.lichChieuTheoPhim} />
+            <HourButton lichChieuTheoNgay={item.lichChieuTheoNgay} />
           </div>
         </div>
       ));

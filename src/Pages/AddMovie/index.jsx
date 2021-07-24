@@ -52,7 +52,7 @@ const AddMovie = () => {
 
   return (
     <div>
-      <h3 className="text-2xl uppercase pt-10">Edit movie</h3>
+      <h3 className="text-2xl uppercase">Edit movie</h3>
       <form
         className="mt-10 md:w-2/3"
         onSubmit={handleSubmit((data) => onSubmit(data))}
@@ -65,7 +65,7 @@ const AddMovie = () => {
             <input
               name="tenPhim"
               ref={register({ required: true })}
-              className={`p-3 shadow-sm  md:w-full focus:outline-none rounded-sm ${
+              className={`p-3 shadow-md  md:w-full focus:outline-none rounded-sm ${
                 errors?.tenPhim && "border-2 border-solid border-red-500"
               } ${isLight ? "bg-white" : "bg-gray-800"}`}
               placeholder="Tên phim"
@@ -81,7 +81,7 @@ const AddMovie = () => {
             <label className="m-0">Mã nhóm</label>
             <input
               ref={register({ required: true })}
-              className={`p-3 shadow-sm  md:w-full focus:outline-none rounded-sm  ${
+              className={`p-3 shadow-md  md:w-full focus:outline-none rounded-sm  ${
                 isLight ? "bg-white" : "bg-gray-800"
               }`}
               value="GP09"
@@ -92,7 +92,7 @@ const AddMovie = () => {
           <div className="flex flex-col justify-start items-start">
             <label className="m-0">Trailer</label>
             <input
-              className={`p-3 shadow-sm  md:w-full focus:outline-none rounded-sm ${
+              className={`p-3 shadow-md  md:w-full focus:outline-none rounded-sm ${
                 errors?.trailer && "border-2 border-solid border-red-500"
               } ${isLight ? "bg-white" : "bg-gray-800"}`}
               placeholder="Trailer"
@@ -110,7 +110,7 @@ const AddMovie = () => {
             <label className="m-0">Mô tả</label>
             <textarea
               rows="3"
-              className={`p-3 shadow-sm  md:w-full focus:outline-none rounded-sm ${
+              className={`p-3 shadow-md  md:w-full focus:outline-none rounded-sm ${
                 errors?.tenPhim && "border-2 border-solid border-red-500"
               } ${isLight ? "bg-white" : "bg-gray-800"}`}
               placeholder="Mô tả"
@@ -125,13 +125,12 @@ const AddMovie = () => {
             )}
           </div>
         </div>
-
         {/* GRID */}
 
         {/*IMAGE */}
         <div className="mb-5 mt-5 md:flex flex-row justify-start items-start">
           <div className="md:mr-5 flex flex-col justify-start items-start">
-            <div className="overflow-hidden shadow-sm relative w-28 cursor-pointer">
+            <div className="overflow-hidden shadow-md relative w-28 cursor-pointer">
               <button
                 className={`${isLight ? "bg-white" : "bg-gray-800"} ${
                   errors.images && "border-red-500"

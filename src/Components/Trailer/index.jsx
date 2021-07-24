@@ -16,13 +16,7 @@ const Trailer = () => {
     movieTrailer ? setShow(true) : setShow(false);
   }, [movieTrailer]);
   return (
-    <Modal
-      onHide={handleClose}
-      size="lg"
-      show={show}
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
+    <Modal show={show} onHide={handleClose} size="lg" centered>
       <iframe
         className="trailer__video"
         src={`${movieTrailer}?autoplay=1&enablejsapi=1`}

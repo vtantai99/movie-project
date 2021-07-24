@@ -41,7 +41,7 @@
       align-items: center;
       &__info {
         margin-left: 10px;
-        @include MediaQuery($md) {
+        @include Tablet {
           margin-left: 20px;
         }
         small {

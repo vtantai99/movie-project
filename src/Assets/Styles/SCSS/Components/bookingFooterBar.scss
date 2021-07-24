@@ -2,7 +2,7 @@
   button {
     border: none;
   }
-  @include MediaQuery($xs) {
+  @include Mobile {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -45,7 +45,7 @@
       padding: 15px 8px;
     }
   }
-  @include MediaQuery($md) {
+  @include Tablet {
     display: none;
     width: 100%;
     padding: 0;

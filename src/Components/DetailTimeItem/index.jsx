@@ -2,20 +2,12 @@ import React from "react";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import Tooltip from "@material-ui/core/Tooltip";
+import { convertTime } from "../../Helper/Function/customTime";
+
 const DetailTimeItem = ({ timeItem }) => {
-  console.log(timeItem);
   const history = useHistory();
   const { dateShow } = useSelector((state) => state.movieDetailReducer);
-  const convertTime = (item, time) => {
-    item = item.split(":");
-    let hours = +item[0];
-    let minutes = +item[1];
-    minutes = minutes >= 10 ? minutes : "0" + minutes;
-    let timeEnds = hours + time;
-    timeEnds = timeEnds >= 24 ? timeEnds - 24 : timeEnds;
-    timeEnds = timeEnds < 10 ? "0" + timeEnds : timeEnds;
-    return timeEnds + ":" + minutes;
-  };
+
   const disableTime = (time) => {
     if (dateShow === new Date().getDate()) {
       let hours = time.split(":");
@@ -33,6 +25,7 @@ const DetailTimeItem = ({ timeItem }) => {
     }
     return true;
   };
+
   return (
     <>
       <Tooltip

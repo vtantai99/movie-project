@@ -11,7 +11,7 @@
     @include Tablet {
       width: 85%;
     }
-    @include MediaQuery($sm) {
+    @include Mobile {
       width: 100%;
     }
   }

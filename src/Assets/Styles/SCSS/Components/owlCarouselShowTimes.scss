@@ -6,7 +6,7 @@
       margin: 0 !important;
       height: 0 !important;
       display: none;
-      @include MediaQuery($md) {
+      @include Tablet {
         display: block;
       }
       button.owl-prev {
@@ -49,10 +49,10 @@
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-      @include MediaQuery($md) {
+      @include Tablet {
         bottom: 10%;
       }
-      @include MediaQuery($xs) {
+      @include Mobile {
         bottom: 2%;
       }
       button {
@@ -68,12 +68,12 @@
           height: 10px !important;
           margin: 3px 5px !important;
           background-color: #d8d8d8 !important;
-          @include MediaQuery($xs) {
+          @include Mobile {
             width: 10px !important;
             height: 10px !important;
             margin: 0 3px !important;
           }
-          @include MediaQuery($md) {
+          @include Tablet {
             width: 12px !important;
             height: 12px !important;
           }

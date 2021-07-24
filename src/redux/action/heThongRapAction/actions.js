@@ -20,13 +20,13 @@ export const fetchTheaterList = () => {
 // Call API tat ca từng rạp chi tiết của mã nhóm GP09
 export const fetchTheaterListDetail = () => {
   return (dispatch) => {
-    dispatch(startLoading());
+    // dispatch(startLoading());
     Axios.get(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP09"
     )
       .then(
-        (res) => dispatch(fetchTheaterListDetailSuccess(res.data)),
-        setTimeout(() => dispatch(stopLoading()), 1000)
+        (res) => dispatch(fetchTheaterListDetailSuccess(res.data))
+        // setTimeout(() => dispatch(stopLoading()), 1000)
       )
       .catch((err) => console.log(err));
   };

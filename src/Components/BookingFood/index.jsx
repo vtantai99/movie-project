@@ -5,13 +5,12 @@ import {
   minusQuantityCombo,
   plusQuantityCombo,
 } from "../../redux/action/bookingAction/actions";
+import { formatNumber } from "../../Helper/Function/formatNumber";
 const BookingFood = () => {
   const dispatch = useDispatch();
   const { statusFood, foodList } = useSelector((state) => state.bookingReducer);
   const { darkMode } = useSelector((state) => state.commonReducer);
-  const formatNumber = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+
   return (
     <div
       className={darkMode ? "combo Dark" : "combo"}
@@ -36,7 +35,7 @@ const BookingFood = () => {
                   <i class="fas fa-info-circle"></i>&nbsp;
                   {item.name}
                 </p>
-                <span>{formatNumber(item.price)} đ</span>
+                <span>{formatNumber(item.price)}</span>
               </div>
             </div>
             <div className="item__quality">

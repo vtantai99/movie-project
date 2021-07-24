@@ -9,52 +9,46 @@ import {
 } from "../../redux/action/bookingAction/actions";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
-import totalAtm from "../../Assets/Images/totalAtm.png";
-import totalCash from "../../Assets/Images/totalCash.png";
-import totalVisa from "../../Assets/Images/totalVisa.png";
 import { Button } from "@material-ui/core";
+import { renderStyleColorBooking } from "../../Helper/Function/customTheater";
+import { formatNumber } from "../../Helper/Function/formatNumber";
+import { Modal } from "react-bootstrap";
+import { listPayment } from "../../Helper/DataFake";
+
 export default function BookingSideBar() {
+  const history = useHistory();
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.userReducer);
   const { bookingList, statusFood, statusRps, foodList } = useSelector(
     (state) => state.bookingReducer
   );
-  const { darkMode } = useSelector((state) => state.commonReducer);
   const { thongTinPhim } = bookingList;
-  const history = useHistory();
-  const { gioChieu, maLichChieu, ngayChieu, tenCumRap, tenPhim, tenRap } =
-    thongTinPhim ? thongTinPhim : "";
-  const [valuePayment, setValuePayment] = useState("");
+  const {
+    gioChieu,
+    maLichChieu,
+    ngayChieu,
+    tenCumRap,
+    diaChi,
+    tenPhim,
+    tenRap,
+    hinhAnh,
+  } = thongTinPhim ? thongTinPhim : "";
+  const { darkMode } = useSelector((state) => state.commonReducer);
+
+  const [valuePayment, setValuePayment] = useState(null);
+  const handleChecked = (value) => {
+    setValuePayment(value);
+  };
   const typePayment = () => {
-    let listType = [
-      {
-        name: "payment",
-        id: "atm",
-        img: `${totalAtm}`,
-        des: "Thẻ ATM nội địa",
-      },
-      {
-        name: "payment",
-        id: "visa",
-        img: `${totalVisa}`,
-        des: "Visa, MasterCard, JCB",
-      },
-      {
-        name: "payment",
-        id: "cash",
-        img: `${totalCash}`,
-        des: "Thanh toán tiền mặt tại quầy",
-      },
-    ];
-    return listType.map((item, index) => (
+    return listPayment.map((item, index) => (
       <div className="select__item" key={index}>
         <input
-          onChange={(e) => handleChecked(e.target.value)}
+          onChange={() => handleChecked(item)}
           className="item--input"
           type="radio"
           id={item.id}
           name={item.name}
-          value={item.id}
           disabled={seatsChoosing?.length ? false : true}
         />
         <label className="item--label" for={item.id}>
@@ -64,14 +58,9 @@ export default function BookingSideBar() {
       </div>
     ));
   };
-  const handleChecked = (value) => {
-    setValuePayment(value);
-  };
-  const formatNumber = (number) => {
-    if (number) {
-      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } else return 0;
-  };
+
+  const [showModal, setShowModal] = useState(false);
+
   const seatsChoosing = bookingList.danhSachGhe?.filter(
     (item) => item.dangChon
   );
@@ -83,8 +72,10 @@ export default function BookingSideBar() {
     (temp, item) => (temp += item.price * item.quantity),
     0
   );
+  const foodChoosing = foodList.filter((item) => item.quantity > 0);
   const priceTotal = priceSeat + priceFood;
-  const handleThanhToan = () => {
+
+  const handleShowModal = () => {
     if (!valuePayment) {
       swal({
         title: "Vui lòng chọn hình thức thanh toán",
@@ -94,25 +85,18 @@ export default function BookingSideBar() {
         },
       });
     } else {
-      swal({
-        title: "Bạn đã chắc chắn",
-        text: "Sau khi xác nhận thì chúng tôi không thể hoàn vé, kiểm tra lại thật kỹ nhé!",
-        icon: "warning",
-        buttons: {
-          cancel: "Kiểm tra lại",
-          confirm: "Xác nhận",
-        },
-      }).then((confirm) => {
-        if (confirm) {
-          const danhSachVe = seatsChoosing.map((item) => ({
-            maGhe: item.maGhe,
-            giaVe: item.giaVe,
-          }));
-          dispatch(bookingRequest(maLichChieu, user, danhSachVe, history));
-        }
-      });
+      setShowModal(true);
     }
   };
+
+  const handleToTal = () => {
+    const danhSachVe = seatsChoosing.map((item) => ({
+      maGhe: item.maGhe,
+      giaVe: item.giaVe,
+    }));
+    dispatch(bookingRequest(maLichChieu, user, danhSachVe, history));
+  };
+
   return bookingList ? (
     <div
       className={darkMode ? "bookingSidebar Dark" : "bookingSidebar"}
@@ -122,15 +106,15 @@ export default function BookingSideBar() {
         <BookingHeader />
       </div>
       <ul>
-        <li className="price">{formatNumber(priceTotal)} đ</li>
+        <li className="price">{formatNumber(priceTotal)}</li>
         <li>
           <span>Tên phim:</span>
           <strong>{tenPhim}</strong>
         </li>
         <li>
-          <span>Ngày giờ chiếu:</span>
+          <span>Suất chiếu:</span>
           <strong>
-            {ngayChieu}-{gioChieu}
+            {gioChieu} - {ngayChieu}
           </strong>
         </li>
         <li>
@@ -150,7 +134,7 @@ export default function BookingSideBar() {
             )}
             <BookingSeatChoosing />
           </div>
-          <strong>{formatNumber(priceSeat)}&nbsp;đ</strong>
+          <strong>{formatNumber(priceSeat)}</strong>
         </li>
         <li className="combo__btn">
           <Button
@@ -160,7 +144,7 @@ export default function BookingSideBar() {
             <i className="fas fa-cart-arrow-down mr-1"></i>
             Food &amp; drink
           </Button>
-          <strong>{formatNumber(priceFood)} đ</strong>
+          <strong>{formatNumber(priceFood)}</strong>
         </li>
         <li className="payment">
           <span>Chọn hình thức thanh toán:</span>
@@ -209,7 +193,7 @@ export default function BookingSideBar() {
               {formatNumber(priceTotal)}
             </div>
             <Button
-              onClick={handleThanhToan}
+              onClick={() => handleShowModal()}
               style={{ backgroundColor: "#28a745" }}
             >
               THANH TOÁN
@@ -217,7 +201,7 @@ export default function BookingSideBar() {
           </div>
         </footer>
         <Button
-          onClick={handleThanhToan}
+          onClick={() => handleShowModal()}
           disabled={seatsChoosing?.length ? false : true}
           style={
             seatsChoosing?.length
@@ -231,6 +215,124 @@ export default function BookingSideBar() {
         >
           THANH TOÁN
         </Button>
+        <Modal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          size="md"
+          centered
+        >
+          <Modal.Header>
+            <Modal.Title>Xác nhận đặt vé</Modal.Title>
+          </Modal.Header>
+
+          <div className="p-3 text-gray-600 font-bold">
+            <div className="flex items-center border-dashed border-b-2 pb-2">
+              <img
+                className="w-60 h-60 object-cover rounded-md mr-2"
+                src={hinhAnh}
+                alt="theater"
+              />
+              <div className="ml-2">
+                <p className="p-2 text-black border-dashed border-b-2">
+                  {tenPhim}
+                </p>
+                <p className="p-2" style={renderStyleColorBooking(tenCumRap)}>
+                  {tenCumRap}
+                </p>
+                <p className="p-2 text-gray-500 text-sm">{diaChi}</p>
+                <tbody className="text-sm">
+                  <tr>
+                    <td className="p-2 text-black">Suất chiếu:</td>
+                    <td className="p-2">
+                      {gioChieu} - {ngayChieu}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 text-black">Rạp:</td>
+                    <td className="p-2">{tenRap}</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 text-black">Ghế:</td>
+                    <td className="p-2">
+                      <BookingSeatChoosing />
+                    </td>
+                  </tr>
+                </tbody>
+              </div>
+            </div>
+            <div>
+              <tbody>
+                <tr>
+                  <td className="p-2 text-black">Họ tên:</td>
+                  <td className="p-2">{user?.hoTen}</td>
+                </tr>
+                <tr>
+                  <td className="p-2 text-black">Email:</td>
+                  <td className="p-2">{user?.email}</td>
+                </tr>
+                {priceFood ? (
+                  <tr>
+                    <td className="p-2 text-black">Food & Drinks:</td>
+                    <td className="flex p-2 items-center">
+                      {foodChoosing.map((item, index) => (
+                        <span key={index} className="flex items-center mr-2">
+                          <img
+                            className="w-10 h-10 object-cover rounded"
+                            src={item.img}
+                            alt="food"
+                          />
+                          x{item.quantity}
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ) : null}
+                <tr>
+                  <td className="p-2 text-black">Hình thức thanh toán:</td>
+                  <td className="p-2 flex items-center">
+                    <img
+                      className="w-10 h-10 mr-2 object-cover"
+                      src={valuePayment?.img}
+                      alt="payment"
+                    />
+                    <span>{valuePayment?.des}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-2 text-black">Tổng tiền:</td>
+                  <td className="p-2 text-green-600">
+                    {formatNumber(priceTotal)}
+                  </td>
+                </tr>
+              </tbody>
+              <p className="text-center font-thin italic">
+                Thông tin đặt vé sẽ được gửi qua email của bạn!
+              </p>
+            </div>
+          </div>
+          <Modal.Footer>
+            <Button
+              onClick={() => setShowModal(false)}
+              style={{
+                background: "#95a5a6",
+                color: "#fff",
+                marginRight: "10px",
+              }}
+            >
+              Đóng
+            </Button>
+            <Button
+              onClick={() => handleToTal()}
+              style={{
+                background: "#007be8",
+                color: "#fff",
+                marginRight: "5px",
+              }}
+            >
+              Xác nhận{" "}
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </div>
   ) : (

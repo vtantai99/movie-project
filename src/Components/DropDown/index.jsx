@@ -38,20 +38,20 @@ const SettingPages = () => {
         cancel: "Huỷ",
         confirm: "Đăng xuất",
       },
-    }).then((willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
-        dispatch({
+        await dispatch({
           type: actions.LOG_OUT,
           payload: null,
         });
-        localStorage.removeItem("user");
-        swal({
+        await localStorage.removeItem("user");
+        await swal({
           title: "Đã đăng xuất",
           text: "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!",
           icon: "success",
-          timer: 1000,
+          timer: 800,
         });
-        setTimeout(() => history.push("/"), 1000);
+        await history.push("/");
       }
     });
   };

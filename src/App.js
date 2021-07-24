@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Detail from "./Pages/Detail";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -17,14 +22,14 @@ function App() {
       <LoadingDemo />
       <Router>
         <Switch>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/signUp" component={SignUp}></Route>
-          <Route path="/info" component={InfoPage}></Route>
-          <Route path="/admin" component={Admin}></Route>
-          <Route path="/detail/:movieId" component={Detail}></Route>
-          <Route path="/booking/:bookingId" component={Booking}></Route>
-          <Route path="/" component={Home}></Route>
-          <Route path="" component={PageNotFound}></Route>
+          <Route path="/detail/:movieId" component={Detail} />
+          <Route path="/info" component={InfoPage} />
+          <Route path="/booking/:bookingId" component={Booking} />
+          <Route path="/login" component={Login} />
+          <Route path="/signUp" component={SignUp} />
+          <Route path="/admin/" component={Admin} />
+          <Route path="/" component={Home} />
+          {/* <Route path="" component={PageNotFound} /> */}
         </Switch>
       </Router>
     </Provider>

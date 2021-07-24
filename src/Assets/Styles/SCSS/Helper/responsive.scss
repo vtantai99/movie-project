@@ -8,15 +8,15 @@ $maxTablet: 1023px;
     @content;
   }
 }
-// Màn hình Tablet: >=740px và <1023px
-@mixin Tablet {
-  @media screen and (min-width: $minTablet) and (max-width: $maxTablet) {
-    @content;
-  }
-}
 // Màn hình áp dụng chung cho mobile và tablet
 @mixin MobileAndTablet {
   @media screen and (max-width: $maxTablet) {
+    @content;
+  }
+}
+// Màn hình Tablet: >=740px và <1023px
+@mixin Tablet {
+  @media screen and (min-width: $minTablet) and (max-width: $maxTablet) {
     @content;
   }
 }

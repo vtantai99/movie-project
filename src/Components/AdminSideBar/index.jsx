@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
   const history = useHistory();
@@ -30,7 +30,12 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
       branch: [],
       location: "admin/DatVe",
     },
-    { title: "Thành viên", icon: "fas fa-users", branch: [] },
+    {
+      title: "Thành viên",
+      icon: "fas fa-users",
+      branch: [],
+      location: "admin/user",
+    },
   ];
 
   const getIcon = (title) => {
@@ -111,10 +116,10 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
       <NavLink
         className={`flex flex-row items-center justify-${
           sideBarActive ? "start" : "center"
-        } hover:no-underline hover:bg-blue-500 hover:text-white items-center p-3 rounded-md cursor-pointer transition-all`}
+        } hover:no-underline hover:bg-blue-400 hover:text-white items-center p-3 rounded-md cursor-pointer transition-all`}
         to={`/${item.location}`}
         key={index}
-        activeClassName="bg-blue-500 text-white"
+        activeClassName="bg-blue-500 text-white hover:bg-blue-500"
       >
         {getIcon(item.title)}
         {sideBarActive && <span>{item.title}</span>}
@@ -124,9 +129,9 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
   return (
     // MENU HAMBERGER
     <div
-      className={`${sideBarActive ? "w-56" : "w-24"} ${
+      className={`${sideBarActive ? "w-60" : "w-28"} ${
         isLight ? "bg-white" : "bg-gray-800"
-      }  shadow fixed top-0 transition-all transform left-0 h-screen px-3 py-4`}
+      }  shadow fixed top-0 left-0 transition-all transform left-0 h-screen px-3 py-4`}
     >
       <div className="pb-3 pl-3">
         <span

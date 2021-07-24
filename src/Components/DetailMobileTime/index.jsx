@@ -1,68 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import format from "date-format";
-import theaterBhd from "../../Assets/Images/theaterBhd.jpg";
-import theaterCgv from "../../Assets/Images/theaterCgv.jpg";
-import theaterCineStar from "../../Assets/Images/theaterCineStar.jpg";
-import theaterGalaxy from "../../Assets/Images/theaterGalaxy.png";
-import theaterLotte from "../../Assets/Images/theaterLotte.jpg";
-import theaterMega from "../../Assets/Images/theaterMega.jpeg";
 import DetailTimeItem from "../DetailTimeItem";
+import {
+  renderStyleColor,
+  renderImage,
+} from "../../Helper/Function/customTheater";
 const DetailTimeMobile = ({ maHeThongRap, tenHeThongRap }) => {
   const { dateShow } = useSelector((state) => state.movieDetailReducer);
   const { lichChieu } = useSelector(
     (state) => state.movieDetailReducer.movieDetail
   );
-  // Thay đổi hình theo cụm rạm
-  const renderImage = (nameTheater) => {
-    switch (nameTheater) {
-      case "BHDStar": {
-        return theaterBhd;
-      }
-      case "CGV": {
-        return theaterCgv;
-      }
-      case "CineStar": {
-        return theaterCineStar;
-      }
-      case "Galaxy": {
-        return theaterGalaxy;
-      }
-      case "LotteCinima": {
-        return theaterLotte;
-      }
-      case "MegaGS": {
-        return theaterMega;
-      }
-      default:
-        return null;
-    }
-  };
-  // Thay đổi màu theo cụm rạm
-  const renderStyleColor = (value) => {
-    switch (value) {
-      case "BHDStar": {
-        return { color: "#8bc541" };
-      }
-      case "CGV": {
-        return { color: "#e71a0f" };
-      }
-      case "CineStar": {
-        return { color: "#df0d7a" };
-      }
-      case "Galaxy": {
-        return { color: "#f60" };
-      }
-      case "LotteCinima": {
-        return { color: "#ca4137" };
-      }
-      case "MegaGS": {
-        return { color: "#e5a813" };
-      }
-      default:
-        return null;
-    }
-  };
   // làm gọn tên cụm rạp
   const cutStr = (string) => {
     return string.substring(string.indexOf("-"));

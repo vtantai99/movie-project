@@ -17,11 +17,11 @@ const MovieListShowing = (props) => {
     if (vote === 10) {
       return (
         <>
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
           <img src={starHalf} />
         </>
       );
@@ -29,29 +29,29 @@ const MovieListShowing = (props) => {
     if (vote >= 8) {
       return (
         <>
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
-          <img src={starHalf} />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={starHalf} alt="star" />
         </>
       );
     }
     if (vote >= 6) {
       return (
         <>
-          <img src={star} />
-          <img src={star} />
-          <img src={star} />
-          <img src={starHalf} />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={star} alt="star" />
+          <img src={starHalf} alt="star" />
         </>
       );
     }
     return (
       <>
-        <img src={star} />
-        <img src={star} />
-        <img src={starHalf} />
+        <img src={star} alt="star" />
+        <img src={star} alt="star" />
+        <img src={starHalf} alt="star" />
       </>
     );
   };
@@ -73,6 +73,7 @@ const MovieListShowing = (props) => {
           <img
             src={renderImageTitle(props.movie.danhGia)}
             className="item__film__img--title"
+            alt="star"
           />
           <div className="item__film__img--vote">
             <p className="vote--number">{props.movie.danhGia}</p>

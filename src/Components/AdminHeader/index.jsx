@@ -9,13 +9,13 @@ const AdminHeader = () => {
   const { isLight } = themeReducer;
 
   return (
-    <div className="mb-10 flex flex-row justify-between items-center">
+    <div className="mb-3 flex flex-row justify-between items-center">
       <input
         type="text"
         placeholder="Search"
         className={`px-2 py-1 ${
           isLight ? "bg-white" : "bg-gray-800"
-        } rounded-sm shadow-sm`}
+        } rounded-sm shadow-md`}
       />
       <div className="flex flex-row justify-end items-center">
         <img

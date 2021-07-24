@@ -6,19 +6,23 @@ import BookingSideBar from "../../Components/BookingSideBar";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { callFood, getBooking } from "../../redux/action/bookingAction/actions";
+
 const Booking = () => {
   const dispatch = useDispatch();
   const params = useParams();
+  const { bookingId } = params;
   const history = useHistory();
+
   const { user } = useSelector((state) => state.userReducer);
   const { statusFood } = useSelector((state) => state.bookingReducer);
-  const { bookingId } = params;
+
   useEffect(() => {
     if (!user) {
       history.push("/login");
     }
     dispatch(getBooking(bookingId, history));
   }, []);
+
   return (
     <Fragment>
       <section className="booking">
@@ -39,7 +43,6 @@ const Booking = () => {
           <BookingSideBar />
         </div>
       </section>
-      {/* <Footer /> */}
     </Fragment>
   );
 };

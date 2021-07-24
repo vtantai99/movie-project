@@ -5,7 +5,7 @@
     .owl-nav {
       margin: 0 !important;
       height: 0 !important;
-      @include MediaQuery($md) {
+      @include Tablet {
         display: block;
       }
       button.owl-prev {

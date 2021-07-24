@@ -6,13 +6,10 @@
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    @include MediaQuery($sm) {
+    @include Mobile {
       margin-top: 20px;
     }
-    @include MediaQuery($xs) {
-      margin-bottom: 20px;
-      margin-top: 0px;
-    }
+
     .nav-item {
       .nav-link {
         color: $textWhite;
@@ -24,7 +21,7 @@
         height: 24px;
         line-height: 24px;
         background-color: transparent;
-        @include MediaQuery($xs) {
+        @include Mobile {
           font-size: $fzH4;
           padding: 0.5rem 0.5rem;
           margin-bottom: 10px;
@@ -32,13 +29,13 @@
         &.active {
           font-size: $fzH1;
           color: $textPrimary;
-          @include MediaQuery($xs) {
+          @include Mobile {
             font-size: $fzH2;
           }
         }
         &:hover {
           font-size: $fzH1;
-          @include MediaQuery($xs) {
+          @include Mobile {
             font-size: $fzH3;
           }
         }

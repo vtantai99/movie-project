@@ -1,13 +1,16 @@
-import * as actions from '../action/themeAction/actionTypes';
+import * as actions from "../action/themeAction/actionTypes";
 
 const initialState = {
-    isLight:true
-}
+  isLight: true,
+};
 
-export default function themeReducer(state=initialState,action) {
-    const{type,payload} = action;
-    switch(type){
-        case actions.SWITCH_THEME: return {...state, isLight: !state.isLight};
-        default: return state;
-    }
+export default function themeReducer(state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case actions.SWITCH_THEME:
+      return { ...state, isLight: !state.isLight };
+    default:
+      return state;
+  }
 }

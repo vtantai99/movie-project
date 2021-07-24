@@ -7,12 +7,12 @@ const Footer = () => {
     <footer className={darkMode ? "footer Dark" : "footer"}>
       <div className="container">
         <div className="row">
-          <div className="col-xs-12 col-md-1">
+          <div className="col-sm-12 col-md-2">
             <div className="footer__logo">
               <img src={logo} alt="logo" />
             </div>
           </div>
-          <div className="col-xs-12 col-md-7">
+          <div className="col-sm-12 col-md-6">
             <div className="footer__des">
               <p className="footer__des--title">
                 TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION
@@ -29,7 +29,7 @@ const Footer = () => {
               </span>
             </div>
           </div>
-          <div className="col-xs-12 col-md-4">
+          <div className="col-sm-12 col-md-4">
             <p className="footer__contact__title">CONTACT</p>
             <div className="footer__contact__icon">
               <a

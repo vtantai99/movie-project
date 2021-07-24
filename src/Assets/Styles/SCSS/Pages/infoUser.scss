@@ -50,40 +50,10 @@ body {
           color: $textBlack;
           background: #ededf3;
         }
-        tbody {
-          tr {
-            transition: all 0.1s linear;
-            &:hover {
-              color: $textWhite;
-              background: $bgBtn4;
-            }
-          }
-        }
         th,
         td {
           text-transform: capitalize;
           padding: 15px 10px;
-        }
-      }
-      .pagination {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px 30px;
-        button {
-          width: 30px;
-          height: 30px;
-          margin-left: 10px;
-          border-radius: 50%;
-          transition: all 0.2s ease-in-out;
-          &.active {
-            color: $textWhite;
-            background: $bgBtn3;
-          }
-          &:not(.active):hover {
-            transform: translateY(-5%);
-            color: $textWhite;
-            background: $bgBtn4;
-          }
         }
       }
     }

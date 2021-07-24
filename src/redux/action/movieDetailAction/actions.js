@@ -10,7 +10,7 @@ const fetchMovieDetailRequest = (movieCode, history) => async (dispatch) => {
       url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movieCode}`,
       method: "GET",
     });
-    if (res.status == 200 || res.status == 201) {
+    if (res.status === 200 || res.status === 201) {
       const data = await res.data;
       await dispatch(fetchMovieDetailSuccess(data));
       await dispatch(stopLoading());

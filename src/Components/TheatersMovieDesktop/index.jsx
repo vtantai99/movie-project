@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import HourHomeDesktop from "../HourHomeDesktop";
+import HourButton from "../HourButton";
 const TheatersMovieDesktop = (props) => {
   const { codeTheater } = useSelector((state) => state.heThongRapReducer);
   // console.log(props.movieDetail.danhSachPhim);
@@ -46,7 +46,7 @@ const TheatersMovieDesktop = (props) => {
           >
             <p className="col-12">2D Digital</p>
             <div className="col-12">
-              <HourHomeDesktop movieTime={item.lichChieuTheoNgay} />
+              <HourButton lichChieuTheoNgay={item.lichChieuTheoNgay} />
             </div>
           </div>
         </div>

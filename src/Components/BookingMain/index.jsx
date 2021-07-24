@@ -6,6 +6,7 @@ import BookingSeatChoosing from "../BookingSeatChoosing";
 import { rpsBooking } from "../../redux/action/bookingAction/actions";
 import { Button } from "@material-ui/core";
 import screen from "../../Assets/Images/screen.png";
+import { renderStyleColorBooking } from "../../Helper/Function/customTheater";
 
 const BookingMain = () => {
   const dispatch = useDispatch();
@@ -27,10 +28,12 @@ const BookingMain = () => {
               <img src={hinhAnh} alt="" />
             </div>
             <div className="title__address__info">
-              <span>
-                {tenCumRap} : {tenRap}
+              <span style={renderStyleColorBooking(tenCumRap)}>
+                {tenCumRap}
               </span>
-              <p>{diaChi}</p>
+              <p>
+                {diaChi} - {tenRap}
+              </p>
             </div>
           </div>
           <div className="title__timer">
