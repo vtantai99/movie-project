@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import AdminMovieList from "../AdminMovieList";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AdminUser from "../../Components/AdminUser";
 import { useEffect } from "react";
 import { fetchListUser } from "../../redux/action/adminAction/actions";
+import { fetchMovieList } from "../../redux/action/movieAction/actions";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Admin = () => {
 
   useEffect(() => {
     dispatch(fetchListUser());
+    dispatch(fetchMovieList());
   }, []);
   return (
     <div
@@ -40,7 +42,7 @@ const Admin = () => {
         <Route exact path="/admin/dashboard" component={AdminDashBoard} />
         <Route exact path="/admin/user" component={AdminUser} />
         <Route exact path="/admin/addMovie" component={AddMovie} />
-        <Route exact path="/admin/movie" component={AdminMovie} />
+        <Route exact path="/admin/movieList" component={AdminMovieList} />
         <Route exact path="/admin/">
           <Redirect to="/admin/dashboard" />
         </Route>
