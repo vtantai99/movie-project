@@ -1,15 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useHistory } from "react-router-dom";
+import { selectMovie } from "../../redux/action/movieAction/actions";
 
 const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
-  const history = useHistory();
-
   const [movieDropDown, setMovieDropDown] = useState(false);
 
   const themeReducer = useSelector((state) => state.themeReducer);
   const { isLight } = themeReducer;
+
+  const dispatch = useDispatch();
 
   const sideBarList = [
     {
@@ -109,6 +110,7 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
   const renderSideBarList = () => {
     return sideBarList.map((item, index) => (
       <NavLink
+        onClick={() => dispatch(selectMovie(null))}
         className={`flex flex-row items-center justify-${
           sideBarActive ? "start" : "center"
         } hover:no-underline hover:bg-blue-500 hover:text-white items-center p-3 rounded-md cursor-pointer transition-all`}
@@ -172,7 +174,10 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
 
       <div>
         <div
-          onClick={() => setMovieDropDown(!movieDropDown)}
+          onClick={() => {
+            setMovieDropDown(!movieDropDown);
+            dispatch(selectMovie(null));
+          }}
           className={`flex flex-${
             sideBarActive ? "row" : "col"
           } justify-between pl-3 pt-3 pr-3 pb-2 cursor-pointer items-center`}
@@ -234,6 +239,7 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
           } transform transition-all ${sideBarActive && "ml-4"}`}
         >
           <NavLink
+            onClick={() => dispatch(selectMovie(null))}
             className={`flex flex-row items-center justify-${
               sideBarActive ? "start" : "center"
             } hover:no-underline hover:bg-blue-500 hover:text-white items-center p-2 rounded-md cursor-pointer transition-all`}
@@ -257,10 +263,11 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
             {sideBarActive && <span>Add movie</span>}
           </NavLink>
           <NavLink
+            onClick={() => dispatch(selectMovie(null))}
             className={`flex flex-row  items-center justify-${
               sideBarActive ? "start" : "center"
             } hover:no-underline hover:bg-blue-500 hover:text-white items-center p-2 rounded-md cursor-pointer transition-all`}
-            to={`admin/movieList`}
+            to={`/admin/movieList`}
             activeClassName="bg-blue-500 text-white"
           >
             <svg
