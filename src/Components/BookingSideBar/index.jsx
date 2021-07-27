@@ -13,7 +13,7 @@ import { Button } from "@material-ui/core";
 import { renderStyleColorBooking } from "../../Helper/Function/customTheater";
 import { formatNumber } from "../../Helper/Function/formatNumber";
 import { Modal } from "react-bootstrap";
-import { listPayment } from "../../Helper/DataFake";
+import { listPayment } from "../../Helper/DataFake/listPayment";
 
 export default function BookingSideBar() {
   const history = useHistory();

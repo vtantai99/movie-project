@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AdminMovieList from "../AdminMovieList";
 import {
   BrowserRouter as Router,
@@ -13,9 +13,10 @@ import AddMovie from "../AddMovie";
 import AdminHeader from "../../Components/AdminHeader";
 import { useDispatch, useSelector } from "react-redux";
 import AdminUser from "../../Components/AdminUser";
-import { useEffect } from "react";
 import { fetchListUser } from "../../redux/action/adminAction/actions";
-import { fetchMovieList } from "../../redux/action/movieAction/actions";
+import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import { GET_SHOWING_LIST } from "../../redux/action/movieListAction/actionTypes";
+import { fetchTheaterListDetail } from "../../redux/action/heThongRapAction/actions";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ const Admin = () => {
 
   useEffect(() => {
     dispatch(fetchListUser());
-    dispatch(fetchMovieList());
+    dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
+    dispatch(fetchTheaterListDetail());
   }, []);
   return (
     <div

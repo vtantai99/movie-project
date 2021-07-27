@@ -2,6 +2,7 @@ import * as actions from "./actionTypes";
 import swal from "sweetalert";
 import axios from "axios";
 import Axios from "axios";
+import { startLoading, stopLoading } from "../commonAction/actions";
 export const signUpRequest = (user, history) => async (dispatch) => {
   try {
     const res = await axios({
@@ -43,11 +44,15 @@ export const loginRequest = (user, history) => async (dispatch) => {
 };
 export const getInfoUserRequest = (account) => {
   return (dispatch) => {
+    dispatch(startLoading());
     Axios.post(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
       account
     )
-      .then((res) => dispatch(infoUser(res.data)))
+      .then((res) => {
+        dispatch(infoUser(res.data));
+        dispatch(stopLoading());
+      })
       .catch((err) => console.log(err));
   };
 };

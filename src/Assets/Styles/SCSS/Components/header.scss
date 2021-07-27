@@ -184,6 +184,25 @@
       ul {
         list-style: none;
         padding-left: 10px;
+
+        li {
+          margin: 20px 10px;
+          a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 14px;
+            i {
+              margin-right: 10px;
+              color: $textPrimary;
+            }
+          }
+        }
+        .darkMode {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
         .drop__login {
           margin-top: 50px;
           padding-bottom: 10px;
@@ -206,20 +225,6 @@
             display: block;
             font-size: $fzH2;
             margin-bottom: 10px;
-          }
-        }
-        li {
-          margin: 20px 10px;
-          a {
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-size: 14px;
-            i {
-              margin-right: 10px;
-              transition: all 0.3s;
-              color: $textPrimary;
-            }
           }
         }
       }

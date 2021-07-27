@@ -4,8 +4,8 @@ import DetailMainInfo from "../DetailMainInfo";
 import DetailMainShowTime from "../DetailMainShowTime";
 import DetailMainComment from "../DetailMainComment";
 const DetailMain = () => {
-  const movieDetailReducer = useSelector((state) => state.movieDetailReducer);
-  const { movieDetail } = movieDetailReducer;
+  const { movieDetail } = useSelector((state) => state.movieDetailReducer);
+
   return (
     <div className="detailMain">
       <ul className="nav nav-tabs">
@@ -19,11 +19,13 @@ const DetailMain = () => {
             Thông tin
           </a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link promotion" data-toggle="tab" href="#comment">
-            Đánh giá
-          </a>
-        </li>
+        {movieDetail.maNhom === "GP09" && (
+          <li className="nav-item">
+            <a className="nav-link promotion" data-toggle="tab" href="#comment">
+              Đánh giá
+            </a>
+          </li>
+        )}
       </ul>
       <div className="tab-content">
         <div className="tab-pane active" id="showTimes">

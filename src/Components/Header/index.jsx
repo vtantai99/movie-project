@@ -179,9 +179,20 @@ const Header = () => {
                   </NavLink>
                 )}
               </li>
-              <li>
-                <i class="fas fa-adjust"></i>
+              <li className="darkMode">
+                <a>
+                  <i className="fas fa-adjust" />
+                  Chế độ tối
+                </a>
                 <DarkMode />
+              </li>
+              <li>
+                {user?.maLoaiNguoiDung === "QuanTri" && (
+                  <NavLink to="/admin">
+                    <i className="fa fa-user-alt" />
+                    Admin
+                  </NavLink>
+                )}
               </li>
               {user && (
                 <li>

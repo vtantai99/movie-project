@@ -12,11 +12,14 @@ import MovieList from "../../Components/MovieList";
 import Theaters from "../../Components/Theaters";
 import ScrollToTop from "../../Components/ScollToTop";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   const { darkMode } = useSelector((state) => state.commonReducer);
-  useEffect(() => {
+
+  useEffect(async () => {
     window.scrollTo(0, 0);
   }, []);
   return (

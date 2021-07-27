@@ -1,6 +1,7 @@
 import * as actions from "./actionTypes";
 import Axios from "axios";
 import { startLoading, stopLoading } from "../commonAction/actions";
+
 export const switchRap = (rap) => {
   return {
     type: actions.SWITCH_RAP,
@@ -17,6 +18,7 @@ export const fetchTheaterList = () => {
       .catch((err) => console.log(err));
   };
 };
+
 // Call API tat ca từng rạp chi tiết của mã nhóm GP09
 export const fetchTheaterListDetail = () => {
   return (dispatch) => {
@@ -31,18 +33,22 @@ export const fetchTheaterListDetail = () => {
       .catch((err) => console.log(err));
   };
 };
+
 const fetchTheaterListSuccess = (theaterList) => {
   return { type: actions.FETCH_THEATER_LOGO, payload: theaterList };
 };
+
 const fetchTheaterListDetailSuccess = (listTheaterDetail) => {
   return {
     type: actions.FETCH_THEATER_LIST_DETAIL,
     payload: listTheaterDetail,
   };
 };
+
 export const getCodeTheater = (codeTheater) => {
   return { type: actions.GET_CODE_THEATER, payload: codeTheater };
 };
+
 export const refreshCodeTheater = () => {
   return {
     type: actions.REFRESH_CODE_THEATER,

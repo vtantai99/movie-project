@@ -7,13 +7,14 @@ import {
 
 const TheaterLogo = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTheaterList());
   }, []);
+
   const theaterList = useSelector(
     (state) => state.heThongRapReducer.theaterList
   );
-
   const changeCodeTheater = (codeTheater) => {
     switch (codeTheater) {
       case "BHDStar": {
@@ -42,6 +43,7 @@ const TheaterLogo = () => {
       }
     }
   };
+
   const renderTheaterlist = () => {
     return theaterList?.map((item, index) => (
       <div

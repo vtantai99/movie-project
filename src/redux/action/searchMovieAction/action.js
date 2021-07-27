@@ -1,26 +1,18 @@
 import Axios from "axios";
 
 import * as actions from "./actionTypes";
-export const fetchMovieList = () => {
-  return (dispatch) => {
-    Axios.get(
-      "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09"
-    )
-      .then((res) => {
-        dispatch(fetchMovieListSuccess(res.data));
-      })
 
-      .catch((err) => console.log(err));
-  };
-};
-export const selectTheater = (codeFilm) => {
-  return (dispatch) => {
-    Axios.get(
+export const selectTheater = (codeFilm) => async (dispatch) => {
+  dispatch(loadingTheater(true));
+  try {
+    const res = await Axios.get(
       `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${codeFilm}`
-    )
-      .then((res) => dispatch(fetchTheaterListSelected(res.data)))
-      .catch((err) => console.log(err));
-  };
+    );
+    await dispatch(fetTheaterList(res.data));
+    await setTimeout(() => dispatch(loadingTheater(false)), 300);
+  } catch (err) {
+    console.log(err);
+  }
 };
 export const selectDay = (codeFilm) => {
   return (dispatch) => {
@@ -32,17 +24,8 @@ export const selectDay = (codeFilm) => {
   };
 };
 
-// Lay danh sach phim
-const fetchMovieListSuccess = (movieList) => {
-  return {
-    type: actions.FETCH_MOVIE_LIST,
-    payload: movieList,
-  };
-};
-// Danh sach he thong rap tren API
-
 // Danh sach cum rap khi chon phim
-const fetchTheaterListSelected = (listShowtime) => {
+const fetTheaterList = (listShowtime) => {
   return {
     type: actions.FETCH_THEATER_LIST,
     payload: listShowtime,
@@ -97,5 +80,12 @@ export const refreshTheater = () => {
 export const refreshDate = () => {
   return {
     type: actions.REFRESH_DATE,
+  };
+};
+// loading khi chon phim
+const loadingTheater = (value) => {
+  return {
+    type: actions.LOADING_THEATER,
+    payload: value,
   };
 };

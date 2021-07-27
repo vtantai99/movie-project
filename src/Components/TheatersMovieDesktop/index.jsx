@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import HourButton from "../HourButton";
 const TheatersMovieDesktop = (props) => {
   const { codeTheater } = useSelector((state) => state.heThongRapReducer);
-  // console.log(props.movieDetail.danhSachPhim);
+
   const filterDate = props.movieDetail.danhSachPhim.map((item) => {
     const lichChieuTheoNgay = item.lstLichChieuTheoPhim.filter(
       (item) => new Date(item.ngayChieuGioChieu).getDate() === 1
@@ -16,7 +16,9 @@ const TheatersMovieDesktop = (props) => {
       codeTheater: codeTheater,
     };
   });
+
   const newList = filterDate.filter((item) => item.lichChieuTheoNgay.length);
+
   const renderMovieDetail = () => {
     if (newList.length) {
       return newList?.map((item, index) => (

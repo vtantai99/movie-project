@@ -7,9 +7,7 @@ import AdminMovieTable from "../../Components/AdminTableMovie";
 import "./index.scss";
 
 const AdminMovieList = () => {
-  const movieReducer = useSelector((state) => state.movieReducer);
-
-  const { movieList } = movieReducer;
+  const { showingList } = useSelector((state) => state.movieListReducer);
 
   const themeReducer = useSelector((state) => state.themeReducer);
 
@@ -26,8 +24,8 @@ const AdminMovieList = () => {
   const [numOfPag, setNumOfPage] = useState(1);
 
   useEffect(() => {
-    setList(movieList);
-  }, [movieList]);
+    setList(showingList);
+  }, [showingList]);
 
   useEffect(() => {
     setNumOfPage(Math.ceil(list.length / length));
@@ -136,26 +134,26 @@ const AdminMovieList = () => {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow-sm table-wrapper overflow-auto relative">
               <AdminMovieTable list={tableList} />
-              <div
-                className={`${
-                  isLight ? "bg-white" : "bg-gray-800"
-                } text-sm font-bold p-4 flex sticky bottom-0 flex-row justify-between items-center border-t border-solid border-gray-200`}
-              >
-                <div className="flex flex-row justify-start items-center">
-                  <p>Show</p>
-                  <select
-                    value={length}
-                    onChange={(e) => setLength(+e.target.value)}
-                    className={`mx-3 focus:outline-none focus:ring-2 text-gray-700`}
-                  >
-                    <option value="30">30</option>
-                    <option value="20">20</option>
-                    <option value="10">10</option>
-                  </select>
-                  <p>of {list.length}</p>
-                </div>
-                {numOfPag > 0 && renderPag()}
+            </div>
+            <div
+              className={`${
+                isLight ? "bg-white" : "bg-gray-800"
+              } text-sm font-bold p-4 flex sticky bottom-0 flex-row justify-between items-center border-t border-solid border-gray-200`}
+            >
+              <div className="flex flex-row justify-start items-center">
+                <p>Show</p>
+                <select
+                  value={length}
+                  onChange={(e) => setLength(+e.target.value)}
+                  className={`mx-3 focus:outline-none focus:ring-2 text-gray-700`}
+                >
+                  <option value="30">30</option>
+                  <option value="20">20</option>
+                  <option value="10">10</option>
+                </select>
+                <p>of {list.length}</p>
               </div>
+              {numOfPag > 0 && renderPag()}
             </div>
           </div>
         </div>
@@ -167,7 +165,7 @@ const AdminMovieList = () => {
     <div>
       <h3 className="text-2xl uppercase">Movie list</h3>
 
-      {movieList?.length > 0 && renderTable()}
+      {showingList?.length > 0 && renderTable()}
     </div>
   );
 };

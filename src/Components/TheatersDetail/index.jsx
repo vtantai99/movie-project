@@ -11,10 +11,12 @@ const TheatersDetail = () => {
   const theaterDetail = useSelector(
     (state) => state.heThongRapReducer.theaterDetail
   );
+
   useEffect(() => {
     dispatch(fetchTheaterListDetail());
     dispatch(refreshCodeTheater());
   }, []);
+
   const renderTheaterDetail = () => {
     return theaterDetail.map((item, index) => (
       <div

@@ -4,9 +4,8 @@ import { useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 import { disableTime, convertTime } from "../../Helper/Function/customTime";
 const HourHomeDesktop = (props) => {
-  console.log("Mobile", props);
   const history = useHistory();
-  // console.log(props);
+
   const filterDate = props.lichChieuTheoNgay.map((item) => {
     return {
       gioChieu: format("hh:mm", new Date(item.ngayChieuGioChieu)),
@@ -17,9 +16,7 @@ const HourHomeDesktop = (props) => {
     return filterDate.map((item, index) => (
       <>
         <Tooltip
-          title={
-            disableTime(item.gioChieu) ? "Let's go" : "Oops! Overtime today"
-          }
+          title={disableTime(item.gioChieu) ? "Buy it" : "Oops! Overtime today"}
           placement="top-center"
         >
           <button

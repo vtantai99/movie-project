@@ -1,20 +1,15 @@
-import Axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import CountUp from "react-countup";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchListUser } from "../../redux/action/adminAction/actions";
-import { fetchTheaterListDetail } from "../../redux/action/heThongRapAction/actions";
-import { fetchMovieList } from "../../redux/action/searchMovieAction/action";
+import { useSelector } from "react-redux";
 import AdminCharts from "../AdminCharts";
 import AdminTicketToday from "../AdminTicketToday";
 import AdminUserLoyal from "../AdminUserLoyal";
 
 const AdminDashBoard = () => {
-  const dispatch = useDispatch();
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
   const { listInfo } = useSelector((state) => state.adminReducer);
-  const totalFilm = useSelector((state) => state.searchMovieReducer.listFilm);
+  const totalFilm = useSelector((state) => state.movieListReducer.showingList);
   const totalTheater = theaterDetail?.reduce(
     (sum, item) => (sum += item.lstCumRap.length),
     0
@@ -36,8 +31,8 @@ const AdminDashBoard = () => {
     0
   );
   useEffect(() => {
-    dispatch(fetchTheaterListDetail());
-    dispatch(fetchMovieList());
+    // dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
+    // dispatch(fetchTheaterListDetail());
   }, []);
 
   const totalList = [

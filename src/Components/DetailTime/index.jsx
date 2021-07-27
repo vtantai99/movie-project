@@ -10,6 +10,7 @@ const DetailTime = () => {
   const { dateShow, codeTheater } = useSelector(
     (state) => state.movieDetailReducer
   );
+
   const { lichChieu } = useSelector(
     (state) => state.movieDetailReducer.movieDetail
   );
@@ -18,18 +19,22 @@ const DetailTime = () => {
   const cutStr = (string) => {
     return string.substring(string.indexOf("-"));
   };
+
   // Lọc cụm rạp theo mã rạp
   const filterTheater = lichChieu?.filter(
     (item) => item.thongTinRap.maHeThongRap === codeTheater // Nếu giống mã rạp thì giữ lại, khác thì delete
   );
+  console.log(filterTheater);
   // Lọc giờ chiếu  với ngày hiện tại
   const filterDates = filterTheater.filter(
     (item) => new Date(item.ngayChieuGioChieu).getDate() === dateShow // Nếu giống ngày thì giữ lại, khác thì delete
   );
+  console.log(filterDates);
   const nameTheater = filterDates.map((item) => item.thongTinRap.tenCumRap); // in ra tất cả tên cụm rạp
   const filterNameTheater = nameTheater.filter(
     (item, index) => nameTheater.indexOf(item) === index // Những cụm rạp nào trùng nhau thì xoá
   );
+
   const lastList = filterNameTheater.map((item, index) => {
     // check cụm rạp sau khi filter với list filterDates ban dau, giong ten cum rap thi add time
     const showTime = [];
@@ -43,7 +48,7 @@ const DetailTime = () => {
     }
     return { showTime, tenCumRap: item, id: index + 1 };
   });
-  console.log(lastList.showTime);
+
   const reSize = () => {
     if (window.innerWidth >= 768) return true;
     else return false;
@@ -53,6 +58,7 @@ const DetailTime = () => {
       <DetailTimeItem key={index} timeItem={item} />
     ));
   };
+
   // Hàm hiển thị giờ chiếu và cụm rạp
   const renderShowTime = () => {
     if (filterTheater.length) {

@@ -47,9 +47,8 @@ const renderIconStar = (vote) => {
 };
 const DetailInfo = () => {
   const dispatch = useDispatch();
-  const { hinhAnh, ngayKhoiChieu, tenPhim, danhGia, trailer } = useSelector(
-    (state) => state.movieDetailReducer.movieDetail
-  );
+  const { hinhAnh, ngayKhoiChieu, tenPhim, danhGia, trailer, maNhom } =
+    useSelector((state) => state.movieDetailReducer.movieDetail);
   return (
     <Fragment>
       <div className="detail__info">
@@ -79,9 +78,11 @@ const DetailInfo = () => {
               <small className="digital__movie">
                 120 phút - {danhGia} IMDb - 2D/Digital
               </small>
-              <a className="btn__movie" href="#lich">
-                MUA VÉ
-              </a>
+              {maNhom === "GP09" && (
+                <a className="btn__movie" href="#lich">
+                  MUA VÉ
+                </a>
+              )}
             </div>
           </div>
           <div className="content__rating">

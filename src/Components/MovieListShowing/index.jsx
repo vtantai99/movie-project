@@ -8,8 +8,10 @@ import starHalf from "../../Assets/Images/starHalf.png";
 import movieBomTan from "../../Assets/Images/movieBomTan.png";
 import movieKhuyenMai from "../../Assets/Images/movieKhuyenMai.png";
 import playIcon from "../../Assets/Images/playIcon.png";
+import bgDefault from "../../Assets/Images/bg-default.webp";
 
 const MovieListShowing = (props) => {
+  console.log(props.movie.hinhAnh);
   const dispatch = useDispatch();
   const history = useHistory();
   // Hàm gắn sao theo band điểm của phim
@@ -59,22 +61,31 @@ const MovieListShowing = (props) => {
   const renderImageTitle = (vote) => {
     if (vote >= 9) return movieBomTan;
     if (vote >= 7) return movieKhuyenMai;
-    return null;
+    return;
   };
   return (
     <div className="showing__item">
       <div className="item__film">
         <div
           className="item__film__img"
-          style={{
-            background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
-          }}
+          style={
+            props.movie.hinhAnh
+              ? {
+                  background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
+                }
+              : {
+                  background: `url(${bgDefault}) center center / cover no-repeat`,
+                }
+          }
         >
-          <img
-            src={renderImageTitle(props.movie.danhGia)}
-            className="item__film__img--title"
-            alt="star"
-          />
+          {props.movie.danhGia >= 7 && (
+            <img
+              src={renderImageTitle(props.movie.danhGia)}
+              className="item__film__img--title"
+              alt="star"
+            />
+          )}
+
           <div className="item__film__img--vote">
             <p className="vote--number">{props.movie.danhGia}</p>
             <div className="vote--star">
