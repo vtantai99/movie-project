@@ -1,6 +1,8 @@
 import * as actions from "./actionTypes";
 import axios from "axios";
 import swal from "sweetalert";
+import { getMovieListRequest } from "../movieListAction/action";
+import { GET_SHOWING_LIST } from "../movieListAction/actionTypes";
 
 export const addMovie = (movie, history) => async (dispatch) => {
   axios({
@@ -16,12 +18,12 @@ export const addMovie = (movie, history) => async (dispatch) => {
           confirm: "OK",
         },
       }).then(() => {
-        dispatch(fetchMovieList());
+        dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
         history.push("/admin/movieList");
       })
     )
     .catch((err) => {
-      console.log(err);
+      console.log(err.response.data);
     });
 };
 
@@ -119,8 +121,8 @@ export const deleteMovie = (maPhim, user) => async (dispatch) => {
 };
 
 export const updateSearchTerm = (term) => {
-  return{
+  return {
     type: actions.UPDATE_SEARCH_TERM,
-    payload: term
-  }
-}
+    payload: term,
+  };
+};
