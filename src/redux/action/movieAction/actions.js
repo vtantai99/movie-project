@@ -117,3 +117,10 @@ export const deleteMovie = (maPhim, user) => async (dispatch) => {
     });
   }
 };
+
+export const updateSearchTerm = (term) => {
+  return{
+    type: actions.UPDATE_SEARCH_TERM,
+    payload: term
+  }
+}

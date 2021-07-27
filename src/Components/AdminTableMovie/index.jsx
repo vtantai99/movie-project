@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
@@ -6,15 +6,33 @@ import {
 } from "../../redux/action/movieAction/actions";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
+import { useState } from "react";
 
-const AdminMovieTable = ({ list }) => {
+const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
   const userReducer = useSelector((state) => state.userReducer);
   const { user } = userReducer;
 
   const themeReducer = useSelector((state) => state.themeReducer);
   const { isLight } = themeReducer;
 
+  const [currentMotaIndex, setCurrentMotaIndex] = useState(null);
+
   const dispatch = useDispatch();
+
+  const truncateMota = (moTa) => {
+    const renderedMota = moTa
+      ?.split("")
+      .slice(0, 30)
+      ?.reduce((a, b) => (a += b));
+    return <p>{renderedMota}...</p>;
+  };
+
+  const renderDate = (time) => {
+    const date = new Date(time);
+    return (
+      <p>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
+    );
+  };
 
   const onDeleteMovie = (maPhim) => {
     swal({
@@ -40,29 +58,218 @@ const AdminMovieTable = ({ list }) => {
       >
         <tr>
           <th
+            onClick={() =>
+              setSortMethod({
+                name: "ten",
+                method: sortMethod?.method === "asc" ? "desc" : "asc",
+              })
+            }
             scope="col"
-            className=" px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
+            className={`cursor-pointer px-6 py-3 text-left text-xs ${
+              sortMethod?.name === "ten"
+                ? "bg-green-200"
+                : `hover:bg-gray-${isLight ? "300" : "600"}`
+            } font-medium  uppercase tracking-wider`}
           >
-            Tên phim
+            <div className="flex  flex-row justify-start items-center">
+              <span>Tên phim</span>
+              {sortMethod?.name === "ten" && (
+                <span className="text-green-600">
+                  {sortMethod.method === "asc" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 15l7-7 7 7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+              )}
+            </div>
           </th>
 
           <th
+            onClick={() =>
+              setSortMethod({
+                name: "danhGia",
+                method: sortMethod?.method === "asc" ? "desc" : "asc",
+              })
+            }
             scope="col"
-            className=" px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
+            className={`cursor-pointer px-6 py-3 text-left text-xs ${
+              sortMethod?.name === "danhGia"
+                ? "bg-green-200"
+                : `hover:bg-gray-${isLight ? "300" : "600"}`
+            } font-medium  uppercase tracking-wider`}
           >
-            Mã nhóm
+            <div className="flex flex-row justify-start items-center">
+              <span>Danh gia</span>
+              {sortMethod?.name === "danhGia" && (
+                <span className="text-green-600">
+                  {sortMethod.method === "asc" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 15l7-7 7 7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+              )}
+            </div>
+          </th>
+
+          <th
+            onClick={() =>
+              setSortMethod({
+                name: "moTa",
+                method: sortMethod?.method === "asc" ? "desc" : "asc",
+              })
+            }
+            scope="col"
+            className={`cursor-pointer px-6 py-3 text-left text-xs ${
+              sortMethod?.name === "moTa"
+                ? "bg-green-200"
+                : `hover:bg-gray-${isLight ? "300" : "600"}`
+            } font-medium  uppercase tracking-wider`}
+          >
+            <div className="flex flex-row justify-start items-center">
+              <span>Mo ta</span>
+              {sortMethod?.name === "moTa" && (
+                <span className="text-green-600">
+                  {sortMethod.method === "asc" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 15l7-7 7 7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+              )}
+            </div>
           </th>
           <th
+            onClick={() =>
+              setSortMethod({
+                name: "ngay",
+                method: sortMethod?.method === "asc" ? "desc" : "asc",
+              })
+            }
             scope="col"
-            className=" px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
+            className={`cursor-pointer px-6 py-3 text-left text-xs ${
+              sortMethod?.name === "ngay"
+                ? "bg-green-200"
+                : `hover:bg-gray-${isLight ? "300" : "600"}`
+            } font-medium  uppercase tracking-wider`}
           >
-            Đánh giá
-          </th>
-          <th
-            scope="col"
-            className=" px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider"
-          >
-            Ngày khởi chiếu
+            <div className="flex  flex-row justify-start items-center">
+              <span>Ngay khoi chieu</span>
+              {sortMethod?.name === "ngay" && (
+                <span className="text-green-600">
+                  {sortMethod.method === "asc" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 15l7-7 7 7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </span>
+              )}
+            </div>
           </th>
 
           <th scope="col" className=" px-6 py-3">
@@ -85,13 +292,13 @@ const AdminMovieTable = ({ list }) => {
             </td>
 
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm">{item.maNhom}</div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
               <div className="text-sm">{item.danhGia}</div>
             </td>
+            <td onClick className="px-6  py-4 whitespace-nowrap">
+              <div className="text-sm">{truncateMota(item.moTa)}</div>
+            </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm">{item.ngayKhoiChieu}</div>
+              <div className="text-sm">{renderDate(item.ngayKhoiChieu)}</div>
             </td>
 
             <td className="px-6 py-4 text-sm font-medium">
