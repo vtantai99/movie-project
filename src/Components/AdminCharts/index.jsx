@@ -21,7 +21,7 @@ const AdminCharts = () => {
   // console.log(newList);
 
   return (
-    <div className="col-start-5 col-end-9 row-span-2 bg-white p-4 shadow-md rounded-md">
+    <div className="col-start-5 col-end-9 row-span-2 bg-white p-3 shadow-md rounded-md">
       <p className="mb-2 text-blue-500 text-lg font-bold">
         Doanh thu tháng {new Date().getMonth() + 1}
       </p>

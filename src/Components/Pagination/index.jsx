@@ -1,27 +1,88 @@
-import React, { Fragment } from "react";
-import { Button } from "@material-ui/core";
+import React from "react";
+import { useSelector } from "react-redux";
 
-const Pagination = ({ page, totalPost, postPerPage, handleChangePage }) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
-    pageNumbers.push(i);
+const Pagination = ({
+  page,
+  totalCount,
+  quantity,
+  handleChangePage,
+  handlePrevPage,
+  handleNextPage,
+}) => {
+  const { isLight } = useSelector((state) => state.themeReducer);
+
+  const listPages = [];
+  for (let i = 1; i <= Math.ceil(totalCount / quantity); i++) {
+    listPages.push(i);
   }
 
   return (
-    totalPost > 5 && (
-      <div className="flex justify-end mt-3">
-        {pageNumbers.map((item, index) => (
+    totalCount > 5 && (
+      <div className="flex justify-end">
+        <button
+          className={`${page === 1 && "opacity-50 pointer-events-none"} 
+          ${isLight ? "border-solid" : "border-gray-700"}
+           px-2 py-2 border-t border-b border-l border-r rounded-tl rounded-bl transition`}
+          onClick={() => handlePrevPage()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        {listPages.map((item, index) => (
           <button
             key={index}
+            className={`${
+              item === page &&
+              "bg-blue-500 border-blue-500 text-white pointer-events-none"
+            } ${
+              isLight
+                ? "border-solid hover:bg-gray-100"
+                : "border-gray-700 hover:bg-gray-700"
+            } px-3 py-2 border-r border-t border-b transition`}
             onClick={() => handleChangePage(item)}
-            className={`mr-3 block w-8 h-8 rounded-full hover:bg-blue-400
-          hover:text-white transition ${
-            item === page ? "bg-blue-500 text-white hover:bg-blue-500" : ""
-          }`}
           >
             {item}
           </button>
         ))}
+        <button
+          className={`${
+            page === Math.ceil(totalCount / quantity) &&
+            "opacity-50 pointer-events-none"
+          } ${
+            isLight
+              ? "border-solid hover:bg-gray-100"
+              : "border-gray-700 hover:bg-gray-700"
+          } px-2 py-2 border-r border-t border-b 
+            rounded-tr rounded-br transition`}
+          onClick={() => handleNextPage()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
     )
   );

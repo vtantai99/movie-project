@@ -42,6 +42,7 @@ export const loginRequest = (user, history) => async (dispatch) => {
     dispatch(showError(err.response.data));
   }
 };
+
 export const getInfoUserRequest = (account) => {
   return (dispatch) => {
     dispatch(startLoading());
@@ -56,50 +57,69 @@ export const getInfoUserRequest = (account) => {
       .catch((err) => console.log(err));
   };
 };
-// export const updateUserRequest =
-//   (infoUser, accessToken) => async (dispatch) => {
-//     console.log(infoUser, accessToken);
-//     try {
-//       const res = await axios({
-//         method: "PUT",
-//         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-//         data: infoUser,
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       });
-//       if (res.status === 200 || res.status === 201) {
-//         await dispatch(updateInfo(res.data));
-//         swal({
-//           title: "Yeah",
-//           icon: "success",
-//           text: "Đổi mật khẩu thành công",
-//           timer: 1000,
-//           buttons: false,
-//         });
-//       }
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+
+export const getInfoUserByPage = (page, quantity) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP09&soTrang=${page}&soPhanTuTrenTrang=${quantity}`
+    );
+    if (res.status === 200 || res.status === 201) {
+      await dispatch(allInfoUser(res.data));
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteUser =
+  (admin, taiKhoan, page, quantity) => async (dispatch) => {
+    try {
+      const res = await axios({
+        method: "DELETE",
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        headers: {
+          Authorization: `Bearer ${admin.accessToken}`,
+        },
+      });
+      if (res.status === 200 || res.status === 201) {
+        swal({
+          title: res.data,
+          icon: "success",
+          timer: 1000,
+        });
+        await dispatch(getInfoUserByPage(page, quantity));
+      }
+    } catch (err) {
+      swal({
+        title: err.response.data,
+        icon: "error",
+        buttons: {
+          confirm: "OK",
+        },
+      });
+    }
+  };
+
 export const logIn = (user) => {
   return {
     type: actions.LOG_IN,
     payload: user,
   };
 };
+
+export const allInfoUser = (listInfo) => {
+  return {
+    type: actions.ALL_INFO_USER,
+    payload: listInfo,
+  };
+};
+
 export const infoUser = (info) => {
   return {
     type: actions.INFO_USER,
     payload: info,
   };
 };
-// export const updateInfo = (info) => {
-//   return {
-//     type: actions.CHANGE_PASS,
-//     payload: info,
-//   };
-// };
 export const showError = (err) => {
   return {
     type: actions.SHOW_ERROR,

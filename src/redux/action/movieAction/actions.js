@@ -51,7 +51,6 @@ export const fetchMovieList = () => (dispatch) => {
 };
 
 export const editMovie = (movie, user, history) => async (dispatch) => {
-  console.log(user);
   try {
     const res = await axios({
       method: "POST",
@@ -109,9 +108,8 @@ export const deleteMovie = (maPhim, user) => async (dispatch) => {
       });
     }
   } catch (err) {
-    console.log(err);
     swal({
-      title: "Khong the xoa phim da co lich chieu",
+      title: err.response.data,
       icon: "error",
       buttons: {
         confirm: "OK",

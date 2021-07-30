@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
 import * as actions from "../../redux/action/userAction/actionTypes";
 import axios from "axios";
+import { convertToPassWord } from "../../Helper/Function/convertPass";
 
 const InfoUser = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,6 @@ const InfoUser = () => {
   };
 
   const changePassRequest = (infoUser, accessToken) => async (dispatch) => {
-    console.log(infoUser, accessToken);
     try {
       const res = await axios({
         method: "PUT",
@@ -72,14 +72,6 @@ const InfoUser = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const convertToPassWord = (string) => {
-    let pass = "";
-    for (let item of string) {
-      pass += "*";
-    }
-    return pass;
   };
 
   return (

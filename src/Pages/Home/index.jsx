@@ -13,14 +13,20 @@ import Theaters from "../../Components/Theaters";
 import ScrollToTop from "../../Components/ScollToTop";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  startLoading,
+  stopLoading,
+} from "../../redux/action/commonAction/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const { darkMode } = useSelector((state) => state.commonReducer);
 
-  useEffect(async () => {
+  useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(startLoading());
+    setTimeout(() => dispatch(stopLoading()), 1000);
   }, []);
   return (
     <Fragment>

@@ -84,6 +84,7 @@ const AddMovie = () => {
       dispatch(addMovie(formData, history));
     }
   };
+
   const [img, setImg] = useState("");
 
   const watchImage = watch("hinhAnh");
@@ -178,7 +179,6 @@ const AddMovie = () => {
           </div>
           <div className="flex flex-col justify-start items-start">
             <label className="m-0">Ngay khoi chieu</label>
-
             <TextField
               onChange={(e) => setDate(e.target.value)}
               id="date"

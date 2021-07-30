@@ -110,7 +110,6 @@ const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
               )}
             </div>
           </th>
-
           <th
             onClick={() =>
               setSortMethod({
@@ -164,7 +163,6 @@ const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
               )}
             </div>
           </th>
-
           <th
             onClick={() =>
               setSortMethod({
@@ -271,14 +269,13 @@ const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
               )}
             </div>
           </th>
-
           <th scope="col" className=" px-6 py-3">
             <span className="sr-only">Edit</span>
           </th>
         </tr>
       </thead>
       <tbody
-        className={`divide-y  ${
+        className={`divide-y ${
           isLight ? "bg-white divide-gray-100" : "bg-gray-800 divide-gray-700"
         }`}
       >

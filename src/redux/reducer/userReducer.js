@@ -4,6 +4,7 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
   error: "",
   info: "",
+  listInfo: "",
 };
 const userReducer = (state = initialState, action) => {
   let { type, payload } = action;
@@ -16,6 +17,9 @@ const userReducer = (state = initialState, action) => {
     }
     case actions.INFO_USER: {
       return { ...state, info: payload };
+    }
+    case actions.ALL_INFO_USER: {
+      return { ...state, listInfo: payload };
     }
     case actions.CHANGE_PASS: {
       const newInfo = { ...state.info, matKhau: payload.matKhau };

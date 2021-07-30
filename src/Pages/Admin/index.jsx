@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import AdminMovieList from "../AdminMovieList";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+import AdminMovieList from "../AdminMovieList";
 import AdminSideBar from "../../Components/AdminSideBar";
-import AdminDashBoard from "../../Components/AdminDashBoard";
-import AdminMovie from "../../Components/AdminMovie";
+import AdminUser from "../AdminUser";
+import AdminDashBoard from "../AdminDashBoard";
 import AddMovie from "../AddMovie";
 import AdminHeader from "../../Components/AdminHeader";
 import { useDispatch, useSelector } from "react-redux";
-import AdminUser from "../../Components/AdminUser";
 import { fetchListUser } from "../../redux/action/adminAction/actions";
 import { getMovieListRequest } from "../../redux/action/movieListAction/action";
 import { GET_SHOWING_LIST } from "../../redux/action/movieListAction/actionTypes";

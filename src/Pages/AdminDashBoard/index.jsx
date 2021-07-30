@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import CountUp from "react-countup";
 import { useSelector } from "react-redux";
-import AdminCharts from "../AdminCharts";
-import AdminTicketToday from "../AdminTicketToday";
-import AdminUserLoyal from "../AdminUserLoyal";
+import AdminCharts from "../../Components/AdminCharts";
+import AdminTicketToday from "../../Components/AdminTicketToday";
+import AdminUserLoyal from "../../Components/AdminUserLoyal";
 
 const AdminDashBoard = () => {
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
@@ -131,10 +131,10 @@ const AdminDashBoard = () => {
   return (
     <div>
       <h3 className="text-blue-500 font-medium text-2xl mb-3">DASHBOARD</h3>
-      <div className="grid grid-cols-8 grid-rows-4 gap-5">
+      <div className="grid grid-cols-8 grid-rows-4 gap-4">
         {totalList.map((item, index) => (
           <div
-            className={`${item.location} bg-white p-4 shadow-md rounded-md
+            className={`${item.location} bg-white p-3 shadow-md rounded-md
            flex justify-between items-center`}
             key={index}
           >

@@ -2,17 +2,33 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { formatNumber } from "../../Helper/Function/formatNumber";
 import Pagination from "../Pagination";
+
 const AdminUserLoyal = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
   const [page, setPage] = useState(1);
-  const [postPerPage, setIPostPerPage] = useState(5);
+  const [quantity, setQuantity] = useState(5);
   // Thay đổi page
   const handleChangePage = (number) => {
     setPage(number);
   };
 
+  const handlePrevPage = () => {
+    page > 1 && setPage(page - 1);
+  };
+
+  const handleNextPage = () => {
+    page < Math.ceil(sortDecreaseListInfo.length / quantity) &&
+      setPage(page + 1);
+  };
+
+  //Thêm key id
+  const newListInfo = listInfo.map((item, index) => ({
+    ...item,
+    id: index + 1,
+  }));
+
   //   Sort mảng listInfo giảm dần theo số tiền mua vé
-  const sortDecreaseListInfo = listInfo
+  const sortDecreaseListInfo = newListInfo
     .sort(
       (a, b) =>
         b.thongTinDatVe.reduce(
@@ -25,17 +41,20 @@ const AdminUserLoyal = () => {
         )
     )
     .slice(0, 10);
-  const indexOfLastPost = page * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
+
+  const indexOfLastPost = page * quantity;
+  const indexOfFirstPost = indexOfLastPost - quantity;
   const currentPost = sortDecreaseListInfo.slice(
     indexOfFirstPost,
     indexOfLastPost
   );
+
   //Render 10 người dùng mua vé nhiều nhất
   const renderUserLoyal = () => {
     return currentPost.map((item, index) => (
-      <tr key={index}>
-        <td className="p-1">
+      <tr key={index} className="border-b border-solid">
+        <td className="p-2">{item.id}</td>
+        <td className="p-2">
           {item.taiKhoan === "" ? "Không xác định" : item.taiKhoan}
         </td>
         <td>
@@ -56,11 +75,12 @@ const AdminUserLoyal = () => {
     ));
   };
   return (
-    <div className="col-span-3 row-start-3 row-end-5 bg-white p-4 shadow-md rounded-md">
+    <div className="col-span-3 row-start-3 row-end-5 bg-white p-3 shadow-md rounded-md">
       <p className="mb-2 text-blue-500 text-lg font-bold">Top 10 khách hàng </p>
       <table className="w-100">
         <thead className="text-black bg-gray-100">
           <tr>
+            <th className="p-2">Top</th>
             <th>Tài khoản</th>
             <th>Tổng vé</th>
             <th>Tổng tiền</th>
@@ -68,12 +88,16 @@ const AdminUserLoyal = () => {
         </thead>
         <tbody>{renderUserLoyal()}</tbody>
       </table>
-      <Pagination
-        page={page}
-        postPerPage={postPerPage}
-        totalPost={sortDecreaseListInfo.length}
-        handleChangePage={handleChangePage}
-      />
+      <div className="mt-3">
+        <Pagination
+          page={page}
+          quantity={quantity}
+          totalCount={sortDecreaseListInfo.length}
+          handleChangePage={handleChangePage}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      </div>
     </div>
   );
 };

@@ -11,7 +11,6 @@ import playIcon from "../../Assets/Images/playIcon.png";
 import bgDefault from "../../Assets/Images/bg-default.webp";
 
 const MovieListShowing = (props) => {
-  console.log(props.movie.hinhAnh);
   const dispatch = useDispatch();
   const history = useHistory();
   // Hàm gắn sao theo band điểm của phim

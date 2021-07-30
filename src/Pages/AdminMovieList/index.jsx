@@ -103,7 +103,6 @@ const AdminMovieList = () => {
         (a, b) => getTime(b.ngayKhoiChieu) - getTime(a.ngayKhoiChieu)
       );
     }
-
     setSearchedList(
       newArr.filter(
         (el) => el.tenPhim.toUpperCase().indexOf(searchTerm.toUpperCase()) > -1
@@ -292,7 +291,6 @@ const AdminMovieList = () => {
   return (
     <div>
       <h3 className="text-2xl uppercase">Movie list</h3>
-
       <div className="flex mt-5 flex-row justify-start items-center">
         <AdminSearchMovie />
         <svg

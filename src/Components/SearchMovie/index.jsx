@@ -143,11 +143,6 @@ const SearchMovie = () => {
       className={darkMode ? "search__movie Dark" : "search__movie"}
     >
       <div className="search__movie__group movieSelect">
-        {/* <input
-          type="text"
-          placeholder="Tìm kiếm phim"
-          onChange={handleOnChange}
-        /> */}
         <select name="movieSelect" onChange={handleSelectFilm}>
           <option value="movieSelect" hidden selected>
             Chọn Phim

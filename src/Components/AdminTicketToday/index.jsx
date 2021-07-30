@@ -77,7 +77,7 @@ const AdminTicketToday = () => {
   };
 
   return (
-    <div className="col-start-4 col-end-9 row-start-3 row-end-5 bg-white p-4 shadow-md rounded-md">
+    <div className="col-start-4 col-end-9 row-start-3 row-end-5 bg-white p-3 shadow-md rounded-md">
       <p className="mb-2 text-blue-500 text-lg font-bold">Giao dịch hôm nay</p>
       {newListInfo.length ? (
         <table className="w-100">
