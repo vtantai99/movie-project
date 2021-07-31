@@ -5,7 +5,7 @@ import { formatNumber } from "../../Helper/Function/formatNumber";
 import Pagination from "../Pagination";
 import ModalInfo from "../ModalInfo";
 
-const AdminTicketToday = () => {
+const AdminHistory = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
   const [show, setShow] = useState(false);
   // filter theo ngay mua ve, chi hien thi nguoi dung mua ve ngay hien tai
@@ -109,4 +109,4 @@ const AdminTicketToday = () => {
   );
 };
 
-export default AdminTicketToday;
+export default AdminHistory;

@@ -24,12 +24,11 @@ const DetailTime = () => {
   const filterTheater = lichChieu?.filter(
     (item) => item.thongTinRap.maHeThongRap === codeTheater // Nếu giống mã rạp thì giữ lại, khác thì delete
   );
-  console.log(filterTheater);
   // Lọc giờ chiếu  với ngày hiện tại
   const filterDates = filterTheater.filter(
     (item) => new Date(item.ngayChieuGioChieu).getDate() === dateShow // Nếu giống ngày thì giữ lại, khác thì delete
   );
-  console.log(filterDates);
+
   const nameTheater = filterDates.map((item) => item.thongTinRap.tenCumRap); // in ra tất cả tên cụm rạp
   const filterNameTheater = nameTheater.filter(
     (item, index) => nameTheater.indexOf(item) === index // Những cụm rạp nào trùng nhau thì xoá

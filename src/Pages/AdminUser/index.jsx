@@ -13,6 +13,7 @@ import { convertToPassWord } from "../../Helper/Function/convertPass";
 import {
   deleteUser,
   getInfoUserByPage,
+  signUpRequest,
 } from "../../redux/action/userAction/actions";
 
 const AdminUser = () => {
@@ -56,6 +57,7 @@ const AdminUser = () => {
     setModalShow(false);
     setInfoUser(null);
     setModalAddUser(false);
+    setShowPass(false);
   };
 
   const handleChangePage = (page) => {
@@ -97,11 +99,9 @@ const AdminUser = () => {
   const handleUpdate = (user) => {
     setModalShow(true);
     setInfoUser(user);
-    setShowPass(false);
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     const infoUpdate = {
       taiKhoan: data.taiKhoan,
       matKhau: data.matKhau,
@@ -111,14 +111,24 @@ const AdminUser = () => {
       maLoaiNguoiDung: data.maLoaiNguoiDung,
       hoTen: data.hoTen,
     };
-    dispatch(updateInfoRequest(infoUpdate));
+    if (modalAddUser) {
+      dispatch(signUpRequest(infoUpdate, "addUser"));
+    } else {
+      dispatch(updateInfoRequest(infoUpdate));
+    }
   };
 
   const sortListUser = () => {
-    return items.sort(
-      (a, b) =>
-        a.hoTen.toLowerCase().charCodeAt(0) -
-        b.hoTen.toLowerCase().charCodeAt(0)
+    console.log(
+      items.sort((a, b) => {
+        if (a.hoTen.toLowerCase() < b.hoTen.toLowerCase()) {
+          return -1;
+        }
+        if (a.hoTen.toLowerCase() > b.hoTen.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      })
     );
   };
 
@@ -137,7 +147,7 @@ const AdminUser = () => {
           title: "Yeah",
           icon: "success",
           text: "Cập nhật thành công",
-        }).then((confirm) => confirm && setModalShow(false));
+        }).then((confirm) => confirm && handleOffModal(false));
         await dispatch(getInfoUserByPage(page, quantity));
       }
     } catch (err) {
@@ -299,9 +309,23 @@ const AdminUser = () => {
                     name="taiKhoan"
                     readOnly={modalAddUser ? false : true}
                     type="text"
-                    ref={register}
+                    ref={register(
+                      modalAddUser && {
+                        required: "Xin vui lòng điền thông tin",
+                        minLength: {
+                          value: 6,
+                          message: "Tài khoản phải trên 6 kí tự",
+                        },
+                        maxLength: {
+                          value: 10,
+                          message: "Tài khoản không được quá 10 kí tự",
+                        },
+                      }
+                    )}
                   />
-                  <small></small>
+                  <small className="text-red-500">
+                    {errors.taiKhoan && errors.taiKhoan.message}
+                  </small>
                 </div>
                 <div className="col-span-2 flex flex-col">
                   <label
@@ -458,7 +482,7 @@ const AdminUser = () => {
                     type="text"
                     ref={register}
                   >
-                    <option value="QuanTri">QuanTri</option>
+                    {!modalAddUser && <option value="QuanTri">QuanTri</option>}
                     <option value="KhachHang">KhachHang</option>
                   </select>
                 </div>
@@ -480,7 +504,7 @@ const AdminUser = () => {
                       color: "#fff",
                     }}
                   >
-                    Cập nhật
+                    {modalAddUser ? "THÊM" : "CẬP NHẬT"}
                   </Button>
                 </div>
               </div>

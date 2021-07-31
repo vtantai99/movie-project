@@ -12,13 +12,11 @@ const AdminCharts = () => {
   const newList = [...newListInfo].filter((item) => {
     let ngayDatVe = new Date(item.ngayDat);
     let currentDate = new Date("July 2 2021");
-    // console.log(currentDate.getDate());
     currentDate.setDate(currentDate.getDate() - 7);
     if (ngayDatVe.getTime() > currentDate.getTime()) {
       return item;
     }
   });
-  // console.log(newList);
 
   return (
     <div className="col-start-5 col-end-9 row-span-2 bg-white p-3 shadow-md rounded-md">

@@ -69,7 +69,7 @@ export default function SignUp() {
       maLoaiNguoiDung: "KhachHang",
       hoTen: lastName + firstName,
     };
-    dispatch(signUpRequest(userData, history));
+    dispatch(signUpRequest(userData, "signUpUser", history));
   };
 
   return (

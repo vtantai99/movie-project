@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { formatNumber } from "../../Helper/Function/formatNumber";
 import Pagination from "../Pagination";
 
-const AdminUserLoyal = () => {
+const AdminTopUser = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
   const [page, setPage] = useState(1);
   const [quantity, setQuantity] = useState(5);
@@ -102,4 +102,4 @@ const AdminUserLoyal = () => {
   );
 };
 
-export default AdminUserLoyal;
+export default AdminTopUser;

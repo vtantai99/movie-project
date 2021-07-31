@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import CountUp from "react-countup";
 import { useSelector } from "react-redux";
 import AdminCharts from "../../Components/AdminCharts";
-import AdminTicketToday from "../../Components/AdminTicketToday";
-import AdminUserLoyal from "../../Components/AdminUserLoyal";
+import AdminHistory from "../../Components/AdminHistory";
+import AdminTopUser from "../../Components/AdminTopUser";
 
 const AdminDashBoard = () => {
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
@@ -148,8 +148,8 @@ const AdminDashBoard = () => {
           </div>
         ))}
         <AdminCharts />
-        <AdminUserLoyal />
-        <AdminTicketToday />
+        <AdminTopUser />
+        <AdminHistory />
       </div>
     </div>
   );

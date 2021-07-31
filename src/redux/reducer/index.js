@@ -9,6 +9,8 @@ import movieReducer from "./movieReducer";
 import searchMovieReducer from "./searchMovieReducer";
 import themeReducer from "./themeReducer";
 import adminReducer from "./adminReducer";
+import voteReducer from "./voteReducer";
+
 export default combineReducers({
   adminReducer,
   userReducer,
@@ -20,4 +22,5 @@ export default combineReducers({
   bookingReducer,
   commonReducer,
   themeReducer,
+  voteReducer,
 });

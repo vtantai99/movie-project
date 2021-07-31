@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import Axios from "axios";
 import { startLoading, stopLoading } from "../commonAction/actions";
-export const signUpRequest = (user, history) => async (dispatch) => {
+export const signUpRequest = (user, type, history) => async (dispatch) => {
   try {
     const res = await axios({
       method: "POST",
@@ -11,18 +11,29 @@ export const signUpRequest = (user, history) => async (dispatch) => {
       data: user,
     });
     if (res.status === 200 || res.status === 201) {
-      swal({
-        title: "Đăng kí thành công",
-        text: "Bạn có thể đăng nhập ngay bây giờ",
-        icon: "success",
-        button: {
-          text: "Đồng ý",
-        },
-      }).then(() => {
-        history.push("/login");
-      });
+      if (type === "addUser") {
+        swal({
+          title: "Thêm người dùng thành công",
+          icon: "success",
+          button: {
+            text: "Đồng ý",
+          },
+        });
+      } else {
+        swal({
+          title: "Đăng kí thành công",
+          text: "Bạn có thể đăng nhập ngay bây giờ",
+          icon: "success",
+          button: {
+            text: "Đồng ý",
+          },
+        }).then(() => {
+          history.push("/login");
+        });
+      }
     }
   } catch (err) {
+    console.log(err.response.data);
     dispatch(showError(err.response.data));
   }
 };
