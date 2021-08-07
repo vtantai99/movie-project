@@ -47,15 +47,24 @@ const renderIconStar = (vote) => {
 };
 const DetailInfo = () => {
   const dispatch = useDispatch();
+
   const { hinhAnh, ngayKhoiChieu, tenPhim, danhGia, trailer, maNhom } =
     useSelector((state) => state.movieDetailReducer.movieDetail);
+  const { isLight } = useSelector((state) => state.themeReducer);
   return (
     <Fragment>
       <div className="detail__info">
         <div className="detail__info__img">
           <img src={hinhAnh} alt="tenPhim" />
         </div>
-        <div className="detail__info__fog"></div>
+        <div
+          className="detail__info__fog"
+          style={
+            isLight
+              ? { background: "linear-gradient(0deg, #0a2029, transparent)" }
+              : { background: "linear-gradient(0deg, #111827, transparent)" }
+          }
+        ></div>
         <div className="detail__info__content container">
           <div className="content__text">
             <div className="content__text__img">

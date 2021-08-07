@@ -4,10 +4,10 @@ import format from "date-format";
 import Pagination from "../Pagination";
 import { nameSeat } from "../../Helper/Function/nameSeat";
 import ModalInfo from "../ModalInfo";
-import QuantityTable from "../QuantityTable";
 
 const InfoTable = () => {
   const { info } = useSelector((state) => state.userReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   //sap xep thu tu ngay dat ve gan nhat
   info.thongTinDatVe.sort(
@@ -26,24 +26,6 @@ const InfoTable = () => {
     indexOfFirstPost,
     indexOfLastPost
   );
-
-  // Thay đổi page
-  const handleChangePage = (number) => {
-    setPage(number);
-  };
-
-  const handlePrevPage = () => {
-    page > 1 && setPage(page - 1);
-  };
-
-  const handleNextPage = () => {
-    page < Math.ceil(info.thongTinDatVe.length / quantity) && setPage(page + 1);
-  };
-
-  const handleChangeQuantity = (e) => {
-    let { value } = e.target;
-    setQuantity(value);
-  };
 
   const handleOnModal = (value) => {
     setModalData(value);
@@ -91,13 +73,17 @@ const InfoTable = () => {
 
   return (
     <Fragment>
-      <div className="card info__history">
+      <div
+        className={`${
+          !isLight && "bg-gray-800 text-white shadow-none"
+        } card info__history transition`}
+      >
         <p className="info__history__title">LỊCH SỬ ĐẶT VÉ</p>
         <div className="info__history__table">
           {info.thongTinDatVe.length ? (
             <table>
               <thead>
-                <tr>
+                <tr className={`${isLight ? "bg-gray-200" : "bg-gray-900"}`}>
                   <th>Mã vé</th>
                   <th>Tên phim</th>
                   <th>Thời gian đặt vé</th>
@@ -114,18 +100,12 @@ const InfoTable = () => {
             showModal={showModal}
             handleOffModal={handleOffModal}
           />
-          <div className="flex justify-between items-center pb-2 pt-4">
-            <QuantityTable
-              totalCount={info.thongTinDatVe.length}
-              handleChangeQuantity={handleChangeQuantity}
-            />
+          <div className="pb-2 pt-4">
             <Pagination
               page={page}
               quantity={quantity}
               totalCount={info.thongTinDatVe.length}
-              handleChangePage={handleChangePage}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
+              setPage={setPage}
             />
           </div>
         </div>

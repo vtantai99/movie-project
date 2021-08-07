@@ -76,18 +76,7 @@ export const callFood = (value) => {
     payload: value,
   };
 };
-export const plusQuantityCombo = (id) => {
-  return {
-    type: actions.PLUS_QUANTITY_COMBO,
-    payload: id,
-  };
-};
-export const minusQuantityCombo = (id) => {
-  return {
-    type: actions.MINUS_QUANTITY_COMBO,
-    payload: id,
-  };
-};
+
 export const rpsBooking = (value) => {
   return {
     type: actions.RPS_BOOKING,

@@ -11,12 +11,15 @@ const MovieDetailShowTime = () => {
   const { lichChieu, maNhom } = useSelector(
     (state) => state.movieDetailReducer.movieDetail
   );
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   return (
     <div className="container" role="tablist">
       {maNhom === "GP09" ? (
         <section
-          className={darkMode ? "showTimes Dark" : "showTimes"}
+          className={`${
+            !isLight && "bg-gray-800 text-white"
+          } showTimes transition`}
           id="lich"
         >
           <div className="showTimes__wrapper row m-0">

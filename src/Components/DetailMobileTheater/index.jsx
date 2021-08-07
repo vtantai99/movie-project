@@ -1,11 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCodeTheaterMobile } from "../../redux/action/movieDetailAction/actions";
 import DetailMobileTime from "../DetailMobileTime";
 const DetailTheaterMobile = () => {
   const dispatch = useDispatch();
+
   const { theaterList } = useSelector((state) => state.heThongRapReducer);
+
+  useEffect(() => {
+    dispatch(updateCodeTheaterMobile(""));
+  }, [dispatch]);
+
   const renderTheaterListMobile = () => {
     return theaterList?.map((item, index) => (
       <Fragment>

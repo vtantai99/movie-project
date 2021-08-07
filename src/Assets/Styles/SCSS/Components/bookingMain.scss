@@ -2,11 +2,6 @@
   color: $textBlack;
   background-color: $bgPrimary;
   padding: 20px;
-  transition: all 0.2s linear;
-  &.Dark {
-    color: $textWhite;
-    background: $bgDarkModePage;
-  }
   .title {
     display: flex;
     justify-content: space-between;

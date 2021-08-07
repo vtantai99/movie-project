@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDateCurrent } from "../../redux/action/movieDetailAction/actions";
+import {
+  getDateCurrent,
+  refreshDate,
+} from "../../redux/action/movieDetailAction/actions";
 import { formatWeekDate } from "../../Helper/Function/formatWeekDate";
 const DetailDate = () => {
   const dispatch = useDispatch();
+
   const { dateShow, codeTheater } = useSelector(
     (state) => state.movieDetailReducer
   );
@@ -16,6 +20,10 @@ const DetailDate = () => {
       (item) => item.thongTinRap.maHeThongRap === codeTheater // Nếu giống mã rạp thì giữ lại, khác thì delete
     )
     .map((item) => new Date(item.ngayChieuGioChieu).getDate()); // Lay ngay (number)
+
+  useEffect(() => {
+    dispatch(refreshDate(new Date().getDate())); // Khi mà return page detail thì refresh date, tự chọn ngày hiện tại
+  }, []);
 
   const currentDate = new Date();
   const dates = [currentDate];

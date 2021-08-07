@@ -10,8 +10,10 @@ import { renderStyleColorBooking } from "../../Helper/Function/customTheater";
 
 const BookingMain = () => {
   const dispatch = useDispatch();
-  const { darkMode } = useSelector((state) => state.commonReducer);
+
+  const { isLight } = useSelector((state) => state.themeReducer);
   const { bookingList } = useSelector((state) => state.bookingReducer);
+
   const { thongTinPhim } = bookingList;
   const { diaChi, hinhAnh, tenRap, tenCumRap } = thongTinPhim
     ? thongTinPhim
@@ -19,9 +21,14 @@ const BookingMain = () => {
   const seatsChoosing = bookingList.danhSachGhe?.filter(
     (item) => item.dangChon
   );
+
   return bookingList.danhSachGhe ? (
     <>
-      <div className={darkMode ? "bookingMain Dark" : "bookingMain"}>
+      <div
+        className={`${
+          !isLight && "bg-gray-900 text-white"
+        } bookingMain transition`}
+      >
         <div className="title">
           <div className="title__address">
             <div className="title__address__img">

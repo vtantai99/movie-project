@@ -5,9 +5,14 @@ import DetailMainShowTime from "../DetailMainShowTime";
 import DetailMainComment from "../DetailMainComment";
 const DetailMain = () => {
   const { movieDetail } = useSelector((state) => state.movieDetailReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   return (
-    <div className="detailMain">
+    <div
+      className={`${
+        !isLight && "bg-gray-900 text-white"
+      } detailMain transition`}
+    >
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <a className="nav-link active" data-toggle="tab" href="#showTimes">

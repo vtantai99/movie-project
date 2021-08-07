@@ -4,7 +4,7 @@ import BookingHeader from "../../Components/BookingHeader";
 import BookingMain from "../../Components/BookingMain";
 import BookingSideBar from "../../Components/BookingSideBar";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { callFood, getBooking } from "../../redux/action/bookingAction/actions";
 
 const Booking = () => {
@@ -18,9 +18,8 @@ const Booking = () => {
 
   useEffect(() => {
     if (!user) {
-      history.push("/login");
-    }
-    dispatch(getBooking(bookingId, history));
+      history.push("/signIn");
+    } else dispatch(getBooking(bookingId, history));
   }, []);
 
   return (

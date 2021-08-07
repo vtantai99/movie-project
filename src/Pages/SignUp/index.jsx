@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../Assets/Styles/SCSS/Pages/signUp.scss";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  FormHelperText,
+  Grid,
+  FormControl,
+  InputLabel,
+  InputAdornment,
+  IconButton,
+  OutlinedInput,
+  Typography,
+  Container,
+  Checkbox,
+  FormControlLabel,
+} from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { Alert } from "@material-ui/lab";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FormHelperText, Checkbox, FormControlLabel } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signUpRequest,
@@ -47,19 +56,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const { register, handleSubmit, errors, watch } = useForm({
-    mode: "onTouched",
-  });
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const { register, handleSubmit, errors, watch } = useForm();
+
   const { error } = useSelector((state) => state.userReducer);
+
+  const [showPass, setShowPass] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
+
   useEffect(() => {
     dispatch(hideError());
   }, []);
-  console.log(errors.lastName);
+
   const onSubmit = (data) => {
-    console.log(data);
-    const { firstName, lastName, matKhau, soDt, taiKhoan, email } = data;
+    const { hoTen, matKhau, soDt, taiKhoan, email } = data;
     const userData = {
       taiKhoan,
       matKhau,
@@ -67,7 +79,7 @@ export default function SignUp() {
       soDt,
       maNhom: "GP09",
       maLoaiNguoiDung: "KhachHang",
-      hoTen: lastName + firstName,
+      hoTen,
     };
     dispatch(signUpRequest(userData, "signUpUser", history));
   };
@@ -89,160 +101,186 @@ export default function SignUp() {
             noValidate
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  name="lastName"
-                  autoComplete="off"
+              <Grid item xs={12}>
+                <FormControl
                   variant="outlined"
-                  required
                   fullWidth
-                  label="Họ"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    minLength: {
-                      value: 2,
-                      message: "Vui lòng điền đúng Họ",
-                    },
-                  })}
-                  error={errors.lastName && true}
-                />
-                <FormHelperText error={errors.lastName && true}>
-                  {errors.lastName && errors.lastName.message}
-                </FormHelperText>
+                  error={errors.hoTen && true}
+                >
+                  <InputLabel htmlFor="hoTen">Họ tên</InputLabel>
+                  <OutlinedInput
+                    id="hoTen"
+                    name="hoTen"
+                    type="text"
+                    inputRef={register({
+                      required: "Xin vui lòng điền thông tin",
+                      minLength: {
+                        value: 2,
+                        message: "Vui lòng điền đúng Họ tên",
+                      },
+                    })}
+                    labelWidth={50}
+                  />
+                  <FormHelperText error={errors.hoTen && true}>
+                    {errors.hoTen && errors.hoTen.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  name="firstName"
-                  autoComplete="off"
+              <Grid item xs={12}>
+                <FormControl
                   variant="outlined"
-                  required
                   fullWidth
-                  label="Tên"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    minLength: {
-                      value: 2,
-                      message: "Vui lòng điền đúng Tên",
-                    },
-                  })}
-                  error={errors.firstName && true}
-                />
-                <FormHelperText error={errors.firstName && true}>
-                  {errors.firstName && errors.firstName.message}
-                </FormHelperText>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  name="taiKhoan"
-                  autoComplete="off"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="taiKhoan"
-                  label="Tài khoản"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    minLength: {
-                      value: 6,
-                      message: "Tài khoản phải trên 6 kí tự",
-                    },
-                    maxLength: {
-                      value: 10,
-                      message: "Tài khoản không được quá 10 kí tự",
-                    },
-                  })}
                   error={errors.taiKhoan && true}
-                />
-                <FormHelperText error={errors.taiKhoan && true}>
-                  {errors.taiKhoan && errors.taiKhoan.message}
-                </FormHelperText>
+                >
+                  <InputLabel htmlFor="taiKhoan">Tài khoản</InputLabel>
+                  <OutlinedInput
+                    id="taiKhoan"
+                    name="taiKhoan"
+                    type="text"
+                    inputRef={register({
+                      required: "Xin vui lòng điền thông tin",
+                      minLength: {
+                        value: 6,
+                        message: "Tài khoản phải trên 6 kí tự",
+                      },
+                      maxLength: {
+                        value: 10,
+                        message: "Tài khoản không được quá 10 kí tự",
+                      },
+                    })}
+                    labelWidth={70}
+                  />
+                  <FormHelperText error={errors.taiKhoan && true}>
+                    {errors.taiKhoan && errors.taiKhoan.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  name="matKhau"
+              <Grid item xs={12}>
+                <FormControl
                   variant="outlined"
-                  required
                   fullWidth
-                  label="Mật khẩu"
-                  type="password"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    pattern: {
-                      value:
-                        /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                      message:
-                        "Mật khẩu bắt buộc bao gồm: Chữ viết hoa, chữ viết thường, số hoặc kí tự đặc biệt và phải ít nhất 8 kí tự. VD(Cute123@)",
-                    },
-                  })}
                   error={errors.matKhau && true}
-                />
-                <FormHelperText error={errors.matKhau && true}>
-                  {errors.matKhau && errors.matKhau.message}
-                </FormHelperText>
+                >
+                  <InputLabel htmlFor="matKhau">Mật khẩu</InputLabel>
+                  <OutlinedInput
+                    id="matKhau"
+                    name="matKhau"
+                    type={showPass ? "text" : "password"}
+                    autoComplete="off"
+                    inputRef={register({
+                      required: "Xin vui lòng nhập thông tin",
+                      pattern: {
+                        value:
+                          /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                        message:
+                          "Mật khẩu bắt buộc bao gồm: Chữ viết hoa, chữ viết thường, số hoặc kí tự đặc biệt và phải ít nhất 8 kí tự. VD(Cute123@)",
+                      },
+                    })}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          onMouseDown={() => setShowPass(true)}
+                          onMouseUp={() => setShowPass(false)}
+                          aria-label="toggle password visibility"
+                          edge="end"
+                        >
+                          {showPass ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    labelWidth={70}
+                  />
+                  <FormHelperText error={errors.matKhau && true}>
+                    {errors.matKhau && errors.matKhau.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  name="matKhau2"
+              <Grid item xs={12}>
+                <FormControl
                   variant="outlined"
-                  required
                   fullWidth
-                  type="password"
-                  label="Xác nhận mật khẩu"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    validate: (value) =>
-                      value === watch("matKhau") || "Xác nhận mật khẩu sai",
-                  })}
                   error={errors.matKhau2 && true}
-                />
-                <FormHelperText error={errors.matKhau2 && true}>
-                  {errors.matKhau2 && errors.matKhau2.message}
-                </FormHelperText>
+                >
+                  <InputLabel htmlFor="matKhau2">Xác nhận mật khẩu</InputLabel>
+                  <OutlinedInput
+                    id="matKhau2"
+                    type={showPass2 ? "text" : "password"}
+                    name="matKhau2"
+                    inputRef={register({
+                      required: "Xin vui lòng nhập thông tin",
+                      validate: (value) =>
+                        value === watch("matKhau") || "Xác nhận mật khẩu sai",
+                    })}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          onMouseDown={() => setShowPass2(true)}
+                          onMouseUp={() => setShowPass2(false)}
+                          aria-label="toggle password visibility"
+                          edge="end"
+                        >
+                          {showPass2 ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    labelWidth={140}
+                  />
+                  <FormHelperText error={errors.matKhau2 && true}>
+                    {errors.matKhau2 && errors.matKhau2.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  name="email"
-                  autoComplete="off"
-                  type="email"
+                <FormControl
                   variant="outlined"
-                  required
                   fullWidth
-                  label="Email"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    pattern: {
-                      value:
-                        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                      message: "Email, VD(user123@gmail.com)",
-                    },
-                  })}
                   error={errors.email && true}
-                />
-                <FormHelperText error={errors.email && true}>
-                  {errors.email && errors.email.message}
-                </FormHelperText>
+                >
+                  <InputLabel htmlFor="email">Email</InputLabel>
+                  <OutlinedInput
+                    id="email"
+                    name="email"
+                    type="text"
+                    inputRef={register({
+                      required: "Xin vui lòng điền thông tin",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: "Email, VD(user123@gmail.com)",
+                      },
+                    })}
+                    labelWidth={50}
+                  />
+                  <FormHelperText error={errors.email && true}>
+                    {errors.email && errors.email.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  name="soDt"
+                <FormControl
                   variant="outlined"
-                  autoComplete="off"
-                  required
                   fullWidth
-                  label="Số điện thoại"
-                  inputRef={register({
-                    required: "Xin vui lòng điền thông tin",
-                    pattern: {
-                      value: /^\d{10}$/,
-                      message:
-                        "Số điện thoại không hợp lệ, hãy chắc chắn bạn nhập đủ 10 số. VD(0987654321)",
-                    },
-                  })}
                   error={errors.soDt && true}
-                />{" "}
-                <FormHelperText error={errors.soDt && true}>
-                  {errors.soDt && errors.soDt.message}
-                </FormHelperText>
+                >
+                  <InputLabel htmlFor="soDt">Số điện thoại</InputLabel>
+                  <OutlinedInput
+                    id="soDt"
+                    name="soDt"
+                    type="text"
+                    inputRef={register({
+                      required: "Xin vui lòng điền thông tin",
+                      pattern: {
+                        value: /^\d{10}$/,
+                        message:
+                          "Số điện thoại không hợp lệ, hãy chắc chắn bạn nhập đủ 10 số. VD(0987654321)",
+                      },
+                    })}
+                    labelWidth={100}
+                  />
+                  <FormHelperText error={errors.soDt && true}>
+                    {errors.soDt && errors.soDt.message}
+                  </FormHelperText>
+                </FormControl>
               </Grid>
             </Grid>
             <FormControlLabel
@@ -277,7 +315,7 @@ export default function SignUp() {
             <Grid container justify="flex-end">
               <Grid item>
                 Bạn đã có tài khoản?
-                <NavLink to="/login"> Đăng nhập</NavLink>
+                <NavLink to="/signIn"> Đăng nhập</NavLink>
               </Grid>
             </Grid>
           </form>

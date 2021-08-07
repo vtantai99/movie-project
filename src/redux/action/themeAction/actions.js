@@ -1,7 +1,8 @@
-import * as actions from './actionTypes';
+import * as actions from "./actionTypes";
 
-export const switchTheme = () => {
-    return {
-        type: actions.SWITCH_THEME
-    }
-}
+export const switchTheme = (theme) => {
+  return {
+    type: actions.SWITCH_THEME,
+    payload: theme,
+  };
+};

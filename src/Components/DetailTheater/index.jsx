@@ -1,10 +1,17 @@
 import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCodeTheater } from "../../redux/action/movieDetailAction/actions";
 
 const DetailTheater = () => {
-  const { theaterList } = useSelector((state) => state.heThongRapReducer);
   const dispatch = useDispatch();
+
+  const { theaterList } = useSelector((state) => state.heThongRapReducer);
+
+  useEffect(() => {
+    dispatch(updateCodeTheater("BHDStar")); // Giống như refresh ngày, cái này refresh theater
+  }, [dispatch]);
+
   const renderTheaterLogo = () => {
     return theaterList?.map((item, index) => (
       <div

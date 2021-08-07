@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Greymain = () => {
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   return (
     <section
-      className={darkMode === true ? "greyMain Dark" : "greyMain"}
+      className={`${!isLight && "invisible"} greyMain transition`}
     ></section>
   );
 };

@@ -19,12 +19,15 @@ import {
 const SearchMovie = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { darkMode } = useSelector((state) => state.commonReducer);
+
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   useEffect(() => {
     dispatch(refreshFilm());
     dispatch(refreshTheater());
     dispatch(refreshDate());
   }, []);
+
   // Hiển thị phim
   const { showingList } = useSelector((state) => state.movieListReducer);
 
@@ -40,8 +43,9 @@ const SearchMovie = () => {
   const { heThongRapChieu } = useSelector(
     (state) => state.searchMovieReducer.listTheater
   );
-  const { listTheater } = useSelector((state) => state.searchMovieReducer);
-  console.log(listTheater);
+
+  // Lấy isLoading và dùng nó để thay đổi Rap => Dang tìm rạp khi call API rap
+  const { isLoading } = useSelector((state) => state.searchMovieReducer);
 
   const renderTheaterList = () => {
     return heThongRapChieu?.map((item) =>
@@ -96,7 +100,7 @@ const SearchMovie = () => {
   };
   const checkStatusHours = () => {
     if (!nameMovie && !nameTheater && !nameDate)
-      return <option disabled>Vui lòng chọn Phim và Rạp và Ngày chiếu</option>;
+      return <option disabled>Vui lòng chọn Phim, Rạp và Ngày chiếu</option>;
     else if (nameMovie && !nameTheater && !nameDate)
       return <option disabled>Vui lòng chọn Rạp và Ngày chiếu</option>;
     else if (nameMovie && nameTheater && !nameDate)
@@ -135,12 +139,12 @@ const SearchMovie = () => {
   const handleOnChange = (e) => {
     console.log(e.target.value);
   };
-  // Lấy isLoading và dùng nó để thay đổi Rap => Dang tìm rạp khi call API rap
-  const { isLoading } = useSelector((state) => state.searchMovieReducer);
+
   return (
     <form
-      className="search__movie"
-      className={darkMode ? "search__movie Dark" : "search__movie"}
+      className={`${
+        !isLight && "bg-gray-800 text-white"
+      } search__movie transition`}
     >
       <div className="search__movie__group movieSelect">
         <select name="movieSelect" onChange={handleSelectFilm}>

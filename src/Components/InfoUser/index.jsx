@@ -1,15 +1,18 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment } from "react";
 import swal from "sweetalert";
 import {
   Button,
-  FormGroup,
   FormHelperText,
-  TextField,
   Grid,
+  FormControl,
+  InputLabel,
+  InputAdornment,
+  IconButton,
+  OutlinedInput,
 } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Alert } from "@material-ui/lab";
 import * as actions from "../../redux/action/userAction/actionTypes";
 import axios from "axios";
 import { convertToPassWord } from "../../Helper/Function/convertPass";
@@ -18,10 +21,12 @@ const InfoUser = () => {
   const dispatch = useDispatch();
   const [formShow, setFormShow] = useState(false);
   const { info, user } = useSelector((state) => state.userReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
-  const { register, errors, handleSubmit, watch } = useForm({
-    mode: "onTouched",
-  });
+  const [showPass, setShowPass] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
+
+  const { register, errors, handleSubmit, watch } = useForm();
 
   const onSubmit = (data) => {
     let { maLoaiNguoiDung, accessToken } = user;
@@ -76,7 +81,11 @@ const InfoUser = () => {
 
   return (
     <Fragment>
-      <div className="card info__detail">
+      <div
+        className={`${
+          !isLight && "bg-gray-800 text-white shadow-none"
+        } card info__detail transition`}
+      >
         <p className="info__detail__title">THÔNG TIN CÁ NHÂN</p>
         <div className="info__detail__item">
           <p>Họ tên</p>
@@ -97,16 +106,18 @@ const InfoUser = () => {
           >
             <i className="fas fa-key mr-2"></i>
             Đổi mật khẩu
-            <Grid container>
+            <Grid container spacing={2} className="my-2">
               <Grid item xs={12}>
-                <FormGroup>
-                  <TextField
+                <FormControl
+                  variant="outlined"
+                  fullWidth
+                  error={errors.newPass && true}
+                >
+                  <InputLabel htmlFor="newPass">Mật khẩu mới</InputLabel>
+                  <OutlinedInput
+                    id="newPass"
                     name="newPass"
-                    type="password"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    label="Mật khẩu"
+                    type={showPass ? "text" : "password"}
                     inputRef={register({
                       required: "Xin vui lòng nhập thông tin",
                       pattern: {
@@ -116,33 +127,61 @@ const InfoUser = () => {
                           "Mật khẩu bắt buộc bao gồm: Chữ viết hoa, chữ viết thường, số hoặc kí tự đặc biệt và phải ít nhất 8 kí tự. VD(Cute123@)",
                       },
                     })}
-                    error={errors.newPass && true}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          onMouseDown={() => setShowPass(true)}
+                          onMouseUp={() => setShowPass(false)}
+                          aria-label="toggle password visibility"
+                          edge="end"
+                        >
+                          {showPass ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    labelWidth={100}
                   />
                   <FormHelperText error={errors.newPass && true}>
                     {errors.newPass && errors.newPass.message}
                   </FormHelperText>
-                </FormGroup>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormGroup>
-                  <TextField
+                <FormControl
+                  variant="outlined"
+                  fullWidth
+                  error={errors.newPass2 && true}
+                >
+                  <InputLabel htmlFor="newPass2">
+                    Xác nhận mật khẩu mới
+                  </InputLabel>
+                  <OutlinedInput
+                    id="newPass2"
+                    type={showPass2 ? "text" : "password"}
                     name="newPass2"
-                    type="password"
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    label="Xác nhận mật khẩu"
                     inputRef={register({
                       required: "Xin vui lòng nhập thông tin",
                       validate: (value) =>
                         value === watch("newPass") || "Xác nhận mật khẩu sai",
                     })}
-                    error={errors.newPass2 && true}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          onMouseDown={() => setShowPass2(true)}
+                          onMouseUp={() => setShowPass2(false)}
+                          aria-label="toggle password visibility"
+                          edge="end"
+                        >
+                          {showPass2 ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    labelWidth={170}
                   />
                   <FormHelperText error={errors.newPass2 && true}>
                     {errors.newPass2 && errors.newPass2.message}
                   </FormHelperText>
-                </FormGroup>
+                </FormControl>
               </Grid>
             </Grid>
             <Button

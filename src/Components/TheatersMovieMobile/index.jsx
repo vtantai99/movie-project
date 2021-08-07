@@ -41,8 +41,8 @@ const TheatersMovieMobile = ({ danhSachPhim }) => {
           >
             <div className="col-12">
               <p>2D Digital</p>
+              <HourButton lichChieuTheoNgay={item.lichChieuTheoNgay} />
             </div>
-            <HourButton lichChieuTheoNgay={item.lichChieuTheoNgay} />
           </div>
         </div>
       ));

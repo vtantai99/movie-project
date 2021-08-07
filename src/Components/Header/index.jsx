@@ -1,27 +1,49 @@
 import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import * as actions from "../../redux/action/userAction/actionTypes";
 import swal from "sweetalert";
 import { Avatar, Button } from "@material-ui/core";
 import logo from "../../Assets/Images/logo.png";
-import DarkMode from "../DarkMode";
 import DropDown from "../DropDown";
+import { scroller } from "react-scroll";
+import { listHeader } from "../../Helper/DataFake/listHeader";
+import SwitchTheme from "../SwitchTheme";
 
 const Header = () => {
-  const [nav, setNav] = useState(false);
-  const handleShowNav = () => {
-    setNav(true);
-  };
-  const handleHiddenNav = () => {
-    setNav(false);
-  };
-  //   Hien thi ten nguoi dung
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+
   const { user } = useSelector((state) => state.userReducer);
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
+  const [nav, setNav] = useState(false);
+
+  useEffect(() => {
+    getDataUser();
+  }, []);
+
+  const handleClickLink = (id, type) => {
+    if (location.pathname === "/") {
+      type === "mobile" && setNav(false);
+      scroller.scrollTo(id, {
+        duration: 100,
+        smooth: "easeInOutQuart",
+      });
+    } else {
+      type === "mobile" && setNav(false);
+      history.push("/");
+      setTimeout(() => {
+        scroller.scrollTo(id, {
+          duration: 100,
+          smooth: "easeInOutQuart",
+        });
+      }, 0);
+    }
+  };
+
   //   Hàm lấy dữ liệu user sau khi logged
   const getDataUser = () => {
     const dataUser = localStorage.getItem("user");
@@ -32,9 +54,7 @@ const Header = () => {
       });
     }
   };
-  useEffect(() => {
-    getDataUser();
-  }, []);
+
   // Hàm đăng xuất
   const logOutUser = () => {
     swal({
@@ -60,11 +80,15 @@ const Header = () => {
       }
     });
   };
+
   const backToTop = () => {
     window.scrollTo({ top: 0, behavior: `smooth` });
   };
+
   return (
-    <header className="header" className={darkMode ? "header Dark" : "header"}>
+    <header
+      className={`${!isLight && "bg-gray-800 text-white"} header transition`}
+    >
       <div className="header__navbar">
         <div className="header__navbar__logo" onClick={() => backToTop()}>
           <NavLink to="/">
@@ -73,22 +97,15 @@ const Header = () => {
         </div>
         <div className="header__navbar__list">
           <ul>
-            <li>
-              <NavLink to="/">Lịch chiếu</NavLink>
-              {/* <a href="/#showTimes">Lịch chiếu</a> */}
-            </li>
-            <li>
-              <NavLink to="/">Cụm rạp</NavLink>
-              {/* <a href="/#theaters">Cụm rạp</a> */}
-            </li>
-            <li>
-              <NavLink to="/">Tin tức</NavLink>
-              {/* <a href="/#news">Tin tức</a> */}
-            </li>
-            <li>
-              <NavLink to="/">Ứng dụng</NavLink>
-              {/* <a href="/#apps">Ứng dụng</a> */}
-            </li>
+            {listHeader.map((item, index) => (
+              <li
+                className="transition"
+                key={index}
+                onClick={() => handleClickLink(item.id, "desktop")}
+              >
+                {item.nameLink}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="header__navbar__user">
@@ -98,7 +115,7 @@ const Header = () => {
                 <div className="user__logged__img">
                   <Avatar
                     alt="Avatar"
-                    src="https://cyberlearn-21.web.app/img/avatar.png"
+                    src={`https://i.pravatar.cc/150?u=${user.taiKhoan}`}
                     style={{
                       position: "absolute",
                       left: "50%",
@@ -115,7 +132,7 @@ const Header = () => {
           ) : (
             <Fragment>
               <div className="user__login">
-                <NavLink to="/login">
+                <NavLink to="/signIn">
                   <span>Đăng nhập</span>
                 </NavLink>
               </div>
@@ -128,25 +145,24 @@ const Header = () => {
           )}
           <DropDown />
         </div>
-
         <label
           htmlFor="nav__input"
           className="header__navbar__icon-bar"
-          onClick={handleShowNav}
+          onClick={() => setNav(true)}
         >
           <i className="fa fa-align-right"></i>
         </label>
         <input type="checkbox" hidden className="nav__input" id="nav__input" />
         <label
-          onClick={handleHiddenNav}
+          onClick={() => setNav(false)}
           htmlFor="nav__input"
           className="header__navbar__overlay"
           style={nav ? { display: "block" } : { display: "none" }}
         ></label>
         <div
-          className={
-            darkMode ? "header__navbar__drop Dark" : "header__navbar__drop"
-          }
+          className={`${
+            !isLight && "bg-gray-800 text-white"
+          } footer header__navbar__drop transition`}
           style={
             nav
               ? { transform: "translateX(0)", opacity: 1 }
@@ -156,7 +172,7 @@ const Header = () => {
           <label
             htmlFor="nav__input"
             className="drop__cancel m-0"
-            onClick={handleHiddenNav}
+            onClick={() => setNav(false)}
           >
             <i className="fa fa-times" />
           </label>
@@ -167,28 +183,33 @@ const Header = () => {
                   <>
                     <Avatar
                       alt="Avatar"
-                      src="https://cyberlearn-21.web.app/img/avatar.png"
+                      src={`https://i.pravatar.cc/150?u=${user.taiKhoan}`}
                       style={{ marginRight: "5px" }}
                     />
                     {user.hoTen}
                   </>
                 ) : (
-                  <NavLink to="/login">
+                  <NavLink
+                    to={{
+                      pathname: "/signIn",
+                      state: location.pathname,
+                    }}
+                  >
                     <i className="fa fa-user-alt" />
                     Đăng nhập
                   </NavLink>
                 )}
               </li>
               <li className="darkMode">
-                <a>
+                <div>
                   <i className="fas fa-adjust" />
                   Chế độ tối
-                </a>
-                <DarkMode />
+                </div>
+                <SwitchTheme />
               </li>
               <li>
                 {user?.maLoaiNguoiDung === "QuanTri" && (
-                  <NavLink to="/admin">
+                  <NavLink to="/admin/dashboard">
                     <i className="fa fa-user-alt" />
                     Admin
                   </NavLink>
@@ -196,40 +217,25 @@ const Header = () => {
               </li>
               {user && (
                 <li>
-                  <NavLink to="/info" onClick={handleHiddenNav}>
+                  <NavLink to="/info" onClick={() => setNav(false)}>
                     <i className="fas fa-info-circle"></i>
                     Thông tin tài khoản
                   </NavLink>
                 </li>
               )}
-              <li>
-                <a href="/#showTimes" onClick={handleHiddenNav}>
-                  <i className="fa fa-calendar-alt" />
-                  Lịch chiếu
-                </a>
-              </li>
-              <li>
-                <a href="/#" onClick={handleHiddenNav}>
-                  <i className="fa fa-location-arrow" />
-                  Cụm rạp
-                </a>
-              </li>
-              <li>
-                <a href="/#news" onClick={handleHiddenNav}>
-                  <i className="fa fa-bell" />
-                  Tin tức
-                </a>
-              </li>
-              <li>
-                <a href="/#apps" onClick={handleHiddenNav}>
-                  <i className="fa fa-archive" />
-                  Ứng dụng
-                </a>
-              </li>
+              {listHeader.map((item, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleClickLink(item.id, "mobile")}
+                >
+                  <i className={item.icon} />
+                  {item.nameLink}
+                </li>
+              ))}
               <li className="drop__signUp">
                 {user ? (
                   <Button
-                    onClick={logOutUser}
+                    onClick={() => logOutUser()}
                     style={{
                       border: "1px solid #fa5238",
                       outline: "none",

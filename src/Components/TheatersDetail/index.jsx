@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchTheaterListDetail,
-  refreshCodeTheater,
-} from "../../redux/action/heThongRapAction/actions";
+
 import TheatersDetailItem from "../TheatersDetailItem";
 
 const TheatersDetail = () => {
@@ -11,11 +8,6 @@ const TheatersDetail = () => {
   const theaterDetail = useSelector(
     (state) => state.heThongRapReducer.theaterDetail
   );
-
-  useEffect(() => {
-    dispatch(fetchTheaterListDetail());
-    dispatch(refreshCodeTheater());
-  }, []);
 
   const renderTheaterDetail = () => {
     return theaterDetail.map((item, index) => (

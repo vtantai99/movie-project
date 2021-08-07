@@ -11,10 +11,6 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
-  transition: all 0.2s linear;
-  &.Dark {
-    background: $bgDarkMode;
-  }
   @include MobileAndTablet {
     z-index: 50;
   }

@@ -8,11 +8,11 @@ import starHalf from "../../Assets/Images/starHalf.png";
 import movieBomTan from "../../Assets/Images/movieBomTan.png";
 import movieKhuyenMai from "../../Assets/Images/movieKhuyenMai.png";
 import playIcon from "../../Assets/Images/playIcon.png";
-import bgDefault from "../../Assets/Images/bg-default.webp";
 
 const MovieListShowing = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   // Hàm gắn sao theo band điểm của phim
   const renderIconStar = (vote) => {
     if (vote === 10) {
@@ -67,15 +67,9 @@ const MovieListShowing = (props) => {
       <div className="item__film">
         <div
           className="item__film__img"
-          style={
-            props.movie.hinhAnh
-              ? {
-                  background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
-                }
-              : {
-                  background: `url(${bgDefault}) center center / cover no-repeat`,
-                }
-          }
+          style={{
+            background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
+          }}
         >
           {props.movie.danhGia >= 7 && (
             <img
@@ -84,7 +78,6 @@ const MovieListShowing = (props) => {
               alt="star"
             />
           )}
-
           <div className="item__film__img--vote">
             <p className="vote--number">{props.movie.danhGia}</p>
             <div className="vote--star">

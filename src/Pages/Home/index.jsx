@@ -1,39 +1,58 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import "../../Assets/Styles/SCSS/Pages/home.scss";
 import SearchMovie from "../../Components/SearchMovie";
 import OwlCarouselComponent from "../../Components/Carousel";
-import Header from "../../Components/Header";
 import Greymain from "../../Components/Greymain";
 import News from "../../Components/News";
 import Apps from "../../Components/Apps";
-import Footer from "../../Components/Footer";
-import Trailer from "../../Components/Trailer";
 import MovieList from "../../Components/MovieList";
 import Theaters from "../../Components/Theaters";
-import ScrollToTop from "../../Components/ScollToTop";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   startLoading,
   stopLoading,
 } from "../../redux/action/commonAction/actions";
+import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import {
+  GET_COMING_LIST,
+  GET_SHOWING_LIST,
+} from "../../redux/action/movieListAction/actionTypes";
+import {
+  fetchTheaterList,
+  fetchTheaterListDetail,
+} from "../../redux/action/heThongRapAction/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(startLoading());
-    setTimeout(() => dispatch(stopLoading()), 1000);
   }, []);
+
+  useEffect(async () => {
+    await dispatch(startLoading());
+    await Promise.all([
+      dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
+      dispatch(getMovieListRequest("GP03", GET_COMING_LIST)),
+      dispatch(fetchTheaterList()),
+      dispatch(fetchTheaterListDetail()),
+    ]);
+    // Dữ liệu sẽ đẩy lên redux ở action, nên phải dùng setTimeout đợi xong mới stopLoading
+    setTimeout(() => {
+      dispatch(stopLoading());
+    }, 500);
+  }, []);
+
   return (
     <Fragment>
-      <Header />
-      <Trailer />
       <OwlCarouselComponent />
-      <div className={darkMode ? "home__main Dark" : "home__main"}>
+      <div
+        className={`${
+          !isLight && "bg-gray-900 text-white"
+        } home__main transition`}
+      >
         <div className="container">
           <SearchMovie />
           <MovieList />
@@ -43,10 +62,7 @@ const Home = () => {
           <News />
         </div>
       </div>
-
       <Apps />
-      <Footer />
-      <ScrollToTop />
     </Fragment>
   );
 };

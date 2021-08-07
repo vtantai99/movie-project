@@ -1,19 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
-import {
-  minusQuantityCombo,
-  plusQuantityCombo,
-} from "../../redux/action/bookingAction/actions";
 import { formatNumber } from "../../Helper/Function/formatNumber";
-const BookingFood = () => {
-  const dispatch = useDispatch();
-  const { statusFood, foodList } = useSelector((state) => state.bookingReducer);
-  const { darkMode } = useSelector((state) => state.commonReducer);
+
+const BookingFood = ({ foodState, handleChangeQuantity }) => {
+  const { statusFood } = useSelector((state) => state.bookingReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   return (
     <div
-      className={darkMode ? "combo Dark" : "combo"}
+      className={`${!isLight && "bg-gray-800 text-white"} combo transition`}
       style={
         statusFood
           ? { left: "-100%" }
@@ -25,8 +21,14 @@ const BookingFood = () => {
       }
     >
       <div className="combo__menu">
-        <div className="title">MENU</div>
-        {foodList?.map((item, index) => (
+        <div
+          className={`${
+            isLight ? "bg-gray-200" : "bg-gray-900 text-white"
+          } title transition`}
+        >
+          MENU
+        </div>
+        {foodState?.map((item, index) => (
           <div className="item" key={index}>
             <div className="item__main">
               <img src={item.img} alt="logo" />
@@ -41,16 +43,15 @@ const BookingFood = () => {
             <div className="item__quality">
               <Button
                 variant="contained"
-                onClick={() => dispatch(minusQuantityCombo(item.id))}
+                onClick={() => handleChangeQuantity("minus", item.id)}
                 disabled={item.quantity === 0 ? true : false}
               >
                 -
               </Button>
-
               <span className="number mx-2">{item.quantity}</span>
               <Button
                 variant="contained"
-                onClick={() => dispatch(plusQuantityCombo(item.id))}
+                onClick={() => handleChangeQuantity("plus", item.id)}
                 disabled={item.quantity === 10 ? true : false}
               >
                 +

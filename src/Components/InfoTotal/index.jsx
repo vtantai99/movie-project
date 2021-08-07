@@ -5,6 +5,7 @@ import { Col } from "react-bootstrap";
 
 const InfoTotal = () => {
   const { info } = useSelector((state) => state.userReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   const totalPrice = info.thongTinDatVe?.reduce(
     (sum, item) => (sum += item.giaVe * item.danhSachGhe.length),
@@ -43,8 +44,12 @@ const InfoTotal = () => {
 
   const renderListTotal = () => {
     return listTotal.map((item, index) => (
-      <Col xs={12} md={4} key={index}>
-        <div className="card info__total">
+      <Col xs={12} lg={4} key={index}>
+        <div
+          className={`${
+            !isLight && "bg-gray-800 text-white shadow-none"
+          } card info__total transition`}
+        >
           <div className="info__total__item">
             <i className={item.icon}></i>
             <div className="info__total__item--content">

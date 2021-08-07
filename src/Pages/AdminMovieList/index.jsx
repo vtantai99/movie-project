@@ -182,7 +182,6 @@ const AdminMovieList = () => {
     const handleNext = () => {
       if (currentPage < numOfPag) setCurrentPage(currentPage + 1);
     };
-
     return (
       <div className="flex font-medium flex-row justify-center items-center">
         <div

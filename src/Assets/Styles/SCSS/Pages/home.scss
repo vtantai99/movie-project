@@ -27,11 +27,7 @@
 @import "../Components/trailer.scss";
 .home__main {
   background: $bgPrimary;
-  transition: all 0.2s linear;
   @include MobileAndTablet {
     padding-top: 20px;
-  }
-  &.Dark {
-    background: $bgDarkModePage;
   }
 }

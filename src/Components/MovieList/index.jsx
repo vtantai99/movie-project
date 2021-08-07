@@ -1,21 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import { useSelector } from "react-redux";
+
 import MovieListShowing from "../MovieListShowing";
 import MovieListComing from "../MovieListComing";
-import {
-  GET_COMING_LIST,
-  GET_SHOWING_LIST,
-} from "../../redux/action/movieListAction/actionTypes";
+
 const MovieList = () => {
   const { darkMode } = useSelector((state) => state.commonReducer);
+
   const settings = {
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
     slidesToShow: 4,
     slidesToScroll: 4,
     rows: 2,
@@ -29,12 +24,6 @@ const MovieList = () => {
       },
     ],
   };
-  const dispatch = useDispatch();
-  // Call API va dispatch list phim (Dang chieu va sap chieu)
-  useEffect(() => {
-    dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
-    dispatch(getMovieListRequest("GP03", GET_COMING_LIST));
-  }, []);
 
   //   Lay danh sach phim dang chieu va render ra man hinh
   const showingList = useSelector(

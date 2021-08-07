@@ -1,12 +1,13 @@
 import React from "react";
-import { useEffect } from "react";
 import CountUp from "react-countup";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AdminCharts from "../../Components/AdminCharts";
 import AdminHistory from "../../Components/AdminHistory";
 import AdminTopUser from "../../Components/AdminTopUser";
 
 const AdminDashBoard = () => {
+  const dispatch = useDispatch();
+
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
   const { listInfo } = useSelector((state) => state.adminReducer);
   const totalFilm = useSelector((state) => state.movieListReducer.showingList);
@@ -30,10 +31,6 @@ const AdminDashBoard = () => {
       )),
     0
   );
-  useEffect(() => {
-    // dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
-    // dispatch(fetchTheaterListDetail());
-  }, []);
 
   const totalList = [
     {

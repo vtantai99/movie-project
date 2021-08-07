@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Button } from "@material-ui/core";
 import image1 from "./Images/1.png";
 import image2 from "./Images/2.jpg";
@@ -64,7 +64,7 @@ const News = () => {
     <section className={darkMode ? "news Dark" : "news"} id="news">
       <ul className="nav nav-tabs navCenter">
         <li className="nav-item">
-          <a className="nav-link active" data-toggle="tab" href="#24h">
+          <a className="nav-link active" data-toggle="tab" href="#dienAnh">
             Điện ảnh 24h
           </a>
         </li>
@@ -80,7 +80,7 @@ const News = () => {
         </li>
       </ul>
       <div className="tab-content">
-        <div className="tab-pane active" id="24h">
+        <div className="tab-pane active" id="dienAnh">
           <div className="news__item">
             <div className="news__item__img">
               <a

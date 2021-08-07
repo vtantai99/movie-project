@@ -1,18 +1,21 @@
 import React, { useState, useRef } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import { useDispatch, useSelector } from "react-redux";
-import DarkMode from "../DarkMode";
+import SwitchTheme from "../SwitchTheme";
 import swal from "sweetalert";
-import * as actions from "../../redux/action/userAction/actionTypes";
 import { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { logOutUser } from "../../redux/action/userAction/actions";
 const SettingPages = () => {
-  const { user } = useSelector((state) => state.userReducer);
-  const { darkMode } = useSelector((state) => state.commonReducer);
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   let refOpen = useRef();
+
+  const { user } = useSelector((state) => state.userReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
+  const [open, setOpen] = useState(false);
+
   const useOnClickOutside = (ref, handler) => {
     useEffect(() => {
       const listener = (event) => {
@@ -29,8 +32,15 @@ const SettingPages = () => {
       };
     }, [ref, handler]);
   };
+
   useOnClickOutside(refOpen, () => setOpen(false));
-  const logOutUser = () => {
+
+  const handleMovePage = () => {
+    history.push("/info");
+    setOpen(false);
+  };
+
+  const handleLogOut = () => {
     swal({
       title: "Bạn có thực sự muốn đăng xuất?",
       icon: "warning",
@@ -40,10 +50,7 @@ const SettingPages = () => {
       },
     }).then(async (willDelete) => {
       if (willDelete) {
-        await dispatch({
-          type: actions.LOG_OUT,
-          payload: null,
-        });
+        await dispatch(logOutUser());
         await localStorage.removeItem("user");
         await swal({
           title: "Đã đăng xuất",
@@ -75,7 +82,9 @@ const SettingPages = () => {
         </div>
       </Tooltip>
       <div
-        className={darkMode ? "dropdown__list Dark" : "dropdown__list"}
+        className={`${
+          !isLight && "bg-gray-800 text-white"
+        } dropdown__list transition`}
         style={
           open
             ? {
@@ -91,7 +100,7 @@ const SettingPages = () => {
       >
         <ul>
           {user && (
-            <li onClick={() => history.push("/info")}>
+            <li onClick={() => handleMovePage()}>
               <span>
                 <i className="fas fa-info-circle"></i>
                 Thông tin tài khoản
@@ -103,10 +112,10 @@ const SettingPages = () => {
               <i class="fas fa-adjust"></i>
               Chế độ tối
             </span>
-            <DarkMode />
+            <SwitchTheme />
           </li>
           {user?.maLoaiNguoiDung === "QuanTri" && (
-            <li onClick={() => history.push("/admin")}>
+            <li onClick={() => history.push("/admin/dashboard")}>
               <span>
                 <i class="fas fa-user-cog"></i>
                 Admin
@@ -114,7 +123,7 @@ const SettingPages = () => {
             </li>
           )}
           {user ? (
-            <li onClick={() => logOutUser()}>
+            <li onClick={() => handleLogOut()}>
               <span>
                 <i class="fas fa-sign-out-alt"></i>
                 Đăng xuất

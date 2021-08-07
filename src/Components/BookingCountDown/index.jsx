@@ -4,7 +4,7 @@ import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 const BookingCountDown = () => {
   const history = useHistory();
-  const [minutes, setMinutes] = useState(5);
+  const [minutes, setMinutes] = useState(100);
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
     let myInterval = setInterval(() => {

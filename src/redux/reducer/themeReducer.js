@@ -9,7 +9,7 @@ export default function themeReducer(state = initialState, action) {
 
   switch (type) {
     case actions.SWITCH_THEME:
-      return { ...state, isLight: !state.isLight };
+      return { ...state, isLight: payload };
     default:
       return state;
   }

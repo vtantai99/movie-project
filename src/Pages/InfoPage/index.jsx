@@ -1,11 +1,8 @@
 import React from "react";
-import "../../Assets/Styles/SCSS/Pages/infoUser.scss";
+import "../../Assets/Styles/SCSS/Pages/infoPage.scss";
 import Header from "../../Components/Header";
 import { useEffect } from "react";
-import {
-  getInfoUserRequest,
-  updateUserRequest,
-} from "../../redux/action/userAction/actions";
+import { getInfoUserRequest } from "../../redux/action/userAction/actions";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import InfoTotal from "../../Components/InfoTotal";
@@ -16,6 +13,7 @@ const InfoPage = () => {
   const dispatch = useDispatch();
 
   const { info } = useSelector((state) => state.userReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -24,15 +22,17 @@ const InfoPage = () => {
 
   return (
     info && (
-      <section className="info">
+      <section
+        className={`${!isLight && "bg-gray-900 text-white"} info transition`}
+      >
         <Header />
         <Row className="m-0" style={{ padding: "20px" }}>
-          <Col sm={12} md={3}>
+          <Col xs={12} lg={3} className="mb-4">
             <InfoUser />
           </Col>
-          <Col sm={12} md={9}>
+          <Col xs={12} lg={9} className="mb-4">
             <InfoTable />
-            <Row style={{ marginTop: "30px" }}>
+            <Row className="mt-4">
               <InfoTotal />
             </Row>
           </Col>

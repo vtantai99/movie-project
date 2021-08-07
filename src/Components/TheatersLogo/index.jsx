@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchTheaterList,
-  getCodeTheater,
-} from "../../redux/action/heThongRapAction/actions";
+import { getCodeTheater } from "../../redux/action/heThongRapAction/actions";
 
 const TheaterLogo = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTheaterList());
-  }, []);
 
   const theaterList = useSelector(
     (state) => state.heThongRapReducer.theaterList

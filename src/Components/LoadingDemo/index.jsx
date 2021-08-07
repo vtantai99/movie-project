@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 const LoadingDemo = () => {
-  const { darkMode, isLoading } = useSelector((state) => state.commonReducer);
+  const { isLoading } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   return isLoading ? (
     <div
-      className={darkMode === true ? "loading-screen Dark" : "loading-screen"}
+      className={`${
+        !isLight && "bg-gray-800 text-white"
+      } loading-screen transition`}
     >
       <div class="loading">
         <span></span>

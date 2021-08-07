@@ -7,28 +7,9 @@ const AdminTopUser = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
   const [page, setPage] = useState(1);
   const [quantity, setQuantity] = useState(5);
-  // Thay đổi page
-  const handleChangePage = (number) => {
-    setPage(number);
-  };
-
-  const handlePrevPage = () => {
-    page > 1 && setPage(page - 1);
-  };
-
-  const handleNextPage = () => {
-    page < Math.ceil(sortDecreaseListInfo.length / quantity) &&
-      setPage(page + 1);
-  };
-
-  //Thêm key id
-  const newListInfo = listInfo.map((item, index) => ({
-    ...item,
-    id: index + 1,
-  }));
 
   //   Sort mảng listInfo giảm dần theo số tiền mua vé
-  const sortDecreaseListInfo = newListInfo
+  const sortDecreaseListInfo = listInfo
     .sort(
       (a, b) =>
         b.thongTinDatVe.reduce(
@@ -42,12 +23,15 @@ const AdminTopUser = () => {
     )
     .slice(0, 10);
 
+  //Thêm key id
+  const newListInfo = sortDecreaseListInfo.map((item, index) => ({
+    ...item,
+    id: index + 1,
+  }));
+
   const indexOfLastPost = page * quantity;
   const indexOfFirstPost = indexOfLastPost - quantity;
-  const currentPost = sortDecreaseListInfo.slice(
-    indexOfFirstPost,
-    indexOfLastPost
-  );
+  const currentPost = newListInfo.slice(indexOfFirstPost, indexOfLastPost);
 
   //Render 10 người dùng mua vé nhiều nhất
   const renderUserLoyal = () => {
@@ -93,9 +77,7 @@ const AdminTopUser = () => {
           page={page}
           quantity={quantity}
           totalCount={sortDecreaseListInfo.length}
-          handleChangePage={handleChangePage}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
+          setPage={setPage}
         />
       </div>
     </div>

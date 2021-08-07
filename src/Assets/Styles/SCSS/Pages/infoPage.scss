@@ -11,13 +11,12 @@ body {
   &__detail {
     height: 100%;
     &__title {
-      color: $textBlack;
       font-weight: $fwMedium;
       font-size: 18px;
     }
     &__item {
       position: relative;
-      border-bottom: 2px solid $bgBorder;
+      border-bottom: 1px solid $bgBorder;
       padding: 10px 15px;
       strong {
         color: $textUser;
@@ -37,7 +36,6 @@ body {
   }
   &__history {
     &__title {
-      color: $textBlack;
       font-weight: $fwMedium;
       font-size: 18px;
     }
@@ -46,10 +44,6 @@ body {
       overflow-y: auto;
       table {
         width: 100%;
-        thead {
-          color: $textBlack;
-          background: #ededf3;
-        }
         th,
         td {
           text-transform: capitalize;
@@ -60,6 +54,9 @@ body {
     }
   }
   &__total {
+    @include MobileAndTablet {
+      margin-bottom: 10px;
+    }
     &__item {
       padding: 0 15px;
       display: flex;
@@ -67,12 +64,10 @@ body {
       justify-content: space-between;
       i {
         font-size: 40px;
-        color: $textBlack;
       }
       &--content {
         text-align: center;
         span {
-          color: $textBlack;
           font-size: 24px;
           font-weight: $fwMedium;
         }

@@ -4,10 +4,11 @@ import TheatersDetail from "../TheatersDetail";
 import TheatersLogo from "../TheatersLogo";
 import TheatersMovie from "../TheatersMovie";
 const Theaters = () => {
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   return (
     <section
-      className={darkMode === true ? "theater Dark" : "theater"}
+      className={`${!isLight && "bg-gray-800 text-white"} theater transition`}
       id="theaters"
     >
       <div

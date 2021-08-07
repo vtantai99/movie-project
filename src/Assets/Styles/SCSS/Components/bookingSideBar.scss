@@ -7,11 +7,6 @@
   position: fixed;
   right: 0;
   top: 0;
-  transition: all 0.2s linear;
-  &.Dark {
-    color: $textWhite;
-    background: $bgDarkMode;
-  }
   @include MobileAndTablet {
     width: 100%;
     display: none;

@@ -13,7 +13,10 @@ const AdminHistory = () => {
   for (let user of listInfo) {
     let taiKhoan = user.taiKhoan;
     for (let item of user.thongTinDatVe) {
-      if (new Date(item.ngayDat).getDate() === new Date().getDate()) {
+      if (
+        new Date(item.ngayDat).getDate() === new Date().getDate() &&
+        new Date(item.ngayDat).getMonth() === new Date().getMonth()
+      ) {
         newListInfo.push({ ...item, taiKhoan });
       }
     }
@@ -24,13 +27,10 @@ const AdminHistory = () => {
   );
 
   const [page, setPage] = useState(1);
-  const [postPerPage, setIPostPerPage] = useState(5);
+  const [quantity, setQuantity] = useState(5);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
-  // Thay đổi page
-  const handleChangePage = (number) => {
-    setPage(number);
-  };
+
   const handleOnModal = (value) => {
     setModalData(value);
     setShowModal(true);
@@ -39,8 +39,8 @@ const AdminHistory = () => {
     setShowModal(false);
   };
 
-  const indexOfLastPost = page * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const indexOfLastPost = page * quantity;
+  const indexOfFirstPost = indexOfLastPost - quantity;
   const currentPost = newListInfo.slice(indexOfFirstPost, indexOfLastPost);
 
   const renderTicketToday = () => {
@@ -101,9 +101,9 @@ const AdminHistory = () => {
       />
       <Pagination
         page={page}
-        postPerPage={postPerPage}
-        totalPost={newListInfo.length}
-        handleChangePage={handleChangePage}
+        quantity={quantity}
+        totalCount={newListInfo.length}
+        setPage={setPage}
       />
     </div>
   );

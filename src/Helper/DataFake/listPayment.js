@@ -7,17 +7,20 @@ export const listPayment = [
     id: "atm",
     img: `${totalAtm}`,
     des: "Thẻ ATM nội địa",
+    value: 1,
   },
   {
     name: "payment",
     id: "visa",
     img: `${totalVisa}`,
     des: "Visa, MasterCard, JCB",
+    value: 2,
   },
   {
     name: "payment",
     id: "momo",
     img: `${momo}`,
     des: "MoMo",
+    value: 3,
   },
 ];

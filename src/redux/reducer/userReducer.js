@@ -2,9 +2,10 @@ import * as actions from "../action/userAction/actionTypes";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
-  error: "",
+  listAllUser: [],
   info: "",
-  listInfo: "",
+  modalUser: { statusModal: false },
+  error: "",
 };
 const userReducer = (state = initialState, action) => {
   let { type, payload } = action;
@@ -18,8 +19,8 @@ const userReducer = (state = initialState, action) => {
     case actions.INFO_USER: {
       return { ...state, info: payload };
     }
-    case actions.ALL_INFO_USER: {
-      return { ...state, listInfo: payload };
+    case actions.GET_ALL_USER: {
+      return { ...state, listAllUser: payload };
     }
     case actions.CHANGE_PASS: {
       const newInfo = { ...state.info, matKhau: payload.matKhau };
@@ -29,6 +30,9 @@ const userReducer = (state = initialState, action) => {
       return { ...state, error: payload };
     case actions.SHOW_ERROR:
       return { ...state, error: payload };
+    case actions.MODAL_USER: {
+      return { ...state, modalUser: payload };
+    }
     default:
       return state;
   }

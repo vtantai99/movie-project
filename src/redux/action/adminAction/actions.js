@@ -1,6 +1,7 @@
 import axios from "axios";
 import { startLoading, stopLoading } from "../commonAction/actions";
 import * as actions from "./actionTypes";
+
 export const fetchListUser = () => async (dispatch) => {
   dispatch(startLoading());
   try {

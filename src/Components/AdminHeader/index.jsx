@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import SwitchThemeAdmin from "../SwitchThemeAdmin";
+import SwitchTheme from "../SwitchTheme";
 const AdminHeader = () => {
   const history = useHistory();
 
-  const themeReducer = useSelector((state) => state.themeReducer);
-  const { isLight } = themeReducer;
+  const { isLight } = useSelector((state) => state.themeReducer);
 
   return (
     <div className="mb-3 flex flex-row justify-between items-center">
@@ -24,7 +23,7 @@ const AdminHeader = () => {
           alt=""
         />
         <div className="ml-3">
-          <SwitchThemeAdmin />
+          <SwitchTheme />
         </div>
         <NavLink className="ml-3" to="/">
           Back

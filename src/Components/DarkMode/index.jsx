@@ -4,16 +4,18 @@ import { addDarkMode } from "../../redux/action/commonAction/actions";
 
 const DarkMode = () => {
   const dispatch = useDispatch();
+
   const getTheme = () => {
     return JSON.parse(localStorage.getItem("theme")) || false;
   };
+
   const [theme, setTheme] = useState(getTheme());
 
-  useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(theme));
-    const darkLocal = JSON.parse(localStorage.getItem("theme"));
-    darkLocal ? dispatch(addDarkMode(true)) : dispatch(addDarkMode(false));
-  }, [theme, dispatch]);
+  // useEffect(() => {
+  //   localStorage.setItem("theme", JSON.stringify(theme));
+  //   const darkLocal = JSON.parse(localStorage.getItem("theme"));
+  //   darkLocal ? dispatch(addDarkMode(true)) : dispatch(addDarkMode(false));
+  // }, [theme, dispatch]);
 
   return (
     <button

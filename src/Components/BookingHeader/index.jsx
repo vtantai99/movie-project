@@ -7,15 +7,16 @@ import iconPrev from "../../Assets/Images/iconPrev.png";
 import logo from "../../Assets/Images/logo.png";
 import DropDown from "../DropDown";
 const Header = () => {
-  //   Hien thi ten nguoi dung
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.userReducer);
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
   const { statusFood, statusRps } = useSelector(
     (state) => state.bookingReducer
   );
+
   return (
-    <header className={darkMode ? "headerBooking Dark" : "headerBooking"}>
+    <header className={`${!isLight && "bg-gray-800"} headerBooking transition`}>
       {statusRps ? (
         <div
           className="headerBooking__return"
@@ -42,7 +43,7 @@ const Header = () => {
         <div className="headerBooking__user__img">
           <Avatar
             alt="Avatar"
-            src="https://cyberlearn-21.web.app/img/avatar.png"
+            src={`https://i.pravatar.cc/150?u=${user?.taiKhoan}`}
             style={{
               position: "absolute",
               left: "50%",

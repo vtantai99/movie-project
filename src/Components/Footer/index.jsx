@@ -2,9 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import logo from "../../Assets/Images/logo.png";
 const Footer = () => {
-  const { darkMode } = useSelector((state) => state.commonReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   return (
-    <footer className={darkMode ? "footer Dark" : "footer"}>
+    <footer
+      className={`${!isLight && "bg-gray-800 text-white"} footer transition`}
+    >
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-2">

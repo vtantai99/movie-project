@@ -6,19 +6,21 @@ import { useHistory } from "react-router-dom";
 const PageNotFound = () => {
   const history = useHistory();
   const [seconds, setSeconds] = useState(10);
-  useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        history.push("/");
-      }
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
-  });
+
+  // useEffect(() => {
+  //   let myInterval = setInterval(() => {
+  //     if (seconds > 0) {
+  //       setSeconds(seconds - 1);
+  //     }
+  //     if (seconds === 0) {
+  //       history.push("/");
+  //     }
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(myInterval);
+  //   };
+  // });
+
   return (
     <section className="page__error">
       <div className="page__error__content">

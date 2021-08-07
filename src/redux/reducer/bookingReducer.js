@@ -85,18 +85,7 @@ export default function bookingReducer(state = initialState, action) {
     }
     case actions.CALL_FOOD:
       return { ...state, statusFood: payload };
-    case actions.PLUS_QUANTITY_COMBO: {
-      const newComboList = [...state.foodList];
-      let index = newComboList.findIndex((item) => item.id === payload);
-      newComboList[index].quantity++;
-      return { ...state, foodList: newComboList };
-    }
-    case actions.MINUS_QUANTITY_COMBO: {
-      const newComboList = [...state.foodList];
-      let index = newComboList.findIndex((item) => item.id === payload);
-      newComboList[index].quantity--;
-      return { ...state, foodList: newComboList };
-    }
+
     case actions.RPS_BOOKING: {
       return { ...state, statusRps: payload };
     }

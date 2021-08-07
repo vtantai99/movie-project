@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import Axios from "axios";
 import { startLoading, stopLoading } from "../commonAction/actions";
+
 export const signUpRequest = (user, type, history) => async (dispatch) => {
   try {
     const res = await axios({
@@ -18,6 +19,9 @@ export const signUpRequest = (user, type, history) => async (dispatch) => {
           button: {
             text: "Đồng ý",
           },
+        }).then(() => {
+          dispatch(getAllUserRequest());
+          dispatch(changeModalUser({ statusModal: false }));
         });
       } else {
         swal({
@@ -28,13 +32,19 @@ export const signUpRequest = (user, type, history) => async (dispatch) => {
             text: "Đồng ý",
           },
         }).then(() => {
-          history.push("/login");
+          history.push("/signIn");
         });
       }
     }
   } catch (err) {
-    console.log(err.response.data);
-    dispatch(showError(err.response.data));
+    if (type === "addUser") {
+      swal({
+        title: err.response.data,
+        icon: "error",
+      });
+    } else {
+      dispatch(showError(err.response.data));
+    }
   }
 };
 
@@ -47,7 +57,6 @@ export const loginRequest = (user, history) => async (dispatch) => {
     if (res.status === 200 || res.status === 201) {
       await localStorage.setItem("user", JSON.stringify(res.data));
       await dispatch(logIn(res.data));
-      await history.push("/");
     }
   } catch (err) {
     dispatch(showError(err.response.data));
@@ -69,48 +78,97 @@ export const getInfoUserRequest = (account) => {
   };
 };
 
-export const getInfoUserByPage = (page, quantity) => async (dispatch) => {
+export const getAllUserRequest = () => async (dispatch) => {
   try {
-    const res = await axios.get(
-      `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP09&soTrang=${page}&soPhanTuTrenTrang=${quantity}`
+    const res = await Axios.get(
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP09"
     );
     if (res.status === 200 || res.status === 201) {
-      await dispatch(allInfoUser(res.data));
+      await dispatch(getAllUserSuccess(res.data));
+    }
+  } catch (err) {}
+};
+
+export const deleteUser = (admin, taiKhoan) => async (dispatch) => {
+  console.log(admin, taiKhoan);
+  try {
+    const res = await axios({
+      method: "DELETE",
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+      headers: {
+        Authorization: `Bearer ${admin.accessToken}`,
+      },
+    });
+    if (res.status === 200 || res.status === 201) {
+      swal({
+        title: res.data,
+        icon: "success",
+      });
+      await dispatch(getAllUserRequest());
     }
   } catch (err) {
-    console.log(err);
+    swal({
+      title: err.response.data,
+      icon: "error",
+      buttons: {
+        confirm: "OK",
+      },
+    });
   }
 };
 
-export const deleteUser =
-  (admin, taiKhoan, page, quantity) => async (dispatch) => {
-    try {
-      const res = await axios({
-        method: "DELETE",
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
-        headers: {
-          Authorization: `Bearer ${admin.accessToken}`,
-        },
-      });
-      if (res.status === 200 || res.status === 201) {
-        swal({
-          title: res.data,
-          icon: "success",
-          timer: 1000,
-        });
-        await dispatch(getInfoUserByPage(page, quantity));
-      }
-    } catch (err) {
+export const updateUserRequest = (user, infoUpdate) => async (dispatch) => {
+  try {
+    const res = await Axios({
+      method: "PUT",
+      url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+      data: infoUpdate,
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+      },
+    });
+    if (res.status === 200 || res.status === 201) {
       swal({
-        title: err.response.data,
-        icon: "error",
-        buttons: {
-          confirm: "OK",
-        },
-      });
+        title: "Yeah",
+        icon: "success",
+        text: "Cập nhật thành công",
+      }).then(
+        (confirm) =>
+          confirm && dispatch(changeModalUser({ statusModal: false }))
+      );
+      await dispatch(getAllUserRequest());
     }
-  };
+  } catch (err) {
+    swal({
+      title: err.response.data,
+      icon: "error",
+      button: true,
+    });
+  }
+};
 
+export const logOutUser = () => {
+  return {
+    type: actions.LOG_OUT,
+    payload: null,
+  };
+};
+
+// Khi call API xong thì gửi data vào hàm này để đẩy lên redux
+const getAllUserSuccess = (data) => {
+  return {
+    type: actions.GET_ALL_USER,
+    payload: data,
+  };
+};
+
+// Lấy info user đang đăng nhập
+export const infoUser = (info) => {
+  return {
+    type: actions.INFO_USER,
+    payload: info,
+  };
+};
 export const logIn = (user) => {
   return {
     type: actions.LOG_IN,
@@ -118,19 +176,13 @@ export const logIn = (user) => {
   };
 };
 
-export const allInfoUser = (listInfo) => {
+export const changeModalUser = (value) => {
   return {
-    type: actions.ALL_INFO_USER,
-    payload: listInfo,
+    type: actions.MODAL_USER,
+    payload: value,
   };
 };
 
-export const infoUser = (info) => {
-  return {
-    type: actions.INFO_USER,
-    payload: info,
-  };
-};
 export const showError = (err) => {
   return {
     type: actions.SHOW_ERROR,
