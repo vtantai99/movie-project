@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
@@ -6,7 +6,6 @@ import {
 } from "../../redux/action/movieAction/actions";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
-import { useState } from "react";
 
 const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
   const userReducer = useSelector((state) => state.userReducer);
@@ -14,8 +13,6 @@ const AdminMovieTable = ({ list, sortMethod, setSortMethod }) => {
 
   const themeReducer = useSelector((state) => state.themeReducer);
   const { isLight } = themeReducer;
-
-  const [currentMotaIndex, setCurrentMotaIndex] = useState(null);
 
   const dispatch = useDispatch();
 

@@ -17,6 +17,7 @@ import { fetchListUser } from "../../redux/action/adminAction/actions";
 import { getMovieListRequest } from "../../redux/action/movieListAction/action";
 import { GET_SHOWING_LIST } from "../../redux/action/movieListAction/actionTypes";
 import { fetchTheaterListDetail } from "../../redux/action/heThongRapAction/actions";
+import TicketPage from "../TicketPage";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const Admin = () => {
         <Route exact path="/admin/user" component={AdminUser} />
         <Route exact path="/admin/addMovie" component={AddMovie} />
         <Route exact path="/admin/movieList" component={AdminMovieList} />
+        <Route exact path="/admin/DatVe" component={TicketPage} />
         <Route exact path="/admin/">
           <Redirect to="/admin/dashboard" />
         </Route>
