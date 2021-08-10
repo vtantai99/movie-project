@@ -8,7 +8,6 @@ import {
   updateSearchTerm,
 } from "../../redux/action/movieAdminAction/actions";
 import { getFirstLetter } from "../../Helper/Function/chartCodeAt";
-// import "./index.scss";
 import { xoaDau } from "../../Helper/Function/xoaDau";
 import { iconPlus, iconReset } from "../../Helper/IconSVG/iconAdmin";
 import { Button } from "@material-ui/core";

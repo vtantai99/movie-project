@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.scss";
-
 //Guards
 import BookingRoute from "./Guards/BookingRoute";
 import InfoRoute from "./Guards/InfoRoute";

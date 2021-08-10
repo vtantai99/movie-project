@@ -123,7 +123,7 @@ const TicketPage = () => {
       >
         <select
           onChange={(e) => handleSelectFilm(e.target.value)}
-          className={`col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
+          className={`cursor-pointer col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800"
           }`}
         >
@@ -139,7 +139,7 @@ const TicketPage = () => {
 
         {/* Ma he thong rap */}
         <select
-          className={`col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
+          className={`cursor-pointer col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800"
           }`}
           onChange={(e) => handleHeThongRap(e.target.value)}
@@ -161,7 +161,7 @@ const TicketPage = () => {
         {/* Cum rap theo ma rap */}
         <select
           onChange={(e) => handleCumRap(e.target.value)}
-          className={`col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
+          className={`cursor-pointer col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800"
           }`}
         >
@@ -179,7 +179,7 @@ const TicketPage = () => {
         {/* Rap */}
         <select
           onChange={(e) => handleRap(e.target.value)}
-          className={`col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
+          className={`cursor-pointer col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800"
           }`}
         >
@@ -200,7 +200,7 @@ const TicketPage = () => {
         {/* Gia ve */}
         <select
           onChange={(e) => setGiaVe(+e.target.value)}
-          className={`col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
+          className={`cursor-pointer col-span-1 p-3 focus:outline-none rounded-sm shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800"
           }`}
         >
@@ -219,7 +219,7 @@ const TicketPage = () => {
           )}
         </select>
         <div
-          className={`col-span-1 p-2 shadow-sm ${
+          className={`cursor-pointer col-span-1 p-2 shadow-sm ${
             isLight ? "bg-white" : "bg-gray-800 text-white"
           } rounded-sm`}
         >

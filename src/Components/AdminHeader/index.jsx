@@ -9,11 +9,9 @@ const AdminHeader = () => {
 
   return (
     <div className="mb-4 flex flex-row justify-between items-center">
-      <img
-        src="https://lh3.googleusercontent.com/proxy/xAfS9b-onOsVQxFl5vo7zRmdx02m70qRtMIlsmpbLmf5ZtrkCFYCog7YPuf7yd-eK3jkoUt5MGOz8TDRw0y9xBzPxw"
-        className="w-36 h-16 rounded-sm"
-        alt="admin"
-      />
+      <span className="text-2xl font-bold text-blue-500">
+        ADMIN - {user.hoTen}
+      </span>
       <div className="flex flex-row justify-end items-center">
         <img
           src={`https://i.pravatar.cc/150?u=${user.taiKhoan}`}
