@@ -34,6 +34,8 @@ const TheaterLogo = () => {
         dispatch(getCodeTheater("megags-cao-thang"));
         break;
       }
+      default:
+        return;
     }
   };
 

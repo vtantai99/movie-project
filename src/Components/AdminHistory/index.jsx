@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import format from "date-format";
 import { formatNumber } from "../../Helper/Function/formatNumber";
 import Pagination from "../Pagination";
-import ModalInfo from "../ModalInfo";
+import ModalTicket from "../ModalTicket";
 
 const AdminHistory = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
-  const [show, setShow] = useState(false);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   // filter theo ngay mua ve, chi hien thi nguoi dung mua ve ngay hien tai
   const newListInfo = [];
   for (let user of listInfo) {
@@ -27,7 +28,6 @@ const AdminHistory = () => {
   );
 
   const [page, setPage] = useState(1);
-  const [quantity, setQuantity] = useState(5);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
@@ -39,8 +39,8 @@ const AdminHistory = () => {
     setShowModal(false);
   };
 
-  const indexOfLastPost = page * quantity;
-  const indexOfFirstPost = indexOfLastPost - quantity;
+  const indexOfLastPost = page * 5;
+  const indexOfFirstPost = indexOfLastPost - 5;
   const currentPost = newListInfo.slice(indexOfFirstPost, indexOfLastPost);
 
   const renderTicketToday = () => {
@@ -49,10 +49,14 @@ const AdminHistory = () => {
         <tr
           key={index}
           onClick={() => handleOnModal(item)}
-          className="group text-opacity-100 cursor-pointer relative hover:bg-blue-400
-          hover:text-white transition"
+          className={`${
+            isLight
+              ? "hover:bg-gray-50 border-solid"
+              : "hover:bg-gray-700 border-gray-700"
+          } border-b group text-opacity-100 cursor-pointer relative
+         border-b border-solid transition`}
         >
-          <td className="p-1">{item.maVe}</td>
+          <td className="p-2">{item.maVe}</td>
           <td>{item.taiKhoan}</td>
           <td>{formatNumber(item.giaVe * item.danhSachGhe.length)}</td>
           <td>{format("hh:mm:ss", new Date(item.ngayDat))}</td>
@@ -77,13 +81,17 @@ const AdminHistory = () => {
   };
 
   return (
-    <div className="col-start-4 col-end-9 row-start-3 row-end-5 bg-white p-3 shadow-md rounded-md">
-      <p className="mb-2 text-blue-500 text-lg font-bold">Giao dịch hôm nay</p>
+    <div
+      className={`${
+        isLight ? "bg-white" : "bg-gray-800 text-white"
+      } col-start-4 col-end-9 row-start-3 row-end-5 p-3 shadow-md rounded-md transition`}
+    >
+      <p className="mb-2 text-lg font-bold">Giao dịch hôm nay</p>
       {newListInfo.length ? (
         <table className="w-100">
-          <thead className="text-black bg-gray-100">
+          <thead className={`${isLight ? "bg-gray-100" : "bg-gray-900"}`}>
             <tr>
-              <th className="p-1">Mã vé</th>
+              <th className="p-2">Mã vé</th>
               <th>Tài khoản</th>
               <th>Tổng tiền</th>
               <th>Thời gian</th>
@@ -92,16 +100,19 @@ const AdminHistory = () => {
           <tbody>{renderTicketToday()}</tbody>
         </table>
       ) : (
-        <p>Hôm nay chưa có giao dịch</p>
+        <p>
+          Chưa bán được vé nào
+          <i className="far fa-sad-tear ml-2"></i>
+        </p>
       )}
-      <ModalInfo
+      <ModalTicket
         modalData={modalData}
         showModal={showModal}
         handleOffModal={handleOffModal}
       />
       <Pagination
         page={page}
-        quantity={quantity}
+        quantity={5}
         totalCount={newListInfo.length}
         setPage={setPage}
       />

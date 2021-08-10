@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import format from "date-format";
 import Pagination from "../Pagination";
 import { nameSeat } from "../../Helper/Function/nameSeat";
-import ModalInfo from "../ModalInfo";
+import ModalTicket from "../ModalTicket";
 
 const InfoTable = () => {
   const { info } = useSelector((state) => state.userReducer);
@@ -15,13 +15,13 @@ const InfoTable = () => {
   );
 
   const [page, setPage] = useState(1);
-  const [quantity, setQuantity] = useState(5);
+
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
   // Lấy số lượng item trên mỗi page
-  const indexOfLastPost = page * quantity;
-  const indexOfFirstPost = indexOfLastPost - quantity;
+  const indexOfLastPost = page * 5;
+  const indexOfFirstPost = indexOfLastPost - 5;
   const currentPost = info.thongTinDatVe.slice(
     indexOfFirstPost,
     indexOfLastPost
@@ -41,8 +41,12 @@ const InfoTable = () => {
       <tr
         key={index}
         onClick={() => handleOnModal(item)}
-        className="group text-opacity-100 cursor-pointer relative hover:bg-blue-400
-          hover:text-white border-b border-solid transition"
+        className={`${
+          isLight
+            ? "hover:bg-gray-50 border-solid"
+            : "hover:bg-gray-700 border-gray-700"
+        } border-b group text-opacity-100 cursor-pointer relative
+       border-b border-solid transition`}
       >
         <td>{item.maVe}</td>
         <td>{item.tenPhim}</td>
@@ -54,7 +58,7 @@ const InfoTable = () => {
         </td>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-white absolute opacity-0 font-bold transform right-4 top-2/4  -translate-y-2/4 
+          className="h-6 w-6 absolute opacity-0 font-bold transform right-4 top-2/4 -translate-y-2/4 
             group-hover:opacity-100 transition"
           fill="none"
           viewBox="0 0 24 24"
@@ -95,7 +99,7 @@ const InfoTable = () => {
           ) : (
             <p>Hiện tại bạn chưa đặt vé.</p>
           )}
-          <ModalInfo
+          <ModalTicket
             modalData={modalData}
             showModal={showModal}
             handleOffModal={handleOffModal}
@@ -103,7 +107,7 @@ const InfoTable = () => {
           <div className="pb-2 pt-4">
             <Pagination
               page={page}
-              quantity={quantity}
+              quantity={5}
               totalCount={info.thongTinDatVe.length}
               setPage={setPage}
             />

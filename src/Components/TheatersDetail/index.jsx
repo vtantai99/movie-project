@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import TheatersDetailItem from "../TheatersDetailItem";
 
 const TheatersDetail = () => {
-  const dispatch = useDispatch();
   const theaterDetail = useSelector(
     (state) => state.heThongRapReducer.theaterDetail
   );

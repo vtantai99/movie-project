@@ -31,19 +31,22 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(async () => {
-    await dispatch(startLoading());
-    await Promise.all([
-      dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
-      dispatch(getMovieListRequest("GP03", GET_COMING_LIST)),
-      dispatch(fetchTheaterList()),
-      dispatch(fetchTheaterListDetail()),
-    ]);
-    // Dữ liệu sẽ đẩy lên redux ở action, nên phải dùng setTimeout đợi xong mới stopLoading
-    setTimeout(() => {
-      dispatch(stopLoading());
-    }, 500);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      await dispatch(startLoading());
+      await Promise.all([
+        dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
+        dispatch(getMovieListRequest("GP03", GET_COMING_LIST)),
+        dispatch(fetchTheaterList()),
+        dispatch(fetchTheaterListDetail()),
+      ]);
+      // Dữ liệu sẽ đẩy lên redux ở action, nên phải dùng setTimeout đợi xong mới stopLoading
+      setTimeout(() => {
+        dispatch(stopLoading());
+      }, 500);
+    }
+    fetchData();
+  }, [dispatch]);
 
   return (
     <Fragment>

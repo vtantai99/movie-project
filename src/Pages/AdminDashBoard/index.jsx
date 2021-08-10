@@ -1,16 +1,16 @@
 import React from "react";
 import CountUp from "react-countup";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import AdminCharts from "../../Components/AdminCharts";
 import AdminHistory from "../../Components/AdminHistory";
 import AdminTopUser from "../../Components/AdminTopUser";
 
 const AdminDashBoard = () => {
-  const dispatch = useDispatch();
-
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
   const { listInfo } = useSelector((state) => state.adminReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
   const totalFilm = useSelector((state) => state.movieListReducer.showingList);
+
   const totalTheater = theaterDetail?.reduce(
     (sum, item) => (sum += item.lstCumRap.length),
     0
@@ -38,7 +38,7 @@ const AdminDashBoard = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-14 w-14 text-blue-500 text-center "
+          className="h-14 w-14 text-center "
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -59,7 +59,7 @@ const AdminDashBoard = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-14 w-14 text-blue-500 text-center "
+          className="h-14 w-14 text-center "
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -80,7 +80,7 @@ const AdminDashBoard = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-14 w-14 text-blue-500 text-center"
+          className="h-14 w-14 text-center"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -101,7 +101,7 @@ const AdminDashBoard = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-14 w-14 text-blue-500 text-center"
+          className="h-14 w-14 text-center"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -127,17 +127,17 @@ const AdminDashBoard = () => {
 
   return (
     <div>
-      <h3 className="text-blue-500 font-medium text-2xl mb-3">DASHBOARD</h3>
       <div className="grid grid-cols-8 grid-rows-4 gap-4">
         {totalList.map((item, index) => (
           <div
-            className={`${item.location} bg-white p-3 shadow-md rounded-md
-           flex justify-between items-center`}
+            className={`${item.location} ${
+              isLight ? "bg-white" : "bg-gray-800 text-white"
+            } p-3 shadow-md rounded-md transition flex justify-between items-center`}
             key={index}
           >
             {item.icon}
             <div className="text-center">
-              <p className="text-blue-500 text-3xl font-bold">
+              <p className="text-3xl font-bold">
                 <CountUp end={item.quantity} duration={2} separator="." />
               </p>
               <span>{item.title}</span>

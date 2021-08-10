@@ -30,7 +30,7 @@ const CheckAdmin = () => {
         });
       } else history.push("/");
     });
-  }, []);
+  }, [dispatch, history, location.pathname]);
   return <></>;
 };
 

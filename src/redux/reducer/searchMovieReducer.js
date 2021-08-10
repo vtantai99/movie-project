@@ -23,16 +23,13 @@ const searchMovieReducer = (state = initialState, action) => {
     }
     case actionTypes.FETCH_DATE: {
       const theaterList = payload;
-      console.log(theaterList);
       const listDateEmpty = [];
       let lisDateFake = theaterList.map((item) => item.cumRapChieu);
-      console.log(lisDateFake);
       for (let i = 0; i < lisDateFake.length; i++) {
         for (let j = 0; j < lisDateFake[i].length; j++) {
           listDateEmpty.push(lisDateFake[i][j]);
         }
       }
-      console.log(listDateEmpty);
       const date = listDateEmpty.filter(
         (item) => item.tenCumRap === state.nameTheater
       )[0].lichChieuPhim; // chua hieu doan nay lam

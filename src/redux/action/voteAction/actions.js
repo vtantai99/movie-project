@@ -6,7 +6,7 @@ export const getApiVote = () => async (dispatch) => {
     const res = await Axios.get(
       "https://5fb3d99eb6601200168f7f86.mockapi.io/voteFilm"
     );
-    if (res.status === 200 || res.status == 201) {
+    if (res.status === 200 || res.status === 201) {
       await dispatch(getListVote(res.data));
     }
   } catch (err) {

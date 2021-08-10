@@ -4,7 +4,12 @@ import axios from "axios";
 import swal from "sweetalert";
 //Hàm lấy thông tin phim bằng mã phim
 const fetchMovieDetailRequest = (movieCode, history) => async (dispatch) => {
-  dispatch(startLoading());
+  if (history.location.pathname !== "/admin/ticket") {
+    await dispatch(startLoading());
+  } else {
+    await dispatch(loadingTicketAdmin(true));
+  }
+
   try {
     const res = await axios({
       url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movieCode}`,
@@ -13,7 +18,11 @@ const fetchMovieDetailRequest = (movieCode, history) => async (dispatch) => {
     if (res.status === 200 || res.status === 201) {
       const data = await res.data;
       await dispatch(fetchMovieDetailSuccess(data));
-      await dispatch(stopLoading());
+      if (history.location.pathname !== "/admin/ticket") {
+        await dispatch(stopLoading());
+      } else {
+        await dispatch(loadingTicketAdmin(false));
+      }
     }
   } catch (err) {
     swal({
@@ -76,6 +85,14 @@ const updateCodeTheaterMobile = (code) => {
     payload: code,
   };
 };
+
+const loadingTicketAdmin = (value) => {
+  return {
+    type: actions.LOADING_TICKET_ADMIN,
+    payload: value,
+  };
+};
+
 export {
   fetchMovieDetailRequest,
   getMovieTrailer,

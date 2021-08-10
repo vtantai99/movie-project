@@ -2,10 +2,10 @@ export const convertTime = (item, time) => {
   item = item.split(":");
   let hours = +item[0];
   let minutes = +item[1];
-  minutes >= 10 ? (minutes = minutes) : (minutes = "0" + minutes);
+  minutes >= 10 ? (minutes = [minutes]) : (minutes = ["0" + minutes]);
   let timeEnds = hours + time;
-  timeEnds >= 24 ? (timeEnds = timeEnds - 24) : (timeEnds = timeEnds);
-  timeEnds < 10 ? (timeEnds = "0" + timeEnds) : (timeEnds = timeEnds);
+  timeEnds >= 24 ? (timeEnds = [timeEnds] - 24) : (timeEnds = [timeEnds]);
+  timeEnds < 10 ? (timeEnds = "0" + [timeEnds]) : (timeEnds = [timeEnds]);
   return timeEnds + ":" + minutes;
 };
 

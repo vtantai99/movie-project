@@ -23,7 +23,7 @@ const DetailDate = () => {
 
   useEffect(() => {
     dispatch(refreshDate(new Date().getDate())); // Khi mà return page detail thì refresh date, tự chọn ngày hiện tại
-  }, []);
+  }, [dispatch]);
 
   const currentDate = new Date();
   const dates = [currentDate];

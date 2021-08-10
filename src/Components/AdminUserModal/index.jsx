@@ -32,7 +32,7 @@ const AdminUserModal = () => {
       setValue("soDt", infoUser.soDt);
       setValue("maLoaiNguoiDung", infoUser.maLoaiNguoiDung);
     }
-  }, [infoUser]);
+  }, [infoUser, setValue]);
 
   const handleOffModal = async () => {
     await dispatch(changeModalUser({ statusModal: false }));

@@ -68,7 +68,7 @@ export default function SignUp() {
 
   useEffect(() => {
     dispatch(hideError());
-  }, []);
+  }, [dispatch]);
 
   const onSubmit = (data) => {
     const { hoTen, matKhau, soDt, taiKhoan, email } = data;

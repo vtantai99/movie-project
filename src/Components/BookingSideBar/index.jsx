@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookingSeatChoosing from "../BookingSeatChoosing";
 import BookingFood from "../BookingFood";
@@ -121,7 +121,7 @@ export default function BookingSideBar() {
           value={item.value}
           disabled={seatsChoosing?.length ? false : true}
         />
-        <label className="item--label" for={item.id}>
+        <label className="item--label" htmlFor={item.id}>
           <img src={item.img} alt={item.id} />
           {item.des}
         </label>
@@ -370,7 +370,7 @@ export default function BookingSideBar() {
                     <img
                       className="w-10 h-10 mr-2 object-cover"
                       src={valuePayment?.img}
-                      alt="image"
+                      alt="payment"
                     />
                     <span>{valuePayment?.des}</span>
                   </td>

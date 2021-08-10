@@ -22,8 +22,14 @@ const Header = () => {
   const [nav, setNav] = useState(false);
 
   useEffect(() => {
-    getDataUser();
-  }, []);
+    const dataUser = localStorage.getItem("user");
+    if (dataUser) {
+      dispatch({
+        type: actions.LOG_IN,
+        payload: JSON.parse(dataUser),
+      });
+    }
+  }, [dispatch]);
 
   const handleClickLink = (id, type) => {
     if (location.pathname === "/") {
@@ -41,17 +47,6 @@ const Header = () => {
           smooth: "easeInOutQuart",
         });
       }, 0);
-    }
-  };
-
-  //   Hàm lấy dữ liệu user sau khi logged
-  const getDataUser = () => {
-    const dataUser = localStorage.getItem("user");
-    if (dataUser) {
-      dispatch({
-        type: actions.LOG_IN,
-        payload: JSON.parse(dataUser),
-      });
     }
   };
 

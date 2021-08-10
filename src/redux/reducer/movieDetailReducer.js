@@ -5,6 +5,7 @@ const initialState = {
   movieTrailer: null,
   dateShow: `${new Date().getDate()}`,
   codeTheater: "BHDStar",
+  loadingTicketAdmin: false,
 };
 export default function movieReducer(state = initialState, action) {
   let { type, payload } = action;
@@ -21,6 +22,8 @@ export default function movieReducer(state = initialState, action) {
       return { ...state, dateShow: payload };
     case actions.UPDATE_CODE_THEATER:
       return { ...state, codeTheater: payload };
+    case actions.LOADING_TICKET_ADMIN:
+      return { ...state, loadingTicketAdmin: payload };
     default:
       return state;
   }

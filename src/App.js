@@ -1,24 +1,32 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.scss";
 
-import LoadingDemo from "./Components/LoadingDemo";
-import MainLayout from "./Layout/MainLayout";
-import Home from "./Pages/Home";
-import Detail from "./Pages/Detail";
-import InfoPage from "./Pages/InfoPage";
-import PageNotFound from "./Pages/PageNotFound";
-import AdminLayout from "./Layout/AdminLayout";
-import AdminDashBoard from "./Pages/AdminDashBoard";
-import AdminUser from "./Pages/AdminUser";
-import AddMovie from "./Pages/AddMovie";
-import AdminMovieList from "./Pages/AdminMovieList";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
-import ScrollToTop from "./Components/ScrollToTop";
-import Trailer from "./Components/Trailer";
-import Booking from "./Pages/Booking";
+//Guards
 import BookingRoute from "./Guards/BookingRoute";
 import InfoRoute from "./Guards/InfoRoute";
 import AdminRoute from "./Guards/AdminRoute";
+
+//Layout
+import AdminLayout from "./Layout/AdminLayout";
+import MainLayout from "./Layout/MainLayout";
+
+//Pages
+import Home from "./Pages/Home";
+import Detail from "./Pages/Detail";
+import InfoPage from "./Pages/InfoPage";
+import Booking from "./Pages/Booking";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
+import AdminDashBoard from "./Pages/AdminDashBoard";
+import AdminUser from "./Pages/AdminUser";
+import AdminTicket from "./Pages/AdminTicket";
+import AdminMovieList from "./Pages/AdminMovieList";
+import PageNotFound from "./Pages/PageNotFound";
+
+//Components
+import LoadingDemo from "./Components/LoadingDemo";
+import ScrollToTop from "./Components/ScrollToTop";
+import Trailer from "./Components/Trailer";
 
 function App() {
   return (
@@ -44,6 +52,7 @@ function App() {
             "/admin/user",
             "/admin/addMovie",
             "/admin/movieList",
+            "/admin/ticket",
           ]}
         >
           <AdminLayout>
@@ -53,12 +62,12 @@ function App() {
               component={AdminDashBoard}
             />
             <AdminRoute path="/admin/user" exact component={AdminUser} />
-            <AdminRoute path="/admin/addMovie" exact component={AddMovie} />
             <AdminRoute
               path="/admin/movieList"
               exact
               component={AdminMovieList}
             />
+            <AdminRoute exact path="/admin/ticket" component={AdminTicket} />
           </AdminLayout>
         </Route>
 

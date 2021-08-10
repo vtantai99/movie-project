@@ -12,9 +12,3 @@ export const stopLoading = () => {
     payload: false,
   };
 };
-export const addDarkMode = (value) => {
-  return {
-    type: actions.DARK_MODE,
-    payload: value,
-  };
-};

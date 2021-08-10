@@ -3,7 +3,7 @@ import format from "date-format";
 import { useHistory } from "react-router-dom";
 import Tooltip from "@material-ui/core/Tooltip";
 import { disableTime, convertTime } from "../../Helper/Function/customTime";
-const HourHomeDesktop = (props) => {
+const HourButton = (props) => {
   const history = useHistory();
 
   const filterDate = props.lichChieuTheoNgay.map((item) => {
@@ -51,4 +51,4 @@ const HourHomeDesktop = (props) => {
   };
   return <Fragment>{renderMovieDetailTime()}</Fragment>;
 };
-export default HourHomeDesktop;
+export default HourButton;

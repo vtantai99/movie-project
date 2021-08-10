@@ -4,6 +4,7 @@ const initialState = {
   rap: "BHDStar",
   theaterList: [],
   theaterDetail: [],
+  theaterDetailAdmin: [],
   codeTheater: "bhd-star-cineplex-pham-hung",
 };
 

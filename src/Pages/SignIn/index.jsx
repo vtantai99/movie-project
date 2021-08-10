@@ -63,8 +63,8 @@ export default function SignIn() {
 
   useEffect(() => {
     dispatch(hideError());
-  }, []);
-  console.log(location.state);
+  }, [dispatch]);
+
   useEffect(() => {
     if (user) {
       location.state ? history.push(location.state) : history.push("/");

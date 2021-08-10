@@ -5,8 +5,9 @@ import Pagination from "../Pagination";
 
 const AdminTopUser = () => {
   const { listInfo } = useSelector((state) => state.adminReducer);
+  const { isLight } = useSelector((state) => state.themeReducer);
+
   const [page, setPage] = useState(1);
-  const [quantity, setQuantity] = useState(5);
 
   //   Sort mảng listInfo giảm dần theo số tiền mua vé
   const sortDecreaseListInfo = listInfo
@@ -29,18 +30,23 @@ const AdminTopUser = () => {
     id: index + 1,
   }));
 
-  const indexOfLastPost = page * quantity;
-  const indexOfFirstPost = indexOfLastPost - quantity;
+  const indexOfLastPost = page * 5;
+  const indexOfFirstPost = indexOfLastPost - 5;
   const currentPost = newListInfo.slice(indexOfFirstPost, indexOfLastPost);
 
   //Render 10 người dùng mua vé nhiều nhất
   const renderUserLoyal = () => {
     return currentPost.map((item, index) => (
-      <tr key={index} className="border-b border-solid">
+      <tr
+        key={index}
+        className={`${
+          isLight
+            ? "hover:bg-gray-50 border-solid"
+            : "hover:bg-gray-700 border-gray-700"
+        } border-b`}
+      >
         <td className="p-2">{item.id}</td>
-        <td className="p-2">
-          {item.taiKhoan === "" ? "Không xác định" : item.taiKhoan}
-        </td>
+        <td>{item.taiKhoan === "" ? "Không xác định" : item.taiKhoan}</td>
         <td>
           {item.thongTinDatVe.reduce(
             (sum, item) => (sum += item.danhSachGhe.length),
@@ -59,10 +65,14 @@ const AdminTopUser = () => {
     ));
   };
   return (
-    <div className="col-span-3 row-start-3 row-end-5 bg-white p-3 shadow-md rounded-md">
-      <p className="mb-2 text-blue-500 text-lg font-bold">Top 10 khách hàng </p>
+    <div
+      className={`${
+        isLight ? "bg-white" : "bg-gray-800 text-white"
+      } col-span-3 row-start-3 row-end-5 p-3 shadow-md rounded-md transition`}
+    >
+      <p className="mb-2 text-lg font-bold">Top 10 khách hàng </p>
       <table className="w-100">
-        <thead className="text-black bg-gray-100">
+        <thead className={`${isLight ? "bg-gray-100" : "bg-gray-900"}`}>
           <tr>
             <th className="p-2">Top</th>
             <th>Tài khoản</th>
@@ -75,7 +85,7 @@ const AdminTopUser = () => {
       <div className="mt-3">
         <Pagination
           page={page}
-          quantity={quantity}
+          quantity={5}
           totalCount={sortDecreaseListInfo.length}
           setPage={setPage}
         />

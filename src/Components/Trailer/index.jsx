@@ -23,6 +23,7 @@ const Trailer = () => {
     <Modal show={show} onHide={handleClose} size="lg" centered>
       <iframe
         className="trailer__video"
+        title="Trailer movie"
         src={`${movieTrailer}?autoplay=1&enablejsapi=1`}
         frameBorder="0"
         allow="autoplay; encrypted-media"

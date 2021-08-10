@@ -71,7 +71,7 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
           >
             <td
               className={`${
-                searchTerm && "bg-gray-100"
+                searchTerm && "bg-gray-400"
               } px-6 py-4 text-left text-sm`}
             >
               {item.taiKhoan}
@@ -117,8 +117,11 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
           <tr>
             <th
               className={`
-          ${sort?.name === "taiKhoan" && "bg-gray-400 hover:bg-gray-400"}
-          px-6 py-3 text-left text-sm cursor-pointer hover:bg-gray-300 transition`}
+          ${
+            sort?.name === "taiKhoan" &&
+            "hover:bg-gray-600 bg-gray-600 text-white"
+          }
+          px-6 py-3 text-left text-sm cursor-pointer hover:bg-gray-500 hover:text-white transition`}
               onClick={() =>
                 setSort({
                   name: "taiKhoan",
@@ -136,7 +139,12 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
               </div>
             </th>
             <th
-              className="text-left text-sm cursor-pointer hover:bg-gray-300 transition"
+              className={`
+               ${
+                 sort?.name === "hoTen" &&
+                 "bg-gray-600 text-white hover:bg-gray-600"
+               }
+               px-6 py-3 text-left text-sm cursor-pointer hover:bg-gray-500 hover:text-white transition`}
               onClick={() =>
                 setSort({
                   name: "hoTen",
@@ -155,8 +163,10 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
             </th>
             <th
               className={`
-          ${sort?.name === "email" && "bg-gray-400 hover:bg-gray-400"}
-          text-left text-sm cursor-pointer hover:bg-gray-300 transition`}
+          ${
+            sort?.name === "email" && "bg-gray-600 text-white hover:bg-gray-600"
+          }
+          px-6 py-3 text-left text-sm cursor-pointer hover:bg-gray-500 hover:text-white transition`}
               onClick={() =>
                 setSort({
                   name: "email",
@@ -177,8 +187,11 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
             <th className="text-left text-sm">Mật khẩu</th>
             <th
               className={`
-          ${sort?.name === "maLoaiNguoiDung" && "bg-gray-400 hover:bg-gray-400"}
-          text-left text-sm cursor-pointer hover:bg-gray-300 transition`}
+              ${
+                sort?.name === "maLoaiNguoiDung" &&
+                "bg-gray-600 text-white hover:bg-gray-600"
+              }
+              px-6 py-3 text-left text-sm cursor-pointer hover:bg-gray-500 hover:text-white transition`}
               onClick={() => handleSortTypeUser()}
             >
               <div className="flex">

@@ -17,13 +17,16 @@ const Detail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(async () => {
-    await Promise.all([
-      dispatch(fetchMovieDetailRequest(movieId, history)),
-      dispatch(fetchTheaterList()),
-      dispatch(getApiVote()),
-    ]);
-  }, [dispatch]);
+  useEffect(() => {
+    async function fetchDate() {
+      await Promise.all([
+        dispatch(fetchMovieDetailRequest(movieId, history)),
+        dispatch(fetchTheaterList()),
+        dispatch(getApiVote()),
+      ]);
+    }
+    fetchDate();
+  }, [dispatch, movieId, history]);
 
   const { movieDetail } = useSelector((state) => state.movieDetailReducer);
   return (

@@ -24,7 +24,7 @@ const AdminUser = () => {
 
   useEffect(() => {
     dispatch(getAllUserRequest());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     listAllUser.length > 0 && setSortedList(listAllUser);
@@ -122,11 +122,12 @@ const AdminUser = () => {
 
   return (
     <div>
-      <h3 className="text-2xl uppercase">THÔNG TIN NGƯỜI DÙNG</h3>
-      <div className="flex justify-between items-center my-3">
+      <div className="flex justify-between items-center mb-3">
         <div>
           <input
-            className="p-3 shadow-md rounded-sm outline-none"
+            className={`${
+              isLight ? "bg-white" : "bg-gray-800"
+            } p-3 shadow-md rounded-sm outline-none`}
             value={searchTerm}
             type="text"
             placeholder="Tìm kiếm người dùng"

@@ -26,7 +26,7 @@ const SearchMovie = () => {
     dispatch(refreshFilm());
     dispatch(refreshTheater());
     dispatch(refreshDate());
-  }, []);
+  }, [dispatch]);
 
   // Hiển thị phim
   const { showingList } = useSelector((state) => state.movieListReducer);
@@ -135,9 +135,6 @@ const SearchMovie = () => {
 
   const handleSelectHours = (event) => {
     dispatch(addCode(event.target.value));
-  };
-  const handleOnChange = (e) => {
-    console.log(e.target.value);
   };
 
   return (

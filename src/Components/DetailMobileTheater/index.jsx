@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCodeTheaterMobile } from "../../redux/action/movieDetailAction/actions";
 import DetailMobileTime from "../DetailMobileTime";
-const DetailTheaterMobile = () => {
+const DetailMobileTheater = () => {
   const dispatch = useDispatch();
 
   const { theaterList } = useSelector((state) => state.heThongRapReducer);
@@ -46,4 +46,4 @@ const DetailTheaterMobile = () => {
   );
 };
 
-export default DetailTheaterMobile;
+export default DetailMobileTheater;

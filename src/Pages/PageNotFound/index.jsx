@@ -5,27 +5,27 @@ import { useHistory } from "react-router-dom";
 
 const PageNotFound = () => {
   const history = useHistory();
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(30);
 
-  // useEffect(() => {
-  //   let myInterval = setInterval(() => {
-  //     if (seconds > 0) {
-  //       setSeconds(seconds - 1);
-  //     }
-  //     if (seconds === 0) {
-  //       history.push("/");
-  //     }
-  //   }, 1000);
-  //   return () => {
-  //     clearInterval(myInterval);
-  //   };
-  // });
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        history.push("/");
+      }
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
 
   return (
     <section className="page__error">
       <div className="page__error__content">
         <p style={{ color: "#777", fontStyle: "italic" }}>
-          // 404 page not found.
+          &#47;&#47; 404 page not found.
         </p>
         <p>
           <span style={{ color: "#d65562" }}>if</span> (
@@ -42,7 +42,7 @@ const PageNotFound = () => {
         </p>
         <span style={{ marginLeft: "5px" }}>&#125;</span>
         <p>
-          //{" "}
+          &#47;&#47;&nbsp;
           <a href="/" style={{ fontStyle: "italic" }}>
             Go home now!
           </a>

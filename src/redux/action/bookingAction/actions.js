@@ -9,7 +9,7 @@ export const getBooking = (id, history) => async (dispatch) => {
       url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`,
       method: "GET",
     });
-    if (res.status == 200 || res.status == 201) {
+    if (res.status === 200 || res.status === 201) {
       await dispatch({
         type: actions.GET_BOOKING,
         payload: res.data,

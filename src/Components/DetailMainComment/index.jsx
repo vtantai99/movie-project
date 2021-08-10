@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import Axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -112,7 +112,7 @@ const MovieDetailReview = () => {
         "https://5fb3d99eb6601200168f7f86.mockapi.io/voteFilm",
         data
       );
-      if (res.status === 200 || res.status == 201) {
+      if (res.status === 200 || res.status === 201) {
         await handleOffModal();
         await dispatch(getApiVote());
       }
@@ -155,7 +155,7 @@ const MovieDetailReview = () => {
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center">
               <img
-                className="w-10 h-10 rounded-md mr-2"
+                className="w-10 h-10 rounded-full mr-2"
                 src={item.image}
                 alt="avatar"
               />
@@ -180,7 +180,7 @@ const MovieDetailReview = () => {
             </div>
           </div>
           <p>{item.comment}</p>
-          <hr className={`${!isLight && "bg-white"} mt-2 mb-1`} />
+          <hr className={`${!isLight && "bg-gray-700"} mt-2 mb-1`} />
           <div className="flex items-center">
             <Button
               className={`${
@@ -221,7 +221,7 @@ const MovieDetailReview = () => {
         >
           <div className="flex items-center">
             <img
-              className="w-10 h-10 mr-2 rounded-md"
+              className="w-10 h-10 mr-2 rounded-full"
               src={
                 user
                   ? `https://i.pravatar.cc/150?u=${user?.taiKhoan}`

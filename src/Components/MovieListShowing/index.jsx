@@ -23,7 +23,7 @@ const MovieListShowing = (props) => {
           <img src={star} alt="star" />
           <img src={star} alt="star" />
           <img src={star} alt="star" />
-          <img src={starHalf} />
+          <img src={starHalf} alt="star" />
         </>
       );
     }
@@ -88,7 +88,7 @@ const MovieListShowing = (props) => {
             <button
               onClick={() => dispatch(getMovieTrailer(props.movie.trailer))}
             >
-              <img src={playIcon} />
+              <img src={playIcon} alt="play" />
             </button>
           </div>
 

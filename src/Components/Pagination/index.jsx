@@ -11,7 +11,7 @@ const Pagination = ({ page, setPage, totalCount, quantity }) => {
 
   return (
     totalCount >= 5 && (
-      <div className="flex justify-end">
+      <div className="flex md:justify-end">
         <button
           className={`${page === 1 && "opacity-50 pointer-events-none"} 
           ${isLight ? "border-solid" : "border-gray-700"}

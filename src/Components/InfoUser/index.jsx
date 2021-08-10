@@ -87,21 +87,35 @@ const InfoUser = () => {
         } card info__detail transition`}
       >
         <p className="info__detail__title">THÔNG TIN CÁ NHÂN</p>
-        <div className="info__detail__item">
+        <div
+          className={`${
+            isLight ? "border-solid" : "border-gray-700"
+          } info__detail__item border-b`}
+        >
           <p>Họ tên</p>
           <strong>{info.hoTen}</strong>
         </div>
-        <div className="info__detail__item">
+        <div
+          className={`${
+            isLight ? "border-solid" : "border-gray-700"
+          } info__detail__item border-b`}
+        >
           <p>Email</p>
           <strong>{info.email}</strong>
         </div>
-        <div className="info__detail__item">
+        <div
+          className={`${
+            isLight ? "border-solid" : "border-gray-700"
+          } info__detail__item border-b`}
+        >
           <p>Số điện thoại</p>
           <strong>{info.soDT}</strong>
         </div>
         {formShow ? (
           <form
-            className="info__detail__item"
+            className={`${
+              isLight ? "border-solid" : "border-gray-700"
+            } info__detail__item border-b`}
             onSubmit={handleSubmit(onSubmit)}
           >
             <i className="fas fa-key mr-2"></i>
@@ -113,7 +127,12 @@ const InfoUser = () => {
                   fullWidth
                   error={errors.newPass && true}
                 >
-                  <InputLabel htmlFor="newPass">Mật khẩu mới</InputLabel>
+                  <InputLabel
+                    className={`${!isLight && "text-white"}`}
+                    htmlFor="newPass"
+                  >
+                    Mật khẩu mới
+                  </InputLabel>
                   <OutlinedInput
                     id="newPass"
                     name="newPass"
@@ -130,6 +149,7 @@ const InfoUser = () => {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
+                          className={`${!isLight && "text-white"}`}
                           onMouseDown={() => setShowPass(true)}
                           onMouseUp={() => setShowPass(false)}
                           aria-label="toggle password visibility"
@@ -152,7 +172,10 @@ const InfoUser = () => {
                   fullWidth
                   error={errors.newPass2 && true}
                 >
-                  <InputLabel htmlFor="newPass2">
+                  <InputLabel
+                    className={`${!isLight && "text-white"}`}
+                    htmlFor="newPass2"
+                  >
                     Xác nhận mật khẩu mới
                   </InputLabel>
                   <OutlinedInput
@@ -167,6 +190,7 @@ const InfoUser = () => {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
+                          className={`${!isLight && "text-white"}`}
                           onMouseDown={() => setShowPass2(true)}
                           onMouseUp={() => setShowPass2(false)}
                           aria-label="toggle password visibility"

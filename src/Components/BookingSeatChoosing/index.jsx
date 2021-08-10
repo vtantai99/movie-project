@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { nameSeat } from "../../Helper/Function/nameSeat";
 const DangChonSeats = () => {

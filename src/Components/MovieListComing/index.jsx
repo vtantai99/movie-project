@@ -16,7 +16,11 @@ const MovieListComing = (props) => {
             background: `url(${props.movie.hinhAnh}) center center / cover no-repeat`,
           }}
         >
-          <img src={movieComing} className="item__film__img--title" />
+          <img
+            src={movieComing}
+            alt="movie"
+            className="item__film__img--title"
+          />
           <div className="item__film__img--vote">
             <p className="vote--number">
               {format("dd/MM", new Date(props.movie.ngayKhoiChieu))}
@@ -26,7 +30,10 @@ const MovieListComing = (props) => {
             <button
               onClick={() => dispatch(getMovieTrailer(props.movie.trailer))}
             >
-              <img src="https://tix.vn/app/assets/img/icons/play-video.png" />
+              <img
+                src="https://tix.vn/app/assets/img/icons/play-video.png"
+                alt="play"
+              />
             </button>
           </div>
           <NavLink

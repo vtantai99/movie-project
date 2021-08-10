@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import swal from "sweetalert";
 import AdminHeader from "../../Components/AdminHeader";
 import AdminSideBar from "../../Components/AdminSideBar";
 import { fetchListUser } from "../../redux/action/adminAction/actions";
@@ -16,13 +15,16 @@ const AdminLayout = (props) => {
 
   const [sideBarActive, setSideBarActive] = useState(false);
 
-  useEffect(async () => {
-    await Promise.all([
-      // dispatch(fetchListUser()),
-      dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
-      dispatch(fetchTheaterListDetail()),
-    ]);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      await Promise.all([
+        dispatch(fetchListUser()),
+        dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
+        dispatch(fetchTheaterListDetail()),
+      ]);
+    }
+    fetchData();
+  }, [dispatch]);
 
   // Nếu người dùng k phải quản trị thì ẩn layout, ko hiện gì cả. chỉ hiện swal
   if (user?.maLoaiNguoiDung !== "QuanTri") {
@@ -30,7 +32,7 @@ const AdminLayout = (props) => {
   }
   return (
     <div
-      className={`min-h-screen w-screen ${
+      className={`min-h-screen w-screen transition ${
         isLight ? "bg-gray-100 text-gray-600" : "bg-gray-900 text-gray-100"
       }`}
     >

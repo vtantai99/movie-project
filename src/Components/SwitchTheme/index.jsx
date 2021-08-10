@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { iconDark, iconLight } from "../../Helper/IconSVG/iconTheme";
 import { switchTheme } from "../../redux/action/themeAction/actions";
 
@@ -20,7 +20,7 @@ const SwitchTheme = () => {
     const themeLocal = JSON.parse(localStorage.getItem("theme"));
     //dispatch lên redux
     dispatch(switchTheme(themeLocal));
-  }, [isLight]);
+  }, [isLight, dispatch]);
 
   return (
     <div

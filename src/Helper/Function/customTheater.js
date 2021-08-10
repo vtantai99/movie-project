@@ -4,6 +4,37 @@ import theaterCineStar from "../../Assets/Images/theaterCineStar.jpg";
 import theaterGalaxy from "../../Assets/Images/theaterGalaxy.png";
 import theaterLotte from "../../Assets/Images/theaterLotte.jpg";
 import theaterMega from "../../Assets/Images/theaterMega.jpeg";
+import logoBHD from "../../Assets/Images/logoBHD.png";
+import logoCGV from "../../Assets/Images/logoCGV.png";
+import logoCinestar from "../../Assets/Images/logoCinestar.png";
+import logoGLX from "../../Assets/Images/logoGLX.png";
+import logoLotte from "../../Assets/Images/logoLotte.png";
+import logoMGS from "../../Assets/Images/logoMGS.png";
+
+export const renderImageTheater = (nameTheater) => {
+  switch (nameTheater) {
+    case "BHDStar": {
+      return logoBHD;
+    }
+    case "CGV": {
+      return logoCGV;
+    }
+    case "CineStar": {
+      return logoCinestar;
+    }
+    case "Galaxy": {
+      return logoGLX;
+    }
+    case "LotteCinima": {
+      return logoLotte;
+    }
+    case "MegaGS": {
+      return logoMGS;
+    }
+    default:
+      return null;
+  }
+};
 
 export const renderImage = (nameTheater) => {
   switch (nameTheater) {

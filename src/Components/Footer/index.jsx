@@ -36,24 +36,22 @@ const Footer = () => {
             <p className="footer__contact__title">CONTACT</p>
             <div className="footer__contact__icon">
               <a
-                target="_blank"
-                // href="https://www.facebook.com/tix.vn/"
+                href="https://www.facebook.com/tix.vn/"
                 className="footer__contact__icon--fb"
                 style={{
                   color: "#34495e",
                 }}
               >
-                <i class="fab fa-facebook-square"></i>
+                <i className="fab fa-facebook-square"></i>
               </a>
               <a
-                target="_blank"
-                // href="https://zalo.me/tixdatve"
+                href="https://gitlab.com/boy.bax2/movie-project"
                 className="footer__contact__icon--git"
                 style={{
                   color: "#d35400",
                 }}
               >
-                <i class="fab fa-gitlab"></i>
+                <i className="fab fa-gitlab"></i>
               </a>
             </div>
           </div>

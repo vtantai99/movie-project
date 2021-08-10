@@ -5,7 +5,7 @@ import userReducer from "./userReducer";
 import heThongRapReducer from "./heThongRapReducer";
 import bookingReducer from "./bookingReducer";
 import movieListReducer from "./movieListReducer";
-import movieReducer from "./movieReducer";
+import movieAdminReducer from "./movieAdminReducer";
 import searchMovieReducer from "./searchMovieReducer";
 import themeReducer from "./themeReducer";
 import adminReducer from "./adminReducer";
@@ -18,7 +18,7 @@ export default combineReducers({
   movieListReducer,
   heThongRapReducer,
   movieDetailReducer,
-  movieReducer,
+  movieAdminReducer,
   bookingReducer,
   commonReducer,
   themeReducer,

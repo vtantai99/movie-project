@@ -1,6 +1,5 @@
 import * as actions from "./actionTypes";
 import Axios from "axios";
-import { startLoading, stopLoading } from "../commonAction/actions";
 
 export const switchRap = (rap) => {
   return {
@@ -22,14 +21,10 @@ export const fetchTheaterList = () => {
 // Call API tat ca từng rạp chi tiết của mã nhóm GP09
 export const fetchTheaterListDetail = () => {
   return (dispatch) => {
-    // dispatch(startLoading());
     Axios.get(
       "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP09"
     )
-      .then(
-        (res) => dispatch(fetchTheaterListDetailSuccess(res.data))
-        // setTimeout(() => dispatch(stopLoading()), 1000)
-      )
+      .then((res) => dispatch(fetchTheaterListDetailSuccess(res.data)))
       .catch((err) => console.log(err));
   };
 };
