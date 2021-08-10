@@ -34,7 +34,7 @@ const BookingFood = ({ foodState, handleChangeQuantity }) => {
               <img src={item.img} alt="logo" />
               <div className="item__main__name">
                 <p>
-                  <i class="fas fa-info-circle"></i>&nbsp;
+                  <i className="fas fa-info-circle"></i>&nbsp;
                   {item.name}
                 </p>
                 <span>{formatNumber(item.price)}</span>

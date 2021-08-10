@@ -18,13 +18,13 @@ const AdminLayout = (props) => {
   useEffect(() => {
     async function fetchData() {
       await Promise.all([
-        dispatch(fetchListUser()),
+        user && dispatch(fetchListUser()),
         dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
         dispatch(fetchTheaterListDetail()),
       ]);
     }
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   // Nếu người dùng k phải quản trị thì ẩn layout, ko hiện gì cả. chỉ hiện swal
   if (user?.maLoaiNguoiDung !== "QuanTri") {

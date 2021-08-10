@@ -44,10 +44,10 @@ const AdminHistory = () => {
   const currentPost = newListInfo.slice(indexOfFirstPost, indexOfLastPost);
 
   const renderTicketToday = () => {
-    return currentPost.map((item, index) => (
+    return currentPost.map((item) => (
       <>
         <tr
-          key={index}
+          key={"_" + Math.random().toString(36).substr(2, 9)}
           onClick={() => handleOnModal(item)}
           className={`${
             isLight

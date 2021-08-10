@@ -156,6 +156,7 @@ const SearchMovie = () => {
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
+          value
         >
           <option value="movieSelect" hidden selected>
             {isLoading ? "Đang tìm rạp" : "Chọn rạp"}

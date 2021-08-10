@@ -10,7 +10,7 @@ const LoadingDemo = () => {
         !isLight && "bg-gray-800 text-white"
       } loading-screen transition`}
     >
-      <div class="loading">
+      <div className="loading">
         <span></span>
         <span></span>
         <span></span>

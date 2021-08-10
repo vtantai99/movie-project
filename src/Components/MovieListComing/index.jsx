@@ -42,7 +42,7 @@ const MovieListComing = (props) => {
           ></NavLink>
         </div>
         <div className="item__film__info">
-          <i class="fas fa-ad"></i>&nbsp;
+          <i className="fas fa-ad"></i>&nbsp;
           <span
             className="item__film__info--name"
             onClick={() => history.push(`/detail/${props.movie.maPhim}`)}

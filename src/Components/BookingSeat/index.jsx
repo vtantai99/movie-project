@@ -77,12 +77,12 @@ const BookingSeats = () => {
       <div className="seats">
         <div className="seats__way">
           <span className="exit__item">
-            <i class="fas fa-angle-double-right"></i>
-            <i class="fas fa-door-open"></i>
+            <i className="fas fa-angle-double-right"></i>
+            <i className="fas fa-door-open"></i>
           </span>
           <span className="exit__item">
             EXIT
-            <i class="fas fa-door-open"></i>
+            <i className="fas fa-door-open"></i>
           </span>
         </div>
         <div className="seats__main">{renderSeats()}</div>

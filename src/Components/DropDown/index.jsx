@@ -109,7 +109,7 @@ const SettingPages = () => {
           )}
           <li>
             <span>
-              <i class="fas fa-adjust"></i>
+              <i className="fas fa-adjust"></i>
               Chế độ tối
             </span>
             <SwitchTheme />
@@ -117,7 +117,7 @@ const SettingPages = () => {
           {user?.maLoaiNguoiDung === "QuanTri" && (
             <li onClick={() => history.push("/admin/dashboard")}>
               <span>
-                <i class="fas fa-user-cog"></i>
+                <i className="fas fa-user-cog"></i>
                 Admin
               </span>
             </li>
@@ -125,7 +125,7 @@ const SettingPages = () => {
           {user ? (
             <li onClick={() => handleLogOut()}>
               <span>
-                <i class="fas fa-sign-out-alt"></i>
+                <i className="fas fa-sign-out-alt"></i>
                 Đăng xuất
               </span>
             </li>

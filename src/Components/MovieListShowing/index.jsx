@@ -98,7 +98,7 @@ const MovieListShowing = (props) => {
           ></NavLink>
         </div>
         <div className="item__film__info">
-          <i class="fas fa-film"></i>&nbsp;
+          <i className="fas fa-film"></i>&nbsp;
           <span className="item__film__info--name">{props.movie.tenPhim}</span>
           <Button
             className="item__film__info--btn"

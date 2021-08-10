@@ -7,8 +7,7 @@ import {
   renderStyleColor,
 } from "../../Helper/Function/customTheater";
 
-const TheaterListDetailItem = (props) => {
-  // console.log(props.detail);
+const TheaterDetailItem = (props) => {
   const dispatch = useDispatch();
   const codeTheater = useSelector(
     (state) => state.heThongRapReducer.codeTheater
@@ -20,12 +19,12 @@ const TheaterListDetailItem = (props) => {
   const renderTheaterDetailItem = () => {
     return props.detail.lstCumRap.map((item, index) => (
       <div
+        key={index}
         className={`theater__detail__item ${
           item.maCumRap === codeTheater ? "active" : ""
         }`}
       >
         <div
-          key={index}
           className={`item`}
           data-toggle={window.innerWidth >= 740 ? "tab" : "collapse"}
           role={window.innerWidth >= 740 ? "tab" : "button"}
@@ -59,4 +58,4 @@ const TheaterListDetailItem = (props) => {
   return <Fragment>{renderTheaterDetailItem()}</Fragment>;
 };
 
-export default TheaterListDetailItem;
+export default TheaterDetailItem;

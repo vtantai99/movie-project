@@ -236,7 +236,7 @@ const Header = () => {
                       outline: "none",
                     }}
                   >
-                    <i class="fa fa-sign-out-alt"></i>
+                    <i className="fa fa-sign-out-alt"></i>
                     Đăng xuất
                   </Button>
                 ) : (

@@ -18,8 +18,11 @@ const TheatersMovieMobile = ({ danhSachPhim }) => {
 
   const renderMoviesMobile = () => {
     if (newList.length) {
-      return newList.map((item, index) => (
-        <div className="movie__item" key={index}>
+      return newList.map((item) => (
+        <div
+          className="movie__item"
+          key={"_" + Math.random().toString(36).substr(2, 9)}
+        >
           <div
             className="movie__item__main"
             data-toggle="collapse"
@@ -29,7 +32,7 @@ const TheatersMovieMobile = ({ danhSachPhim }) => {
             <img src={item.hinhAnh} alt={item.tenPhim} />
             <div className="movie__item__main--info">
               <span className="info__name">
-                <i class="fas fa-film"></i>&nbsp;
+                <i className="fas fa-film"></i>&nbsp;
                 {item.tenPhim}
               </span>
               <span className="info__name__des">120 phút - TIX 9.0</span>

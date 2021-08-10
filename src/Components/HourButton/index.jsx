@@ -14,39 +14,37 @@ const HourButton = (props) => {
   });
   const renderMovieDetailTime = () => {
     return filterDate.map((item, index) => (
-      <>
-        <Tooltip
-          title={disableTime(item.gioChieu) ? "Buy it" : "Oops! Overtime today"}
-          placement="top-center"
+      <Tooltip
+        key={index}
+        title={disableTime(item.gioChieu) ? "Buy it" : "Oops! Overtime today"}
+        placement="top-center"
+      >
+        <button
+          className="hour__btn"
+          onClick={
+            disableTime(item.gioChieu)
+              ? () => history.push(`/booking/${item.maLichChieu}`)
+              : null
+          }
+          style={
+            disableTime(item.gioChieu)
+              ? { backgroundColor: "#fff" }
+              : { backgroundColor: "#ebebec" }
+          }
         >
-          <button
-            className="hour__btn"
-            key={index}
-            onClick={
-              disableTime(item.gioChieu)
-                ? () => history.push(`/booking/${item.maLichChieu}`)
-                : null
-            }
+          <span
+            className="hour__btn--start "
             style={
               disableTime(item.gioChieu)
-                ? { backgroundColor: "#fff" }
-                : { backgroundColor: "#ebebec" }
+                ? { color: "#108f3e" }
+                : { color: "#9b9b9b" }
             }
           >
-            <span
-              className="hour__btn--start "
-              style={
-                disableTime(item.gioChieu)
-                  ? { color: "#108f3e" }
-                  : { color: "#9b9b9b" }
-              }
-            >
-              {item.gioChieu}
-            </span>
-            &nbsp;~&nbsp;{convertTime(item.gioChieu, 2)}
-          </button>
-        </Tooltip>
-      </>
+            {item.gioChieu}
+          </span>
+          &nbsp;~&nbsp;{convertTime(item.gioChieu, 2)}
+        </button>
+      </Tooltip>
     ));
   };
   return <Fragment>{renderMovieDetailTime()}</Fragment>;

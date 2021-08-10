@@ -74,7 +74,7 @@ const DetailTime = () => {
               <img src={renderImage(codeTheater)} alt="rap" />
               <div className="item__theater__info">
                 <span style={renderStyleColor(codeTheater)}>
-                  <i class="fas fa-video"></i>&nbsp;
+                  <i className="fas fa-video"></i>&nbsp;
                   {codeTheater}&nbsp;
                 </span>
                 {cutStr(item.tenCumRap)}

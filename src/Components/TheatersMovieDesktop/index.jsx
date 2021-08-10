@@ -36,7 +36,7 @@ const TheatersMovieDesktop = (props) => {
             />
             <div className="movie__item__main--info">
               <span className="info__name">
-                <i class="fas fa-film"></i>&nbsp;
+                <i className="fas fa-film"></i>&nbsp;
                 {item.tenPhim}
               </span>
               <span className="info__name__des">120 phút - TIX 9.0</span>

@@ -81,7 +81,7 @@ const DetailInfo = () => {
             <div className="content__text__info">
               <small>{format("dd/MM/yyyy", new Date(ngayKhoiChieu))}</small>
               <span className="name__movie">
-                <i class="fas fa-film"></i>&nbsp;
+                <i className="fas fa-film"></i>&nbsp;
                 {tenPhim}
               </span>
               <small className="digital__movie">
@@ -134,7 +134,7 @@ const DetailInfo = () => {
         <div className="detail__info__rps__content">
           <small>{format("dd/MM/yyyy", new Date(ngayKhoiChieu))}</small>
           <p className="name__movie">
-            <i class="fas fa-film"></i>&nbsp;
+            <i className="fas fa-film"></i>&nbsp;
             {tenPhim}
             <br />
           </p>
