@@ -147,7 +147,7 @@ const SearchMovie = () => {
         <select
           name="movieSelect"
           onChange={handleSelectFilm}
-          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+          style={{ background: `${isLight ? "white" : "#1F2937"}` }}
         >
           <option hidden selected>
             Chọn Phim
@@ -160,7 +160,7 @@ const SearchMovie = () => {
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
-          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+          style={{ background: `${isLight ? "white" : "#1F2937"}` }}
         >
           <option hidden selected>
             {isLoading ? "Đang tìm rạp" : "Chọn rạp"}
@@ -176,7 +176,7 @@ const SearchMovie = () => {
         <select
           name="dateSelect"
           onChange={handleSelectDate}
-          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+          style={{ background: `${isLight ? "white" : "#1F2937"}` }}
         >
           <option hidden selected>
             Ngày chiếu
@@ -188,7 +188,7 @@ const SearchMovie = () => {
         <select
           name="hourSelect"
           onChange={handleSelectHours}
-          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+          style={{ background: `${isLight ? "white" : "#1F2937"}` }}
         >
           <option hidden selected>
             Giờ chiếu
