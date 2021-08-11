@@ -122,7 +122,7 @@ const AdminMovieList = () => {
     } else {
       handleSearchList(list);
     }
-  }, [searchTerm, list, sort]);
+  }, [searchTerm, list, sort]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleAddFilm = async (data) => {
     await dispatch(modalMovieRequest({ statusModal: true }));

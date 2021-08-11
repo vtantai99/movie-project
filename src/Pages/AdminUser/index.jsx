@@ -52,7 +52,7 @@ const AdminUser = () => {
     } else {
       handleSearchList(listAllUser);
     }
-  }, [sort, searchTerm, listAllUser]);
+  }, [sort, searchTerm, listAllUser]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const sortTaiKhoan = (method) => {
     const newList = [...sortedList];
