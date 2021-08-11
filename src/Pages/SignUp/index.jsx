@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../Assets/Styles/SCSS/Pages/signUp.scss";
 import {
-  Avatar,
   Button,
   CssBaseline,
   FormHelperText,
@@ -18,7 +17,6 @@ import {
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { Alert } from "@material-ui/lab";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -27,6 +25,7 @@ import {
   signUpRequest,
   hideError,
 } from "../../redux/action/userAction/actions";
+import logo from "../../Assets/Images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,7 +58,9 @@ export default function SignUp() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, errors, watch } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm({
+    mode: "onTouched",
+  });
 
   const { error } = useSelector((state) => state.userReducer);
 
@@ -89,9 +90,9 @@ export default function SignUp() {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <NavLink to="/">
+            <img className="w-12" src={logo} alt="logo" />
+          </NavLink>
           <Typography component="h1" variant="h5">
             Đăng ký
           </Typography>
@@ -101,7 +102,7 @@ export default function SignUp() {
             noValidate
           >
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 <FormControl
                   variant="outlined"
                   fullWidth
@@ -126,7 +127,7 @@ export default function SignUp() {
                   </FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 <FormControl
                   variant="outlined"
                   fullWidth
@@ -179,8 +180,7 @@ export default function SignUp() {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          onMouseDown={() => setShowPass(true)}
-                          onMouseUp={() => setShowPass(false)}
+                          onClick={() => setShowPass(!showPass)}
                           aria-label="toggle password visibility"
                           edge="end"
                         >
@@ -214,8 +214,7 @@ export default function SignUp() {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          onMouseDown={() => setShowPass2(true)}
-                          onMouseUp={() => setShowPass2(false)}
+                          onClick={() => setShowPass2(!showPass2)}
                           aria-label="toggle password visibility"
                           edge="end"
                         >

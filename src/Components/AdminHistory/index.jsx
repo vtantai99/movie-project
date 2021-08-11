@@ -110,12 +110,14 @@ const AdminHistory = () => {
         showModal={showModal}
         handleOffModal={handleOffModal}
       />
-      <Pagination
-        page={page}
-        quantity={5}
-        totalCount={newListInfo.length}
-        setPage={setPage}
-      />
+      <div className="mt-3">
+        <Pagination
+          page={page}
+          quantity={5}
+          totalCount={newListInfo.length}
+          setPage={setPage}
+        />
+      </div>
     </div>
   );
 };

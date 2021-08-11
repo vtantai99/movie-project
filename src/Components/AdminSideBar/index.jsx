@@ -13,11 +13,6 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
 
   const sideBarList = [
     {
-      title: "Dashboard",
-      icon: iconDashBoard,
-      location: "admin/dashboard",
-    },
-    {
       title: "Quản lý phim",
       icon: iconMoviePage,
       location: "admin/movieList",
@@ -32,6 +27,11 @@ const AdminSideBar = ({ sideBarActive, setSideBarActive }) => {
       title: "Quản lý lịch chiếu",
       icon: iconTicketPage,
       location: "admin/ticket",
+    },
+    {
+      title: "Thống kê",
+      icon: iconDashBoard,
+      location: "admin/dashboard",
     },
   ];
 

@@ -257,25 +257,27 @@ export default function BookingSideBar() {
       </div>
       <div className="footer__booking">
         <footer className="total__tablet">
-          <div className="total__tablet__btn">
-            <div
-              style={{
-                width: "50%",
-                textAlign: "center",
-                fontSize: "16px",
-                backgroundColor: "white",
-                color: "#108f3e",
-              }}
-            >
-              {formatNumber(priceTotal)}
+          {!statusFood && (
+            <div className="total__tablet__btn">
+              <div
+                style={{
+                  width: "50%",
+                  textAlign: "center",
+                  fontSize: "16px",
+                  backgroundColor: "white",
+                  color: "#108f3e",
+                }}
+              >
+                {formatNumber(priceTotal)}
+              </div>
+              <Button
+                onClick={() => handleShowModal()}
+                style={{ backgroundColor: "#28a745" }}
+              >
+                THANH TOÁN
+              </Button>
             </div>
-            <Button
-              onClick={() => handleShowModal()}
-              style={{ backgroundColor: "#28a745" }}
-            >
-              THANH TOÁN
-            </Button>
-          </div>
+          )}
         </footer>
         <Button
           onClick={() => handleShowModal()}

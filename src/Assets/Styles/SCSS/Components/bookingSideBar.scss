@@ -26,6 +26,9 @@
     overflow-y: auto;
     text-align: center;
     padding: 10px 10px 100px 10px;
+    @include Mobile {
+      padding: 10px 10px 150px 10px;
+    }
     &::-webkit-scrollbar {
       display: none;
     }

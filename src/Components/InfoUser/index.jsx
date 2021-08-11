@@ -26,7 +26,9 @@ const InfoUser = () => {
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
 
-  const { register, errors, handleSubmit, watch } = useForm();
+  const { register, errors, handleSubmit, watch } = useForm({
+    mode: "onTouched",
+  });
 
   const onSubmit = (data) => {
     let { maLoaiNguoiDung, accessToken } = user;

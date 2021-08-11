@@ -35,6 +35,7 @@ const AdminUserModal = () => {
   }, [infoUser, setValue]);
 
   const handleOffModal = async () => {
+    await setShowPass(false);
     await dispatch(changeModalUser({ statusModal: false }));
   };
 
@@ -131,8 +132,7 @@ const AdminUserModal = () => {
                 />
                 <span
                   className="absolute right-2 cursor-pointer"
-                  onMouseDown={() => setShowPass(true)}
-                  onMouseUp={() => setShowPass(false)}
+                  onClick={() => setShowPass(!showPass)}
                 >
                   {showPass ? iconEye : iconEyeOff}
                 </span>

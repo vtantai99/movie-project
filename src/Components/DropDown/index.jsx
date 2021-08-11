@@ -115,7 +115,7 @@ const SettingPages = () => {
             <SwitchTheme />
           </li>
           {user?.maLoaiNguoiDung === "QuanTri" && (
-            <li onClick={() => history.push("/admin/dashboard")}>
+            <li onClick={() => history.push("/admin/movieList")}>
               <span>
                 <i className="fas fa-user-cog"></i>
                 Admin

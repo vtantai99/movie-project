@@ -145,6 +145,7 @@ const SearchMovie = () => {
     >
       <div className="search__movie__group movieSelect">
         <select
+          className="transition"
           name="movieSelect"
           onChange={handleSelectFilm}
           style={{ background: `${isLight ? "white" : "#1F2937"}` }}
@@ -157,6 +158,7 @@ const SearchMovie = () => {
       </div>
       <div className="search__movie__group">
         <select
+          className="transition"
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
@@ -174,6 +176,7 @@ const SearchMovie = () => {
       </div>
       <div className="search__movie__group">
         <select
+          className="transition"
           name="dateSelect"
           onChange={handleSelectDate}
           style={{ background: `${isLight ? "white" : "#1F2937"}` }}
@@ -186,6 +189,7 @@ const SearchMovie = () => {
       </div>
       <div className="search__movie__group">
         <select
+          className="transition"
           name="hourSelect"
           onChange={handleSelectHours}
           style={{ background: `${isLight ? "white" : "#1F2937"}` }}

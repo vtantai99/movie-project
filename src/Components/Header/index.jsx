@@ -204,7 +204,7 @@ const Header = () => {
               </li>
               <li>
                 {user?.maLoaiNguoiDung === "QuanTri" && (
-                  <NavLink to="/admin/dashboard">
+                  <NavLink to="/admin/movieList">
                     <i className="fa fa-user-alt" />
                     Admin
                   </NavLink>

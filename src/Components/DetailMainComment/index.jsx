@@ -24,7 +24,9 @@ const MovieDetailReview = () => {
   const [hoverRating, setHoverRating] = useState(null);
   const [slice, setSlice] = useState(3);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    mode: "onTouched",
+  });
 
   listVote.sort(
     (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()

@@ -23,14 +23,12 @@ import PageNotFound from "./Pages/PageNotFound";
 
 //Components
 import LoadingDemo from "./Components/LoadingDemo";
-import ScrollToTop from "./Components/ScrollToTop";
 import Trailer from "./Components/Trailer";
 
 function App() {
   return (
     <Router>
       <LoadingDemo />
-      <ScrollToTop />
       <Trailer />
       <Switch>
         <Route exact path={["/", "/detail/:movieId", "/info"]}>

@@ -11,6 +11,8 @@ import { getFirstLetter } from "../../Helper/Function/chartCodeAt";
 import { xoaDau } from "../../Helper/Function/xoaDau";
 import { iconPlus, iconReset } from "../../Helper/IconSVG/iconAdmin";
 import { Button } from "@material-ui/core";
+import { getMovieListRequest } from "../../redux/action/movieListAction/action";
+import { GET_SHOWING_LIST } from "../../redux/action/movieListAction/actionTypes";
 
 const AdminMovieList = () => {
   const dispatch = useDispatch();
@@ -98,6 +100,10 @@ const AdminMovieList = () => {
   };
 
   // SORT METHOD
+
+  useEffect(() => {
+    dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST));
+  }, [dispatch]);
 
   useEffect(() => {
     setList(showingList);

@@ -1,15 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
 import CountUp from "react-countup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AdminCharts from "../../Components/AdminCharts";
 import AdminHistory from "../../Components/AdminHistory";
 import AdminTopUser from "../../Components/AdminTopUser";
+import { fetchListUser } from "../../redux/action/adminAction/actions";
+import { fetchTheaterListDetail } from "../../redux/action/heThongRapAction/actions";
 
 const AdminDashBoard = () => {
+  const dispatch = useDispatch();
+
   const { theaterDetail } = useSelector((state) => state.heThongRapReducer);
   const { listInfo } = useSelector((state) => state.adminReducer);
   const { isLight } = useSelector((state) => state.themeReducer);
   const totalFilm = useSelector((state) => state.movieListReducer.showingList);
+
+  useEffect(() => {
+    listInfo.length === 0 && dispatch(fetchListUser());
+    dispatch(fetchTheaterListDetail());
+  }, [dispatch, listInfo.length]);
 
   const totalTheater = theaterDetail?.reduce(
     (sum, item) => (sum += item.lstCumRap.length),

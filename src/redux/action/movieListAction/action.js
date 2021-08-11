@@ -12,7 +12,7 @@ export const getMovieListRequest = (codeFilm, type) => {
       .catch((err) => console.log(err));
   };
 };
-const getMovieList = (movieList, type) => {
+export const getMovieList = (movieList, type) => {
   return {
     type: type,
     payload: movieList,

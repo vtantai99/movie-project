@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../Assets/Styles/SCSS/Pages/login.scss";
 import {
-  Avatar,
   Button,
   CssBaseline,
   FormHelperText,
@@ -23,6 +22,7 @@ import { useForm } from "react-hook-form";
 import { hideError, loginRequest } from "../../redux/action/userAction/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
+import logo from "../../Assets/Images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,10 +30,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -59,7 +55,9 @@ export default function SignIn() {
 
   const [showPass, setShowPass] = useState(false);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    mode: "onTouched",
+  });
 
   useEffect(() => {
     dispatch(hideError());
@@ -80,7 +78,9 @@ export default function SignIn() {
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}></Avatar>
+          <NavLink to="/">
+            <img className="w-12" src={logo} alt="logo" />
+          </NavLink>
           <Typography component="h1" variant="h5">
             Đăng nhập
           </Typography>
@@ -129,8 +129,7 @@ export default function SignIn() {
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          onMouseDown={() => setShowPass(true)}
-                          onMouseUp={() => setShowPass(false)}
+                          onClick={() => setShowPass(!showPass)}
                           aria-label="toggle password visibility"
                           edge="end"
                         >
