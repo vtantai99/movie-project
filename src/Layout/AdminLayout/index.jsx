@@ -18,7 +18,7 @@ const AdminLayout = (props) => {
   useEffect(() => {
     async function fetchData() {
       await Promise.all([
-        user && dispatch(fetchListUser()),
+        user.maLoaiNguoiDung === "QuanTri" && dispatch(fetchListUser()),
         dispatch(getMovieListRequest("GP09", GET_SHOWING_LIST)),
         dispatch(fetchTheaterListDetail()),
       ]);
