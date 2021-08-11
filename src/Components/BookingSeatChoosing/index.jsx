@@ -8,6 +8,7 @@ const DangChonSeats = () => {
 
   const renderDangChonSeat = () => {
     const seatsChoosing = danhSachGhe?.filter((ghe) => ghe.dangChon);
+
     return seatsChoosing && seatsChoosing.length
       ? seatsChoosing.map((item, index) =>
           index === seatsChoosing.length - 1 ? (

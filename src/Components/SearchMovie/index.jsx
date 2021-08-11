@@ -144,7 +144,11 @@ const SearchMovie = () => {
       } search__movie transition`}
     >
       <div className="search__movie__group movieSelect">
-        <select name="movieSelect" onChange={handleSelectFilm}>
+        <select
+          name="movieSelect"
+          onChange={handleSelectFilm}
+          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+        >
           <option hidden selected>
             Chọn Phim
           </option>
@@ -156,6 +160,7 @@ const SearchMovie = () => {
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
+          style={{ background: `${isLight ? "white" : "#27272A"}` }}
         >
           <option hidden selected>
             {isLoading ? "Đang tìm rạp" : "Chọn rạp"}
@@ -168,7 +173,11 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select name="dateSelect" onChange={handleSelectDate}>
+        <select
+          name="dateSelect"
+          onChange={handleSelectDate}
+          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+        >
           <option hidden selected>
             Ngày chiếu
           </option>
@@ -176,7 +185,11 @@ const SearchMovie = () => {
         </select>
       </div>
       <div className="search__movie__group">
-        <select name="hourSelect" onChange={handleSelectHours}>
+        <select
+          name="hourSelect"
+          onChange={handleSelectHours}
+          style={{ background: `${isLight ? "white" : "#27272A"}` }}
+        >
           <option hidden selected>
             Giờ chiếu
           </option>
