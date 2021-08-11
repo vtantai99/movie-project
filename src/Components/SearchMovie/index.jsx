@@ -145,7 +145,7 @@ const SearchMovie = () => {
     >
       <div className="search__movie__group movieSelect">
         <select name="movieSelect" onChange={handleSelectFilm}>
-          <option value="movieSelect" hidden selected>
+          <option hidden selected>
             Chọn Phim
           </option>
           {renderListMovie()}
@@ -156,9 +156,8 @@ const SearchMovie = () => {
           name="theaterSelect"
           disabled={isLoading ? true : false}
           onChange={handleSelectTheater}
-          value
         >
-          <option value="movieSelect" hidden selected>
+          <option hidden selected>
             {isLoading ? "Đang tìm rạp" : "Chọn rạp"}
           </option>
           {heThongRapChieu ? (
