@@ -183,7 +183,7 @@ const AdminUserTable = ({ sort, setSort, searchList, searchTerm }) => {
                 )}
               </div>
             </th>
-            <th className="text-left text-sm">Sđt</th>
+            <th className="text-left text-sm">Số điện thoại</th>
             <th className="text-left text-sm">Mật khẩu</th>
             <th
               className={`
