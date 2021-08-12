@@ -152,8 +152,7 @@ const InfoUser = () => {
                       <InputAdornment position="end">
                         <IconButton
                           className={`${!isLight && "text-white"}`}
-                          onMouseDown={() => setShowPass(true)}
-                          onMouseUp={() => setShowPass(false)}
+                          onClick={() => setShowPass(!showPass)}
                           aria-label="toggle password visibility"
                           edge="end"
                         >
