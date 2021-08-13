@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import SwitchTheme from "../SwitchTheme";
 import swal from "sweetalert";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { logOutUser } from "../../redux/action/userAction/actions";
 const SettingPages = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   let refOpen = useRef();
+  const location = useLocation();
 
   const { user } = useSelector((state) => state.userReducer);
   const { isLight } = useSelector((state) => state.themeReducer);
@@ -35,9 +36,38 @@ const SettingPages = () => {
 
   useOnClickOutside(refOpen, () => setOpen(false));
 
-  const handleMovePage = () => {
-    history.push("/info");
-    setOpen(false);
+  const handleMovieInfo = () => {
+    if (location.pathname.slice(0, 9) === "/booking/") {
+      swal({
+        title: "Bạn có thực sự muốn rời khỏi",
+        icon: "info",
+        text: "Khi quay lại ghế sẽ có thể bị đặt bởi người khác",
+        buttons: {
+          cancel: "Huỷ bỏ",
+          confirm: "Đồng ý",
+        },
+      }).then((res) => res && history.push("/info"));
+    } else {
+      history.push("/info");
+      setOpen(false);
+    }
+  };
+
+  const handleMovieAdmin = () => {
+    if (location.pathname.slice(0, 9) === "/booking/") {
+      swal({
+        title: "Bạn có thực sự muốn rời khỏi",
+        icon: "info",
+        text: "Khi quay lại ghế sẽ có thể bị đặt bởi người khác",
+        buttons: {
+          cancel: "Huỷ bỏ",
+          confirm: "Đồng ý",
+        },
+      }).then((res) => res && history.push("/admin/movieList"));
+    } else {
+      history.push("/admin/movieList");
+      setOpen(false);
+    }
   };
 
   const handleLogOut = () => {
@@ -62,6 +92,7 @@ const SettingPages = () => {
       }
     });
   };
+
   return (
     <div className="dropdown" ref={refOpen}>
       <Tooltip title="Cá nhân" placement="bottom">
@@ -100,7 +131,7 @@ const SettingPages = () => {
       >
         <ul>
           {user && (
-            <li onClick={() => handleMovePage()}>
+            <li onClick={() => handleMovieInfo()}>
               <span>
                 <i className="fas fa-info-circle"></i>
                 Thông tin tài khoản
@@ -115,7 +146,7 @@ const SettingPages = () => {
             <SwitchTheme />
           </li>
           {user?.maLoaiNguoiDung === "QuanTri" && (
-            <li onClick={() => history.push("/admin/movieList")}>
+            <li onClick={() => handleMovieAdmin()}>
               <span>
                 <i className="fas fa-user-cog"></i>
                 Admin
